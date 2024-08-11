@@ -1,12 +1,18 @@
-
+//
+//  CreateAccountViewController.swift
+//  JaChegou
+//
+//  Created by MacBook on 10/08/24.
+//
 import UIKit
 
-class LoginViewController: UIViewController {
+
+class CreateAccountViewController: UIViewController {
     
-    var screen: LoginScreen?
+    var screen: CreateAccountScreen?
     
     override func loadView() {
-        screen = LoginScreen()
+        screen = CreateAccountScreen()
         view = screen
     }
     
@@ -36,21 +42,24 @@ class LoginViewController: UIViewController {
     }
 }
 
-extension LoginViewController: LoginScreenProtocol {
-    func tappedRegisterButton() {
-        //    present(RegisterViewController(), animated: true)
-        
-        //   navigationController?.pushViewController(RegisterViewController(), animated: true)
+extension CreateAccountViewController: CreateAccountScreenProtocol {
+    func tappedEyePasswordButton() {
         print(#function)
-        navigationController?.pushViewController(CreateAccountViewController(), animated: true)
     }
     
+    func tappedEyeConfirmPasswordButton() {
+        print(#function)
+    }
+    
+    func tappedRegisterButton() {
+        print(#function)
+    }
     func tappedLoginButton() {
         print(#function)
     }
 }
 
-extension LoginViewController: UITextFieldDelegate {
+extension CreateAccountViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
@@ -67,11 +76,10 @@ extension LoginViewController: UITextFieldDelegate {
             if isValidEmail(screen?.emailTextField.text ?? "") && isValidPassword(screen?.passwordTextField.text ?? "") {
                 isEnabledLoginButton(isEnable: true)
             } else {
-                isEnabledLoginButton(isEnable: true)
+                isEnabledLoginButton(isEnable: false)
             }
         }
         return false
     }
     
 }
-

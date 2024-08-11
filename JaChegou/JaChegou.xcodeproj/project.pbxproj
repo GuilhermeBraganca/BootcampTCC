@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA63F20B2C6814E00098967A /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63F20A2C6814E00098967A /* CreateAccountViewController.swift */; };
+		FA63F20E2C6815730098967A /* CreateAccountScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63F20D2C6815730098967A /* CreateAccountScreen.swift */; };
 		FAC7A6D72C5FC2C9001D90BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC7A6D62C5FC2C9001D90BE /* AppDelegate.swift */; };
 		FAC7A6D92C5FC2C9001D90BE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC7A6D82C5FC2C9001D90BE /* SceneDelegate.swift */; };
 		FAC7A6DB2C5FC2C9001D90BE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC7A6DA2C5FC2C9001D90BE /* LoginViewController.swift */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA63F20A2C6814E00098967A /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
+		FA63F20D2C6815730098967A /* CreateAccountScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountScreen.swift; sourceTree = "<group>"; };
 		FAC7A6D32C5FC2C9001D90BE /* JaChegou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JaChegou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAC7A6D62C5FC2C9001D90BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAC7A6D82C5FC2C9001D90BE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +41,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA63F2092C6813040098967A /* CreateAccount */ = {
+			isa = PBXGroup;
+			children = (
+				FA63F20C2C6815400098967A /* Screen */,
+				FA63F20A2C6814E00098967A /* CreateAccountViewController.swift */,
+			);
+			path = CreateAccount;
+			sourceTree = "<group>";
+		};
+		FA63F20C2C6815400098967A /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				FA63F20D2C6815730098967A /* CreateAccountScreen.swift */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
 		FAC7A6CA2C5FC2C9001D90BE = {
 			isa = PBXGroup;
 			children = (
@@ -56,6 +77,7 @@
 		FAC7A6D52C5FC2C9001D90BE /* JaChegou */ = {
 			isa = PBXGroup;
 			children = (
+				FA63F2092C6813040098967A /* CreateAccount */,
 				FAC7A6EA2C5FC57B001D90BE /* Login */,
 				FAC7A6D62C5FC2C9001D90BE /* AppDelegate.swift */,
 				FAC7A6D82C5FC2C9001D90BE /* SceneDelegate.swift */,
@@ -153,6 +175,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA63F20B2C6814E00098967A /* CreateAccountViewController.swift in Sources */,
+				FA63F20E2C6815730098967A /* CreateAccountScreen.swift in Sources */,
 				FAC7A6DB2C5FC2C9001D90BE /* LoginViewController.swift in Sources */,
 				FAC7A6ED2C600CE3001D90BE /* LoginScreen.swift in Sources */,
 				FAC7A6D72C5FC2C9001D90BE /* AppDelegate.swift in Sources */,
