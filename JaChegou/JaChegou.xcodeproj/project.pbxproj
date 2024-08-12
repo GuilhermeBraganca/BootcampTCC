@@ -9,6 +9,15 @@
 /* Begin PBXBuildFile section */
 		FA63F20B2C6814E00098967A /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63F20A2C6814E00098967A /* CreateAccountViewController.swift */; };
 		FA63F20E2C6815730098967A /* CreateAccountScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63F20D2C6815730098967A /* CreateAccountScreen.swift */; };
+		FA63F2122C6991E60098967A /* MainTabBarControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63F2112C6991E60098967A /* MainTabBarControllerViewController.swift */; };
+		FA63F2192C6994AD0098967A /* HomeControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63F2182C6994AD0098967A /* HomeControllerViewController.swift */; };
+		FA63F21B2C6995780098967A /* HomeControllerScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63F21A2C6995780098967A /* HomeControllerScreen.swift */; };
+		FA63F21E2C69965D0098967A /* TrackingControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63F21D2C69965D0098967A /* TrackingControllerViewController.swift */; };
+		FA63F2202C6996BD0098967A /* TrackingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63F21F2C6996BD0098967A /* TrackingScreen.swift */; };
+		FA63F2232C69979D0098967A /* ProfileControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63F2222C69979D0098967A /* ProfileControllerViewController.swift */; };
+		FA63F2252C6997AF0098967A /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63F2242C6997AF0098967A /* ProfileScreen.swift */; };
+		FA63F2282C6998180098967A /* NotificationControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63F2272C6998180098967A /* NotificationControllerViewController.swift */; };
+		FA63F22A2C69982F0098967A /* NotificationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63F2292C69982F0098967A /* NotificationScreen.swift */; };
 		FAC7A6D72C5FC2C9001D90BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC7A6D62C5FC2C9001D90BE /* AppDelegate.swift */; };
 		FAC7A6D92C5FC2C9001D90BE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC7A6D82C5FC2C9001D90BE /* SceneDelegate.swift */; };
 		FAC7A6DB2C5FC2C9001D90BE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC7A6DA2C5FC2C9001D90BE /* LoginViewController.swift */; };
@@ -20,6 +29,15 @@
 /* Begin PBXFileReference section */
 		FA63F20A2C6814E00098967A /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		FA63F20D2C6815730098967A /* CreateAccountScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountScreen.swift; sourceTree = "<group>"; };
+		FA63F2112C6991E60098967A /* MainTabBarControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarControllerViewController.swift; sourceTree = "<group>"; };
+		FA63F2182C6994AD0098967A /* HomeControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeControllerViewController.swift; sourceTree = "<group>"; };
+		FA63F21A2C6995780098967A /* HomeControllerScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeControllerScreen.swift; sourceTree = "<group>"; };
+		FA63F21D2C69965D0098967A /* TrackingControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingControllerViewController.swift; sourceTree = "<group>"; };
+		FA63F21F2C6996BD0098967A /* TrackingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingScreen.swift; sourceTree = "<group>"; };
+		FA63F2222C69979D0098967A /* ProfileControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileControllerViewController.swift; sourceTree = "<group>"; };
+		FA63F2242C6997AF0098967A /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
+		FA63F2272C6998180098967A /* NotificationControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationControllerViewController.swift; sourceTree = "<group>"; };
+		FA63F2292C69982F0098967A /* NotificationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationScreen.swift; sourceTree = "<group>"; };
 		FAC7A6D32C5FC2C9001D90BE /* JaChegou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JaChegou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAC7A6D62C5FC2C9001D90BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAC7A6D82C5FC2C9001D90BE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,19 +59,103 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		FA63F2092C6813040098967A /* CreateAccount */ = {
+		FA63F2092C6813040098967A /* CreateAccountController */ = {
 			isa = PBXGroup;
 			children = (
 				FA63F20C2C6815400098967A /* Screen */,
 				FA63F20A2C6814E00098967A /* CreateAccountViewController.swift */,
 			);
-			path = CreateAccount;
+			path = CreateAccountController;
 			sourceTree = "<group>";
 		};
 		FA63F20C2C6815400098967A /* Screen */ = {
 			isa = PBXGroup;
 			children = (
 				FA63F20D2C6815730098967A /* CreateAccountScreen.swift */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		FA63F20F2C69908A0098967A /* MainTabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				FA63F2102C6990AA0098967A /* Screen */,
+				FA63F2112C6991E60098967A /* MainTabBarControllerViewController.swift */,
+			);
+			path = MainTabBarController;
+			sourceTree = "<group>";
+		};
+		FA63F2102C6990AA0098967A /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		FA63F2132C6993610098967A /* HomeController */ = {
+			isa = PBXGroup;
+			children = (
+				FA63F2172C6994350098967A /* Screen */,
+				FA63F2182C6994AD0098967A /* HomeControllerViewController.swift */,
+			);
+			path = HomeController;
+			sourceTree = "<group>";
+		};
+		FA63F2142C69937F0098967A /* TrackingController */ = {
+			isa = PBXGroup;
+			children = (
+				FA63F21C2C6996340098967A /* Screen */,
+				FA63F21D2C69965D0098967A /* TrackingControllerViewController.swift */,
+			);
+			path = TrackingController;
+			sourceTree = "<group>";
+		};
+		FA63F2152C6993C10098967A /* ProfileController */ = {
+			isa = PBXGroup;
+			children = (
+				FA63F2212C69973D0098967A /* Screen */,
+				FA63F2222C69979D0098967A /* ProfileControllerViewController.swift */,
+			);
+			path = ProfileController;
+			sourceTree = "<group>";
+		};
+		FA63F2162C6994140098967A /* NotificationController */ = {
+			isa = PBXGroup;
+			children = (
+				FA63F2262C6997EE0098967A /* Screen */,
+				FA63F2272C6998180098967A /* NotificationControllerViewController.swift */,
+			);
+			path = NotificationController;
+			sourceTree = "<group>";
+		};
+		FA63F2172C6994350098967A /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				FA63F21A2C6995780098967A /* HomeControllerScreen.swift */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		FA63F21C2C6996340098967A /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				FA63F21F2C6996BD0098967A /* TrackingScreen.swift */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		FA63F2212C69973D0098967A /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				FA63F2242C6997AF0098967A /* ProfileScreen.swift */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		FA63F2262C6997EE0098967A /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				FA63F2292C69982F0098967A /* NotificationScreen.swift */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -77,8 +179,13 @@
 		FAC7A6D52C5FC2C9001D90BE /* JaChegou */ = {
 			isa = PBXGroup;
 			children = (
-				FA63F2092C6813040098967A /* CreateAccount */,
-				FAC7A6EA2C5FC57B001D90BE /* Login */,
+				FA63F2162C6994140098967A /* NotificationController */,
+				FA63F2152C6993C10098967A /* ProfileController */,
+				FA63F2142C69937F0098967A /* TrackingController */,
+				FA63F2132C6993610098967A /* HomeController */,
+				FA63F20F2C69908A0098967A /* MainTabBarController */,
+				FA63F2092C6813040098967A /* CreateAccountController */,
+				FAC7A6EA2C5FC57B001D90BE /* LoginController */,
 				FAC7A6D62C5FC2C9001D90BE /* AppDelegate.swift */,
 				FAC7A6D82C5FC2C9001D90BE /* SceneDelegate.swift */,
 				FAC7A6DF2C5FC2CB001D90BE /* Assets.xcassets */,
@@ -88,13 +195,13 @@
 			path = JaChegou;
 			sourceTree = "<group>";
 		};
-		FAC7A6EA2C5FC57B001D90BE /* Login */ = {
+		FAC7A6EA2C5FC57B001D90BE /* LoginController */ = {
 			isa = PBXGroup;
 			children = (
 				FAC7A6EB2C600AA1001D90BE /* Screen */,
 				FAC7A6DA2C5FC2C9001D90BE /* LoginViewController.swift */,
 			);
-			path = Login;
+			path = LoginController;
 			sourceTree = "<group>";
 		};
 		FAC7A6EB2C600AA1001D90BE /* Screen */ = {
@@ -177,9 +284,18 @@
 			files = (
 				FA63F20B2C6814E00098967A /* CreateAccountViewController.swift in Sources */,
 				FA63F20E2C6815730098967A /* CreateAccountScreen.swift in Sources */,
+				FA63F2202C6996BD0098967A /* TrackingScreen.swift in Sources */,
 				FAC7A6DB2C5FC2C9001D90BE /* LoginViewController.swift in Sources */,
+				FA63F2252C6997AF0098967A /* ProfileScreen.swift in Sources */,
+				FA63F2232C69979D0098967A /* ProfileControllerViewController.swift in Sources */,
+				FA63F21B2C6995780098967A /* HomeControllerScreen.swift in Sources */,
+				FA63F2122C6991E60098967A /* MainTabBarControllerViewController.swift in Sources */,
 				FAC7A6ED2C600CE3001D90BE /* LoginScreen.swift in Sources */,
+				FA63F2192C6994AD0098967A /* HomeControllerViewController.swift in Sources */,
+				FA63F21E2C69965D0098967A /* TrackingControllerViewController.swift in Sources */,
+				FA63F2282C6998180098967A /* NotificationControllerViewController.swift in Sources */,
 				FAC7A6D72C5FC2C9001D90BE /* AppDelegate.swift in Sources */,
+				FA63F22A2C69982F0098967A /* NotificationScreen.swift in Sources */,
 				FAC7A6D92C5FC2C9001D90BE /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

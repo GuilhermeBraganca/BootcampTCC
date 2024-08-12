@@ -47,6 +47,7 @@ extension LoginViewController: LoginScreenProtocol {
     
     func tappedLoginButton() {
         print(#function)
+        navigationController?.pushViewController(MainTabBarControllerViewController(), animated: true)
     }
 }
 
