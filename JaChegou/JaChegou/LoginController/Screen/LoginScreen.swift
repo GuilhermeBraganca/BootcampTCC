@@ -12,13 +12,10 @@ class LoginScreen: UIView {
     weak var delegate: LoginScreenProtocol?
     
     
-    lazy var logoImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "worldBackgroundImage")
-        imageView.tintColor = .lightGray
-        imageView.contentMode = .scaleAspectFit
-        return imageView
+    lazy var headerView: HeaderView = {
+      let view = HeaderView()
+      view.translatesAutoresizingMaskIntoConstraints = false
+      return view
     }()
     
     
@@ -119,9 +116,9 @@ class LoginScreen: UIView {
     }
    
     func addElements() {
+        addSubview(headerView)
         addSubview(loginLabel)
         addSubview(subTitleLabel)
-        addSubview(logoImageView)
         addSubview(emailTextField)
         addSubview(passwordTextField)
         addSubview(loginButton)
@@ -131,13 +128,12 @@ class LoginScreen: UIView {
         NSLayoutConstraint.activate([
             
             
-            logoImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: -150),
+            headerView.topAnchor.constraint(equalTo: topAnchor),
+            headerView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            headerView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            headerView.heightAnchor.constraint(equalToConstant: 200),
             
-            logoImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            logoImageView.heightAnchor.constraint(equalToConstant: 300),
-            logoImageView.widthAnchor.constraint(equalToConstant: 400),
-            
-            loginLabel.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 10),
+            loginLabel.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 10),
             loginLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             loginLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             //loginLabel.heightAnchor.constraint(equalToConstant: 40),

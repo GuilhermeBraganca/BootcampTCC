@@ -19,13 +19,10 @@ class CreateAccountScreen: UIView {
     
     weak var delegate: CreateAccountScreenProtocol?
     
-    lazy var logoImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "worldBackgroundImage")
-        imageView.tintColor = .lightGray
-        imageView.contentMode = .scaleAspectFit
-        return imageView
+    lazy var headerView: HeaderView = {
+      let view = HeaderView()
+      view.translatesAutoresizingMaskIntoConstraints = false
+      return view
     }()
     
     
@@ -197,7 +194,7 @@ class CreateAccountScreen: UIView {
     }
     
     func addElements() {
-        addSubview(logoImageView)
+        addSubview(headerView)
         addSubview(createAccountLabel)
         addSubview(nameTextField)
         addSubview(emailTextField)
@@ -213,13 +210,12 @@ class CreateAccountScreen: UIView {
         NSLayoutConstraint.activate([
             
             
-            logoImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: -150),
+            headerView.topAnchor.constraint(equalTo: topAnchor),
+            headerView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            headerView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            headerView.heightAnchor.constraint(equalToConstant: 200),
             
-            logoImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            logoImageView.heightAnchor.constraint(equalToConstant: 300),
-            logoImageView.widthAnchor.constraint(equalToConstant: 400),
-            
-            createAccountLabel.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 20),
+            createAccountLabel.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 20),
             createAccountLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             createAccountLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             
