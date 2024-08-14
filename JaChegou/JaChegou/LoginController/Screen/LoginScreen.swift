@@ -13,7 +13,7 @@ class LoginScreen: UIView {
     
     
     lazy var headerView: HeaderView = {
-      let view = HeaderView()
+      let view = HeaderView(title: "Para aproveitar todos os recursos, faça login.", image: UIImage(named: "worldImage"))
       view.translatesAutoresizingMaskIntoConstraints = false
       return view
     }()
@@ -117,7 +117,7 @@ class LoginScreen: UIView {
    
     func addElements() {
         addSubview(headerView)
-        addSubview(loginLabel)
+        //addSubview(loginLabel)
         addSubview(subTitleLabel)
         addSubview(emailTextField)
         addSubview(passwordTextField)
@@ -133,17 +133,17 @@ class LoginScreen: UIView {
             headerView.trailingAnchor.constraint(equalTo: trailingAnchor),
             headerView.heightAnchor.constraint(equalToConstant: 200),
             
-            loginLabel.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 10),
-            loginLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            loginLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+//            loginLabel.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 10),
+//            loginLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+//            loginLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             //loginLabel.heightAnchor.constraint(equalToConstant: 40),
             
-            subTitleLabel.topAnchor.constraint(equalTo: loginLabel.bottomAnchor, constant: 10),
+            subTitleLabel.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 10),
             subTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             subTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             //subTitleLabel.heightAnchor.constraint(equalToConstant: 40),
             
-            emailTextField.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 50),
+            emailTextField.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 20),
             emailTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             emailTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             emailTextField.heightAnchor.constraint(equalToConstant: 40),

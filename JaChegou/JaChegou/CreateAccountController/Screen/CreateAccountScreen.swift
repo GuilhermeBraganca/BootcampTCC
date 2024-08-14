@@ -20,7 +20,7 @@ class CreateAccountScreen: UIView {
     weak var delegate: CreateAccountScreenProtocol?
     
     lazy var headerView: HeaderView = {
-      let view = HeaderView()
+      let view = HeaderView(title: "Para aproveitar todos os recursos, crie uma conta.", image: UIImage(named: "worldImage"))
       view.translatesAutoresizingMaskIntoConstraints = false
       return view
     }()
@@ -195,7 +195,7 @@ class CreateAccountScreen: UIView {
     
     func addElements() {
         addSubview(headerView)
-        addSubview(createAccountLabel)
+        //addSubview(createAccountLabel)
         addSubview(nameTextField)
         addSubview(emailTextField)
         addSubview(birthDateTextField)
@@ -215,12 +215,12 @@ class CreateAccountScreen: UIView {
             headerView.trailingAnchor.constraint(equalTo: trailingAnchor),
             headerView.heightAnchor.constraint(equalToConstant: 200),
             
-            createAccountLabel.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 20),
-            createAccountLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            createAccountLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+//            createAccountLabel.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 20),
+//            createAccountLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+//            createAccountLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             
             
-            nameTextField.topAnchor.constraint(equalTo: createAccountLabel.bottomAnchor, constant: 30),
+            nameTextField.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 30),
             nameTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             nameTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             nameTextField.heightAnchor.constraint(equalToConstant: 40),

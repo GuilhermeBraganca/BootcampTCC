@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FA050B5A2C6B02FE000BB48A /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA050B592C6B02FE000BB48A /* HeaderView.swift */; };
+		FA050B5E2C6C35F4000BB48A /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA050B5D2C6C35F4000BB48A /* SearchView.swift */; };
 		FA63F20B2C6814E00098967A /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63F20A2C6814E00098967A /* CreateAccountViewController.swift */; };
 		FA63F20E2C6815730098967A /* CreateAccountScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63F20D2C6815730098967A /* CreateAccountScreen.swift */; };
 		FA63F2122C6991E60098967A /* MainTabBarControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63F2112C6991E60098967A /* MainTabBarControllerViewController.swift */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		FA050B592C6B02FE000BB48A /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		FA050B5D2C6C35F4000BB48A /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		FA63F20A2C6814E00098967A /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		FA63F20D2C6815730098967A /* CreateAccountScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountScreen.swift; sourceTree = "<group>"; };
 		FA63F2112C6991E60098967A /* MainTabBarControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarControllerViewController.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				FA050B592C6B02FE000BB48A /* HeaderView.swift */,
+				FA050B5D2C6C35F4000BB48A /* SearchView.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -89,17 +92,9 @@
 		FA63F20F2C69908A0098967A /* MainTabBarController */ = {
 			isa = PBXGroup;
 			children = (
-				FA63F2102C6990AA0098967A /* Screen */,
 				FA63F2112C6991E60098967A /* MainTabBarControllerViewController.swift */,
 			);
 			path = MainTabBarController;
-			sourceTree = "<group>";
-		};
-		FA63F2102C6990AA0098967A /* Screen */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Screen;
 			sourceTree = "<group>";
 		};
 		FA63F2132C6993610098967A /* HomeController */ = {
@@ -299,6 +294,7 @@
 				FAC7A6DB2C5FC2C9001D90BE /* LoginViewController.swift in Sources */,
 				FA63F2252C6997AF0098967A /* ProfileScreen.swift in Sources */,
 				FA63F2232C69979D0098967A /* ProfileControllerViewController.swift in Sources */,
+				FA050B5E2C6C35F4000BB48A /* SearchView.swift in Sources */,
 				FA63F21B2C6995780098967A /* HomeControllerScreen.swift in Sources */,
 				FA63F2122C6991E60098967A /* MainTabBarControllerViewController.swift in Sources */,
 				FAC7A6ED2C600CE3001D90BE /* LoginScreen.swift in Sources */,
