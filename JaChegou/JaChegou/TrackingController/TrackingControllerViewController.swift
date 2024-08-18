@@ -8,17 +8,16 @@
 import UIKit
 
 class TrackingControllerViewController: UIViewController {
-
+    
     var screen: TrackingScreen?
-
+    
     override func loadView() {
-      screen = TrackingScreen()
-      view = screen
+        screen = TrackingScreen()
+        view = screen
     }
-
+    
     override func viewDidLoad() {
-      super.viewDidLoad()
-      //NotificationCenter.default.addObserver(self, selector: #selector(changeName), name: .changeName, object: nil)
+        super.viewDidLoad()
     }
-
+    
 }
