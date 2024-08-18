@@ -16,6 +16,14 @@ class ProfileScreen: UIView {
         return view
     }()
     
+//    lazy var profileLabel: UILabel = {
+//        let label = UILabel()
+//        label.translatesAutoresizingMaskIntoConstraints = false
+//        label.text = "Perfil"
+//        label.font = UIFont.boldSystemFont(ofSize: 28)
+//        return label
+//    }()
+    
      lazy var personalInformationLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -38,7 +46,7 @@ class ProfileScreen: UIView {
         func addElements() {
             addSubview(headerView)
             addSubview(personalInformationLabel)
-        }
+    }
         
         func configConstraints() {
             NSLayoutConstraint.activate([
@@ -47,10 +55,10 @@ class ProfileScreen: UIView {
                 headerView.trailingAnchor.constraint(equalTo: trailingAnchor),
                 headerView.heightAnchor.constraint(equalToConstant: 200),
                 
-                personalInformationLabel.topAnchor.constraint(equalTo: topAnchor),
-                personalInformationLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-                personalInformationLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-                personalInformationLabel.heightAnchor.constraint(equalToConstant: 600),
+                
+                personalInformationLabel.topAnchor.constraint(equalTo: topAnchor, constant: 230),
+                personalInformationLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+                personalInformationLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             ])
         }
     }
