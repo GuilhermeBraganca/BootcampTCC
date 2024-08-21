@@ -16,6 +16,15 @@ class NotificationScreen: UIView {
         return view
     }()
     
+    lazy var tableView: UITableView = {
+      let tableView = UITableView()
+      tableView.translatesAutoresizingMaskIntoConstraints = false
+      tableView.register(ProductTableViewCell.self, forCellReuseIdentifier: ProductTableViewCell.identifier)
+      tableView.backgroundColor = .black
+      tableView.separatorStyle = .none
+      return tableView
+    }()
+    
     lazy var deleteAllNotificationsButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -47,6 +56,7 @@ class NotificationScreen: UIView {
     
     func addElements() {
         addSubview(headerView)
+        addSubview(tableView)
         addSubview(deleteAllNotificationsButton)
         
     }
@@ -59,6 +69,11 @@ class NotificationScreen: UIView {
             headerView.trailingAnchor.constraint(equalTo: trailingAnchor),
             headerView.heightAnchor.constraint(equalToConstant: 200),
             
+            tableView.topAnchor.constraint(equalTo: headerView.topAnchor, constant: 210),
+            tableView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -100),
+
             deleteAllNotificationsButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -80),
             deleteAllNotificationsButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             deleteAllNotificationsButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),

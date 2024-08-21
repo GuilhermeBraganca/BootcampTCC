@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		034C3CE12C7415B400E9EDA5 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034C3CE02C7415B400E9EDA5 /* Product.swift */; };
+		034C3CE32C7415EA00E9EDA5 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034C3CE22C7415EA00E9EDA5 /* ProductTableViewCell.swift */; };
 		FA050B5A2C6B02FE000BB48A /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA050B592C6B02FE000BB48A /* HeaderView.swift */; };
 		FA050B5E2C6C35F4000BB48A /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA050B5D2C6C35F4000BB48A /* SearchView.swift */; };
 		FA63F20B2C6814E00098967A /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63F20A2C6814E00098967A /* CreateAccountViewController.swift */; };
@@ -29,6 +31,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		034C3CE02C7415B400E9EDA5 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		034C3CE22C7415EA00E9EDA5 /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
 		FA050B592C6B02FE000BB48A /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		FA050B5D2C6C35F4000BB48A /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		FA63F20A2C6814E00098967A /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +67,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		034C3CDD2C74155F00E9EDA5 /* Modal */ = {
+			isa = PBXGroup;
+			children = (
+				034C3CE02C7415B400E9EDA5 /* Product.swift */,
+			);
+			path = Modal;
+			sourceTree = "<group>";
+		};
+		034C3CDE2C74157800E9EDA5 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				034C3CDF2C74158B00E9EDA5 /* Cell */,
+				FA63F2262C6997EE0098967A /* Screen */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		034C3CDF2C74158B00E9EDA5 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				034C3CE22C7415EA00E9EDA5 /* ProductTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		FA050B582C6B02E6000BB48A /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -127,7 +156,8 @@
 		FA63F2162C6994140098967A /* NotificationController */ = {
 			isa = PBXGroup;
 			children = (
-				FA63F2262C6997EE0098967A /* Screen */,
+				034C3CDD2C74155F00E9EDA5 /* Modal */,
+				034C3CDE2C74157800E9EDA5 /* List */,
 				FA63F2272C6998180098967A /* NotificationControllerViewController.swift */,
 			);
 			path = NotificationController;
@@ -291,6 +321,7 @@
 				FA63F20B2C6814E00098967A /* CreateAccountViewController.swift in Sources */,
 				FA63F20E2C6815730098967A /* CreateAccountScreen.swift in Sources */,
 				FA63F2202C6996BD0098967A /* TrackingScreen.swift in Sources */,
+				034C3CE32C7415EA00E9EDA5 /* ProductTableViewCell.swift in Sources */,
 				FAC7A6DB2C5FC2C9001D90BE /* LoginViewController.swift in Sources */,
 				FA63F2252C6997AF0098967A /* ProfileScreen.swift in Sources */,
 				FA63F2232C69979D0098967A /* ProfileControllerViewController.swift in Sources */,
@@ -299,6 +330,7 @@
 				FA63F2122C6991E60098967A /* MainTabBarControllerViewController.swift in Sources */,
 				FAC7A6ED2C600CE3001D90BE /* LoginScreen.swift in Sources */,
 				FA63F2192C6994AD0098967A /* HomeControllerViewController.swift in Sources */,
+				034C3CE12C7415B400E9EDA5 /* Product.swift in Sources */,
 				FA63F21E2C69965D0098967A /* TrackingControllerViewController.swift in Sources */,
 				FA63F2282C6998180098967A /* NotificationControllerViewController.swift in Sources */,
 				FAC7A6D72C5FC2C9001D90BE /* AppDelegate.swift in Sources */,
