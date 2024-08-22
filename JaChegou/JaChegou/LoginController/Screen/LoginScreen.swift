@@ -21,7 +21,6 @@ class LoginScreen: UIView {
     
     lazy var loginLabel: UILabel = {
         let label = UILabel()
-        
         label.text = "Para aproveitar todos os recursos, faça login."
         label.numberOfLines = 2
         //label.lineBreakMode = .byWordWrapping
