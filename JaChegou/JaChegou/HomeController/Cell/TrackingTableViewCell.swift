@@ -57,6 +57,7 @@ class TrackingTableViewCell: UITableViewCell {
     
     func setupCell(track: Track) {
         viewModel.setTrack(track: track)
+        collectionView.reloadData()
     }
 }
 

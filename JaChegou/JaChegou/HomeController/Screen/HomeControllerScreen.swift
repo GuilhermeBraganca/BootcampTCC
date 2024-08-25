@@ -8,8 +8,14 @@
 import Foundation
 import UIKit
 
+protocol HomeControllerScreenProtocol: AnyObject {
+  func changeTrackingType(type: TrackingType)
+}
+
 class HomeControllerScreen: UIView {
-    
+
+  weak var delegate: HomeControllerScreenProtocol?
+
     lazy var headerView: HeaderView = {
         let view = HeaderView(title: "Rastreamentos", image: UIImage(named: "worldImage"))
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -58,26 +64,15 @@ class HomeControllerScreen: UIView {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(TrackingTableViewCell.self, forCellReuseIdentifier: TrackingTableViewCell.identifier)
         tableView.separatorStyle = .none
-        tableView.isHidden = false
-        return tableView
-    }()
-    
-    lazy var completeTrackTableView: UITableView = {
-        let tableView = UITableView()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(TrackingTableViewCell.self, forCellReuseIdentifier: TrackingTableViewCell.identifier)
-        tableView.separatorStyle = .none
-        tableView.isHidden = true
+      tableView.isScrollEnabled = true
         return tableView
     }()
     
     @objc private func segmentChanged() {
         if segmentedControl.selectedSegmentIndex == 0 {
-            trackingTableView.isHidden = false
-            completeTrackTableView.isHidden = true
+          delegate?.changeTrackingType(type: .transporting)
         } else {
-            trackingTableView.isHidden = true
-            completeTrackTableView.isHidden = false
+          delegate?.changeTrackingType(type: .completed)
         }
     }
     
@@ -98,7 +93,6 @@ class HomeControllerScreen: UIView {
         addSubview(searchBarView)
         addSubview(segmentedControl)
         addSubview(trackingTableView)
-        addSubview(completeTrackTableView)
     }
     
     func configTableViewProtocols(delegate: UITableViewDelegate, dataSource: UITableViewDataSource) {
@@ -127,12 +121,6 @@ class HomeControllerScreen: UIView {
             trackingTableView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20),
             trackingTableView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -20),
             trackingTableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
-            
-            completeTrackTableView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 20),
-            completeTrackTableView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            completeTrackTableView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            completeTrackTableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
-            
         ])
         
     }
