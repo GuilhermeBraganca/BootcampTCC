@@ -20,18 +20,21 @@ class TrackingScreen: UIView {
     lazy var subTitleLabelTrackingScreen: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .gray
+        label.textColor = UIColor(hex: "#858585")
         label.font = UIFont.boldSystemFont(ofSize: 12)
         label.textAlignment = .left
         label.text = "Cadastre o código de correios para ser rastreado"
+        
         return label
     }()
     
     lazy var trackingCodeTextField: UITextField = {
         let tf = UITextField()
+        let placeholderText =  "Código de rastreio"
+        let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.white]
+        tf.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
         tf.translatesAutoresizingMaskIntoConstraints = false
-        tf.backgroundColor = UIColor.lightGray
-        tf.placeholder = "Código de rastreio"
+        tf.backgroundColor = UIColor(hex: "#858585")
         tf.borderStyle = .roundedRect
 //        tf.layer.cornerRadius = 10
         tf.clearButtonMode = .whileEditing
@@ -42,10 +45,14 @@ class TrackingScreen: UIView {
     
     lazy var orderDescriptionTextField: UITextField = {
         let tf = UITextField()
+        let placeholderText =  "Descrição* Ex.: Sapatos"
+        let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.white]
+        tf.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
         tf.translatesAutoresizingMaskIntoConstraints = false
-        tf.placeholder = "Descrição* Ex.: Sapatos"
-        tf.backgroundColor = UIColor.lightGray
+        tf.backgroundColor = UIColor(hex: "#858585")
         tf.borderStyle = .roundedRect
+//        tf.layer.cornerRadius = 10
+        tf.clearButtonMode = .whileEditing
         return tf
     }()
     
@@ -58,11 +65,11 @@ class TrackingScreen: UIView {
         button.backgroundColor = .systemBlue
         button.clipsToBounds = true
         button.layer.cornerRadius = 8
-        button.addTarget(self, action: #selector(tappedSaveButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(tappedDeleteNotificationButton), for: .touchUpInside)
         return button
     }()
     
-    @objc func tappedSaveButton() {
+    @objc func tappedDeleteNotificationButton() {
         print(#function)
     }
     
@@ -95,12 +102,12 @@ class TrackingScreen: UIView {
             headerView.trailingAnchor.constraint(equalTo: trailingAnchor),
             headerView.heightAnchor.constraint(equalToConstant: 200),
             
-            subTitleLabelTrackingScreen.topAnchor.constraint(equalTo: headerView.topAnchor, constant: 210),
+            subTitleLabelTrackingScreen.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 10),
             subTitleLabelTrackingScreen.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             subTitleLabelTrackingScreen.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            subTitleLabelTrackingScreen.heightAnchor.constraint(equalToConstant: 20),
+            subTitleLabelTrackingScreen.heightAnchor.constraint(equalToConstant: 10),
             
-            trackingCodeTextField.topAnchor.constraint(equalTo: subTitleLabelTrackingScreen.bottomAnchor, constant: 10),
+            trackingCodeTextField.topAnchor.constraint(equalTo: subTitleLabelTrackingScreen.bottomAnchor, constant: 15),
             trackingCodeTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             trackingCodeTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             trackingCodeTextField.heightAnchor.constraint(equalToConstant: 40),
@@ -110,12 +117,34 @@ class TrackingScreen: UIView {
             orderDescriptionTextField.trailingAnchor.constraint(equalTo: trackingCodeTextField.trailingAnchor),
             orderDescriptionTextField.heightAnchor.constraint(equalTo: trackingCodeTextField.heightAnchor),
             
-            saveButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -80),
-            saveButton.leadingAnchor.constraint(equalTo: trackingCodeTextField.leadingAnchor),
-            saveButton.trailingAnchor.constraint(equalTo: trackingCodeTextField.trailingAnchor),
-            saveButton.heightAnchor.constraint(equalTo: trackingCodeTextField.heightAnchor),
+            saveButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            saveButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            saveButton.heightAnchor.constraint(equalToConstant: 40),
+            saveButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -40),
             
         ])
     }
     
+}
+
+//extensão de cores conforme a ferramenta FIGMA
+extension UIColor {
+    convenience init(hex: String, alpha: CGFloat = 1.0) {
+        var hexFormatted: String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+
+        if hexFormatted.hasPrefix("#") {
+            hexFormatted.remove(at: hexFormatted.startIndex)
+        }
+
+        assert(hexFormatted.count == 6, "Formato hexadecimal inválido")
+
+        var rgbValue: UInt64 = 0
+        Scanner(string: hexFormatted).scanHexInt64(&rgbValue)
+
+        let red = CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0
+        let green = CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0
+        let blue = CGFloat(rgbValue & 0x0000FF) / 255.0
+
+        self.init(red: red, green: green, blue: blue, alpha: alpha)
+    }
 }
