@@ -16,7 +16,7 @@
 		FA63F21B2C6995780098967A /* HomeControllerScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63F21A2C6995780098967A /* HomeControllerScreen.swift */; };
 		FA63F21E2C69965D0098967A /* TrackingControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63F21D2C69965D0098967A /* TrackingControllerViewController.swift */; };
 		FA63F2202C6996BD0098967A /* TrackingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63F21F2C6996BD0098967A /* TrackingScreen.swift */; };
-		FA63F2232C69979D0098967A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63F2222C69979D0098967A /* ProfileViewController.swift */; };
+		FA63F2232C69979D0098967A /* ProfileControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63F2222C69979D0098967A /* ProfileControllerViewController.swift */; };
 		FA63F2252C6997AF0098967A /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63F2242C6997AF0098967A /* ProfileScreen.swift */; };
 		FA63F2282C6998180098967A /* NotificationControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63F2272C6998180098967A /* NotificationControllerViewController.swift */; };
 		FA63F22A2C69982F0098967A /* NotificationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63F2292C69982F0098967A /* NotificationScreen.swift */; };
@@ -38,7 +38,7 @@
 		FA63F21A2C6995780098967A /* HomeControllerScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeControllerScreen.swift; sourceTree = "<group>"; };
 		FA63F21D2C69965D0098967A /* TrackingControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingControllerViewController.swift; sourceTree = "<group>"; };
 		FA63F21F2C6996BD0098967A /* TrackingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingScreen.swift; sourceTree = "<group>"; };
-		FA63F2222C69979D0098967A /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		FA63F2222C69979D0098967A /* ProfileControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileControllerViewController.swift; sourceTree = "<group>"; };
 		FA63F2242C6997AF0098967A /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
 		FA63F2272C6998180098967A /* NotificationControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationControllerViewController.swift; sourceTree = "<group>"; };
 		FA63F2292C69982F0098967A /* NotificationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationScreen.swift; sourceTree = "<group>"; };
@@ -119,7 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				FA63F2212C69973D0098967A /* Screen */,
-				FA63F2222C69979D0098967A /* ProfileViewController.swift */,
+				FA63F2222C69979D0098967A /* ProfileControllerViewController.swift */,
 			);
 			path = ProfileController;
 			sourceTree = "<group>";
@@ -293,7 +293,7 @@
 				FA63F2202C6996BD0098967A /* TrackingScreen.swift in Sources */,
 				FAC7A6DB2C5FC2C9001D90BE /* LoginViewController.swift in Sources */,
 				FA63F2252C6997AF0098967A /* ProfileScreen.swift in Sources */,
-				FA63F2232C69979D0098967A /* ProfileViewController.swift in Sources */,
+				FA63F2232C69979D0098967A /* ProfileControllerViewController.swift in Sources */,
 				FA050B5E2C6C35F4000BB48A /* SearchView.swift in Sources */,
 				FA63F21B2C6995780098967A /* HomeControllerScreen.swift in Sources */,
 				FA63F2122C6991E60098967A /* MainTabBarControllerViewController.swift in Sources */,

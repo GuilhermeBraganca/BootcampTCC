@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController, ProfileScreenProtocol {
+class ProfileControllerViewController: UIViewController, ProfileScreenProtocol {
     
     var screen: ProfileScreen?
     
