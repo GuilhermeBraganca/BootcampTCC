@@ -10,7 +10,7 @@ import UIKit
 class ContentCollectionViewCell: UICollectionViewCell {
     
     static let identifier: String = String(describing: ContentCollectionViewCell.self)
-    static let heightCell: CGFloat = 800
+    static let heightCell: CGFloat = 400
     
     private static var labelFont = UIFont.boldSystemFont(ofSize: 16)
     
@@ -62,14 +62,18 @@ class ContentCollectionViewCell: UICollectionViewCell {
     
     func configConstraints() {
         NSLayoutConstraint.activate([
-            itemImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0),
-            itemImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0),
-            itemImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0),
-            itemImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0),
+            itemImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
+            itemImageView.heightAnchor.constraint(equalToConstant: 96),
+            itemImageView.widthAnchor.constraint(equalToConstant: 96),
+            itemImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            //itemImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            //itemImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            //itemImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            //itemImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             
             
             descLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            descLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: 40),
+            descLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: 50),
             
             
             dateLabel.topAnchor.constraint(equalTo: descLabel.bottomAnchor),
@@ -79,7 +83,7 @@ class ContentCollectionViewCell: UICollectionViewCell {
         ])
     }
     
-    func setupCell(item: Item) {
+    func setupCell(item: Track) {
         descLabel.text = item.description
         dateLabel.text = item.date
         itemImageView.image = UIImage(named: item.image)

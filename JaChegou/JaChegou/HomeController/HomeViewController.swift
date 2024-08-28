@@ -1,0 +1,54 @@
+//
+//  HomeControllerViewController.swift
+//  JaChegou
+//
+//  Created by MacBook on 11/08/24.
+//
+
+import UIKit
+
+
+class HomeViewController: UIViewController {
+    
+    var screen: HomeControllerScreen?
+    var viewModel: ListViewModel = ListViewModel()
+    //var viewModel: TrackingDetailTableViewCell = TrackingDetailTableViewCell()
+    
+    override func loadView() {
+        screen = HomeControllerScreen()
+        view = screen
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        screen?.delegate = self
+        screen?.configCollectionViewProtocols(delegate: self, dataSource: self)
+    }
+}
+
+extension HomeViewController: HomeControllerScreenProtocol {
+    func changeTrackingType(type: TrackingType) {
+        viewModel.setNewTrackingType(newType: type)
+        screen?.collectionView.reloadData()
+    }
+}
+
+extension HomeViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewModel.numberOfRowsInSection
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ContentCollectionViewCell.identifier, for: indexPath) as? ContentCollectionViewCell
+        cell?.setupCell(item: viewModel.loadCurrentDetail(indexPath: indexPath))
+        return cell ?? UICollectionViewCell()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let padding: CGFloat = 18
+        let itemWidth = (view.frame.width - padding * 3) / 2
+        //return ContentCollectionViewCell.calculateSize(title: "testestesteste")
+        return CGSize(width: itemWidth, height: itemWidth)
+    }
+}

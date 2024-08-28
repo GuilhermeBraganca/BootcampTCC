@@ -9,10 +9,6 @@ import Foundation
 
 
 struct Track {
-    var list: [Item]
-}
-
-struct Item {
     var image: String
     var description: String
     var date: String
