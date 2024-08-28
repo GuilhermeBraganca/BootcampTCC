@@ -127,7 +127,6 @@ class ProfileScreen: UIView {
         button.addTarget(self, action: #selector(tappedEditButton), for: .touchUpInside)
         return button
     }()
-    
     @objc func tappedOutOfAccountButton() {
         delegate?.tappedOutOfAccountButton()
         
@@ -198,7 +197,7 @@ class ProfileScreen: UIView {
             callendarImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             callendarImageView.heightAnchor.constraint(equalToConstant: 20),
             callendarImageView.widthAnchor.constraint(equalToConstant: 20),
-         
+            
             callendarLabel.topAnchor.constraint(equalTo: callendarImageView.topAnchor),
             callendarLabel.leadingAnchor.constraint(equalTo: callendarImageView.leadingAnchor, constant: 30),
             
