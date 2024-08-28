@@ -31,6 +31,7 @@ class ProfileScreen: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Informações pessoais"
         label.font = UIFont.boldSystemFont(ofSize: 15)
+        label.textColor = .white
         return label
     }()
     
@@ -121,6 +122,7 @@ class ProfileScreen: UIView {
         button.setImage(UIImage(systemName:"pencil"), for: .normal)
         button.setTitle("Editar", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        button.imageView?.tintColor = UIColor(hex: "#7FDBFF")
         button.setTitleColor(UIColor(hex: "#7FDBFF"), for: .normal)
         button.addTarget(self, action: #selector(tappedEditButton), for: .touchUpInside)
         return button
@@ -172,7 +174,7 @@ class ProfileScreen: UIView {
             headerView.trailingAnchor.constraint(equalTo: trailingAnchor),
             headerView.heightAnchor.constraint(equalToConstant: 200),
             
-            personalInformationLabel.topAnchor.constraint(equalTo: topAnchor, constant: 240),
+            personalInformationLabel.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 20),
             personalInformationLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             personalInformationLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             
@@ -200,7 +202,7 @@ class ProfileScreen: UIView {
             callendarLabel.topAnchor.constraint(equalTo: callendarImageView.topAnchor),
             callendarLabel.leadingAnchor.constraint(equalTo: callendarImageView.leadingAnchor, constant: 30),
             
-            editButton.topAnchor.constraint(equalTo: callendarImageView.bottomAnchor, constant: 30),
+            editButton.bottomAnchor.constraint(equalTo: outOfAccountButton.topAnchor, constant: -20),
             editButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
             
             outOfAccountButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -80),
