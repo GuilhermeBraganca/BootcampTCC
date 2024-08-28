@@ -13,7 +13,6 @@ class TrackingScreen: UIView {
     lazy var headerView: HeaderView = {
         let view = HeaderView(title: "Cadastre Código Correios", image: UIImage(named: "worldImage"))
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.titleLabel.font = UIFont.boldSystemFont(ofSize: 35)
         return view
     }()
     
