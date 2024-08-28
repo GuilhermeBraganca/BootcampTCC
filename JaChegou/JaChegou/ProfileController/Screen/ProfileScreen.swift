@@ -39,6 +39,7 @@ class ProfileScreen: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "E-mail"
         label.font = UIFont.boldSystemFont(ofSize: 15)
+        label.textColor = .white
         return label
     }()
     
@@ -46,7 +47,7 @@ class ProfileScreen: UIView {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(systemName: "at")
-        imageView.tintColor = .systemBlue
+        imageView.tintColor = UIColor(hex: "#7FDBFF")
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
@@ -56,6 +57,7 @@ class ProfileScreen: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Telefone"
         label.font = UIFont.boldSystemFont(ofSize: 15)
+        label.textColor = .white
         return label
     }()
     
@@ -63,7 +65,7 @@ class ProfileScreen: UIView {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(systemName: "phone.fill")
-        imageView.tintColor = .systemBlue
+        imageView.tintColor = UIColor(hex: "#7FDBFF")
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
@@ -73,6 +75,7 @@ class ProfileScreen: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Data de Nascimento"
         label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.textColor = .white
         return label
     }()
     
@@ -80,7 +83,7 @@ class ProfileScreen: UIView {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(systemName: "calendar.badge.plus")
-        imageView.tintColor = .systemBlue
+        imageView.tintColor = UIColor(hex: "#7FDBFF")
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
@@ -88,10 +91,10 @@ class ProfileScreen: UIView {
     lazy var outOfAccountButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("SAIR DA CONTA", for: .normal)
+        button.setTitle("Sair da conta", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .bold)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .gray
+        button.backgroundColor = .systemBlue
         button.clipsToBounds = true
         button.addTarget(self, action: #selector(tappedOutOfAccountButton), for: .touchUpInside)
         button.setImage(UIImage(named: "return"), for: .normal)
@@ -105,35 +108,24 @@ class ProfileScreen: UIView {
         button.setTitle("Excluir conta", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .bold)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .gray
+        button.backgroundColor = .systemBlue
         button.clipsToBounds = true
         button.addTarget(self, action: #selector(tappedDeleteAccountButton), for: .touchUpInside)
         button.layer.cornerRadius = 8
         return button
     }()
     
-//    lazy var editButton: UIButton = {
-//        let button = UIButton()
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//        button.setTitle("Editar", for: .normal)
-//        button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-//        button.setTitleColor(.systemBlue, for: .normal)
-//        button.setTitle(UIImage(named: "pencil"), for: .normal)
-//        button.addTarget(self, action: #selector(tappededitButton), for: .touchUpInside)
-//        return button
-//    }()
-    
     lazy var editButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(named: "pencil"), for: .normal)
+        button.setImage(UIImage(systemName:"pencil"), for: .normal)
         button.setTitle("Editar", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-        button.setTitleColor(.systemBlue, for: .normal)
+        button.setTitleColor(UIColor(hex: "#7FDBFF"), for: .normal)
         button.addTarget(self, action: #selector(tappedEditButton), for: .touchUpInside)
         return button
     }()
-
+    
     @objc func tappedOutOfAccountButton() {
         delegate?.tappedOutOfAccountButton()
         
@@ -161,12 +153,12 @@ class ProfileScreen: UIView {
     func addElements() {
         addSubview(headerView)
         addSubview(personalInformationLabel)
-        addSubview(emailLabel)
         addSubview(emailImageView)
-        addSubview(phoneLabel)
+        addSubview(emailLabel)
         addSubview(phoneImageView)
-        addSubview(callendarLabel)
+        addSubview(phoneLabel)
         addSubview(callendarImageView)
+        addSubview(callendarLabel)
         addSubview(editButton)
         addSubview(outOfAccountButton)
         addSubview(deleteAccountButton)
@@ -184,29 +176,29 @@ class ProfileScreen: UIView {
             personalInformationLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             personalInformationLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             
-            emailLabel.topAnchor.constraint(equalTo: personalInformationLabel.bottomAnchor, constant: 50),
-            emailLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 50),
-            
             emailImageView.topAnchor.constraint(equalTo: personalInformationLabel.bottomAnchor, constant: 50),
             emailImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             emailImageView.heightAnchor.constraint(equalToConstant: 20),
             emailImageView.widthAnchor.constraint(equalToConstant: 20),
             
-            phoneLabel.topAnchor.constraint(equalTo: emailImageView.bottomAnchor, constant: 30),
-            phoneLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 50),
+            emailLabel.topAnchor.constraint(equalTo: emailImageView.topAnchor),
+            emailLabel.leadingAnchor.constraint(equalTo: emailImageView.leadingAnchor, constant: 30),
             
             phoneImageView.topAnchor.constraint(equalTo: emailImageView.bottomAnchor, constant: 30),
             phoneImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             phoneImageView.heightAnchor.constraint(equalToConstant: 20),
             phoneImageView.widthAnchor.constraint(equalToConstant: 20),
             
-            callendarLabel.topAnchor.constraint(equalTo: phoneLabel.bottomAnchor, constant: 30),
-            callendarLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 50),
+            phoneLabel.topAnchor.constraint(equalTo: phoneImageView.topAnchor),
+            phoneLabel.leadingAnchor.constraint(equalTo: phoneImageView.leadingAnchor, constant: 30),
             
             callendarImageView.topAnchor.constraint(equalTo: phoneImageView.bottomAnchor, constant: 30),
             callendarImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             callendarImageView.heightAnchor.constraint(equalToConstant: 20),
             callendarImageView.widthAnchor.constraint(equalToConstant: 20),
+         
+            callendarLabel.topAnchor.constraint(equalTo: callendarImageView.topAnchor),
+            callendarLabel.leadingAnchor.constraint(equalTo: callendarImageView.leadingAnchor, constant: 30),
             
             editButton.topAnchor.constraint(equalTo: callendarImageView.bottomAnchor, constant: 30),
             editButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
