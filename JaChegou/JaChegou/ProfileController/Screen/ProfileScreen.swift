@@ -127,16 +127,16 @@ class ProfileScreen: UIView {
         button.addTarget(self, action: #selector(tappedEditButton), for: .touchUpInside)
         return button
     }()
+    
     @objc func tappedOutOfAccountButton() {
         delegate?.tappedOutOfAccountButton()
-        
     }
     
     @objc func tappedDeleteAccountButton() {
         delegate?.tappedDeleteAccountButton()
     }
     @objc func tappedEditButton() {
-        delegate?.tappedDeleteAccountButton()
+        delegate?.tappededitButton()
     }
     
     
