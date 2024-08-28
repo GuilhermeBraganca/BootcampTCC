@@ -8,7 +8,13 @@
 import Foundation
 import UIKit
 
+protocol HomeControllerScreenProtocol: AnyObject {
+  func changeTrackingType(type: TrackingType)
+}
+
 class HomeControllerScreen: UIView {
+
+  weak var delegate: HomeControllerScreenProtocol?
     
     lazy var headerView: HeaderView = {
         let view = HeaderView(title: "Rastreamentos", image: UIImage(named: "worldImage"))
@@ -26,17 +32,61 @@ class HomeControllerScreen: UIView {
     }()
     
     lazy var searchBarView: SearchBarView = {
-      let view = SearchBarView()
-      view.translatesAutoresizingMaskIntoConstraints = false
-      view.backgroundColor = .white
-      view.layer.cornerRadius = 30
-      // sombra
-      view.layer.shadowColor = UIColor.black.cgColor
-      view.layer.shadowOpacity = 0.1
-      view.layer.shadowOffset = CGSize(width: 0, height: 2)
-      view.layer.shadowRadius = 8
-      return view
+        let view = SearchBarView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor(hex: "#272A2E")
+        view.layer.cornerRadius = 30
+        // sombra
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOpacity = 0.1
+        view.layer.shadowOffset = CGSize(width: 0, height: 2)
+        view.layer.shadowRadius = 8
+        return view
     }()
+    
+    lazy var segmentedControl: UISegmentedControl = {
+        let control = UISegmentedControl(items: ["Em Transporte", "Concluído"])
+        control.selectedSegmentIndex = 0 // Começa com a primeira opção selecionada
+        control.backgroundColor = .black
+        control.layer.cornerRadius = 15
+        control.layer.masksToBounds = true
+        
+        control.selectedSegmentTintColor = .white
+        control.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .normal)
+        control.setTitleTextAttributes([.foregroundColor: UIColor.systemBlue], for: .selected)
+        control.translatesAutoresizingMaskIntoConstraints = false
+        control.addTarget(self, action: #selector(segmentChanged), for: .valueChanged)
+        return control
+    }()
+    
+//    lazy var trackingTableView: UITableView = {
+//        let tableView = UITableView()
+//        tableView.translatesAutoresizingMaskIntoConstraints = false
+//        tableView.register(TrackingTableViewCell.self, forCellReuseIdentifier: TrackingTableViewCell.identifier)
+//        tableView.separatorStyle = .none
+//      tableView.isScrollEnabled = true
+//        return tableView
+//    }()
+    
+    lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        layout.scrollDirection = .vertical
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.backgroundColor = .black
+        collectionView.register(ContentCollectionViewCell.self, forCellWithReuseIdentifier: ContentCollectionViewCell.identifier)
+        return collectionView
+    }()
+    
+    @objc private func segmentChanged() {
+        if segmentedControl.selectedSegmentIndex == 0 {
+          delegate?.changeTrackingType(type: .transporting)
+        } else {
+          delegate?.changeTrackingType(type: .completed)
+        }
+    }
     
     init() {
         super.init(frame: .zero)
@@ -52,9 +102,18 @@ class HomeControllerScreen: UIView {
     
     func addElements() {
         addSubview(headerView)
-        //addSubview(trackingLabel)
         addSubview(searchBarView)
-        
+        addSubview(segmentedControl)
+        addSubview(collectionView)
+    }
+    
+//    func configTableViewProtocols(delegate: UITableViewDelegate, dataSource: UITableViewDataSource) {
+//        trackingTableView.delegate = delegate
+//        trackingTableView.dataSource = dataSource
+//    }
+    func configCollectionViewProtocols(delegate: UICollectionViewDelegate, dataSource: UICollectionViewDataSource) {
+      collectionView.delegate = delegate
+      collectionView.dataSource = dataSource
     }
     
     func configConstraints(){
@@ -64,19 +123,25 @@ class HomeControllerScreen: UIView {
             headerView.trailingAnchor.constraint(equalTo: trailingAnchor),
             headerView.heightAnchor.constraint(equalToConstant: 200),
             
-//            trackingLabel.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 20),
-//            trackingLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-//            trackingLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            
             searchBarView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 16),
             searchBarView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             searchBarView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             searchBarView.heightAnchor.constraint(equalToConstant: 60),
-
             
+            segmentedControl.topAnchor.constraint(equalTo: searchBarView.bottomAnchor, constant: 20),
+            segmentedControl.leadingAnchor.constraint(equalTo: searchBarView.leadingAnchor),
+            segmentedControl.trailingAnchor.constraint(equalTo: searchBarView.trailingAnchor),
+            segmentedControl.heightAnchor.constraint(equalToConstant: 40),
+            
+            collectionView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 20),
+            collectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            collectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
         ])
         
     }
     
-    
 }
+
+
+

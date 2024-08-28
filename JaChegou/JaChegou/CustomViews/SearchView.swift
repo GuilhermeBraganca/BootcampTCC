@@ -21,7 +21,7 @@ class SearchBarView: UIView {
   lazy var searchLabel: UILabel = {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
-    label.textColor = .black
+      label.textColor = .lightGray
     label.font = UIFont.systemFont(ofSize: 17)
     label.text = "Pesquisar pelo nome do produto"
     return label
