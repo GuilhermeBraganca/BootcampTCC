@@ -21,59 +21,16 @@ class NotificationControllerViewController: UIViewController {
                                   Product(name: "Sapatos8", codeProduct: "CC456123987BR", eventProduct: "Objeto em trânsito para Unidade de Distribuição", image: "truck.box.fill"),
                                   Product(name: "Sapatos9", codeProduct: "CC456123987BR", eventProduct: "Objeto em trânsito para Unidade de Distribuição", image: "truck.box.fill"),
                                   Product(name: "Sapatos10", codeProduct: "CC456123987BR", eventProduct: "Objeto em trânsito para Unidade de Distribuição", image: "truck.box.fill")]
-    
-    override func loadView() {
+                                          
+        override func loadView() {
         screen = NotificationScreen()
         view = screen
     }
-    
-    override func viewDidLoad() {
+                                          
+        override func viewDidLoad() {
         super.viewDidLoad()
         screen?.tableView.delegate = self
         screen?.tableView.dataSource = self
-        screen?.tableView.layoutIfNeeded() //atualiza o layout da tableView
-        footerButtonView()
-        
-    }
-    
-    private func footerButtonView() {
-        let footerView = UIView()
-        footerView.backgroundColor = .black
-        
-        let deleteButton = UIButton(type: .system)
-        deleteButton.setTitle("Excluir todas notificações", for: .normal)
-        deleteButton.setTitleColor(.white, for: .normal)
-        deleteButton.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        deleteButton.clipsToBounds = true
-        deleteButton.layer.cornerRadius = 16
-        deleteButton.backgroundColor = .systemBlue
-        deleteButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        
-        footerView.addSubview(deleteButton)
-        
-        NSLayoutConstraint.activate([
-            deleteButton.topAnchor.constraint(equalTo: footerView.topAnchor, constant: 10),
-            deleteButton.leadingAnchor.constraint(equalTo: footerView.leadingAnchor, constant: 10),
-            deleteButton.trailingAnchor.constraint(equalTo: footerView.trailingAnchor, constant: -10),
-            deleteButton.heightAnchor.constraint(equalToConstant: 40),
-            deleteButton.bottomAnchor.constraint(equalTo: footerView.bottomAnchor, constant: -10)
-        ])
-        
-        // Defina a altura do footerView
-        footerView.frame.size.height = 60
-        
-        // Atribua o footerView à tableFooterView da tableView
-        screen?.tableView.tableFooterView = footerView
-        
-        // Adiciona a ação ao botão
-        deleteButton.addTarget(self, action: #selector(deleteAllProducts), for: .touchUpInside)
-        
-    }
-    
-    @objc private func deleteAllProducts() {
-        listProduct.removeAll()
-        screen?.tableView.reloadData()
     }
 }
 

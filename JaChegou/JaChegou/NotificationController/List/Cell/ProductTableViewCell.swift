@@ -22,7 +22,8 @@ class ProductTableViewCell: UITableViewCell {
     lazy var productImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.backgroundColor = .gray
+        imageView.backgroundColor = UIColor(hex: "#272A2E")
+        imageView.layer.cornerRadius = 8
         return imageView
     }()
     
@@ -57,7 +58,7 @@ class ProductTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        backgroundColor = .darkGray
+        backgroundColor = UIColor(hex: "#272A2E")
         selectionStyle = .none
         addElements()
         configConstraints()
@@ -79,10 +80,10 @@ class ProductTableViewCell: UITableViewCell {
             
             productImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             productImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            productImageView.heightAnchor.constraint(equalToConstant: 72),
-            productImageView.widthAnchor.constraint(equalToConstant: 62),
+            productImageView.heightAnchor.constraint(equalToConstant: 36),
+            productImageView.widthAnchor.constraint(equalToConstant: 36),
             
-            productLabel.topAnchor.constraint(equalTo: productImageView.topAnchor),
+            productLabel.topAnchor.constraint(equalTo: productImageView.topAnchor, constant: -10),
             productLabel.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor, constant: 20),
             productLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             
