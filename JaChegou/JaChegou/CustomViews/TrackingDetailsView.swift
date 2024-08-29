@@ -7,13 +7,7 @@
 import Foundation
 import UIKit
 
-// Como criar um elemento customizável?
-// Crie uma view apartada para o seu elemento
-// Pense que o seu elemento ele é como se fosse uma label, um botão, um textField, etc...
-// Esse elemento serve para que você possa REUTILIZA-LO EM QUALQUER LOCAL DO SEU APP!!
-// Sendo assim, com ele você vai utiliza-lo como qualquer outro elemento
-// Ex elementos básicos: lazy var nameTextField: UITextField
-// Ex customizável     : lazy var headerView: HeaderView
+
 
 
 class TrackingDetailsView: UIView {
@@ -29,7 +23,6 @@ class TrackingDetailsView: UIView {
         let label = UILabel()
         label.text = "Nome ou Código"
         label.numberOfLines = 2
-        //label.lineBreakMode = .byWordWrapping
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.boldSystemFont(ofSize: 18)
@@ -40,7 +33,6 @@ class TrackingDetailsView: UIView {
         let label = UILabel()
         label.text = "20/10/2023"
         label.numberOfLines = 2
-        //label.lineBreakMode = .byWordWrapping
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.boldSystemFont(ofSize: 18)

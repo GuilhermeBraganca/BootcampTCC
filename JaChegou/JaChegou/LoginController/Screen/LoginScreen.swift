@@ -23,7 +23,6 @@ class LoginScreen: UIView {
         let label = UILabel()
         label.text = "Para aproveitar todos os recursos, faça login."
         label.numberOfLines = 2
-        //label.lineBreakMode = .byWordWrapping
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.boldSystemFont(ofSize: 20)
@@ -88,7 +87,6 @@ class LoginScreen: UIView {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Se não possui uma conta, crie uma.", for: .normal)
-        
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         button.setTitleColor(.systemBlue, for: .normal)
         button.addTarget(self, action: #selector(tappedRegisterButton), for: .touchUpInside)
@@ -116,7 +114,6 @@ class LoginScreen: UIView {
    
     func addElements() {
         addSubview(headerView)
-        //addSubview(loginLabel)
         addSubview(subTitleLabel)
         addSubview(emailTextField)
         addSubview(passwordTextField)
@@ -132,15 +129,9 @@ class LoginScreen: UIView {
             headerView.trailingAnchor.constraint(equalTo: trailingAnchor),
             headerView.heightAnchor.constraint(equalToConstant: 200),
             
-//            loginLabel.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 10),
-//            loginLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-//            loginLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            //loginLabel.heightAnchor.constraint(equalToConstant: 40),
-            
             subTitleLabel.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 10),
             subTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             subTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            //subTitleLabel.heightAnchor.constraint(equalToConstant: 40),
             
             emailTextField.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 20),
             emailTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),

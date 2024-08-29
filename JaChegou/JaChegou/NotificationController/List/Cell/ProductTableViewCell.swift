@@ -22,7 +22,7 @@ class ProductTableViewCell: UITableViewCell {
     lazy var productImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.backgroundColor = UIColor(hex: "#272A2E")
+        imageView.backgroundColor = UIColor(hex: "#565656")
         imageView.layer.cornerRadius = 8
         return imageView
     }()

@@ -12,7 +12,6 @@ class HomeViewController: UIViewController {
     
     var screen: HomeControllerScreen?
     var viewModel: ListViewModel = ListViewModel()
-    //var viewModel: TrackingDetailTableViewCell = TrackingDetailTableViewCell()
     
     override func loadView() {
         screen = HomeControllerScreen()
@@ -21,6 +20,7 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: UIView())
         screen?.delegate = self
         screen?.configCollectionViewProtocols(delegate: self, dataSource: self)
     }
@@ -40,7 +40,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ContentCollectionViewCell.identifier, for: indexPath) as? ContentCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TrackCollectionViewCell.identifier, for: indexPath) as? TrackCollectionViewCell
         cell?.setupCell(item: viewModel.loadCurrentDetail(indexPath: indexPath))
         return cell ?? UICollectionViewCell()
     }
@@ -48,7 +48,6 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let padding: CGFloat = 18
         let itemWidth = (view.frame.width - padding * 3) / 2
-        //return ContentCollectionViewCell.calculateSize(title: "testestesteste")
         return CGSize(width: itemWidth, height: itemWidth)
     }
 }

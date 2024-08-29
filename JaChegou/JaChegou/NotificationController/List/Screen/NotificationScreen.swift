@@ -8,21 +8,22 @@
 import UIKit
 
 class NotificationScreen: UIView {
-
+    
     lazy var headerView: HeaderView = {
-        let view = HeaderView(title: "Notificações enviadas:", image: UIImage(named: "worldImage"))
+        let view = HeaderView(title: "Notificações enviadas", image: UIImage(named: "worldImage"))
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
+    
     lazy var tableView: UITableView = {
-      let tableView = UITableView()
-      tableView.translatesAutoresizingMaskIntoConstraints = false
-      tableView.register(ProductTableViewCell.self, forCellReuseIdentifier: ProductTableViewCell.identifier)
-      tableView.backgroundColor = .black
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.register(ProductTableViewCell.self, forCellReuseIdentifier: ProductTableViewCell.identifier)
+        tableView.backgroundColor = .black
         tableView.layer.cornerRadius = 8
-      tableView.separatorStyle = .none
-      return tableView
+        tableView.separatorStyle = .none
+        return tableView
     }()
     
     lazy var deleteAllNotificationsButton: UIButton = {
@@ -46,6 +47,7 @@ class NotificationScreen: UIView {
     init() {
         super.init(frame: .zero)
         backgroundColor = UIColor(hex: "#272A2E")
+        layer.cornerRadius = 8
         addElements()
         configConstraints()
     }
@@ -72,12 +74,11 @@ class NotificationScreen: UIView {
             tableView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 5),
             tableView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-
+            
             deleteAllNotificationsButton.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 0),
-            deleteAllNotificationsButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -10),
             deleteAllNotificationsButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             deleteAllNotificationsButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            deleteAllNotificationsButton.heightAnchor.constraint(equalToConstant: 40),
+            deleteAllNotificationsButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -5),
             
         ])
     }

@@ -30,12 +30,12 @@ class MainTabBarControllerViewController: UITabBarController {
     }
     
     private func customizeTabBarAppearance() {
-        tabBar.tintColor = .systemBlue // cor dos itens fica black quando selecionado
-        tabBar.unselectedItemTintColor = .white // cor dos itens fica lightGray quando não está selecionado
-        tabBar.backgroundColor = .black // cor de fundo
-        tabBar.isTranslucent = false // serve para não deixar transparente o fundo quando trabalhamos com lista
-        tabBar.layer.borderColor = UIColor.black.cgColor // cor da borda
-        tabBar.layer.borderWidth = 0.1 // espessura da borda
+        tabBar.tintColor = .systemBlue
+        tabBar.unselectedItemTintColor = .white
+        tabBar.backgroundColor = .black
+        tabBar.isTranslucent = false
+        tabBar.layer.borderColor = UIColor.black.cgColor
+        tabBar.layer.borderWidth = 0.1
     }
     
 }

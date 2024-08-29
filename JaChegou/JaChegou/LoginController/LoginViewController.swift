@@ -12,6 +12,8 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.backButtonTitle = ""
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         configProtocols()
     }
     
@@ -38,15 +40,14 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController: LoginScreenProtocol {
     func tappedRegisterButton() {
-        //    present(RegisterViewController(), animated: true)
         
-        //   navigationController?.pushViewController(RegisterViewController(), animated: true)
         print(#function)
         navigationController?.pushViewController(CreateAccountViewController(), animated: true)
     }
     
     func tappedLoginButton() {
         print(#function)
+        
         navigationController?.pushViewController(MainTabBarControllerViewController(), animated: true)
     }
 }

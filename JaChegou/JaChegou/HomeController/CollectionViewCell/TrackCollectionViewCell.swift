@@ -7,9 +7,9 @@
 
 import UIKit
 
-class ContentCollectionViewCell: UICollectionViewCell {
+class TrackCollectionViewCell: UICollectionViewCell {
     
-    static let identifier: String = String(describing: ContentCollectionViewCell.self)
+    static let identifier: String = String(describing: TrackCollectionViewCell.self)
     static let heightCell: CGFloat = 400
     
     private static var labelFont = UIFont.boldSystemFont(ofSize: 16)
@@ -24,7 +24,7 @@ class ContentCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .white
-        label.font = ContentCollectionViewCell.labelFont
+        label.font = TrackCollectionViewCell.labelFont
         label.textAlignment = .center
         return label
     }()
@@ -32,7 +32,7 @@ class ContentCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .gray
-        label.font = ContentCollectionViewCell.labelFont
+        label.font = TrackCollectionViewCell.labelFont
         label.textAlignment = .center
         return label
     }()
@@ -66,15 +66,9 @@ class ContentCollectionViewCell: UICollectionViewCell {
             itemImageView.heightAnchor.constraint(equalToConstant: 96),
             itemImageView.widthAnchor.constraint(equalToConstant: 96),
             itemImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            //itemImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            //itemImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            //itemImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            //itemImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            
             
             descLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             descLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: 50),
-            
             
             dateLabel.topAnchor.constraint(equalTo: descLabel.bottomAnchor),
             dateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
@@ -88,12 +82,6 @@ class ContentCollectionViewCell: UICollectionViewCell {
         dateLabel.text = item.date
         itemImageView.image = UIImage(named: item.image)
     }
-    
-    static func calculateSize(title: String) -> CGSize {
-        let maxSize = CGSize(width: CGFloat.greatestFiniteMagnitude, height: heightCell)
-        let boundingBox = (title as NSString).boundingRect(with: maxSize, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: labelFont], context: nil)
-        let widthLayer: CGFloat = 4 // esse valor é a soma das distancias das constraints laterais do elemento + 4 de gordura (8 + 8 == 16 + 4 de gordura)
-        return CGSize(width: boundingBox.width + widthLayer, height: heightCell)
-    }
+
 }
 

@@ -71,6 +71,6 @@ extension NotificationControllerViewController: UITableViewDelegate, UITableView
 // exclusão da célula notificação produto
 extension NotificationControllerViewController: ProductTableViewCellProtocol {
     func tappedDeleteProduct(product: Product?) {
-        guard let product else { return }
+        //guard let product else { return }
     }
 }

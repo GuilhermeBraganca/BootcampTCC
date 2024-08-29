@@ -33,10 +33,10 @@ class TrackingScreen: UIView {
         let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.white]
         tf.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
         tf.translatesAutoresizingMaskIntoConstraints = false
-        tf.backgroundColor = UIColor(hex: "#858585")
         tf.borderStyle = .roundedRect
-//        tf.layer.cornerRadius = 10
-        tf.clearButtonMode = .whileEditing
+        tf.backgroundColor = UIColor(hex: "#272A2E")
+        tf.textColor = .white
+        tf.layer.cornerRadius = 20
         return tf
     }()
     
@@ -48,17 +48,17 @@ class TrackingScreen: UIView {
         let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.white]
         tf.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
         tf.translatesAutoresizingMaskIntoConstraints = false
-        tf.backgroundColor = UIColor(hex: "#858585")
         tf.borderStyle = .roundedRect
-//        tf.layer.cornerRadius = 10
-        tf.clearButtonMode = .whileEditing
+        tf.backgroundColor = UIColor(hex: "#272A2E")
+        tf.textColor = .white
+        tf.layer.cornerRadius = 20
         return tf
     }()
     
     lazy var saveButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("SALVAR", for: .normal)
+        button.setTitle("Salvar", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .systemBlue

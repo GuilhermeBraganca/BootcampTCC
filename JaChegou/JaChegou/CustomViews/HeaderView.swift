@@ -28,7 +28,6 @@ class HeaderView: UIView {
         let label = UILabel()
         label.text = "Para aproveitar todos os recursos, crie uma conta."
         label.numberOfLines = 2
-        //label.lineBreakMode = .byWordWrapping
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.boldSystemFont(ofSize: 18)
@@ -38,6 +37,8 @@ class HeaderView: UIView {
     init(title: String, image: UIImage?) {
         super.init(frame: .zero)
         backgroundColor = .red
+        clipsToBounds = true
+        layer.cornerRadius = 8
         addElements()
         configConstraints()
         configElements(title: title, image: image)

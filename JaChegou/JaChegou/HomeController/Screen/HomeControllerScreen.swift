@@ -36,7 +36,6 @@ class HomeControllerScreen: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor(hex: "#272A2E")
         view.layer.cornerRadius = 30
-        // sombra
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOpacity = 0.1
         view.layer.shadowOffset = CGSize(width: 0, height: 2)
@@ -59,15 +58,6 @@ class HomeControllerScreen: UIView {
         return control
     }()
     
-//    lazy var trackingTableView: UITableView = {
-//        let tableView = UITableView()
-//        tableView.translatesAutoresizingMaskIntoConstraints = false
-//        tableView.register(TrackingTableViewCell.self, forCellReuseIdentifier: TrackingTableViewCell.identifier)
-//        tableView.separatorStyle = .none
-//      tableView.isScrollEnabled = true
-//        return tableView
-//    }()
-    
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
@@ -76,7 +66,7 @@ class HomeControllerScreen: UIView {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.backgroundColor = .black
-        collectionView.register(ContentCollectionViewCell.self, forCellWithReuseIdentifier: ContentCollectionViewCell.identifier)
+        collectionView.register(TrackCollectionViewCell.self, forCellWithReuseIdentifier: TrackCollectionViewCell.identifier)
         return collectionView
     }()
     
@@ -107,10 +97,6 @@ class HomeControllerScreen: UIView {
         addSubview(collectionView)
     }
     
-//    func configTableViewProtocols(delegate: UITableViewDelegate, dataSource: UITableViewDataSource) {
-//        trackingTableView.delegate = delegate
-//        trackingTableView.dataSource = dataSource
-//    }
     func configCollectionViewProtocols(delegate: UICollectionViewDelegate, dataSource: UICollectionViewDataSource) {
       collectionView.delegate = delegate
       collectionView.dataSource = dataSource
