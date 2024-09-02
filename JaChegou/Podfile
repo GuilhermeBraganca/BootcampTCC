@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-  platform :ios, '15.0'
+  platform :ios, '13.0'
 
 target 'JaChegou' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -18,7 +18,7 @@ post_install do |installer|
     target.build_configurations.each do |config|
       # Esta linha define a versão mínima do iOS para todos os pods instalados, garantindo que eles
       # sejam compatíveis com a versão mínima do iOS definida para o projeto principal.
-      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '15.0'
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
     end
   end
 end
