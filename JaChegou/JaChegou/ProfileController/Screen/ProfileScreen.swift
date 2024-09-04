@@ -48,7 +48,7 @@ class ProfileScreen: UIView {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(systemName: "at")
-        imageView.tintColor = UIColor(hex: "#7FDBFF")
+        imageView.tintColor =  .customLightBlue()
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
@@ -66,7 +66,7 @@ class ProfileScreen: UIView {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(systemName: "phone.fill")
-        imageView.tintColor = UIColor(hex: "#7FDBFF")
+        imageView.tintColor = .customLightBlue()
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
@@ -84,7 +84,7 @@ class ProfileScreen: UIView {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(systemName: "calendar.badge.plus")
-        imageView.tintColor = UIColor(hex: "#7FDBFF")
+        imageView.tintColor = .customLightBlue()
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
@@ -122,8 +122,8 @@ class ProfileScreen: UIView {
         button.setImage(UIImage(systemName:"pencil"), for: .normal)
         button.setTitle("Editar", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-        button.imageView?.tintColor = UIColor(hex: "#7FDBFF")
-        button.setTitleColor(UIColor(hex: "#7FDBFF"), for: .normal)
+        button.imageView?.tintColor = .customLightBlue()
+        button.setTitleColor(.customLightBlue(), for: .normal)
         button.addTarget(self, action: #selector(tappedEditButton), for: .touchUpInside)
         return button
     }()

@@ -45,7 +45,7 @@ class CreateAccountScreen: UIView {
         tf.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.borderStyle = .roundedRect
-        tf.backgroundColor = UIColor(hex: "#272A2E")
+        tf.backgroundColor = .customGray()
         tf.textColor = .white
         tf.layer.cornerRadius = 20
         return tf
@@ -58,7 +58,7 @@ class CreateAccountScreen: UIView {
         tf.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.borderStyle = .roundedRect
-        tf.backgroundColor = UIColor(hex: "#272A2E")
+        tf.backgroundColor = .customGray()
         tf.textColor = .white
         tf.layer.cornerRadius = 20
         tf.keyboardType = .emailAddress
@@ -72,7 +72,7 @@ class CreateAccountScreen: UIView {
         tf.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.borderStyle = .roundedRect
-        tf.backgroundColor = UIColor(hex: "#272A2E")
+        tf.backgroundColor = .customGray()
         tf.textColor = .white
         tf.layer.cornerRadius = 20
         return tf
@@ -85,7 +85,7 @@ class CreateAccountScreen: UIView {
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.borderStyle = .roundedRect
         tf.isSecureTextEntry = true
-        tf.backgroundColor = UIColor(hex: "#272A2E")
+        tf.backgroundColor = .customGray()
         tf.textColor = .white
         tf.layer.cornerRadius = 20
         tf.keyboardType = .emailAddress
@@ -109,7 +109,7 @@ class CreateAccountScreen: UIView {
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.borderStyle = .roundedRect
         tf.isSecureTextEntry = true
-        tf.backgroundColor = UIColor(hex: "#272A2E")
+        tf.backgroundColor = .customGray()
         tf.textColor = .white
         tf.layer.cornerRadius = 20
         tf.keyboardType = .emailAddress

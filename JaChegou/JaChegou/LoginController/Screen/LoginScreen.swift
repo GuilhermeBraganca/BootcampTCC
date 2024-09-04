@@ -13,9 +13,9 @@ class LoginScreen: UIView {
     
     
     lazy var headerView: HeaderView = {
-      let view = HeaderView(title: "Para aproveitar todos os recursos, faça login.", image: UIImage(named: "worldImage"))
-      view.translatesAutoresizingMaskIntoConstraints = false
-      return view
+        let view = HeaderView(title: "Para aproveitar todos os recursos, faça login.", image: UIImage(named: "worldImage"))
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
     
@@ -48,7 +48,7 @@ class LoginScreen: UIView {
         tf.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.borderStyle = .roundedRect
-        tf.backgroundColor = UIColor(hex: "#272A2E")
+        tf.backgroundColor = .customGray()
         tf.textColor = .white
         tf.layer.cornerRadius = 15
         tf.keyboardType = .emailAddress
@@ -63,7 +63,7 @@ class LoginScreen: UIView {
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.borderStyle = .roundedRect
         tf.isSecureTextEntry = true
-        tf.backgroundColor = UIColor(hex: "#272A2E")
+        tf.backgroundColor = .customGray()
         tf.textColor = .white
         tf.layer.cornerRadius = 15
         tf.keyboardType = .emailAddress
@@ -111,7 +111,7 @@ class LoginScreen: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-   
+    
     func addElements() {
         addSubview(headerView)
         addSubview(subTitleLabel)
@@ -155,19 +155,7 @@ class LoginScreen: UIView {
     }
     
     
-
+    
 }
 
-extension UIColor {
-    convenience init(hex: String) {
-        let hex = hex.trimmingCharacters(in: CharacterSet(charactersIn: "#"))
-        var rgbValue: UInt64 = 0
-        Scanner(string: hex).scanHexInt64(&rgbValue)
-        
-        let red = CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0
-        let green = CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0
-        let blue = CGFloat(rgbValue & 0x0000FF) / 255.0
-        
-        self.init(red: red, green: green, blue: blue, alpha: 1.0)
-    }
-}
+

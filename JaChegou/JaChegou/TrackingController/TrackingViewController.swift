@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TrackingControllerViewController: UIViewController {
+class TrackingViewController: UIViewController {
     
     var screen: TrackingScreen?
     

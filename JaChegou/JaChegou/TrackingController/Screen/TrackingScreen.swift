@@ -34,7 +34,7 @@ class TrackingScreen: UIView {
         tf.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.borderStyle = .roundedRect
-        tf.backgroundColor = UIColor(hex: "#272A2E")
+        tf.backgroundColor = .customGray()
         tf.textColor = .white
         tf.layer.cornerRadius = 20
         return tf
@@ -49,7 +49,7 @@ class TrackingScreen: UIView {
         tf.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.borderStyle = .roundedRect
-        tf.backgroundColor = UIColor(hex: "#272A2E")
+        tf.backgroundColor = .customGray()
         tf.textColor = .white
         tf.layer.cornerRadius = 20
         return tf
@@ -126,24 +126,24 @@ class TrackingScreen: UIView {
     
 }
 
-//extensão de cores conforme a ferramenta FIGMA
-extension UIColor {
-    convenience init(hex: String, alpha: CGFloat = 1.0) {
-        var hexFormatted: String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
-
-        if hexFormatted.hasPrefix("#") {
-            hexFormatted.remove(at: hexFormatted.startIndex)
-        }
-
-        assert(hexFormatted.count == 6, "Formato hexadecimal inválido")
-
-        var rgbValue: UInt64 = 0
-        Scanner(string: hexFormatted).scanHexInt64(&rgbValue)
-
-        let red = CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0
-        let green = CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0
-        let blue = CGFloat(rgbValue & 0x0000FF) / 255.0
-
-        self.init(red: red, green: green, blue: blue, alpha: alpha)
-    }
-}
+////extensão de cores conforme a ferramenta FIGMA
+//extension UIColor {
+//    convenience init(hex: String, alpha: CGFloat = 1.0) {
+//        var hexFormatted: String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+//
+//        if hexFormatted.hasPrefix("#") {
+//            hexFormatted.remove(at: hexFormatted.startIndex)
+//        }
+//
+//        assert(hexFormatted.count == 6, "Formato hexadecimal inválido")
+//
+//        var rgbValue: UInt64 = 0
+//        Scanner(string: hexFormatted).scanHexInt64(&rgbValue)
+//
+//        let red = CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0
+//        let green = CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0
+//        let blue = CGFloat(rgbValue & 0x0000FF) / 255.0
+//
+//        self.init(red: red, green: green, blue: blue, alpha: alpha)
+//    }
+//}

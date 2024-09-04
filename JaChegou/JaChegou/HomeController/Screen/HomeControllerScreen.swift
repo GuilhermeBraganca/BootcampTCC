@@ -34,7 +34,7 @@ class HomeControllerScreen: UIView {
     lazy var searchBarView: SearchBarView = {
         let view = SearchBarView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor(hex: "#272A2E")
+        view.backgroundColor = .customGray()
         view.layer.cornerRadius = 30
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOpacity = 0.1

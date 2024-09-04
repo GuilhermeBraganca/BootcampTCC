@@ -22,16 +22,7 @@ class LoginViewController: UIViewController {
         screen?.emailTextField.delegate = self
         screen?.passwordTextField.delegate = self
     }
-    func isValidEmail(_ email: String) -> Bool {
-        let emailPattern = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailPattern)
-        return emailPred.evaluate(with: email)
-    }
-    func isValidPassword(_ password: String) -> Bool {
-        let passwordPattern = ".{6,}"
-        let passwordPred = NSPredicate(format: "SELF MATCHES %@", passwordPattern)
-        return passwordPred.evaluate(with: password)
-    }
+    
     func isEnabledLoginButton(isEnable: Bool) {
         screen?.loginButton.isEnabled = isEnable
         screen?.loginButton.backgroundColor = isEnable ? .systemBlue : .lightGray
@@ -40,14 +31,10 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController: LoginScreenProtocol {
     func tappedRegisterButton() {
-        
-        print(#function)
         navigationController?.pushViewController(CreateAccountViewController(), animated: true)
     }
     
     func tappedLoginButton() {
-        print(#function)
-        
         navigationController?.pushViewController(MainTabBarControllerViewController(), animated: true)
     }
 }
@@ -58,7 +45,6 @@ extension LoginViewController: UITextFieldDelegate {
         return true
     }
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        print(#function)
         textField.layer.borderColor = UIColor.blue.cgColor
     }
     
@@ -66,7 +52,7 @@ extension LoginViewController: UITextFieldDelegate {
         if let text = textField.text as? NSString {
             let newText = text.replacingCharacters(in: range, with: string)
             textField.text = newText
-            if isValidEmail(screen?.emailTextField.text ?? "") && isValidPassword(screen?.passwordTextField.text ?? "") {
+            if UITextView.isValidEmail(screen?.emailTextField.text ?? "") && UITextView.isValidPassword(screen?.passwordTextField.text ?? "") {
                 isEnabledLoginButton(isEnable: true)
             } else {
                 isEnabledLoginButton(isEnable: true)

@@ -33,7 +33,7 @@ extension HomeViewController: HomeControllerScreenProtocol {
     }
 }
 
-extension HomeViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+extension HomeViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.numberOfRowsInSection
@@ -50,4 +50,12 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
         let itemWidth = (view.frame.width - padding * 3) / 2
         return CGSize(width: itemWidth, height: itemWidth)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let modalViewController = SavedTrackingViewController()
+            modalViewController.view.backgroundColor = .white
+            modalViewController.modalPresentationStyle = .overFullScreen
+        present(modalViewController, animated: true, completion: nil)
+    }
+    
 }

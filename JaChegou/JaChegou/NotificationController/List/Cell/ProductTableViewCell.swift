@@ -22,7 +22,7 @@ class ProductTableViewCell: UITableViewCell {
     lazy var productImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.backgroundColor = UIColor(hex: "#565656")
+        imageView.backgroundColor = .customLightGray()
         imageView.layer.cornerRadius = 8
         return imageView
     }()
@@ -58,7 +58,7 @@ class ProductTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        backgroundColor = UIColor(hex: "#272A2E")
+        backgroundColor = .customGray()
         selectionStyle = .none
         addElements()
         configConstraints()

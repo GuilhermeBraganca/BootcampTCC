@@ -11,9 +11,9 @@ class MainTabBarControllerViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.navigationItem.hidesBackButton = true
         let homeController = createNavController(viewController: HomeViewController(), title: "", imageName: "house")
-        let trackingController = createNavController(viewController: TrackingControllerViewController(), title: "", imageName: "plus.square.fill")
+        let trackingController = createNavController(viewController: TrackingViewController(), title: "", imageName: "plus.square.fill")
         let profileController = createNavController(viewController: ProfileControllerViewController(), title: "", imageName: "person.circle.fill")
         let notificationController = createNavController(viewController: NotificationControllerViewController(), title: "", imageName: "bell")
         

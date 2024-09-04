@@ -46,7 +46,7 @@ class NotificationScreen: UIView {
     
     init() {
         super.init(frame: .zero)
-        backgroundColor = UIColor(hex: "#272A2E")
+        backgroundColor = .customGray()
         layer.cornerRadius = 8
         addElements()
         configConstraints()
