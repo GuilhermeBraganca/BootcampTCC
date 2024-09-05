@@ -1,21 +1,22 @@
 //
-//  ProductTableViewCell.swift
+//  SavedTrackingTableViewCell.swift
 //  JaChegou
 //
-//  Created by Fabio Cristiano Lopes on 19/08/24.
+//  Created by MacBook on 04/09/24.
 //
 
-import Foundation
 import UIKit
 
-protocol ProductTableViewCellProtocol: AnyObject {
-    func tappedDeleteProduct(product: Product?)
+import UIKit
+
+protocol SavedTrackingTableViewCellProtocol: AnyObject {
+    func tappedDeleteNotification(product: Product?)
 }
 
-class ProductTableViewCell: UITableViewCell {
+class SavedTrackingTableViewCell: UITableViewCell {
     
-    static var identifier = String(describing: ProductTableViewCell.self)
-    var product: Product?
+    static var identifier = String(describing: SavedTrackingTableViewCell.self)
+    var track: Track?
     weak var delegate: ProductTableViewCellProtocol?
     
     
@@ -62,6 +63,7 @@ class ProductTableViewCell: UITableViewCell {
         selectionStyle = .none
         addElements()
         configConstraints()
+        
     }
     
     required init?(coder: NSCoder) {
@@ -100,12 +102,12 @@ class ProductTableViewCell: UITableViewCell {
         
     }
     
-    func setupCell(product: Product) {
-        self.product = product
-        productLabel.text = "\(product.name)"
-        productImageView.image = UIImage(systemName: product.image)
-        codeProductLabel.text = "Código: \(product.codeProduct)"
-        eventProductLabel.text = "Evento: \(product.eventProduct)"
+    func setupCell(track: Track) {
+        self.track = track
+        productLabel.text = "\(track.description)"
+        productImageView.image = UIImage(systemName: track.image)
+        codeProductLabel.text = "Código: \(track.events[0].event)"
+        eventProductLabel.text = "Evento: \(track.events[0].date)"
         
     }
 }

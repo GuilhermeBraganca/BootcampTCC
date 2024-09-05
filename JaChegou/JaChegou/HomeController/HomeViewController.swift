@@ -52,10 +52,9 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let modalViewController = SavedTrackingViewController()
-            modalViewController.view.backgroundColor = .white
-            modalViewController.modalPresentationStyle = .overFullScreen
-        present(modalViewController, animated: true, completion: nil)
+        let savedTrackingVC = SavedTrackingViewController()
+        let navigationController = UINavigationController(rootViewController: savedTrackingVC)
+        present(navigationController, animated: true, completion: nil)
     }
     
 }

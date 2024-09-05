@@ -1,25 +1,24 @@
 //
-//  NotificationScreen.swift
+//  SavedTrackingScreen.swift
 //  JaChegou
 //
-//  Created by MacBook on 11/08/24.
+//  Created by MacBook on 03/09/24.
 //
 
 import UIKit
 
-class NotificationScreen: UIView {
+class SavedTrackingScreen: UIView {
     
     lazy var headerView: HeaderView = {
-        let view = HeaderView(title: "Notificações enviadas", image: UIImage(named: "worldImage"))
+        let view = HeaderView(title: "", image: UIImage(named: "worldImage"))
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    
     lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(ProductTableViewCell.self, forCellReuseIdentifier: ProductTableViewCell.identifier)
+        tableView.register(SavedTrackingTableViewCell.self, forCellReuseIdentifier: SavedTrackingTableViewCell.identifier)
         tableView.backgroundColor = .black
         tableView.layer.cornerRadius = 8
         tableView.separatorStyle = .none
@@ -35,21 +34,24 @@ class NotificationScreen: UIView {
         button.backgroundColor = .systemBlue
         button.clipsToBounds = true
         button.layer.cornerRadius = 8
-        button.addTarget(self, action: #selector(tappedSaveButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(tappedDeleteButton), for: .touchUpInside)
         return button
     }()
     
-    @objc func tappedSaveButton() {
+    @objc func tappedDeleteButton() {
         print(#function)
     }
     
     
     init() {
         super.init(frame: .zero)
-        backgroundColor = .customGray
-        layer.cornerRadius = 8
+        backgroundColor = .black
         addElements()
         configConstraints()
+    }
+    func configTableViewProtocols(delegate: UITableViewDelegate, dataSource: UITableViewDataSource) {
+        tableView.delegate = delegate
+        tableView.dataSource = dataSource
     }
     
     required init?(coder: NSCoder) {
@@ -60,7 +62,6 @@ class NotificationScreen: UIView {
         addSubview(headerView)
         addSubview(tableView)
         addSubview(deleteAllNotificationsButton)
-        
     }
     
     func configConstraints() {
@@ -82,5 +83,4 @@ class NotificationScreen: UIView {
             
         ])
     }
-    
 }

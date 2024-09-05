@@ -33,10 +33,12 @@
 		FAC7A6E02C5FC2CB001D90BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAC7A6DF2C5FC2CB001D90BE /* Assets.xcassets */; };
 		FAC7A6E32C5FC2CB001D90BE /* Base in Resources */ = {isa = PBXBuildFile; fileRef = FAC7A6E22C5FC2CB001D90BE /* Base */; };
 		FAC7A6ED2C600CE3001D90BE /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC7A6EC2C600CE3001D90BE /* LoginScreen.swift */; };
-		FAE831722C87E698000D6FC0 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE831712C87E698000D6FC0 /* UIColor.swift */; };
-		FAE831742C87EFFD000D6FC0 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE831732C87EFFD000D6FC0 /* UITextField.swift */; };
+		FAE831722C87E698000D6FC0 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE831712C87E698000D6FC0 /* UIColor+Extension.swift */; };
+		FAE831742C87EFFD000D6FC0 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE831732C87EFFD000D6FC0 /* UITextField+Extension.swift */; };
 		FAE831772C87F612000D6FC0 /* SavedTrackingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE831762C87F612000D6FC0 /* SavedTrackingScreen.swift */; };
 		FAE831792C87F7EE000D6FC0 /* SavedTrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE831782C87F7EE000D6FC0 /* SavedTrackingViewController.swift */; };
+		FAE8317E2C891753000D6FC0 /* SavedTrackingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE8317D2C891753000D6FC0 /* SavedTrackingTableViewCell.swift */; };
+		FAE831802C891EE4000D6FC0 /* SavedTrackingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE8317F2C891EE4000D6FC0 /* SavedTrackingViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,10 +72,12 @@
 		FAC7A6E22C5FC2CB001D90BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FAC7A6E42C5FC2CB001D90BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FAC7A6EC2C600CE3001D90BE /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
-		FAE831712C87E698000D6FC0 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
-		FAE831732C87EFFD000D6FC0 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
+		FAE831712C87E698000D6FC0 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		FAE831732C87EFFD000D6FC0 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		FAE831762C87F612000D6FC0 /* SavedTrackingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedTrackingScreen.swift; sourceTree = "<group>"; };
 		FAE831782C87F7EE000D6FC0 /* SavedTrackingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedTrackingViewController.swift; sourceTree = "<group>"; };
+		FAE8317D2C891753000D6FC0 /* SavedTrackingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedTrackingTableViewCell.swift; sourceTree = "<group>"; };
+		FAE8317F2C891EE4000D6FC0 /* SavedTrackingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedTrackingViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,9 +199,9 @@
 		FA63F2142C69937F0098967A /* TrackingController */ = {
 			isa = PBXGroup;
 			children = (
+				FAE8317A2C891413000D6FC0 /* SavedTracking */,
 				FA63F21C2C6996340098967A /* Screen */,
 				FA63F21D2C69965D0098967A /* TrackingViewController.swift */,
-				FAE831782C87F7EE000D6FC0 /* SavedTrackingViewController.swift */,
 			);
 			path = TrackingController;
 			sourceTree = "<group>";
@@ -233,7 +237,6 @@
 			isa = PBXGroup;
 			children = (
 				FA63F21F2C6996BD0098967A /* TrackingScreen.swift */,
-				FAE831762C87F612000D6FC0 /* SavedTrackingScreen.swift */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -314,10 +317,37 @@
 		FAE831702C87E680000D6FC0 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				FAE831712C87E698000D6FC0 /* UIColor.swift */,
-				FAE831732C87EFFD000D6FC0 /* UITextField.swift */,
+				FAE831712C87E698000D6FC0 /* UIColor+Extension.swift */,
+				FAE831732C87EFFD000D6FC0 /* UITextField+Extension.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		FAE8317A2C891413000D6FC0 /* SavedTracking */ = {
+			isa = PBXGroup;
+			children = (
+				FAE8317C2C891729000D6FC0 /* Cell */,
+				FAE8317B2C891470000D6FC0 /* Screen */,
+				FAE831782C87F7EE000D6FC0 /* SavedTrackingViewController.swift */,
+				FAE8317F2C891EE4000D6FC0 /* SavedTrackingViewModel.swift */,
+			);
+			path = SavedTracking;
+			sourceTree = "<group>";
+		};
+		FAE8317B2C891470000D6FC0 /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				FAE831762C87F612000D6FC0 /* SavedTrackingScreen.swift */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		FAE8317C2C891729000D6FC0 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FAE8317D2C891753000D6FC0 /* SavedTrackingTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -435,14 +465,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA63F20B2C6814E00098967A /* CreateAccountViewController.swift in Sources */,
-				FAE831742C87EFFD000D6FC0 /* UITextField.swift in Sources */,
+				FAE831742C87EFFD000D6FC0 /* UITextField+Extension.swift in Sources */,
 				FA63F20E2C6815730098967A /* CreateAccountScreen.swift in Sources */,
 				FA63F2202C6996BD0098967A /* TrackingScreen.swift in Sources */,
 				034C3CE32C7415EA00E9EDA5 /* ProductTableViewCell.swift in Sources */,
 				FAE831792C87F7EE000D6FC0 /* SavedTrackingViewController.swift in Sources */,
 				FAC7A6DB2C5FC2C9001D90BE /* LoginViewController.swift in Sources */,
 				FA63F2252C6997AF0098967A /* ProfileScreen.swift in Sources */,
-				FAE831722C87E698000D6FC0 /* UIColor.swift in Sources */,
+				FAE8317E2C891753000D6FC0 /* SavedTrackingTableViewCell.swift in Sources */,
+				FAE831722C87E698000D6FC0 /* UIColor+Extension.swift in Sources */,
 				FA63F2232C69979D0098967A /* ProfileControllerViewController.swift in Sources */,
 				FA050B5E2C6C35F4000BB48A /* SearchView.swift in Sources */,
 				FA63F21B2C6995780098967A /* HomeControllerScreen.swift in Sources */,
@@ -460,6 +491,7 @@
 				FA63F22A2C69982F0098967A /* NotificationScreen.swift in Sources */,
 				FAC7A6D92C5FC2C9001D90BE /* SceneDelegate.swift in Sources */,
 				FAE831772C87F612000D6FC0 /* SavedTrackingScreen.swift in Sources */,
+				FAE831802C891EE4000D6FC0 /* SavedTrackingViewModel.swift in Sources */,
 				FA050B5A2C6B02FE000BB48A /* HeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

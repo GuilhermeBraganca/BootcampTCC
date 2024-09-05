@@ -19,7 +19,7 @@ class TrackingScreen: UIView {
     lazy var subTitleLabelTrackingScreen: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = UIColor(hex: "#858585")
+        label.textColor = .customLightGray
         label.font = UIFont.boldSystemFont(ofSize: 12)
         label.textAlignment = .left
         label.text = "Cadastre o código de correios para ser rastreado"
@@ -34,7 +34,7 @@ class TrackingScreen: UIView {
         tf.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.borderStyle = .roundedRect
-        tf.backgroundColor = .customGray()
+        tf.backgroundColor = .customGray
         tf.textColor = .white
         tf.layer.cornerRadius = 20
         return tf
@@ -49,7 +49,7 @@ class TrackingScreen: UIView {
         tf.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.borderStyle = .roundedRect
-        tf.backgroundColor = .customGray()
+        tf.backgroundColor = .customGray
         tf.textColor = .white
         tf.layer.cornerRadius = 20
         return tf
