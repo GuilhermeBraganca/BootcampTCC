@@ -40,6 +40,13 @@ extension LoginViewController: LoginScreenProtocol {
 }
 
 extension LoginViewController: UITextFieldDelegate {
+    
+    func tappedRecoverPasswordButton() {
+        // Abrir tela nova tela de recuperação de senha
+        let recoverPasswordVC = RecoverPasswordViewController()
+        navigationController?.pushViewController(recoverPasswordVC, animated: true)
+    }
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

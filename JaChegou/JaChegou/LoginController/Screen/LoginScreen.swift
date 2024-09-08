@@ -4,6 +4,7 @@ import UIKit
 protocol LoginScreenProtocol: AnyObject {
     func tappedLoginButton()
     func tappedRegisterButton()
+    func tappedRecoverPasswordButton()
 }
 
 
@@ -70,6 +71,20 @@ class LoginScreen: UIView {
         return tf
     }()
     
+    lazy var recoverPasswordButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Recuperar Senha", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(tappedRecoverPasswordButton), for: .touchUpInside)
+        return button
+    }()
+    
+    @objc func tappedRecoverPasswordButton() {
+        delegate?.tappedRecoverPasswordButton()
+    }
+    
     lazy var loginButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -117,6 +132,7 @@ class LoginScreen: UIView {
         addSubview(subTitleLabel)
         addSubview(emailTextField)
         addSubview(passwordTextField)
+        addSubview(recoverPasswordButton)
         addSubview(loginButton)
         addSubview(registerButton)
     }
@@ -142,6 +158,10 @@ class LoginScreen: UIView {
             passwordTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             passwordTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             passwordTextField.heightAnchor.constraint(equalToConstant: 40),
+            
+            recoverPasswordButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 10),
+            recoverPasswordButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            recoverPasswordButton.heightAnchor.constraint(equalToConstant: 30),
             
             loginButton.bottomAnchor.constraint(equalTo: registerButton.topAnchor, constant: -10),
             loginButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
