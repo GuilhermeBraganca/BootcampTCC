@@ -11,7 +11,7 @@ protocol ProfileScreenProtocol: AnyObject {
     
     func tappedOutOfAccountButton()
     func tappedDeleteAccountButton()
-    func tappededitButton()
+    func tappedEditButton()
     
 }
 
@@ -135,10 +135,10 @@ class ProfileScreen: UIView {
     @objc func tappedDeleteAccountButton() {
         delegate?.tappedDeleteAccountButton()
     }
-    @objc func tappedEditButton() {
-        delegate?.tappededitButton()
-    }
     
+    @objc func tappedEditButton() {
+        delegate?.tappedEditButton()
+    }
     
     init() {
         super.init(frame: .zero)

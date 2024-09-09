@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileControllerViewController: UIViewController, ProfileScreenProtocol {
+class ProfileControllerViewController: UIViewController {
     
     var screen: ProfileScreen?
     
@@ -21,22 +21,25 @@ class ProfileControllerViewController: UIViewController, ProfileScreenProtocol {
         configProtocols()
     }
     
+    
+    
     func configProtocols() {
         screen?.delegate = self
-        
     }
     
-        func tappedOutOfAccountButton() {
-            print(#function)
-        }
-        
-        func tappedDeleteAccountButton() {
-            print(#function)
-        }
-        
-        func tappededitButton() {
-            print(#function)
-        }
-        
+    func tappedOutOfAccountButton() {
+        print(#function)
     }
+    
+    func tappedDeleteAccountButton() {
+        print(#function)
+    }
+    
+    func tappedEditButton() {
+        print(#function)
+    }
+}
 
+extension ProfileControllerViewController: ProfileScreenProtocol {
+    
+}
