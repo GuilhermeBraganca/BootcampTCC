@@ -75,7 +75,7 @@ class ProfileScreen: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Data de Nascimento"
-        label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.font = UIFont.boldSystemFont(ofSize: 13)
         label.textColor = .white
         return label
     }()
@@ -128,6 +128,46 @@ class ProfileScreen: UIView {
         return button
     }()
     
+    lazy var emailTextField: UITextField = {
+        let emailTextField = UITextField()
+        let placeholderText =  "teste@teste.com.br"
+        let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.white]
+        emailTextField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
+        emailTextField.translatesAutoresizingMaskIntoConstraints = false
+        emailTextField.borderStyle = .roundedRect
+        emailTextField.backgroundColor = .customGray
+        emailTextField.textColor = .white
+        emailTextField.layer.cornerRadius = 15
+        emailTextField.keyboardType = .emailAddress
+        return emailTextField
+    }()
+    
+    lazy var phoneTextField: UITextField = {
+        let phoneTextField = UITextField()
+        let placeholderText =  "(00) 9 9999-9999"
+        let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.white]
+        phoneTextField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
+        phoneTextField.translatesAutoresizingMaskIntoConstraints = false
+        phoneTextField.borderStyle = .roundedRect
+        phoneTextField.backgroundColor = .customGray
+        phoneTextField.textColor = .white
+        phoneTextField.layer.cornerRadius = 15
+        return phoneTextField
+    }()
+    
+    lazy var callendarTextField: UITextField = {
+        let callendarTextField = UITextField()
+        let placeholderText =  "00/00/0000"
+        let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.white]
+        callendarTextField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
+        callendarTextField.translatesAutoresizingMaskIntoConstraints = false
+        callendarTextField.borderStyle = .roundedRect
+        callendarTextField.backgroundColor = .customGray
+        callendarTextField.textColor = .white
+        callendarTextField.layer.cornerRadius = 15
+        return callendarTextField
+    }()
+    
     @objc func tappedOutOfAccountButton() {
         delegate?.tappedOutOfAccountButton()
     }
@@ -163,15 +203,19 @@ class ProfileScreen: UIView {
         addSubview(editButton)
         addSubview(outOfAccountButton)
         addSubview(deleteAccountButton)
+        addSubview(emailTextField)
+        addSubview(phoneTextField)
+        addSubview(callendarTextField)
         
     }
     
     func configConstraints() {
         NSLayoutConstraint.activate([
+            
             headerView.topAnchor.constraint(equalTo: topAnchor),
             headerView.leadingAnchor.constraint(equalTo: leadingAnchor),
             headerView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            headerView.heightAnchor.constraint(equalToConstant: 200),
+            headerView.heightAnchor.constraint(equalToConstant: 150),
             
             personalInformationLabel.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 20),
             personalInformationLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
@@ -213,6 +257,21 @@ class ProfileScreen: UIView {
             deleteAccountButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             deleteAccountButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             deleteAccountButton.heightAnchor.constraint(equalToConstant: 40),
+            
+            emailTextField.topAnchor.constraint(equalTo: personalInformationLabel.bottomAnchor, constant: 50),
+            emailTextField.leadingAnchor.constraint(equalTo: callendarLabel.trailingAnchor, constant: -20),
+            emailTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            emailTextField.heightAnchor.constraint(equalToConstant: 30),
+            
+            phoneTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 15),
+            phoneTextField.leadingAnchor.constraint(equalTo: callendarLabel.trailingAnchor, constant: -20),
+            phoneTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            phoneTextField.heightAnchor.constraint(equalToConstant: 30),
+            
+            callendarTextField.topAnchor.constraint(equalTo: phoneTextField.bottomAnchor, constant: 20),
+            callendarTextField.leadingAnchor.constraint(equalTo: callendarLabel.trailingAnchor, constant: -20),
+            callendarTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            callendarTextField.heightAnchor.constraint(equalToConstant: 30),
         ])
     }
 }

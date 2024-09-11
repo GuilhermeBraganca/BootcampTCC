@@ -21,8 +21,6 @@ class ProfileControllerViewController: UIViewController {
         configProtocols()
     }
     
-    
-    
     func configProtocols() {
         screen?.delegate = self
     }
