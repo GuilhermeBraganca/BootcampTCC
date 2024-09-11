@@ -39,6 +39,8 @@
 		FAE831792C87F7EE000D6FC0 /* SavedTrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE831782C87F7EE000D6FC0 /* SavedTrackingViewController.swift */; };
 		FAE8317E2C891753000D6FC0 /* SavedTrackingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE8317D2C891753000D6FC0 /* SavedTrackingTableViewCell.swift */; };
 		FAE831802C891EE4000D6FC0 /* SavedTrackingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE8317F2C891EE4000D6FC0 /* SavedTrackingViewModel.swift */; };
+		FAE8319D2C8E46E4000D6FC0 /* EmptyTrackingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE8319C2C8E46E4000D6FC0 /* EmptyTrackingCollectionViewCell.swift */; };
+		FAE831A02C911EB1000D6FC0 /* ServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE8319F2C911EB1000D6FC0 /* ServiceMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +80,8 @@
 		FAE831782C87F7EE000D6FC0 /* SavedTrackingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedTrackingViewController.swift; sourceTree = "<group>"; };
 		FAE8317D2C891753000D6FC0 /* SavedTrackingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedTrackingTableViewCell.swift; sourceTree = "<group>"; };
 		FAE8317F2C891EE4000D6FC0 /* SavedTrackingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedTrackingViewModel.swift; sourceTree = "<group>"; };
+		FAE8319C2C8E46E4000D6FC0 /* EmptyTrackingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTrackingCollectionViewCell.swift; sourceTree = "<group>"; };
+		FAE8319F2C911EB1000D6FC0 /* ServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				FA050B782C7413F8000BB48A /* TrackCollectionViewCell.swift */,
+				FAE8319C2C8E46E4000D6FC0 /* EmptyTrackingCollectionViewCell.swift */,
 			);
 			path = CollectionViewCell;
 			sourceTree = "<group>";
@@ -278,6 +283,8 @@
 		FAC7A6D52C5FC2C9001D90BE /* JaChegou */ = {
 			isa = PBXGroup;
 			children = (
+				FAE831A12C911EC4000D6FC0 /* Resource */,
+				FAE8319E2C911E86000D6FC0 /* Service */,
 				FAE831702C87E680000D6FC0 /* Utils */,
 				FA050B6F2C72D305000BB48A /* Model */,
 				FA050B582C6B02E6000BB48A /* CustomViews */,
@@ -348,6 +355,29 @@
 				FAE8317D2C891753000D6FC0 /* SavedTrackingTableViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		FAE8319E2C911E86000D6FC0 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				FAE8319F2C911EB1000D6FC0 /* ServiceMock.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		FAE831A12C911EC4000D6FC0 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				FAE831A22C911ED0000D6FC0 /* Json */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		FAE831A22C911ED0000D6FC0 /* Json */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Json;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -467,6 +497,7 @@
 				FA63F20B2C6814E00098967A /* CreateAccountViewController.swift in Sources */,
 				FAE831742C87EFFD000D6FC0 /* UITextField+Extension.swift in Sources */,
 				FA63F20E2C6815730098967A /* CreateAccountScreen.swift in Sources */,
+				FAE8319D2C8E46E4000D6FC0 /* EmptyTrackingCollectionViewCell.swift in Sources */,
 				FA63F2202C6996BD0098967A /* TrackingScreen.swift in Sources */,
 				034C3CE32C7415EA00E9EDA5 /* ProductTableViewCell.swift in Sources */,
 				FAE831792C87F7EE000D6FC0 /* SavedTrackingViewController.swift in Sources */,
@@ -489,6 +520,7 @@
 				FAC7A6D72C5FC2C9001D90BE /* AppDelegate.swift in Sources */,
 				FA050B6B2C712274000BB48A /* TrackingDetailsView.swift in Sources */,
 				FA63F22A2C69982F0098967A /* NotificationScreen.swift in Sources */,
+				FAE831A02C911EB1000D6FC0 /* ServiceMock.swift in Sources */,
 				FAC7A6D92C5FC2C9001D90BE /* SceneDelegate.swift in Sources */,
 				FAE831772C87F612000D6FC0 /* SavedTrackingScreen.swift in Sources */,
 				FAE831802C891EE4000D6FC0 /* SavedTrackingViewModel.swift in Sources */,

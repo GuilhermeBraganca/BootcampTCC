@@ -16,21 +16,24 @@ class ListViewModel {
     
     private(set) var trackingType: TrackingType = .transporting
     
-    private var trackingList = [Track(image: "TrackImage", description: "Teste", date: "66/66/6666"),
-                                Track(image: "TrackImage", description: "Teste", date: "66/66/6666"),
-                                Track(image: "TrackImage", description: "Teste", date: "66/66/6666"),
-                                Track(image: "TrackImage", description: "Teste", date: "66/66/6666"),
-                                Track(image: "TrackImage", description: "Teste", date: "66/66/6666"),
-                                Track(image: "TrackImage", description: "Teste", date: "66/66/6666"),
-                                Track(image: "TrackImage", description: "Teste", date: "66/66/6666")]
+    private var trackingList =
+                                [Track(image: "TrackImage", description: "Teste", trackinNumber: "AB 123456789 BR", date: "66/66/6666"),
+                                Track(image: "TrackImage", description: "Teste", trackinNumber: "AB 123456789 BR",date: "66/66/6666"),
+                                Track(image: "TrackImage", description: "Teste", trackinNumber: "AB 123456789 BR",date: "66/66/6666"),
+                                Track(image: "TrackImage", description: "Teste", trackinNumber: "AB 123456789 BR",date: "66/66/6666"),
+                                Track(image: "TrackImage", description: "Teste", trackinNumber: "AB 123456789 BR",date: "66/66/6666"),
+                                Track(image: "TrackImage", description: "Teste", trackinNumber: "AB 123456789 BR",date: "66/66/6666"),
+                                Track(image: "TrackImage", description: "Teste", trackinNumber: "AB 123456789 BR",date: "66/66/6666")]
     
-    private var completeTrackList = [Track(image: "TrackImage", description: "Teste12331", date: "66/66/6666"),
-                                     Track(image: "TrackImage", description: "Teste", date: "66/66/6666")]
+    private var completeTrackList = [Track]()
+    
+//    [Track(image: "TrackImage", description: "Teste12331", trackinNumber: "AB 123456789 BR",date: "66/66/6666"),
+//                                     Track(image: "TrackImage", description: "Teste", trackinNumber: "AB 123456789 BR",date: "66/66/6666")]
     
     
     var numberOfRowsInSection: Int {
         
-        return trackingType == .transporting ? trackingList.count : completeTrackList.count
+        return trackingType == .transporting ? (trackingList.isEmpty ? 1 : trackingList.count) : (completeTrackList.isEmpty ? 1 : completeTrackList.count )
     }
     
     func loadCurrentDetail(indexPath: IndexPath) -> Track {

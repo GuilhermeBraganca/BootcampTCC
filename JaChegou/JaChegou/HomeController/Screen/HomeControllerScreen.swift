@@ -17,7 +17,7 @@ class HomeControllerScreen: UIView {
   weak var delegate: HomeControllerScreenProtocol?
     
     lazy var headerView: HeaderView = {
-        let view = HeaderView(title: "Rastreamentos", image: UIImage(named: "worldImage"))
+        let view = HeaderView(title: "Rastreamentos", image: UIImage(named: "World"))
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -67,6 +67,7 @@ class HomeControllerScreen: UIView {
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.backgroundColor = .black
         collectionView.register(TrackCollectionViewCell.self, forCellWithReuseIdentifier: TrackCollectionViewCell.identifier)
+        collectionView.register(EmptyTrackingCollectionViewCell.self, forCellWithReuseIdentifier: EmptyTrackingCollectionViewCell.identifier)
         return collectionView
     }()
     
@@ -107,7 +108,7 @@ class HomeControllerScreen: UIView {
             headerView.topAnchor.constraint(equalTo: topAnchor),
             headerView.leadingAnchor.constraint(equalTo: leadingAnchor),
             headerView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            headerView.heightAnchor.constraint(equalToConstant: 200),
+            headerView.heightAnchor.constraint(equalToConstant: 100),
             
             searchBarView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 16),
             searchBarView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),

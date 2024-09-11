@@ -20,43 +20,45 @@ class SavedTrackingTableViewCell: UITableViewCell {
     weak var delegate: ProductTableViewCellProtocol?
     
     
-    lazy var productImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.backgroundColor = .customLightGray
-        imageView.layer.cornerRadius = 8
-        return imageView
-    }()
-    
-    lazy var productLabel: UILabel = {
+    lazy var eventLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.boldSystemFont(ofSize: 18)
+        label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.numberOfLines = 2
+        label.textColor = .white
+        label.text = "Evento:"
+        label.textAlignment = .left
+        return label
+    }()
+    lazy var dateLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.text = "Data:"
+        label.textColor = .white
+        label.textAlignment = .left
+        return label
+    }()
+    
+    lazy var descriptionEventLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 2
         label.textColor = .white
         label.textAlignment = .left
         return label
     }()
     
-    lazy var codeProductLabel: UILabel = {
+    lazy var descriptionDateLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.boldSystemFont(ofSize: 12)
+        label.font = UIFont.systemFont(ofSize: 12)
         label.textColor = .white
         label.textAlignment = .left
         return label
     }()
-    
-    lazy var eventProductLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.boldSystemFont(ofSize: 12)
-        label.textColor = .white
-        label.numberOfLines = 2
-        label.textAlignment = .left
-        return label
-    }()
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = .customGray
@@ -71,43 +73,40 @@ class SavedTrackingTableViewCell: UITableViewCell {
     }
     
     func addElements() {
-        contentView.addSubview(productLabel)
-        contentView.addSubview(productImageView)
-        contentView.addSubview(codeProductLabel)
-        contentView.addSubview(eventProductLabel)
+        contentView.addSubview(eventLabel)
+        contentView.addSubview(dateLabel)
+        contentView.addSubview(descriptionEventLabel)
+        contentView.addSubview(descriptionDateLabel)
+        
     }
     
     func configConstraints() {
         NSLayoutConstraint.activate([
             
-            productImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            productImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            productImageView.heightAnchor.constraint(equalToConstant: 36),
-            productImageView.widthAnchor.constraint(equalToConstant: 36),
-            
-            productLabel.topAnchor.constraint(equalTo: productImageView.topAnchor, constant: -10),
-            productLabel.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor, constant: 20),
-            productLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-            
-            codeProductLabel.topAnchor.constraint(equalTo: productLabel.bottomAnchor, constant: 1),
-            codeProductLabel.leadingAnchor.constraint(equalTo: productLabel.leadingAnchor),
-            codeProductLabel.trailingAnchor.constraint(equalTo: productLabel.trailingAnchor),
-            
-            eventProductLabel.topAnchor.constraint(equalTo: codeProductLabel.bottomAnchor),
-            eventProductLabel.leadingAnchor.constraint(equalTo: codeProductLabel.leadingAnchor),
-            eventProductLabel.trailingAnchor.constraint(equalTo: codeProductLabel.trailingAnchor),
-            eventProductLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
-            
+            eventLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            eventLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+
+            descriptionEventLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            descriptionEventLabel.leadingAnchor.constraint(equalTo: eventLabel.trailingAnchor, constant: 10),
+            descriptionEventLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+
+            dateLabel.topAnchor.constraint(equalTo: eventLabel.bottomAnchor, constant: 10),  // Corrige para ficar abaixo de eventLabel
+            dateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+            dateLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
+
+            descriptionDateLabel.topAnchor.constraint(equalTo: dateLabel.topAnchor),  // Deixe-os alinhados verticalmente
+            descriptionDateLabel.leadingAnchor.constraint(equalTo: descriptionEventLabel.leadingAnchor),
+            descriptionDateLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+            descriptionDateLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
+
         ])
         
     }
     
-    func setupCell(track: Track) {
-        self.track = track
-        productLabel.text = "\(track.description)"
-        productImageView.image = UIImage(systemName: track.image)
-        codeProductLabel.text = "Código: \(track.events[0].event)"
-        eventProductLabel.text = "Evento: \(track.events[0].date)"
+    func setupCell(events: Events) {
+        
+        descriptionEventLabel.text = "\(events.event)"
+        descriptionDateLabel.text = "\(events.date)"
         
     }
 }

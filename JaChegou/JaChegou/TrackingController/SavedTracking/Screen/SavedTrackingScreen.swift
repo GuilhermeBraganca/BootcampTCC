@@ -9,17 +9,49 @@ import UIKit
 
 class SavedTrackingScreen: UIView {
     
+    var track: Track?
+    
     lazy var headerView: HeaderView = {
         let view = HeaderView(title: "", image: UIImage(named: "worldImage"))
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
+    lazy var productImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.backgroundColor = .customLightGray
+        imageView.layer.cornerRadius = 8
+        return imageView
+    }()
+    
+    lazy var descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.boldSystemFont(ofSize: 18)
+        label.text = "Sapatos"
+        label.numberOfLines = 2
+        label.textColor = .white
+        label.textAlignment = .left
+        return label
+    }()
+    
+    lazy var trackingNumberLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.boldSystemFont(ofSize: 12)
+        label.text = "AB 123456789 BR"
+        label.textColor = .white
+        label.textAlignment = .left
+        return label
+    }()
+    
+    
     lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(SavedTrackingTableViewCell.self, forCellReuseIdentifier: SavedTrackingTableViewCell.identifier)
-        tableView.backgroundColor = .black
+        tableView.backgroundColor = .customGray
         tableView.layer.cornerRadius = 8
         tableView.separatorStyle = .none
         return tableView
@@ -45,9 +77,15 @@ class SavedTrackingScreen: UIView {
     
     init() {
         super.init(frame: .zero)
-        backgroundColor = .black
+        backgroundColor = .customGray
         addElements()
         configConstraints()
+    }
+    func setupSavedTrackingLabels(track: Track){
+        self.track = track
+        productImageView.image = UIImage(systemName: track.image)
+        descriptionLabel.text = track.description
+        trackingNumberLabel.text = track.trackinNumber
     }
     func configTableViewProtocols(delegate: UITableViewDelegate, dataSource: UITableViewDataSource) {
         tableView.delegate = delegate
@@ -60,6 +98,9 @@ class SavedTrackingScreen: UIView {
     
     func addElements() {
         addSubview(headerView)
+        addSubview(productImageView)
+        addSubview(descriptionLabel)
+        addSubview(trackingNumberLabel)
         addSubview(tableView)
         addSubview(deleteAllNotificationsButton)
     }
@@ -72,14 +113,28 @@ class SavedTrackingScreen: UIView {
             headerView.trailingAnchor.constraint(equalTo: trailingAnchor),
             headerView.heightAnchor.constraint(equalToConstant: 200),
             
-            tableView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 5),
+            productImageView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 10),
+            productImageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            productImageView.heightAnchor.constraint(equalToConstant: 36),
+            productImageView.widthAnchor.constraint(equalToConstant: 36),
+            
+            descriptionLabel.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 10),
+            descriptionLabel.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor, constant: 10),
+            //descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            
+            trackingNumberLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 1),
+            trackingNumberLabel.leadingAnchor.constraint(equalTo: descriptionLabel.leadingAnchor),
+            trackingNumberLabel.trailingAnchor.constraint(equalTo: descriptionLabel.trailingAnchor),
+            
+            
+            tableView.topAnchor.constraint(equalTo: productImageView.bottomAnchor, constant: 10),
             tableView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             
             deleteAllNotificationsButton.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 0),
             deleteAllNotificationsButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             deleteAllNotificationsButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            deleteAllNotificationsButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -5),
+            deleteAllNotificationsButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -10),
             
         ])
     }

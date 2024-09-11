@@ -15,6 +15,7 @@ class SavedTrackingViewController: UIViewController {
     override func loadView() {
         screen = SavedTrackingScreen()
         view = screen
+        
     }
     
     override func viewDidLoad() {
@@ -32,7 +33,8 @@ extension SavedTrackingViewController: UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SavedTrackingTableViewCell.identifier, for: indexPath) as? SavedTrackingTableViewCell
-        cell?.setupCell(track: SavedTrackingList.loadCurrentDetail(indexPath: indexPath))
+        screen?.setupSavedTrackingLabels(track: SavedTrackingList.loadCurrentTrack())
+        cell?.setupCell(events: SavedTrackingList.loadCurrentDetail(indexPath: indexPath))
         return cell ?? UITableViewCell()
     }
     
