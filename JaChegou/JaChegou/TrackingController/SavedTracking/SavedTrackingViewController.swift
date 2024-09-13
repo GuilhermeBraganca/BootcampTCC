@@ -15,15 +15,24 @@ class SavedTrackingViewController: UIViewController {
     override func loadView() {
         screen = SavedTrackingScreen()
         view = screen
-        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //screen?.delegate = self
+        configProtocols()
+    }
+    func configProtocols(){
+        screen?.delegate = self
         screen?.configTableViewProtocols(delegate: self, dataSource: self)
     }
-
+    func deleteAllItems() {
+        // Esvaziar a fonte de dados
+        SavedTrackingList.removeAll()
+        
+        // Atualizar a tabela
+        screen?.tableView.reloadData()
+    }
+    
 }
 
 extension SavedTrackingViewController: UITableViewDelegate, UITableViewDataSource {
@@ -38,5 +47,15 @@ extension SavedTrackingViewController: UITableViewDelegate, UITableViewDataSourc
         return cell ?? UITableViewCell()
     }
     
+}
+extension SavedTrackingViewController: SavedTrackingScreenProtocol{
+    func tappedDeleteButton() {
+        print("passou aqui")
+        deleteAllItems() 
+    }
     
+    func tappedBackButton() {
+        self.dismiss(animated: true, completion: nil)
+    }
+
 }

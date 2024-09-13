@@ -23,10 +23,15 @@ public class SavedTrackingViewModel{
         
         return trackingData.events.count
     }
+    func removeAll() {
+        trackingData = Track(image: "", description: "", trackinNumber: "", date: "", events: [])
+    }
+
     func loadCurrentTrack() -> Track {
         return trackingData
     }
     func loadCurrentDetail(indexPath: IndexPath) -> Events {
         return  trackingData.events[indexPath.row]
     }
+    
 }

@@ -17,7 +17,7 @@ class SavedTrackingTableViewCell: UITableViewCell {
     
     static var identifier = String(describing: SavedTrackingTableViewCell.self)
     var track: Track?
-    weak var delegate: ProductTableViewCellProtocol?
+    weak var delegate: SavedTrackingTableViewCellProtocol?
     
     
     lazy var eventLabel: UILabel = {

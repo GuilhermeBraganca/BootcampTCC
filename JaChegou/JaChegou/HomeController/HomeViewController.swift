@@ -42,11 +42,9 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if viewModel.numberOfRowsInSection == 1{
-            print("Exibindo célula vazia")
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EmptyTrackingCollectionViewCell.identifier, for: indexPath) as? EmptyTrackingCollectionViewCell
             return cell ?? UICollectionViewCell()
         }else{
-            print("Exibindo célula de tracking")
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TrackCollectionViewCell.identifier, for: indexPath) as? TrackCollectionViewCell
             cell?.setupCell(item: viewModel.loadCurrentDetail(indexPath: indexPath))
             return cell ?? UICollectionViewCell()
@@ -64,18 +62,21 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        
-        if viewModel.numberOfRowsInSection == 1 {
-            let trackingController = TrackingViewController() // Substitua por sua inicialização correta
-            navigationController?.pushViewController(trackingController, animated: true)
+        // Verifica se o número de itens na seção é 0 (ou seja, estamos exibindo a célula vazia)
+        if viewModel.numberOfRowsInSection == 1  {
+            // Verifica se há um tabBarController disponível
+            if let tabBarController = self.tabBarController {
+                // Muda para a aba onde o TrackingViewController está
+                tabBarController.selectedIndex = 1  // Substitua pelo índice correto da aba do TrackingViewController
+            }
         } else {
+            // Caso contrário, lidamos com a célula de tracking selecionada
             let savedTrackingVC = SavedTrackingViewController()
             let navigationController = UINavigationController(rootViewController: savedTrackingVC)
             present(navigationController, animated: true, completion: nil)
         }
         
-        
-        
     }
-    
+        
+        
 }

@@ -7,9 +7,15 @@
 
 import UIKit
 
+protocol SavedTrackingScreenProtocol: AnyObject {
+    func tappedDeleteButton()
+    func tappedBackButton()
+}
+
 class SavedTrackingScreen: UIView {
     
     var track: Track?
+    weak var delegate: SavedTrackingScreenProtocol?
     
     lazy var headerView: HeaderView = {
         let view = HeaderView(title: "", image: UIImage(named: "worldImage"))
@@ -70,10 +76,28 @@ class SavedTrackingScreen: UIView {
         return button
     }()
     
+    lazy var closeSavedTrackingButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(systemName: "arrow.backward"), for: .normal)
+        button.frame = CGRect(x: 50, y: 50, width: 100, height: 100)
+        button.setTitleColor(.systemBlue, for: .normal)
+        button.backgroundColor = .clear
+        button.clipsToBounds = true
+        button.layer.cornerRadius = 8
+        button.addTarget(self, action: #selector(tappedBackButton), for: .touchUpInside)
+        button.isUserInteractionEnabled = true
+        return button
+    }()
+    
     @objc func tappedDeleteButton() {
         print(#function)
+        delegate?.tappedDeleteButton()
     }
-    
+    @objc func tappedBackButton() {
+        print(#function)
+        delegate?.tappedBackButton()
+    }
     
     init() {
         super.init(frame: .zero)
@@ -98,11 +122,14 @@ class SavedTrackingScreen: UIView {
     
     func addElements() {
         addSubview(headerView)
+        addSubview(closeSavedTrackingButton)
         addSubview(productImageView)
         addSubview(descriptionLabel)
         addSubview(trackingNumberLabel)
         addSubview(tableView)
         addSubview(deleteAllNotificationsButton)
+        
+        
     }
     
     func configConstraints() {
@@ -111,10 +138,15 @@ class SavedTrackingScreen: UIView {
             headerView.topAnchor.constraint(equalTo: topAnchor),
             headerView.leadingAnchor.constraint(equalTo: leadingAnchor),
             headerView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            headerView.heightAnchor.constraint(equalToConstant: 200),
+            headerView.heightAnchor.constraint(equalToConstant: 150),
+            
+            closeSavedTrackingButton.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 10),
+            closeSavedTrackingButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            closeSavedTrackingButton.heightAnchor.constraint(equalToConstant: 36),
+            closeSavedTrackingButton.widthAnchor.constraint(equalToConstant: 36),
             
             productImageView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 10),
-            productImageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            productImageView.leadingAnchor.constraint(equalTo: closeSavedTrackingButton.trailingAnchor, constant: 10),
             productImageView.heightAnchor.constraint(equalToConstant: 36),
             productImageView.widthAnchor.constraint(equalToConstant: 36),
             
