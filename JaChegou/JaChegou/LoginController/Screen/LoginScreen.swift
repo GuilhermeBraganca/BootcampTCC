@@ -16,6 +16,7 @@ class LoginScreen: UIView {
     lazy var headerView: HeaderView = {
         let view = HeaderView(title: "Para aproveitar todos os recursos, faça login.", image: UIImage(named: "worldImage"))
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.contentMode = .scaleAspectFill
         return view
     }()
     
@@ -67,7 +68,6 @@ class LoginScreen: UIView {
         tf.backgroundColor = .customGray
         tf.textColor = .white
         tf.layer.cornerRadius = 15
-        tf.keyboardType = .emailAddress
         return tf
     }()
     
@@ -143,7 +143,7 @@ class LoginScreen: UIView {
             headerView.topAnchor.constraint(equalTo: topAnchor),
             headerView.leadingAnchor.constraint(equalTo: leadingAnchor),
             headerView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            headerView.heightAnchor.constraint(equalToConstant: 200),
+            headerView.heightAnchor.constraint(equalToConstant: 150),
             
             subTitleLabel.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 10),
             subTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),

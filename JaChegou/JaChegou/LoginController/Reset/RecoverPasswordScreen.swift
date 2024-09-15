@@ -13,6 +13,7 @@ class RecoverPasswordScreen: UIView {
     lazy var headerView: HeaderView = {
         let view = HeaderView(title: "Recuperar Senha", image: UIImage(named: "worldImage"))
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.contentMode = .scaleAspectFill
         return view
     }()
     
@@ -53,6 +54,7 @@ class RecoverPasswordScreen: UIView {
     
     @objc func tappedSendEmailButton() {
         guard let email = recoverPasswordTextField.text, !email.isEmpty else {
+        // Campo e-mail vazio ou informado sem a formatação correta
             showAlert(title: "Erro", message: "Por favor, insira um e-mail válido.")
             return
         }
@@ -92,7 +94,7 @@ class RecoverPasswordScreen: UIView {
             headerView.topAnchor.constraint(equalTo: topAnchor),
             headerView.leadingAnchor.constraint(equalTo: leadingAnchor),
             headerView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            headerView.heightAnchor.constraint(equalToConstant: 200),
+            headerView.heightAnchor.constraint(equalToConstant: 150),
             
             subTitleRecoverPassword.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 10),
             subTitleRecoverPassword.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
