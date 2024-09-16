@@ -10,67 +10,53 @@ import UIKit
 class NotificationControllerViewController: UIViewController {
     
     var screen: NotificationScreen?
+    var viewModel = NotificationViewModel()
     
-    var listProduct: [Product] = [Product(name: "Sapatos", codeProduct: "AB123456789BR", eventProduct: "Objeto em trânsito para Unidade de Distribuição", image: "truck.box.fill"),
-                                  Product(name: "Sapatos2", codeProduct: "BA987654321BR", eventProduct: "Objeto em trânsito para Unidade de Distribuição", image: "truck.box.fill"),
-                                  Product(name: "Sapatos3", codeProduct: "CC456123987BR", eventProduct: "Objeto em trânsito para Unidade de Distribuição", image: "truck.box.fill"),
-                                  Product(name: "Sapatos4", codeProduct: "CC456123987BR", eventProduct: "Objeto em trânsito para Unidade de Distribuição", image: "truck.box.fill"),
-                                  Product(name: "Sapatos5", codeProduct: "CC456123987BR", eventProduct: "Objeto em trânsito para Unidade de Distribuição", image: "truck.box.fill"),
-                                  Product(name: "Sapatos6", codeProduct: "CC456123987BR", eventProduct: "Objeto em trânsito para Unidade de Distribuição", image: "truck.box.fill"),
-                                  Product(name: "Sapatos7", codeProduct: "CC456123987BR", eventProduct: "Objeto em trânsito para Unidade de Distribuição", image: "truck.box.fill"),
-                                  Product(name: "Sapatos8", codeProduct: "CC456123987BR", eventProduct: "Objeto em trânsito para Unidade de Distribuição", image: "truck.box.fill"),
-                                  Product(name: "Sapatos9", codeProduct: "CC456123987BR", eventProduct: "Objeto em trânsito para Unidade de Distribuição", image: "truck.box.fill"),
-                                  Product(name: "Sapatos10", codeProduct: "CC456123987BR", eventProduct: "Objeto em trânsito para Unidade de Distribuição", image: "truck.box.fill")]
-                                          
-        override func loadView() {
+    override func loadView() {
         screen = NotificationScreen()
         view = screen
     }
-                                          
-        override func viewDidLoad() {
+    
+    override func viewDidLoad() {
         super.viewDidLoad()
         screen?.tableView.delegate = self
         screen?.tableView.dataSource = self
+        setupBindings()
+        viewModel.loadProducts()
+    }
+    
+    private func setupBindings() {
+        viewModel.reloadTableView = { [weak self] in
+            self?.screen?.tableView.reloadData()
+        }
     }
 }
 
 extension NotificationControllerViewController: UITableViewDelegate, UITableViewDataSource {
-    // retornar para tableView quantas LINHAS teremos na tabela
+    
+    //Apresenta quantidade de linhas (produtos) que vai ser exibido.
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return listProduct.count
+        return viewModel.numberOfProducts
     }
-    // onde configuramos a nossa célula!!
+    
+    //Método configura a célula com os dados do produto.
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ProductTableViewCell.identifier, for: indexPath) as? ProductTableViewCell
-        cell?.delegate = self
-        cell?.setupCell(product: listProduct[indexPath.row])
+        let product = viewModel.product(at: indexPath.row)
+        cell?.setupCell(product: product)
         return cell ?? UITableViewCell()
     }
-    // identifica qual produto foi selecionado
+    
+    //Método é chamado quando é selecionado a célula
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let product = listProduct[indexPath.row]
+        let product = viewModel.product(at: indexPath.row)
         print(product.name)
     }
     
-    // quando deslizar a célula para esquerda será apresentado botão vermelho de excluir
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        return .delete
-    }
-    
-    // exclusão da célula notificação produto
+    //Método para excluir célula (deslizando para excluir).
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            tableView.beginUpdates()
-            listProduct.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            tableView.endUpdates()
-            tableView.reloadData()
+            viewModel.deleteProduct(at: indexPath.row)
         }
-    }
-}
-// exclusão da célula notificação produto
-extension NotificationControllerViewController: ProductTableViewCellProtocol {
-    func tappedDeleteProduct(product: Product?) {
-        //guard let product else { return }
     }
 }

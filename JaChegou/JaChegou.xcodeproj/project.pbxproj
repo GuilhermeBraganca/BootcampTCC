@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		032A17EF2C97AEF6001000E0 /* NotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032A17EE2C97AEF6001000E0 /* NotificationViewModel.swift */; };
 		034C3CE12C7415B400E9EDA5 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034C3CE02C7415B400E9EDA5 /* Product.swift */; };
 		034C3CE32C7415EA00E9EDA5 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034C3CE22C7415EA00E9EDA5 /* ProductTableViewCell.swift */; };
 		4DC36FF9B8592F46A8526743 /* Pods_JaChegou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3857A1A11737408CE4583553 /* Pods_JaChegou.framework */; };
@@ -44,6 +45,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		032A17EE2C97AEF6001000E0 /* NotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewModel.swift; sourceTree = "<group>"; };
 		034C3CE02C7415B400E9EDA5 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		034C3CE22C7415EA00E9EDA5 /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
 		3857A1A11737408CE4583553 /* Pods_JaChegou.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JaChegou.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -226,6 +228,7 @@
 				034C3CDD2C74155F00E9EDA5 /* Modal */,
 				034C3CDE2C74157800E9EDA5 /* List */,
 				FA63F2272C6998180098967A /* NotificationControllerViewController.swift */,
+				032A17EE2C97AEF6001000E0 /* NotificationViewModel.swift */,
 			);
 			path = NotificationController;
 			sourceTree = "<group>";
@@ -503,6 +506,7 @@
 				FAE831792C87F7EE000D6FC0 /* SavedTrackingViewController.swift in Sources */,
 				FAC7A6DB2C5FC2C9001D90BE /* LoginViewController.swift in Sources */,
 				FA63F2252C6997AF0098967A /* ProfileScreen.swift in Sources */,
+				032A17EF2C97AEF6001000E0 /* NotificationViewModel.swift in Sources */,
 				FAE8317E2C891753000D6FC0 /* SavedTrackingTableViewCell.swift in Sources */,
 				FAE831722C87E698000D6FC0 /* UIColor+Extension.swift in Sources */,
 				FA63F2232C69979D0098967A /* ProfileControllerViewController.swift in Sources */,
