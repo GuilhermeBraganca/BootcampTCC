@@ -4,6 +4,7 @@ import UIKit
 protocol LoginScreenProtocol: AnyObject {
     func tappedLoginButton()
     func tappedRegisterButton()
+    func tappedRecoverPasswordButton()
 }
 
 
@@ -15,6 +16,7 @@ class LoginScreen: UIView {
     lazy var headerView: HeaderView = {
         let view = HeaderView(title: "Para aproveitar todos os recursos, faça login.", image: UIImage(named: "worldImage"))
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.contentMode = .scaleAspectFill
         return view
     }()
     
@@ -66,9 +68,22 @@ class LoginScreen: UIView {
         tf.backgroundColor = .customGray
         tf.textColor = .white
         tf.layer.cornerRadius = 15
-        tf.keyboardType = .emailAddress
         return tf
     }()
+    
+    lazy var recoverPasswordButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Recuperar Senha", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(tappedRecoverPasswordButton), for: .touchUpInside)
+        return button
+    }()
+    
+    @objc func tappedRecoverPasswordButton() {
+        delegate?.tappedRecoverPasswordButton()
+    }
     
     lazy var loginButton: UIButton = {
         let button = UIButton()
@@ -117,6 +132,7 @@ class LoginScreen: UIView {
         addSubview(subTitleLabel)
         addSubview(emailTextField)
         addSubview(passwordTextField)
+        addSubview(recoverPasswordButton)
         addSubview(loginButton)
         addSubview(registerButton)
     }
@@ -127,7 +143,7 @@ class LoginScreen: UIView {
             headerView.topAnchor.constraint(equalTo: topAnchor),
             headerView.leadingAnchor.constraint(equalTo: leadingAnchor),
             headerView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            headerView.heightAnchor.constraint(equalToConstant: 200),
+            headerView.heightAnchor.constraint(equalToConstant: 150),
             
             subTitleLabel.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 10),
             subTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
@@ -142,6 +158,10 @@ class LoginScreen: UIView {
             passwordTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             passwordTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             passwordTextField.heightAnchor.constraint(equalToConstant: 40),
+            
+            recoverPasswordButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 10),
+            recoverPasswordButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            recoverPasswordButton.heightAnchor.constraint(equalToConstant: 30),
             
             loginButton.bottomAnchor.constraint(equalTo: registerButton.topAnchor, constant: -10),
             loginButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
