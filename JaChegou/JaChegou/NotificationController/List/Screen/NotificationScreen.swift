@@ -12,6 +12,7 @@ class NotificationScreen: UIView {
     lazy var headerView: HeaderView = {
         let view = HeaderView(title: "Notificações enviadas", image: UIImage(named: "worldImage"))
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.contentMode = .scaleAspectFill
         return view
     }()
     
@@ -69,7 +70,7 @@ class NotificationScreen: UIView {
             headerView.topAnchor.constraint(equalTo: topAnchor),
             headerView.leadingAnchor.constraint(equalTo: leadingAnchor),
             headerView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            headerView.heightAnchor.constraint(equalToConstant: 200),
+            headerView.heightAnchor.constraint(equalToConstant: 150),
             
             tableView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 5),
             tableView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
