@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		032A17F22C97B035001000E0 /* TrackingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032A17F12C97B035001000E0 /* TrackingModel.swift */; };
+		032A17F42C97B098001000E0 /* TrackingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032A17F32C97B098001000E0 /* TrackingViewModel.swift */; };
 		034C3CE12C7415B400E9EDA5 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034C3CE02C7415B400E9EDA5 /* Product.swift */; };
 		034C3CE32C7415EA00E9EDA5 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034C3CE22C7415EA00E9EDA5 /* ProductTableViewCell.swift */; };
 		4DC36FF9B8592F46A8526743 /* Pods_JaChegou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3857A1A11737408CE4583553 /* Pods_JaChegou.framework */; };
@@ -44,6 +46,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		032A17F12C97B035001000E0 /* TrackingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingModel.swift; sourceTree = "<group>"; };
+		032A17F32C97B098001000E0 /* TrackingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingViewModel.swift; sourceTree = "<group>"; };
 		034C3CE02C7415B400E9EDA5 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		034C3CE22C7415EA00E9EDA5 /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
 		3857A1A11737408CE4583553 /* Pods_JaChegou.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JaChegou.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,6 +100,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		032A17F02C97B01F001000E0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				032A17F12C97B035001000E0 /* TrackingModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		034C3CDD2C74155F00E9EDA5 /* Modal */ = {
 			isa = PBXGroup;
 			children = (
@@ -204,9 +216,11 @@
 		FA63F2142C69937F0098967A /* TrackingController */ = {
 			isa = PBXGroup;
 			children = (
+				032A17F02C97B01F001000E0 /* Model */,
 				FAE8317A2C891413000D6FC0 /* SavedTracking */,
 				FA63F21C2C6996340098967A /* Screen */,
 				FA63F21D2C69965D0098967A /* TrackingViewController.swift */,
+				032A17F32C97B098001000E0 /* TrackingViewModel.swift */,
 			);
 			path = TrackingController;
 			sourceTree = "<group>";
@@ -512,6 +526,7 @@
 				FA63F2122C6991E60098967A /* MainTabBarControllerViewController.swift in Sources */,
 				FAC7A6ED2C600CE3001D90BE /* LoginScreen.swift in Sources */,
 				FA63F2192C6994AD0098967A /* HomeViewController.swift in Sources */,
+				032A17F22C97B035001000E0 /* TrackingModel.swift in Sources */,
 				FA050B7B2C741E8F000BB48A /* ListViewModel.swift in Sources */,
 				FA050B712C72D32C000BB48A /* Track.swift in Sources */,
 				034C3CE12C7415B400E9EDA5 /* Product.swift in Sources */,
@@ -521,6 +536,7 @@
 				FA050B6B2C712274000BB48A /* TrackingDetailsView.swift in Sources */,
 				FA63F22A2C69982F0098967A /* NotificationScreen.swift in Sources */,
 				FAE831A02C911EB1000D6FC0 /* ServiceMock.swift in Sources */,
+				032A17F42C97B098001000E0 /* TrackingViewModel.swift in Sources */,
 				FAC7A6D92C5FC2C9001D90BE /* SceneDelegate.swift in Sources */,
 				FAE831772C87F612000D6FC0 /* SavedTrackingScreen.swift in Sources */,
 				FAE831802C891EE4000D6FC0 /* SavedTrackingViewModel.swift in Sources */,
