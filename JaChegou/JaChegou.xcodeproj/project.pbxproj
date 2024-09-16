@@ -7,9 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+<<<<<<< HEAD
 		032BD1C02C972104000A0E9B /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032BD1BF2C972104000A0E9B /* LoginViewModel.swift */; };
 		032BD1C52C97295D000A0E9B /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032BD1C42C97295D000A0E9B /* LoginModel.swift */; };
 		032BD1C72C972A91000A0E9B /* RecoverPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032BD1C62C972A91000A0E9B /* RecoverPasswordViewModel.swift */; };
+=======
+		032A17F72C97B3B9001000E0 /* TrackingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032A17F62C97B3B9001000E0 /* TrackingModel.swift */; };
+		032A17F92C97B3F7001000E0 /* TrackingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032A17F82C97B3F7001000E0 /* TrackingViewModel.swift */; };
+>>>>>>> release/feature_createTracking
 		034C3CE12C7415B400E9EDA5 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034C3CE02C7415B400E9EDA5 /* Product.swift */; };
 		034C3CE32C7415EA00E9EDA5 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034C3CE22C7415EA00E9EDA5 /* ProductTableViewCell.swift */; };
 		039BBD9F2C8DEDDB00B74E27 /* RecoverPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039BBD9E2C8DEDDB00B74E27 /* RecoverPasswordViewController.swift */; };
@@ -49,9 +54,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+<<<<<<< HEAD
 		032BD1BF2C972104000A0E9B /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		032BD1C42C97295D000A0E9B /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		032BD1C62C972A91000A0E9B /* RecoverPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverPasswordViewModel.swift; sourceTree = "<group>"; };
+=======
+		032A17F62C97B3B9001000E0 /* TrackingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingModel.swift; sourceTree = "<group>"; };
+		032A17F82C97B3F7001000E0 /* TrackingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingViewModel.swift; sourceTree = "<group>"; };
+>>>>>>> release/feature_createTracking
 		034C3CE02C7415B400E9EDA5 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		034C3CE22C7415EA00E9EDA5 /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
 		039BBD9E2C8DEDDB00B74E27 /* RecoverPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverPasswordViewController.swift; sourceTree = "<group>"; };
@@ -106,10 +116,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+<<<<<<< HEAD
 		032BD1C12C97276B000A0E9B /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				032BD1C42C97295D000A0E9B /* LoginModel.swift */,
+=======
+		032A17F52C97B39F001000E0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				032A17F62C97B3B9001000E0 /* TrackingModel.swift */,
+>>>>>>> release/feature_createTracking
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -232,9 +249,11 @@
 		FA63F2142C69937F0098967A /* TrackingController */ = {
 			isa = PBXGroup;
 			children = (
+				032A17F52C97B39F001000E0 /* Model */,
 				FAE8317A2C891413000D6FC0 /* SavedTracking */,
 				FA63F21C2C6996340098967A /* Screen */,
 				FA63F21D2C69965D0098967A /* TrackingViewController.swift */,
+				032A17F82C97B3F7001000E0 /* TrackingViewModel.swift */,
 			);
 			path = TrackingController;
 			sourceTree = "<group>";
@@ -544,6 +563,7 @@
 				FA63F2122C6991E60098967A /* MainTabBarControllerViewController.swift in Sources */,
 				FAC7A6ED2C600CE3001D90BE /* LoginScreen.swift in Sources */,
 				FA63F2192C6994AD0098967A /* HomeViewController.swift in Sources */,
+				032A17F72C97B3B9001000E0 /* TrackingModel.swift in Sources */,
 				FA050B7B2C741E8F000BB48A /* ListViewModel.swift in Sources */,
 				039BBD9F2C8DEDDB00B74E27 /* RecoverPasswordViewController.swift in Sources */,
 				FA050B712C72D32C000BB48A /* Track.swift in Sources */,
@@ -557,6 +577,7 @@
 				FA050B6B2C712274000BB48A /* TrackingDetailsView.swift in Sources */,
 				FA63F22A2C69982F0098967A /* NotificationScreen.swift in Sources */,
 				FAE831A02C911EB1000D6FC0 /* ServiceMock.swift in Sources */,
+				032A17F92C97B3F7001000E0 /* TrackingViewModel.swift in Sources */,
 				FAC7A6D92C5FC2C9001D90BE /* SceneDelegate.swift in Sources */,
 				FAE831772C87F612000D6FC0 /* SavedTrackingScreen.swift in Sources */,
 				FAE831802C891EE4000D6FC0 /* SavedTrackingViewModel.swift in Sources */,
