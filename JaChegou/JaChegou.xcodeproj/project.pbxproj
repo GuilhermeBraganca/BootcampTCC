@@ -51,14 +51,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-<<<<<<< HEAD
 		032BD1BF2C972104000A0E9B /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		032BD1C42C97295D000A0E9B /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		032BD1C62C972A91000A0E9B /* RecoverPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverPasswordViewModel.swift; sourceTree = "<group>"; };
-=======
 		032A17F62C97B3B9001000E0 /* TrackingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingModel.swift; sourceTree = "<group>"; };
 		032A17F82C97B3F7001000E0 /* TrackingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingViewModel.swift; sourceTree = "<group>"; };
->>>>>>> release/feature_createTracking
 		034C3CE02C7415B400E9EDA5 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		034C3CE22C7415EA00E9EDA5 /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
 		039BBD9E2C8DEDDB00B74E27 /* RecoverPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverPasswordViewController.swift; sourceTree = "<group>"; };
@@ -113,17 +110,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-<<<<<<< HEAD
 		032BD1C12C97276B000A0E9B /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				032BD1C42C97295D000A0E9B /* LoginModel.swift */,
-=======
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		032A17F52C97B39F001000E0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				032A17F62C97B3B9001000E0 /* TrackingModel.swift */,
->>>>>>> release/feature_createTracking
+
 			);
 			path = Model;
 			sourceTree = "<group>";
