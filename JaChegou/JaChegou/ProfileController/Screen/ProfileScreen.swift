@@ -53,6 +53,25 @@ class ProfileScreen: UIView {
         return imageView
     }()
     
+    lazy var passwordLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Senha"
+        label.font = UIFont.boldSystemFont(ofSize: 15)
+        label.textColor = .white
+        return label
+    }()
+    
+    lazy var passwordImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = UIImage(systemName: "key.fill")
+        imageView.tintColor =  .customLightBlue
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
+    
     lazy var phoneLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -142,6 +161,20 @@ class ProfileScreen: UIView {
         return emailTextField
     }()
     
+    lazy var passwordTextField: UITextField = {
+        let passwordTextField = UITextField()
+        let placeholderText =  "Senha"
+        let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.white]
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
+        passwordTextField.translatesAutoresizingMaskIntoConstraints = false
+        passwordTextField.borderStyle = .roundedRect
+        passwordTextField.backgroundColor = .customGray
+        passwordTextField.textColor = .white
+        passwordTextField.layer.cornerRadius = 15
+        passwordTextField.keyboardType = .emailAddress
+        return passwordTextField
+    }()
+    
     lazy var phoneTextField: UITextField = {
         let phoneTextField = UITextField()
         let placeholderText =  "(00) 9 9999-9999"
@@ -196,6 +229,8 @@ class ProfileScreen: UIView {
         addSubview(personalInformationLabel)
         addSubview(emailImageView)
         addSubview(emailLabel)
+        addSubview(passwordImageView)
+        addSubview(passwordLabel)
         addSubview(phoneImageView)
         addSubview(phoneLabel)
         addSubview(callendarImageView)
@@ -204,6 +239,7 @@ class ProfileScreen: UIView {
         addSubview(outOfAccountButton)
         addSubview(deleteAccountButton)
         addSubview(emailTextField)
+        addSubview(passwordTextField)
         addSubview(phoneTextField)
         addSubview(callendarTextField)
         
@@ -229,7 +265,15 @@ class ProfileScreen: UIView {
             emailLabel.topAnchor.constraint(equalTo: emailImageView.topAnchor),
             emailLabel.leadingAnchor.constraint(equalTo: emailImageView.leadingAnchor, constant: 30),
             
-            phoneImageView.topAnchor.constraint(equalTo: emailImageView.bottomAnchor, constant: 30),
+            passwordImageView.topAnchor.constraint(equalTo: emailImageView.bottomAnchor, constant: 30),
+            passwordImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            passwordImageView.heightAnchor.constraint(equalToConstant: 20),
+            passwordImageView.widthAnchor.constraint(equalToConstant: 20),
+            
+            passwordLabel.topAnchor.constraint(equalTo: passwordImageView.topAnchor),
+            passwordLabel.leadingAnchor.constraint(equalTo: passwordImageView.leadingAnchor, constant: 30),
+            
+            phoneImageView.topAnchor.constraint(equalTo: passwordImageView.bottomAnchor, constant: 30),
             phoneImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             phoneImageView.heightAnchor.constraint(equalToConstant: 20),
             phoneImageView.widthAnchor.constraint(equalToConstant: 20),
@@ -263,7 +307,12 @@ class ProfileScreen: UIView {
             emailTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             emailTextField.heightAnchor.constraint(equalToConstant: 30),
             
-            phoneTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 15),
+            passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 15),
+            passwordTextField.leadingAnchor.constraint(equalTo: callendarLabel.trailingAnchor, constant: -20),
+            passwordTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            passwordTextField.heightAnchor.constraint(equalToConstant: 30),
+            
+            phoneTextField.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 15),
             phoneTextField.leadingAnchor.constraint(equalTo: callendarLabel.trailingAnchor, constant: -20),
             phoneTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             phoneTextField.heightAnchor.constraint(equalToConstant: 30),
