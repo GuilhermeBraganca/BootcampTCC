@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		032A17EF2C97AEF6001000E0 /* NotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032A17EE2C97AEF6001000E0 /* NotificationViewModel.swift */; };
+		032A17F72C97B3B9001000E0 /* TrackingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032A17F62C97B3B9001000E0 /* TrackingModel.swift */; };
+		032A17F92C97B3F7001000E0 /* TrackingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032A17F82C97B3F7001000E0 /* TrackingViewModel.swift */; };
 		032BD1C02C972104000A0E9B /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032BD1BF2C972104000A0E9B /* LoginViewModel.swift */; };
 		032BD1C52C97295D000A0E9B /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032BD1C42C97295D000A0E9B /* LoginModel.swift */; };
 		032BD1C72C972A91000A0E9B /* RecoverPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032BD1C62C972A91000A0E9B /* RecoverPasswordViewModel.swift */; };
-		032A17F72C97B3B9001000E0 /* TrackingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032A17F62C97B3B9001000E0 /* TrackingModel.swift */; };
-		032A17F92C97B3F7001000E0 /* TrackingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032A17F82C97B3F7001000E0 /* TrackingViewModel.swift */; };
-		032A17EF2C97AEF6001000E0 /* NotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032A17EE2C97AEF6001000E0 /* NotificationViewModel.swift */; };
 		034C3CE12C7415B400E9EDA5 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034C3CE02C7415B400E9EDA5 /* Product.swift */; };
 		034C3CE32C7415EA00E9EDA5 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034C3CE22C7415EA00E9EDA5 /* ProductTableViewCell.swift */; };
 		039BBD9F2C8DEDDB00B74E27 /* RecoverPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039BBD9E2C8DEDDB00B74E27 /* RecoverPasswordViewController.swift */; };
@@ -52,12 +52,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		032A17EE2C97AEF6001000E0 /* NotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewModel.swift; sourceTree = "<group>"; };
+		032A17F62C97B3B9001000E0 /* TrackingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingModel.swift; sourceTree = "<group>"; };
+		032A17F82C97B3F7001000E0 /* TrackingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingViewModel.swift; sourceTree = "<group>"; };
 		032BD1BF2C972104000A0E9B /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		032BD1C42C97295D000A0E9B /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		032BD1C62C972A91000A0E9B /* RecoverPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverPasswordViewModel.swift; sourceTree = "<group>"; };
-		032A17F62C97B3B9001000E0 /* TrackingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingModel.swift; sourceTree = "<group>"; };
-		032A17F82C97B3F7001000E0 /* TrackingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingViewModel.swift; sourceTree = "<group>"; };
-		032A17EE2C97AEF6001000E0 /* NotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewModel.swift; sourceTree = "<group>"; };
 		034C3CE02C7415B400E9EDA5 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		034C3CE22C7415EA00E9EDA5 /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
 		039BBD9E2C8DEDDB00B74E27 /* RecoverPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverPasswordViewController.swift; sourceTree = "<group>"; };
@@ -112,19 +112,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		032BD1C12C97276B000A0E9B /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				032BD1C42C97295D000A0E9B /* LoginModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		032A17F52C97B39F001000E0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				032A17F62C97B3B9001000E0 /* TrackingModel.swift */,
-
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		032BD1C12C97276B000A0E9B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				032BD1C42C97295D000A0E9B /* LoginModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
