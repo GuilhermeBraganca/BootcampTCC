@@ -1,5 +1,6 @@
 
 import UIKit
+import FirebaseAuth
 
 class LoginViewController: UIViewController {
     
@@ -16,6 +17,13 @@ class LoginViewController: UIViewController {
         setupNavigationBar()
         configProtocols()
         interactionLoginViewModel() //interação com a LoginViewModel.
+    }
+    
+    func showAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "OK", style: .default)
+        alertController.addAction(okButton)
+        present(alertController, animated: true)
     }
     
     func setupNavigationBar() {
@@ -43,13 +51,36 @@ class LoginViewController: UIViewController {
 }
 
 extension LoginViewController: LoginScreenProtocol {
+    
+    func tappedLoginButton() {
+        
+        guard let email: String = screen?.emailTextField.text,
+              let password: String = screen?.passwordTextField.text,
+              !email.isEmpty,
+              !password.isEmpty else {
+            showAlert(title: "Atenção!", message: "Por favor, preencha todos os campos")
+            return
+        }
+        
+    Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
+        guard let self else { return }
+            
+        guard error == nil else {
+        self.showAlert(title: "Atenção! Dados de autenticação fornecida está incorreta ou expirou!", message: error?.localizedDescription ?? "")
+        return
+                
+       }
+        print("Show, login feito com sucesso!")
+        
+        // Após confirmação do e-mail e senha, direcionar usuário para HomeControllerScreen
+        self.navigationController?.pushViewController(HomeViewController(), animated: true)
+    }
+}
+    
     func tappedRegisterButton() {
         navigationController?.pushViewController(CreateAccountViewController(), animated: true)
     }
     
-    func tappedLoginButton() {
-        navigationController?.pushViewController(MainTabBarControllerViewController(), animated: true)
-    }
     
     func tappedRecoverPasswordButton() {
         let recoverPasswordVC = RecoverPasswordViewController()
