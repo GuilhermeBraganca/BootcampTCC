@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import Foundation
+import FirebaseAuth
 
 class RecoverPasswordScreen: UIView {
     
@@ -54,12 +54,9 @@ class RecoverPasswordScreen: UIView {
     
     @objc func tappedSendEmailButton() {
         guard let email = recoverPasswordTextField.text, !email.isEmpty else {
-        // Campo e-mail vazio ou informado sem a formatação correta
             showAlert(title: "Erro", message: "Por favor, insira um e-mail válido.")
             return
         }
-        // Envio do e-mail de recuperação
-        showAlert(title: "Sucesso", message: "E-mail de recuperação enviado para \(email).")
     }
     
     func showAlert(title: String, message: String) {
@@ -90,7 +87,6 @@ class RecoverPasswordScreen: UIView {
     
     func configConstraints() {
         NSLayoutConstraint.activate([
-            
             headerView.topAnchor.constraint(equalTo: topAnchor),
             headerView.leadingAnchor.constraint(equalTo: leadingAnchor),
             headerView.trailingAnchor.constraint(equalTo: trailingAnchor),
