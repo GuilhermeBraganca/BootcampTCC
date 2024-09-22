@@ -19,10 +19,9 @@ class RecoverPasswordViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        interactionRecoverViewModel() //interação com a RecoverPasswordViewModel.
+        interactionRecoverViewModel() // Interação com a RecoverPasswordViewModel.
     }
     
-    // Função para interação da RecoverPasswordViewController (View) com a RecoverPasswordViewModel.
     func interactionRecoverViewModel() {
         viewModel.showAlert = { [weak self] title, message in
             self?.showAlert(title: title, message: message)
@@ -35,7 +34,6 @@ class RecoverPasswordViewController: UIViewController {
         viewModel.recoverPassword(for: screen?.recoverPasswordTextField.text)
     }
     
-    //Apresentar aletas com telas de forma modal.
     func showAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))

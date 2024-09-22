@@ -1,5 +1,6 @@
 
 import UIKit
+import FirebaseAuth
 
 class LoginViewController: UIViewController {
     
@@ -18,6 +19,13 @@ class LoginViewController: UIViewController {
         interactionLoginViewModel() //interação com a LoginViewModel.
     }
     
+    func showAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "OK", style: .default)
+        alertController.addAction(okButton)
+        present(alertController, animated: true)
+    }
+    //Configura a barra de navegação - botão voltar no superior da tela.
     func setupNavigationBar() {
         navigationItem.backButtonTitle = ""
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
@@ -32,10 +40,50 @@ class LoginViewController: UIViewController {
     // Função para interação da LoginViewController (View) com a interactionLoginViewModel.
     func interactionLoginViewModel() {
         viewModel.isLoginButtonEnabled = { [weak self] isEnabled in
+            //Habilita ou desabilita o botão de login
             self?.isEnabledLoginButton(isEnable: isEnabled)
+        }
+        //Configura a exibição do erro do campo e-mail
+        viewModel.showEmailError = { [weak self] showError in
+            if showError {
+                self?.screen?.emailTextField.layer.borderColor = UIColor.red.cgColor
+                self?.screen?.emailTextField.layer.borderWidth = 1.0
+                self?.screen?.emailErrorLabel.isHidden = false
+                let placeholderText = "E-mail*"
+                let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.red]
+                self?.screen?.emailTextField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
+            } else {
+                //Utilizado para limpar o erro do campo e-mail
+                self?.screen?.emailTextField.layer.borderColor = UIColor.clear.cgColor
+                self?.screen?.emailTextField.layer.borderWidth = 0
+                self?.screen?.emailErrorLabel.isHidden = true
+                let placeholderText = "E-mail*"
+                let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.white]
+                self?.screen?.emailTextField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
+            }
+        }
+        //Configura a exibição do erro do campo senha
+        viewModel.showPasswordError = { [weak self] showError in
+            if showError {
+                self?.screen?.passwordTextField.layer.borderColor = UIColor.red.cgColor
+                self?.screen?.passwordTextField.layer.borderWidth = 1.0
+                self?.screen?.passwordErrorLabel.isHidden = false
+                let placeholderText = "Senha*"
+                let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.red]
+                self?.screen?.passwordTextField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
+            } else {
+                //Utilizado para limpar o erro do campo senha
+                self?.screen?.passwordTextField.layer.borderColor = UIColor.clear.cgColor
+                self?.screen?.passwordTextField.layer.borderWidth = 0
+                self?.screen?.passwordErrorLabel.isHidden = true
+                let placeholderText = "Senha*"
+                let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.white]
+                self?.screen?.passwordTextField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
+            }
         }
     }
     
+    // Habilita ou desabilita o botão de login
     func isEnabledLoginButton(isEnable: Bool) {
         screen?.loginButton.isEnabled = isEnable
         screen?.loginButton.backgroundColor = isEnable ? .systemBlue : .lightGray
@@ -43,12 +91,33 @@ class LoginViewController: UIViewController {
 }
 
 extension LoginViewController: LoginScreenProtocol {
-    func tappedRegisterButton() {
-        navigationController?.pushViewController(CreateAccountViewController(), animated: true)
-    }
     
     func tappedLoginButton() {
-        navigationController?.pushViewController(MainTabBarControllerViewController(), animated: true)
+        // Valida se os campos de e-mail e senha estão preenchidos
+        guard let email: String = screen?.emailTextField.text,
+              let password: String = screen?.passwordTextField.text,
+              !email.isEmpty,
+              !password.isEmpty else {
+            showAlert(title: "Atenção!", message: "Por favor, preencha todos os campos")
+            return
+        }
+        //Login com o Firebase
+        Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
+            guard let self else { return }
+            
+            guard error == nil else {
+                self.showAlert(title: "Atenção! Dados de autenticação fornecida está incorreta ou expirou!", message: error?.localizedDescription ?? "")
+                return
+        }
+            print("Show, login feito com sucesso!")
+        
+        // Após confirmação do e-mail e senha, direcionar usuário para HomeControllerScreen
+            self.navigationController?.pushViewController(HomeViewController(), animated: true)
+        }
+    }
+    
+    func tappedRegisterButton() {
+        navigationController?.pushViewController(CreateAccountViewController(), animated: true)
     }
     
     func tappedRecoverPasswordButton() {
@@ -58,7 +127,6 @@ extension LoginViewController: LoginScreenProtocol {
 }
 
 extension LoginViewController: UITextFieldDelegate {
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
