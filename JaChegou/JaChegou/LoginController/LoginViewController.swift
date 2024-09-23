@@ -111,8 +111,8 @@ extension LoginViewController: LoginScreenProtocol {
         }
             print("Show, login feito com sucesso!")
         
-        // Após confirmação do e-mail e senha, direcionar usuário para HomeControllerScreen
-            self.navigationController?.pushViewController(HomeViewController(), animated: true)
+        // Após confirmação do e-mail e senha, direcionar usuário para MainTabBarControllerViewController
+            self.navigationController?.pushViewController(MainTabBarControllerViewController(), animated: true)
         }
     }
     
