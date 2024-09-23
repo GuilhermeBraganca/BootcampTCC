@@ -24,6 +24,10 @@ class HomeViewController: UIViewController {
         screen?.delegate = self
         screen?.configCollectionViewProtocols(delegate: self, dataSource: self)
     }
+    func updateCollectionView() {
+        // Atualiza a UICollectionView com os novos dados
+        screen?.collectionView.reloadData()
+    }
 }
 
 extension HomeViewController: HomeControllerScreenProtocol {
@@ -32,6 +36,7 @@ extension HomeViewController: HomeControllerScreenProtocol {
         screen?.collectionView.reloadData()
     }
 }
+    
 
 extension HomeViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate {
     
@@ -64,7 +69,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
         // Verifica se o número de itens na seção é 0 (ou seja, estamos exibindo a célula vazia)
         if viewModel.totalOfTrackingList == 0  {
             if let tabBarController = self.tabBarController {
-                tabBarController.selectedIndex = 1  // Substitua pelo índice correto da aba do TrackingViewController
+                tabBarController.selectedIndex = 1
             }
         } else {
             let savedTrackingVC = SavedTrackingViewController()
@@ -73,6 +78,6 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
         }
         
     }
-        
-        
+    
+    
 }

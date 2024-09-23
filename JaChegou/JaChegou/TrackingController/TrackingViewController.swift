@@ -15,7 +15,9 @@ class TrackingViewController: UIViewController {
     override func loadView() {
         // Cria o modelo inicial
         let model = TrackingModel(trackingCode: "", orderDescription: "")
-        viewModel = TrackingViewModel(model: model)
+        let track = Track(image: "", description: "", trackingNumber: "", date: "", events: [Events(event: "", date: "")])
+        
+        viewModel = TrackingViewModel(model: model, track: track)
         
         screen = TrackingScreen()
         view = screen

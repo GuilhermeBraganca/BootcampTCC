@@ -11,7 +11,7 @@ import Foundation
 struct Track {
     var image: String
     var description: String
-    var trackinNumber: String
+    var trackingNumber: String
     var date: String
     var events = [Events]()
 }

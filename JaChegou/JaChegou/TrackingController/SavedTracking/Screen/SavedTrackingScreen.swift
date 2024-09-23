@@ -109,7 +109,7 @@ class SavedTrackingScreen: UIView {
         self.track = track
         productImageView.image = UIImage(systemName: track.image)
         descriptionLabel.text = track.description
-        trackingNumberLabel.text = track.trackinNumber
+        trackingNumberLabel.text = track.trackingNumber
     }
     func configTableViewProtocols(delegate: UITableViewDelegate, dataSource: UITableViewDataSource) {
         tableView.delegate = delegate
