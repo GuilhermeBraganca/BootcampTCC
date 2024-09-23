@@ -11,12 +11,18 @@ protocol ProfileScreenProtocol: AnyObject {
     
     func tappedOutOfAccountButton()
     func tappedDeleteAccountButton()
-    func tappedEditButton()
+    func tappedEditButton(isEditing: Bool)
 }
 
 class ProfileScreen: UIView {
     
     weak var delegate: ProfileScreenProtocol?
+    
+    var isEditingEnabled: Bool = false {
+        didSet {
+            updateEditingState()
+        }
+    }
     
     lazy var headerView: HeaderView = {
         
@@ -157,6 +163,7 @@ class ProfileScreen: UIView {
         emailTextField.textColor = .white
         emailTextField.layer.cornerRadius = 15
         emailTextField.keyboardType = .emailAddress
+        emailTextField.isUserInteractionEnabled = false
         return emailTextField
     }()
     
@@ -171,6 +178,7 @@ class ProfileScreen: UIView {
         passwordTextField.textColor = .white
         passwordTextField.layer.cornerRadius = 15
         passwordTextField.keyboardType = .emailAddress
+        passwordTextField.isUserInteractionEnabled = false
         return passwordTextField
     }()
     
@@ -208,8 +216,19 @@ class ProfileScreen: UIView {
         delegate?.tappedDeleteAccountButton()
     }
     
+    //    @objc func tappedEditButton() {
+    //        delegate?.tappedEditButton()
+    //    }
+    
+    // Função que atualiza o estado de edição dos campos
+    func updateEditingState() {
+        emailTextField.isUserInteractionEnabled = isEditingEnabled
+        passwordTextField.isUserInteractionEnabled = isEditingEnabled
+    }
+    
     @objc func tappedEditButton() {
-        delegate?.tappedEditButton()
+        isEditingEnabled.toggle()
+        delegate?.tappedEditButton(isEditing: isEditingEnabled)
     }
     
     init() {
