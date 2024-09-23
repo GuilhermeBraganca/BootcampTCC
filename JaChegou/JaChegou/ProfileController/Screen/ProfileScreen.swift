@@ -12,7 +12,6 @@ protocol ProfileScreenProtocol: AnyObject {
     func tappedOutOfAccountButton()
     func tappedDeleteAccountButton()
     func tappedEditButton()
-    
 }
 
 class ProfileScreen: UIView {

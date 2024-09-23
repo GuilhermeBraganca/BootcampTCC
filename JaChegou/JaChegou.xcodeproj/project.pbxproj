@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		034C3CE12C7415B400E9EDA5 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034C3CE02C7415B400E9EDA5 /* Product.swift */; };
 		034C3CE32C7415EA00E9EDA5 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034C3CE22C7415EA00E9EDA5 /* ProductTableViewCell.swift */; };
+		16ECC61B2CA0A17B000A1B92 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ECC61A2CA0A17B000A1B92 /* ProfileViewModel.swift */; };
+		16ECC61D2CA0A194000A1B92 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ECC61C2CA0A194000A1B92 /* ProfileModel.swift */; };
 		4DC36FF9B8592F46A8526743 /* Pods_JaChegou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3857A1A11737408CE4583553 /* Pods_JaChegou.framework */; };
 		FA050B5A2C6B02FE000BB48A /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA050B592C6B02FE000BB48A /* HeaderView.swift */; };
 		FA050B5E2C6C35F4000BB48A /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA050B5D2C6C35F4000BB48A /* SearchView.swift */; };
@@ -44,6 +46,8 @@
 /* Begin PBXFileReference section */
 		034C3CE02C7415B400E9EDA5 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		034C3CE22C7415EA00E9EDA5 /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
+		16ECC61A2CA0A17B000A1B92 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		16ECC61C2CA0A194000A1B92 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		3857A1A11737408CE4583553 /* Pods_JaChegou.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JaChegou.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		752170E0C8F51BC9D93738F6 /* Pods-JaChegou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JaChegou.debug.xcconfig"; path = "Target Support Files/Pods-JaChegou/Pods-JaChegou.debug.xcconfig"; sourceTree = "<group>"; };
 		83574C897EBF37BB48AF874D /* Pods-JaChegou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JaChegou.release.xcconfig"; path = "Target Support Files/Pods-JaChegou/Pods-JaChegou.release.xcconfig"; sourceTree = "<group>"; };
@@ -124,6 +128,14 @@
 				83574C897EBF37BB48AF874D /* Pods-JaChegou.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		16ECC6192CA0A14E000A1B92 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				16ECC61C2CA0A194000A1B92 /* ProfileModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		63471BD4A34191E27F592C51 /* Frameworks */ = {
@@ -209,8 +221,10 @@
 		FA63F2152C6993C10098967A /* ProfileController */ = {
 			isa = PBXGroup;
 			children = (
+				16ECC6192CA0A14E000A1B92 /* Model */,
 				FA63F2212C69973D0098967A /* Screen */,
 				FA63F2222C69979D0098967A /* ProfileControllerViewController.swift */,
+				16ECC61A2CA0A17B000A1B92 /* ProfileViewModel.swift */,
 			);
 			path = ProfileController;
 			sourceTree = "<group>";
@@ -482,12 +496,14 @@
 				FAC7A6ED2C600CE3001D90BE /* LoginScreen.swift in Sources */,
 				FA63F2192C6994AD0098967A /* HomeViewController.swift in Sources */,
 				FA050B7B2C741E8F000BB48A /* ListViewModel.swift in Sources */,
+				16ECC61D2CA0A194000A1B92 /* ProfileModel.swift in Sources */,
 				FA050B712C72D32C000BB48A /* Track.swift in Sources */,
 				034C3CE12C7415B400E9EDA5 /* Product.swift in Sources */,
 				FA63F21E2C69965D0098967A /* TrackingViewController.swift in Sources */,
 				FA63F2282C6998180098967A /* NotificationControllerViewController.swift in Sources */,
 				FAC7A6D72C5FC2C9001D90BE /* AppDelegate.swift in Sources */,
 				FA050B6B2C712274000BB48A /* TrackingDetailsView.swift in Sources */,
+				16ECC61B2CA0A17B000A1B92 /* ProfileViewModel.swift in Sources */,
 				FA63F22A2C69982F0098967A /* NotificationScreen.swift in Sources */,
 				FAC7A6D92C5FC2C9001D90BE /* SceneDelegate.swift in Sources */,
 				FAE831772C87F612000D6FC0 /* SavedTrackingScreen.swift in Sources */,
