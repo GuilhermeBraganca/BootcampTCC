@@ -19,7 +19,6 @@ class ProfileScreen: UIView {
     weak var delegate: ProfileScreenProtocol?
     
     lazy var headerView: HeaderView = {
-        
         let view = HeaderView(title: "Perfil", image: UIImage(named: "worldImage"))
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -69,7 +68,6 @@ class ProfileScreen: UIView {
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
-    
     
     lazy var phoneLabel: UILabel = {
         let label = UILabel()
