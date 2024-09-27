@@ -4,8 +4,6 @@
 //
 //  Created by Fabio Cristiano Lopes on 15/09/24.
 //
-
-
 // Model: Responsável por apresentar a estrutura de dados.
 import Foundation
 

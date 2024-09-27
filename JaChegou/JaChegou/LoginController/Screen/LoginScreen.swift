@@ -1,26 +1,22 @@
 import UIKit
 
-
 protocol LoginScreenProtocol: AnyObject {
     func tappedLoginButton()
     func tappedRegisterButton()
     func tappedRecoverPasswordButton()
 }
 
-
 class LoginScreen: UIView {
     
     weak var delegate: LoginScreenProtocol?
-    
-    
+        
     lazy var headerView: HeaderView = {
         let view = HeaderView(title: "Para aproveitar todos os recursos, faça login.", image: UIImage(named: "worldImage"))
         view.translatesAutoresizingMaskIntoConstraints = false
         view.contentMode = .scaleAspectFill
         return view
     }()
-    
-    
+        
     lazy var loginLabel: UILabel = {
         let label = UILabel()
         label.text = "Para aproveitar todos os recursos, faça login."
@@ -42,7 +38,6 @@ class LoginScreen: UIView {
         return label
     }()
     
-    
     lazy var emailTextField: UITextField = {
         let tf = UITextField()
         let placeholderText =  "E-mail*"
@@ -57,6 +52,16 @@ class LoginScreen: UIView {
         return tf
     }()
     
+    lazy var emailErrorLabel: UILabel = {
+        let label = UILabel()
+        label.text = "E-mail inválido"
+        label.textColor = .red
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.isHidden = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
     lazy var passwordTextField: UITextField = {
         let tf = UITextField()
         let placeholderText =  "Senha*"
@@ -69,6 +74,16 @@ class LoginScreen: UIView {
         tf.textColor = .white
         tf.layer.cornerRadius = 15
         return tf
+    }()
+    
+    lazy var passwordErrorLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Senha inválida"
+        label.textColor = .red
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.isHidden = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
     
     lazy var recoverPasswordButton: UIButton = {
@@ -131,14 +146,15 @@ class LoginScreen: UIView {
         addSubview(headerView)
         addSubview(subTitleLabel)
         addSubview(emailTextField)
+        addSubview(emailErrorLabel)
         addSubview(passwordTextField)
+        addSubview(passwordErrorLabel)
         addSubview(recoverPasswordButton)
         addSubview(loginButton)
         addSubview(registerButton)
     }
     func configConstraints() {
         NSLayoutConstraint.activate([
-            
             
             headerView.topAnchor.constraint(equalTo: topAnchor),
             headerView.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -154,12 +170,20 @@ class LoginScreen: UIView {
             emailTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             emailTextField.heightAnchor.constraint(equalToConstant: 40),
             
+            emailErrorLabel.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 5),
+            emailErrorLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            emailErrorLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            
             passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 20),
             passwordTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             passwordTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             passwordTextField.heightAnchor.constraint(equalToConstant: 40),
             
-            recoverPasswordButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 10),
+            passwordErrorLabel.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 5),
+            passwordErrorLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            passwordErrorLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            
+            recoverPasswordButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 15),
             recoverPasswordButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             recoverPasswordButton.heightAnchor.constraint(equalToConstant: 30),
             
@@ -173,9 +197,6 @@ class LoginScreen: UIView {
             registerButton.heightAnchor.constraint(equalToConstant: 40),
         ])
     }
-    
-    
-    
 }
 
 
