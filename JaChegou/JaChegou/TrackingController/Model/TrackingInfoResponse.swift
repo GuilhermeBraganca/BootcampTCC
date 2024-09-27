@@ -14,3 +14,10 @@ struct TrackingInfoResponse: Codable {
     var cidade: String?
     var uf: String?
 }
+
+// Data Transfer Object
+struct TrackingDTO: Codable {
+  var code: String
+  var description: String
+  var trackingList: [TrackingInfoResponse]
+}

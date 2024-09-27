@@ -10,69 +10,60 @@ import Foundation
 protocol TrackingViewModelProtocol: AnyObject {
     func success()
     func failure(errorMessage: String)
+    func loading(start: Bool)
 }
 
 class TrackingViewModel {
-    
-    weak var delegate: TrackingViewModelProtocol?
-    private var model: TrackingModel
-    
-    
-    //private var homeView: ListViewModel = ListViewModel()
-    private var track: Track
-    private var trackingResponse: [TrackingInfoResponse] = []
-    
-    var onTrackingCodeChanged: ((String) -> Void)?
-    var onOrderDescriptionChanged: ((String) -> Void)?
-    
-    init(model: TrackingModel, track: Track) {
-        self.model = model
-        self.track = track
-    }
-    
-    func updateTrackingCode(_ code: String) {
-        model.trackingCode = code
-    }
-    
-    func updateOrderDescription(_ description: String) {
-        model.orderDescription = description
-    }
-    func fetchTrackingList(completion: @escaping () -> Void) {
-        TrackingService.fetchTrackingList() { [weak self] result in
-            guard let self else { return }
-            switch result {
-            case .success(let success):
-                trackingResponse = success
-                delegate?.success()
-                completion()
-            case .failure(let failure):
-                delegate?.failure(errorMessage: failure.errorDescription ?? "")
-                return
-            }
-        }
-    }
-    
-    func saveTrackingData() {
-        
-        fetchTrackingList{[weak self] in
-            guard let self else { return }
-            let track = Track(image: "imageName", description: "description", trackingNumber: "123", date: "22/09/2024", events: [Events(event: "Evento", date: "22/09/2024")])
-        }
-        
-        
-        
-        //homeView.appendTrackingList(track: track)
-//        if track.description.contains("Objeto entregue ao destinatário") {
-//            finalizedItems.append(track)
-//        } else {
-//            inTransitItems.append(track)
-//        }
-        
-        
-        
-        // Implementar a funcionalidade de salvar os dados
-       // print("Código de rastreio: \(trackingResponse[0].cidade)")
-        //print("Descrição: \(model.orderDescription)")
+
+  weak var delegate: TrackingViewModelProtocol?
+
+  func saveTrackingData(code: String, description: String) {
+    delegate?.loading(start: true)
+    TrackingService.fetchTrackingList(code: "NM455753071BR") { [weak self] result in
+      guard let self else { return }
+      delegate?.loading(start: false)
+      switch result {
+      case .success(let success):
+        handlerTrackingResponse(code: "NM455753071BR", description: description, list: success)
+      case .failure(let failure):
+        delegate?.failure(errorMessage: failure.errorDescription ?? "")
+        return
+      }
         
     }
+  }
+
+  func handlerTrackingResponse(code: String, description: String, list: [TrackingInfoResponse]) {
+    let track = TrackingDTO(code: code, description: description, trackingList: list)
+    configDecodableListTrackingDTO(track: track)
+  }
+
+  func configDecodableListTrackingDTO(track: TrackingDTO) {
+    var list: [TrackingDTO] = []
+    if let data = UserDefaults.standard.object(forKey: "ListTrackingDTO") as? Data {
+      if let listTrack: [TrackingDTO] = try? JSONDecoder().decode([TrackingDTO].self, from: data) {
+        list = listTrack
+      } else {
+        print("error decode!")
+        return
+      }
+    }
+
+    list.append(track)
+    configEncodableTrackingDTO(track: list)
+  }
+
+  func configEncodableTrackingDTO(track: [TrackingDTO]) {
+    let defaults = UserDefaults.standard
+    if let data = try? JSONEncoder().encode(track) {
+      defaults.set(data, forKey: "ListTrackingDTO")
+      delegate?.success()
+    } else {
+      delegate?.failure(errorMessage: "Error Encode")
+    }
+  }
+}
+
+extension NSNotification.Name {
+  static let trackingDTO = Self("TrackingDTO")
 }

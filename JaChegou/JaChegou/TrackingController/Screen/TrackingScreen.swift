@@ -7,16 +7,14 @@
 
 import UIKit
 
+protocol TrackingScreenProtocol: AnyObject {
+   func tapped()
+}
+
 class TrackingScreen: UIView {
-    
-    var viewModel: TrackingViewModel? {
-        
-        //Utilizado para atribuir informações na TrackingViewModel
-        didSet {
-            configInteraction()
-        }
-    }
-    
+
+  weak var delegate: TrackingScreenProtocol?
+
     lazy var headerView: HeaderView = {
         let view = HeaderView(title: "Cadastre Código Correios", image: UIImage(named: "worldImage"))
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -44,7 +42,6 @@ class TrackingScreen: UIView {
         tf.backgroundColor = .customGray
         tf.textColor = .white
         tf.layer.cornerRadius = 20
-        tf.addTarget(self, action: #selector(trackingCodeChanged), for: .editingChanged)
         return tf
     }()
     
@@ -58,7 +55,6 @@ class TrackingScreen: UIView {
         tf.backgroundColor = .customGray
         tf.textColor = .white
         tf.layer.cornerRadius = 20
-        tf.addTarget(self, action: #selector(orderDescriptionChanged), for: .editingChanged)
         return tf
     }()
     
@@ -75,26 +71,8 @@ class TrackingScreen: UIView {
         return button
     }()
     
-    @objc private func trackingCodeChanged() {
-        viewModel?.updateTrackingCode(trackingCodeTextField.text ?? "")
-    }
-    
-    @objc private func orderDescriptionChanged() {
-        viewModel?.updateOrderDescription(orderDescriptionTextField.text ?? "")
-    }
-    
     @objc private func saveButtonTapped() {
-        viewModel?.saveTrackingData()
-    }
-    
-    //Método utilizado quando for atribuido um novo item para refletir na TrackingViewModel.
-    private func configInteraction() {
-        viewModel?.onTrackingCodeChanged = { [weak self] code in
-            self?.trackingCodeTextField.text = code
-        }
-        viewModel?.onOrderDescriptionChanged = { [weak self] description in
-            self?.orderDescriptionTextField.text = description
-        }
+      delegate?.tapped()
     }
     
     init() {

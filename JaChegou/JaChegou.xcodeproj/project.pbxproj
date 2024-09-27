@@ -23,7 +23,7 @@
 		FA050B6B2C712274000BB48A /* TrackingDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA050B6A2C712274000BB48A /* TrackingDetailsView.swift */; };
 		FA050B712C72D32C000BB48A /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA050B702C72D32C000BB48A /* Track.swift */; };
 		FA050B792C7413F9000BB48A /* TrackCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA050B782C7413F8000BB48A /* TrackCollectionViewCell.swift */; };
-		FA050B7B2C741E8F000BB48A /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA050B7A2C741E8F000BB48A /* ListViewModel.swift */; };
+		FA050B7B2C741E8F000BB48A /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA050B7A2C741E8F000BB48A /* HomeViewModel.swift */; };
 		FA63F20B2C6814E00098967A /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63F20A2C6814E00098967A /* CreateAccountViewController.swift */; };
 		FA63F20E2C6815730098967A /* CreateAccountScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63F20D2C6815730098967A /* CreateAccountScreen.swift */; };
 		FA63F2122C6991E60098967A /* MainTabBarControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63F2112C6991E60098967A /* MainTabBarControllerViewController.swift */; };
@@ -54,6 +54,10 @@
 		FAC7A6E02C5FC2CB001D90BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAC7A6DF2C5FC2CB001D90BE /* Assets.xcassets */; };
 		FAC7A6E32C5FC2CB001D90BE /* Base in Resources */ = {isa = PBXBuildFile; fileRef = FAC7A6E22C5FC2CB001D90BE /* Base */; };
 		FAC7A6ED2C600CE3001D90BE /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC7A6EC2C600CE3001D90BE /* LoginScreen.swift */; };
+		FAD71A462CA638FE0006B285 /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD71A432CA638FE0006B285 /* Loading.swift */; };
+		FAD71A472CA638FE0006B285 /* LoadingLottie.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD71A452CA638FE0006B285 /* LoadingLottie.swift */; };
+		FAD71A482CA638FE0006B285 /* LoadingShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD71A442CA638FE0006B285 /* LoadingShared.swift */; };
+		FAD71A4A2CA6397C0006B285 /* loading_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = FAD71A492CA6397C0006B285 /* loading_animation.json */; };
 		FAE831722C87E698000D6FC0 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE831712C87E698000D6FC0 /* UIColor+Extension.swift */; };
 		FAE831742C87EFFD000D6FC0 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE831732C87EFFD000D6FC0 /* UITextField+Extension.swift */; };
 		FAE831772C87F612000D6FC0 /* SavedTrackingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE831762C87F612000D6FC0 /* SavedTrackingScreen.swift */; };
@@ -83,7 +87,7 @@
 		FA050B6A2C712274000BB48A /* TrackingDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingDetailsView.swift; sourceTree = "<group>"; };
 		FA050B702C72D32C000BB48A /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		FA050B782C7413F8000BB48A /* TrackCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackCollectionViewCell.swift; sourceTree = "<group>"; };
-		FA050B7A2C741E8F000BB48A /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		FA050B7A2C741E8F000BB48A /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		FA63F20A2C6814E00098967A /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		FA63F20D2C6815730098967A /* CreateAccountScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountScreen.swift; sourceTree = "<group>"; };
 		FA63F2112C6991E60098967A /* MainTabBarControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarControllerViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +120,10 @@
 		FAC7A6E22C5FC2CB001D90BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FAC7A6E42C5FC2CB001D90BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FAC7A6EC2C600CE3001D90BE /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
+		FAD71A432CA638FE0006B285 /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
+		FAD71A442CA638FE0006B285 /* LoadingShared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingShared.swift; sourceTree = "<group>"; };
+		FAD71A452CA638FE0006B285 /* LoadingLottie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingLottie.swift; sourceTree = "<group>"; };
+		FAD71A492CA6397C0006B285 /* loading_animation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = loading_animation.json; path = /Users/macbook/Downloads/loading_animation.json; sourceTree = "<absolute>"; };
 		FAE831712C87E698000D6FC0 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		FAE831732C87EFFD000D6FC0 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		FAE831762C87F612000D6FC0 /* SavedTrackingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedTrackingScreen.swift; sourceTree = "<group>"; };
@@ -427,7 +435,7 @@
 		FA8621D42C9FD076007E3F7D /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				FA050B7A2C741E8F000BB48A /* ListViewModel.swift */,
+				FA050B7A2C741E8F000BB48A /* HomeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -453,6 +461,7 @@
 		FAC7A6D52C5FC2C9001D90BE /* JaChegou */ = {
 			isa = PBXGroup;
 			children = (
+				FAD71A422CA638DF0006B285 /* Loading */,
 				FAE831A12C911EC4000D6FC0 /* Resource */,
 				FAE8319E2C911E86000D6FC0 /* Service */,
 				FAE831702C87E680000D6FC0 /* Utils */,
@@ -466,6 +475,7 @@
 				FA63F2092C6813040098967A /* CreateAccountController */,
 				FAC7A6EA2C5FC57B001D90BE /* LoginController */,
 				FAC7A6D62C5FC2C9001D90BE /* AppDelegate.swift */,
+				FAD71A492CA6397C0006B285 /* loading_animation.json */,
 				FAC7A6D82C5FC2C9001D90BE /* SceneDelegate.swift */,
 				FAC7A6DF2C5FC2CB001D90BE /* Assets.xcassets */,
 				FAC7A6E12C5FC2CB001D90BE /* LaunchScreen.storyboard */,
@@ -492,6 +502,16 @@
 				FAC7A6EC2C600CE3001D90BE /* LoginScreen.swift */,
 			);
 			path = Screen;
+			sourceTree = "<group>";
+		};
+		FAD71A422CA638DF0006B285 /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				FAD71A432CA638FE0006B285 /* Loading.swift */,
+				FAD71A442CA638FE0006B285 /* LoadingShared.swift */,
+				FAD71A452CA638FE0006B285 /* LoadingLottie.swift */,
+			);
+			path = Loading;
 			sourceTree = "<group>";
 		};
 		FAE831702C87E680000D6FC0 /* Utils */ = {
@@ -626,6 +646,7 @@
 				FAC7A6E02C5FC2CB001D90BE /* Assets.xcassets in Resources */,
 				FA8621CD2C9F8443007E3F7D /* Track.json in Resources */,
 				FAC7A6E32C5FC2CB001D90BE /* Base in Resources */,
+				FAD71A4A2CA6397C0006B285 /* loading_animation.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -688,6 +709,9 @@
 				FAE831792C87F7EE000D6FC0 /* SavedTrackingViewController.swift in Sources */,
 				FAC7A6DB2C5FC2C9001D90BE /* LoginViewController.swift in Sources */,
 				FA63F2252C6997AF0098967A /* ProfileScreen.swift in Sources */,
+				FAD71A462CA638FE0006B285 /* Loading.swift in Sources */,
+				FAD71A472CA638FE0006B285 /* LoadingLottie.swift in Sources */,
+				FAD71A482CA638FE0006B285 /* LoadingShared.swift in Sources */,
 				032A17EF2C97AEF6001000E0 /* NotificationViewModel.swift in Sources */,
 				FAE8317E2C891753000D6FC0 /* SavedTrackingTableViewCell.swift in Sources */,
 				FAE831722C87E698000D6FC0 /* UIColor+Extension.swift in Sources */,
@@ -705,7 +729,7 @@
 				FA63F2192C6994AD0098967A /* HomeViewController.swift in Sources */,
 				032A17F72C97B3B9001000E0 /* TrackingModel.swift in Sources */,
 				FA8621D12C9FBAA0007E3F7D /* TrackingService.swift in Sources */,
-				FA050B7B2C741E8F000BB48A /* ListViewModel.swift in Sources */,
+				FA050B7B2C741E8F000BB48A /* HomeViewModel.swift in Sources */,
 				039BBD9F2C8DEDDB00B74E27 /* RecoverPasswordViewController.swift in Sources */,
 				FA050B712C72D32C000BB48A /* Track.swift in Sources */,
 				032BD1C02C972104000A0E9B /* LoginViewModel.swift in Sources */,

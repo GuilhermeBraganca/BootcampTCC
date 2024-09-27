@@ -10,22 +10,44 @@ import UIKit
 class TrackingViewController: UIViewController {
     
     var screen: TrackingScreen?
-    var viewModel: TrackingViewModel?
+    var viewModel: TrackingViewModel = TrackingViewModel()
+    var loading: Loading?
     
     override func loadView() {
-        // Cria o modelo inicial
-        let model = TrackingModel(trackingCode: "", orderDescription: "")
-        let track = Track(image: "", description: "", trackingNumber: "", date: "", events: [Events(event: "", date: "")])
-        
-        viewModel = TrackingViewModel(model: model, track: track)
-        
         screen = TrackingScreen()
         view = screen
-        screen?.viewModel = viewModel
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+      screen?.delegate = self
+      viewModel.delegate = self
+      loading = Loading(viewController: self)
     }
+}
+
+extension TrackingViewController: TrackingScreenProtocol {
+  func tapped() {
+    viewModel.saveTrackingData(code: screen?.trackingCodeTextField.text ?? "", description: screen?.orderDescriptionTextField.text ?? "")
+  }
+}
+
+extension TrackingViewController: TrackingViewModelProtocol {
+    func loading(start: Bool) {
+        if start {
+          LoadingLottie.shared.start(message: "Carregando...")
+        } else {
+            LoadingLottie.shared.stop()
+        }
+      }
+    
+    
+  func success() {
+
+  }
+  
+  func failure(errorMessage: String) {
+
+  }
 }
 

@@ -77,11 +77,11 @@ class TrackCollectionViewCell: UICollectionViewCell {
         ])
     }
     
-    func setupCell(item: Track) {
-        descLabel.text = item.description
-        dateLabel.text = item.date
-        itemImageView.image = UIImage(named: item.image)
-    }
+  func setupCell(item: TrackingDTO) {
+    descLabel.text = item.code
+    dateLabel.text = item.description
+    itemImageView.image = UIImage(named: "TrackImage")
+  }
 
 }
 

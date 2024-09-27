@@ -8,6 +8,7 @@ target 'JaChegou' do
 	pod 'FirebaseAuth'
 	pod 'FirebaseFirestore'
 	pod 'IQKeyboardManagerSwift'
+  pod 'lottie-ios'
 
 end
 
