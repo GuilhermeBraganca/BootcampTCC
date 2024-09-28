@@ -15,7 +15,6 @@
 		032BD1C72C972A91000A0E9B /* RecoverPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032BD1C62C972A91000A0E9B /* RecoverPasswordViewModel.swift */; };
 		034C3CE12C7415B400E9EDA5 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034C3CE02C7415B400E9EDA5 /* Product.swift */; };
 		034C3CE32C7415EA00E9EDA5 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034C3CE22C7415EA00E9EDA5 /* ProductTableViewCell.swift */; };
-		03513EDA2C9E24C000DC4F2B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 03513ED92C9E24C000DC4F2B /* GoogleService-Info.plist */; };
 		039BBD9F2C8DEDDB00B74E27 /* RecoverPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039BBD9E2C8DEDDB00B74E27 /* RecoverPasswordViewController.swift */; };
 		039BBDA12C8DF14F00B74E27 /* RecoverPasswordScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039BBDA02C8DF14F00B74E27 /* RecoverPasswordScreen.swift */; };
 		4DC36FF9B8592F46A8526743 /* Pods_JaChegou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3857A1A11737408CE4583553 /* Pods_JaChegou.framework */; };
@@ -25,6 +24,8 @@
 		FA050B712C72D32C000BB48A /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA050B702C72D32C000BB48A /* Track.swift */; };
 		FA050B792C7413F9000BB48A /* TrackCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA050B782C7413F8000BB48A /* TrackCollectionViewCell.swift */; };
 		FA050B7B2C741E8F000BB48A /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA050B7A2C741E8F000BB48A /* HomeViewModel.swift */; };
+		FA62D0172CA845A100080A62 /* TrackingInfoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA62D0152CA845A100080A62 /* TrackingInfoResponse.swift */; };
+		FA62D0202CA84EE100080A62 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA62D01F2CA84EE100080A62 /* GoogleService-Info.plist */; };
 		FA63F20B2C6814E00098967A /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63F20A2C6814E00098967A /* CreateAccountViewController.swift */; };
 		FA63F20E2C6815730098967A /* CreateAccountScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63F20D2C6815730098967A /* CreateAccountScreen.swift */; };
 		FA63F2122C6991E60098967A /* MainTabBarControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63F2112C6991E60098967A /* MainTabBarControllerViewController.swift */; };
@@ -48,7 +49,6 @@
 		FA8621CB2C9F7FBB007E3F7D /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8621CA2C9F7FBB007E3F7D /* NetworkError.swift */; };
 		FA8621CD2C9F8443007E3F7D /* Track.json in Resources */ = {isa = PBXBuildFile; fileRef = FA8621CC2C9F8443007E3F7D /* Track.json */; };
 		FA8621D12C9FBAA0007E3F7D /* TrackingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8621D02C9FBAA0007E3F7D /* TrackingService.swift */; };
-		FA8621D32C9FBC12007E3F7D /* TrackingInfoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8621D22C9FBC12007E3F7D /* TrackingInfoResponse.swift */; };
 		FAC7A6D72C5FC2C9001D90BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC7A6D62C5FC2C9001D90BE /* AppDelegate.swift */; };
 		FAC7A6D92C5FC2C9001D90BE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC7A6D82C5FC2C9001D90BE /* SceneDelegate.swift */; };
 		FAC7A6DB2C5FC2C9001D90BE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC7A6DA2C5FC2C9001D90BE /* LoginViewController.swift */; };
@@ -78,7 +78,6 @@
 		032BD1C62C972A91000A0E9B /* RecoverPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverPasswordViewModel.swift; sourceTree = "<group>"; };
 		034C3CE02C7415B400E9EDA5 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		034C3CE22C7415EA00E9EDA5 /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
-		03513ED92C9E24C000DC4F2B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		039BBD9E2C8DEDDB00B74E27 /* RecoverPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverPasswordViewController.swift; sourceTree = "<group>"; };
 		039BBDA02C8DF14F00B74E27 /* RecoverPasswordScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverPasswordScreen.swift; sourceTree = "<group>"; };
 		3857A1A11737408CE4583553 /* Pods_JaChegou.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JaChegou.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,6 +89,8 @@
 		FA050B702C72D32C000BB48A /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		FA050B782C7413F8000BB48A /* TrackCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackCollectionViewCell.swift; sourceTree = "<group>"; };
 		FA050B7A2C741E8F000BB48A /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		FA62D0152CA845A100080A62 /* TrackingInfoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingInfoResponse.swift; sourceTree = "<group>"; };
+		FA62D01F2CA84EE100080A62 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FA63F20A2C6814E00098967A /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		FA63F20D2C6815730098967A /* CreateAccountScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountScreen.swift; sourceTree = "<group>"; };
 		FA63F2112C6991E60098967A /* MainTabBarControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarControllerViewController.swift; sourceTree = "<group>"; };
@@ -152,15 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				032A17F62C97B3B9001000E0 /* TrackingModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		032BD1C12C97276B000A0E9B /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				032A17F62C97B3B9001000E0 /* TrackingModel.swift */,
-				FA8621D22C9FBC12007E3F7D /* TrackingInfoResponse.swift */,
+				FA62D0152CA845A100080A62 /* TrackingInfoResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -250,6 +243,14 @@
 				FAE8319C2C8E46E4000D6FC0 /* EmptyTrackingCollectionViewCell.swift */,
 			);
 			path = CollectionViewCell;
+			sourceTree = "<group>";
+		};
+		FA62D0142CA6616900080A62 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				FA8621D22C9FBC12007E3F7D /* TrackingInfoResponse.swift */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		FA63F2092C6813040098967A /* CreateAccountController */ = {
@@ -457,6 +458,7 @@
 				FAC7A6D42C5FC2C9001D90BE /* Products */,
 				0F091FF760E10BB2F0E96410 /* Pods */,
 				63471BD4A34191E27F592C51 /* Frameworks */,
+				FA62D0142CA6616900080A62 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -485,11 +487,11 @@
 				FA63F2092C6813040098967A /* CreateAccountController */,
 				FAC7A6EA2C5FC57B001D90BE /* LoginController */,
 				FAC7A6D62C5FC2C9001D90BE /* AppDelegate.swift */,
+				FA62D01F2CA84EE100080A62 /* GoogleService-Info.plist */,
 				FAD71A492CA6397C0006B285 /* loading_animation.json */,
 				FAC7A6D82C5FC2C9001D90BE /* SceneDelegate.swift */,
 				FAC7A6DF2C5FC2CB001D90BE /* Assets.xcassets */,
 				FAC7A6E12C5FC2CB001D90BE /* LaunchScreen.storyboard */,
-				03513ED92C9E24C000DC4F2B /* GoogleService-Info.plist */,
 				FAC7A6E42C5FC2CB001D90BE /* Info.plist */,
 			);
 			path = JaChegou;
@@ -656,6 +658,7 @@
 			files = (
 				FAC7A6E02C5FC2CB001D90BE /* Assets.xcassets in Resources */,
 				FA8621CD2C9F8443007E3F7D /* Track.json in Resources */,
+				FA62D0202CA84EE100080A62 /* GoogleService-Info.plist in Resources */,
 				FAC7A6E32C5FC2CB001D90BE /* Base in Resources */,
 				FAD71A4A2CA6397C0006B285 /* loading_animation.json in Resources */,
 			);
@@ -736,7 +739,6 @@
 				FAC7A6ED2C600CE3001D90BE /* LoginScreen.swift in Sources */,
 				FA8621C52C9F7F37007E3F7D /* Parameters.swift in Sources */,
 				FA8621CB2C9F7FBB007E3F7D /* NetworkError.swift in Sources */,
-				FA8621D32C9FBC12007E3F7D /* TrackingInfoResponse.swift in Sources */,
 				FA63F2192C6994AD0098967A /* HomeViewController.swift in Sources */,
 				032A17F72C97B3B9001000E0 /* TrackingModel.swift in Sources */,
 				FA8621D12C9FBAA0007E3F7D /* TrackingService.swift in Sources */,
@@ -750,6 +752,7 @@
 				FA8621B92C9F7DE7007E3F7D /* LocalFileReader.swift in Sources */,
 				FA8621B52C9F7DB4007E3F7D /* APIClient.swift in Sources */,
 				FA8621B62C9F7DB4007E3F7D /* HTTPClient.swift in Sources */,
+				FA62D0172CA845A100080A62 /* TrackingInfoResponse.swift in Sources */,
 				FA63F2282C6998180098967A /* NotificationControllerViewController.swift in Sources */,
 				FA8621BC2C9F7E3C007E3F7D /* NetworkLogger.swift in Sources */,
 				032BD1C52C97295D000A0E9B /* LoginModel.swift in Sources */,
