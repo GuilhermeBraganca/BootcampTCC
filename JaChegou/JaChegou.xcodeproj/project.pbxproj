@@ -24,7 +24,7 @@
 		FA050B712C72D32C000BB48A /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA050B702C72D32C000BB48A /* Track.swift */; };
 		FA050B792C7413F9000BB48A /* TrackCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA050B782C7413F8000BB48A /* TrackCollectionViewCell.swift */; };
 		FA050B7B2C741E8F000BB48A /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA050B7A2C741E8F000BB48A /* HomeViewModel.swift */; };
-		FA2E04462CAE0DC100C8B506 /* loadingAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = FA2E04452CAE0DC100C8B506 /* loadingAnimation.json */; };
+		FA2E04482CAE13EB00C8B506 /* loadingAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = FA2E04472CAE13EB00C8B506 /* loadingAnimation.json */; };
 		FA62D0172CA845A100080A62 /* TrackingInfoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA62D0152CA845A100080A62 /* TrackingInfoResponse.swift */; };
 		FA62D0202CA84EE100080A62 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA62D01F2CA84EE100080A62 /* GoogleService-Info.plist */; };
 		FA62D0222CAA150000080A62 /* TrackIncomplete.json in Resources */ = {isa = PBXBuildFile; fileRef = FA62D0212CAA150000080A62 /* TrackIncomplete.json */; };
@@ -91,7 +91,7 @@
 		FA050B702C72D32C000BB48A /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		FA050B782C7413F8000BB48A /* TrackCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackCollectionViewCell.swift; sourceTree = "<group>"; };
 		FA050B7A2C741E8F000BB48A /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
-		FA2E04452CAE0DC100C8B506 /* loadingAnimation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = loadingAnimation.json; path = /Users/macbook/ProgramacaoIOS/BootcampTCC/JaChegou/JaChegou/loadingAnimation.json; sourceTree = "<absolute>"; };
+		FA2E04472CAE13EB00C8B506 /* loadingAnimation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = loadingAnimation.json; sourceTree = "<group>"; };
 		FA62D0152CA845A100080A62 /* TrackingInfoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingInfoResponse.swift; sourceTree = "<group>"; };
 		FA62D01F2CA84EE100080A62 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FA62D0212CAA150000080A62 /* TrackIncomplete.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TrackIncomplete.json; sourceTree = "<group>"; };
@@ -492,7 +492,7 @@
 				FAC7A6EA2C5FC57B001D90BE /* LoginController */,
 				FAC7A6D62C5FC2C9001D90BE /* AppDelegate.swift */,
 				FA62D01F2CA84EE100080A62 /* GoogleService-Info.plist */,
-				FA2E04452CAE0DC100C8B506 /* loadingAnimation.json */,
+				FA2E04472CAE13EB00C8B506 /* loadingAnimation.json */,
 				FAC7A6D82C5FC2C9001D90BE /* SceneDelegate.swift */,
 				FAC7A6DF2C5FC2CB001D90BE /* Assets.xcassets */,
 				FAC7A6E12C5FC2CB001D90BE /* LaunchScreen.storyboard */,
@@ -667,7 +667,7 @@
 				FA8621CD2C9F8443007E3F7D /* TrackComplete.json in Resources */,
 				FA62D0202CA84EE100080A62 /* GoogleService-Info.plist in Resources */,
 				FAC7A6E32C5FC2CB001D90BE /* Base in Resources */,
-				FA2E04462CAE0DC100C8B506 /* loadingAnimation.json in Resources */,
+				FA2E04482CAE13EB00C8B506 /* loadingAnimation.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
