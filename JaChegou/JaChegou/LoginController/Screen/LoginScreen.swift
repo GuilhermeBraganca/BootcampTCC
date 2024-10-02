@@ -45,6 +45,7 @@ class LoginScreen: UIView {
         tf.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.borderStyle = .roundedRect
+        tf.text = "guilherme_braganca@hotmail.com"
         tf.backgroundColor = .customGray
         tf.textColor = .white
         tf.layer.cornerRadius = 15
@@ -71,6 +72,7 @@ class LoginScreen: UIView {
         tf.borderStyle = .roundedRect
         tf.isSecureTextEntry = true
         tf.backgroundColor = .customGray
+        tf.text = "123456"
         tf.textColor = .white
         tf.layer.cornerRadius = 15
         return tf

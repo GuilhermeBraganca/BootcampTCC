@@ -14,7 +14,7 @@ final class LoadingLottie: UIView {
   static let shared = LoadingLottie()
 
   lazy var animationLottieView: LottieAnimationView = {
-    let loading = LottieAnimationView(name: "loading_animation") // Espera o json com esse nome
+    let loading = LottieAnimationView(name: "loadingAnimation") // Espera o json com esse nome
     loading.translatesAutoresizingMaskIntoConstraints = false
     loading.loopMode = .loop
     loading.backgroundColor = .black.withAlphaComponent(0.8)

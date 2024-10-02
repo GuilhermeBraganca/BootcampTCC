@@ -27,8 +27,22 @@ class TrackingViewController: UIViewController {
 }
 
 extension TrackingViewController: TrackingScreenProtocol {
+    
   func tapped() {
-    viewModel.saveTrackingData(code: screen?.trackingCodeTextField.text ?? "", description: screen?.orderDescriptionTextField.text ?? "")
+      guard let orderDescription: String = screen?.orderDescriptionTextField.text,
+            let trackingCode: String = screen?.trackingCodeTextField.text,
+                !orderDescription.isEmpty,
+                !trackingCode.isEmpty else {
+          self.showOKAlert(title: "Atenção!", message: "Por favor, preencha todos os campos")
+      return
+      }
+      
+      if (trackingCode == "NM455753072BR"){
+          viewModel.saveMockTrackingData(code: trackingCode, description: orderDescription)
+      }else{
+          viewModel.saveTrackingData(code: trackingCode, description: orderDescription)
+      }
+      
   }
 }
 

@@ -19,12 +19,12 @@ class TrackingViewModel {
 
   func saveTrackingData(code: String, description: String) {
     delegate?.loading(start: true)
-    TrackingService.fetchTrackingList(code: "NM455753071BR") { [weak self] result in
+    TrackingService.fetchTrackingList(code: code) { [weak self] result in
       guard let self else { return }
       delegate?.loading(start: false)
       switch result {
       case .success(let success):
-        handlerTrackingResponse(code: "NM455753071BR", description: description, list: success)
+        handlerTrackingResponse(code: code, description: description, list: success)
       case .failure(let failure):
         delegate?.failure(errorMessage: failure.errorDescription ?? "")
         return
@@ -32,7 +32,21 @@ class TrackingViewModel {
         
     }
   }
-
+    func saveMockTrackingData(code: String, description: String) {
+      delegate?.loading(start: true)
+      LocalFileReader.loadJSON(fileName: "TrackIncomplete", type: [TrackingInfoResponse].self) { [weak self] result in
+        guard let self else { return }
+        delegate?.loading(start: false)
+        switch result {
+        case .success(let success):
+          handlerTrackingResponse(code: code, description: description, list: success)
+        case .failure(let failure):
+          delegate?.failure(errorMessage: failure.errorDescription ?? "")
+          return
+        }
+          
+      }
+    }
   func handlerTrackingResponse(code: String, description: String, list: [TrackingInfoResponse]) {
     let track = TrackingDTO(code: code, description: description, trackingList: list)
     configDecodableListTrackingDTO(track: track)

@@ -16,7 +16,7 @@ protocol SavedTrackingTableViewCellProtocol: AnyObject {
 class SavedTrackingTableViewCell: UITableViewCell {
     
     static var identifier = String(describing: SavedTrackingTableViewCell.self)
-    var track: Track?
+    //var track: Track?
     weak var delegate: SavedTrackingTableViewCellProtocol?
     
     
@@ -56,6 +56,7 @@ class SavedTrackingTableViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 12)
         label.textColor = .white
+        label.numberOfLines = 2
         label.textAlignment = .left
         return label
     }()
@@ -74,8 +75,8 @@ class SavedTrackingTableViewCell: UITableViewCell {
     
     func addElements() {
         contentView.addSubview(eventLabel)
-        contentView.addSubview(dateLabel)
         contentView.addSubview(descriptionEventLabel)
+        contentView.addSubview(dateLabel)
         contentView.addSubview(descriptionDateLabel)
         
     }
@@ -86,27 +87,29 @@ class SavedTrackingTableViewCell: UITableViewCell {
             eventLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             eventLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
 
-            descriptionEventLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            // Posiciona descriptionEventLabel na mesma linha, mas assegura que não sobreponha o eventLabel
+            descriptionEventLabel.centerYAnchor.constraint(equalTo: eventLabel.centerYAnchor), // Alinha verticalmente com eventLabel
             descriptionEventLabel.leadingAnchor.constraint(equalTo: eventLabel.trailingAnchor, constant: 10),
             descriptionEventLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
 
-            dateLabel.topAnchor.constraint(equalTo: eventLabel.bottomAnchor, constant: 10),  // Corrige para ficar abaixo de eventLabel
+            // Posiciona o dateLabel abaixo do eventLabel
+            dateLabel.topAnchor.constraint(equalTo: eventLabel.bottomAnchor, constant: 10),
             dateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            dateLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
+            dateLabel.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -10),
 
-            descriptionDateLabel.topAnchor.constraint(equalTo: dateLabel.topAnchor),  // Deixe-os alinhados verticalmente
+            // Posiciona descriptionDateLabel alinhado com dateLabel e respeita o contentView.bottomAnchor
+            descriptionDateLabel.topAnchor.constraint(equalTo: dateLabel.topAnchor),
             descriptionDateLabel.leadingAnchor.constraint(equalTo: descriptionEventLabel.leadingAnchor),
             descriptionDateLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
             descriptionDateLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
-
         ])
         
     }
     
-    func setupCell(events: Events) {
+    func setupCell(events: TrackingInfoResponse) {
         
-        descriptionEventLabel.text = "\(events.event)"
-        descriptionDateLabel.text = "\(events.date)"
+        descriptionEventLabel.text = "\(events.descricao ?? "")"
+        descriptionDateLabel.text = "\(events.data ?? "")"
         
     }
 }

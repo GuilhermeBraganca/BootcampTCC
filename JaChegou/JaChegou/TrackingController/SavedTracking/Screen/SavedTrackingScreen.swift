@@ -14,7 +14,7 @@ protocol SavedTrackingScreenProtocol: AnyObject {
 
 class SavedTrackingScreen: UIView {
     
-    var track: Track?
+    var track: TrackingDTO?
     weak var delegate: SavedTrackingScreenProtocol?
     
     lazy var headerView: HeaderView = {
@@ -63,7 +63,7 @@ class SavedTrackingScreen: UIView {
         return tableView
     }()
     
-    lazy var deleteAllNotificationsButton: UIButton = {
+    lazy var deleteTracking: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Excluir todas notificações", for: .normal)
@@ -105,11 +105,11 @@ class SavedTrackingScreen: UIView {
         addElements()
         configConstraints()
     }
-    func setupSavedTrackingLabels(track: Track){
+    func setupSavedTrackingLabels(track: TrackingDTO){
         self.track = track
-        productImageView.image = UIImage(systemName: track.image)
+        productImageView.image = UIImage(systemName: "truck.box.fill")
         descriptionLabel.text = track.description
-        trackingNumberLabel.text = track.trackingNumber
+        trackingNumberLabel.text = track.code
     }
     func configTableViewProtocols(delegate: UITableViewDelegate, dataSource: UITableViewDataSource) {
         tableView.delegate = delegate
@@ -127,7 +127,7 @@ class SavedTrackingScreen: UIView {
         addSubview(descriptionLabel)
         addSubview(trackingNumberLabel)
         addSubview(tableView)
-        addSubview(deleteAllNotificationsButton)
+        addSubview(deleteTracking)
         
         
     }
@@ -163,10 +163,10 @@ class SavedTrackingScreen: UIView {
             tableView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             
-            deleteAllNotificationsButton.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 0),
-            deleteAllNotificationsButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            deleteAllNotificationsButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            deleteAllNotificationsButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -10),
+            deleteTracking.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 0),
+            deleteTracking.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            deleteTracking.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            deleteTracking.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -10),
             
         ])
     }

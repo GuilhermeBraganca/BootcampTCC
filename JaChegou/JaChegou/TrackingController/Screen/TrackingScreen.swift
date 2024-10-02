@@ -41,6 +41,7 @@ class TrackingScreen: UIView {
         tf.borderStyle = .roundedRect
         tf.backgroundColor = .customGray
         tf.textColor = .white
+        tf.text = "NM455753071BR"
         tf.layer.cornerRadius = 20
         return tf
     }()

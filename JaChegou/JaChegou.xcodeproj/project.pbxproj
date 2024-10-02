@@ -24,8 +24,11 @@
 		FA050B712C72D32C000BB48A /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA050B702C72D32C000BB48A /* Track.swift */; };
 		FA050B792C7413F9000BB48A /* TrackCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA050B782C7413F8000BB48A /* TrackCollectionViewCell.swift */; };
 		FA050B7B2C741E8F000BB48A /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA050B7A2C741E8F000BB48A /* HomeViewModel.swift */; };
+		FA2E04462CAE0DC100C8B506 /* loadingAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = FA2E04452CAE0DC100C8B506 /* loadingAnimation.json */; };
 		FA62D0172CA845A100080A62 /* TrackingInfoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA62D0152CA845A100080A62 /* TrackingInfoResponse.swift */; };
 		FA62D0202CA84EE100080A62 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA62D01F2CA84EE100080A62 /* GoogleService-Info.plist */; };
+		FA62D0222CAA150000080A62 /* TrackIncomplete.json in Resources */ = {isa = PBXBuildFile; fileRef = FA62D0212CAA150000080A62 /* TrackIncomplete.json */; };
+		FA62D0242CAA18BE00080A62 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA62D0232CAA18BE00080A62 /* UIViewController.swift */; };
 		FA63F20B2C6814E00098967A /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63F20A2C6814E00098967A /* CreateAccountViewController.swift */; };
 		FA63F20E2C6815730098967A /* CreateAccountScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63F20D2C6815730098967A /* CreateAccountScreen.swift */; };
 		FA63F2122C6991E60098967A /* MainTabBarControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63F2112C6991E60098967A /* MainTabBarControllerViewController.swift */; };
@@ -47,7 +50,7 @@
 		FA8621C52C9F7F37007E3F7D /* Parameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8621C42C9F7F37007E3F7D /* Parameters.swift */; };
 		FA8621C82C9F7F64007E3F7D /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8621C72C9F7F64007E3F7D /* HTTPMethod.swift */; };
 		FA8621CB2C9F7FBB007E3F7D /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8621CA2C9F7FBB007E3F7D /* NetworkError.swift */; };
-		FA8621CD2C9F8443007E3F7D /* Track.json in Resources */ = {isa = PBXBuildFile; fileRef = FA8621CC2C9F8443007E3F7D /* Track.json */; };
+		FA8621CD2C9F8443007E3F7D /* TrackComplete.json in Resources */ = {isa = PBXBuildFile; fileRef = FA8621CC2C9F8443007E3F7D /* TrackComplete.json */; };
 		FA8621D12C9FBAA0007E3F7D /* TrackingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8621D02C9FBAA0007E3F7D /* TrackingService.swift */; };
 		FAC7A6D72C5FC2C9001D90BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC7A6D62C5FC2C9001D90BE /* AppDelegate.swift */; };
 		FAC7A6D92C5FC2C9001D90BE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC7A6D82C5FC2C9001D90BE /* SceneDelegate.swift */; };
@@ -58,7 +61,6 @@
 		FAD71A462CA638FE0006B285 /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD71A432CA638FE0006B285 /* Loading.swift */; };
 		FAD71A472CA638FE0006B285 /* LoadingLottie.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD71A452CA638FE0006B285 /* LoadingLottie.swift */; };
 		FAD71A482CA638FE0006B285 /* LoadingShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD71A442CA638FE0006B285 /* LoadingShared.swift */; };
-		FAD71A4A2CA6397C0006B285 /* loading_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = FAD71A492CA6397C0006B285 /* loading_animation.json */; };
 		FAE831722C87E698000D6FC0 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE831712C87E698000D6FC0 /* UIColor+Extension.swift */; };
 		FAE831742C87EFFD000D6FC0 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE831732C87EFFD000D6FC0 /* UITextField+Extension.swift */; };
 		FAE831772C87F612000D6FC0 /* SavedTrackingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE831762C87F612000D6FC0 /* SavedTrackingScreen.swift */; };
@@ -89,8 +91,11 @@
 		FA050B702C72D32C000BB48A /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		FA050B782C7413F8000BB48A /* TrackCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackCollectionViewCell.swift; sourceTree = "<group>"; };
 		FA050B7A2C741E8F000BB48A /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		FA2E04452CAE0DC100C8B506 /* loadingAnimation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = loadingAnimation.json; path = /Users/macbook/ProgramacaoIOS/BootcampTCC/JaChegou/JaChegou/loadingAnimation.json; sourceTree = "<absolute>"; };
 		FA62D0152CA845A100080A62 /* TrackingInfoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingInfoResponse.swift; sourceTree = "<group>"; };
 		FA62D01F2CA84EE100080A62 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FA62D0212CAA150000080A62 /* TrackIncomplete.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TrackIncomplete.json; sourceTree = "<group>"; };
+		FA62D0232CAA18BE00080A62 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		FA63F20A2C6814E00098967A /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		FA63F20D2C6815730098967A /* CreateAccountScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountScreen.swift; sourceTree = "<group>"; };
 		FA63F2112C6991E60098967A /* MainTabBarControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarControllerViewController.swift; sourceTree = "<group>"; };
@@ -112,7 +117,7 @@
 		FA8621C42C9F7F37007E3F7D /* Parameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parameters.swift; sourceTree = "<group>"; };
 		FA8621C72C9F7F64007E3F7D /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		FA8621CA2C9F7FBB007E3F7D /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
-		FA8621CC2C9F8443007E3F7D /* Track.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Track.json; sourceTree = "<group>"; };
+		FA8621CC2C9F8443007E3F7D /* TrackComplete.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TrackComplete.json; sourceTree = "<group>"; };
 		FA8621D02C9FBAA0007E3F7D /* TrackingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingService.swift; sourceTree = "<group>"; };
 		FA8621D22C9FBC12007E3F7D /* TrackingInfoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingInfoResponse.swift; sourceTree = "<group>"; };
 		FAC7A6D32C5FC2C9001D90BE /* JaChegou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JaChegou.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,7 +131,6 @@
 		FAD71A432CA638FE0006B285 /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
 		FAD71A442CA638FE0006B285 /* LoadingShared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingShared.swift; sourceTree = "<group>"; };
 		FAD71A452CA638FE0006B285 /* LoadingLottie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingLottie.swift; sourceTree = "<group>"; };
-		FAD71A492CA6397C0006B285 /* loading_animation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = loading_animation.json; path = /Users/macbook/Downloads/loading_animation.json; sourceTree = "<absolute>"; };
 		FAE831712C87E698000D6FC0 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		FAE831732C87EFFD000D6FC0 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		FAE831762C87F612000D6FC0 /* SavedTrackingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedTrackingScreen.swift; sourceTree = "<group>"; };
@@ -488,7 +492,7 @@
 				FAC7A6EA2C5FC57B001D90BE /* LoginController */,
 				FAC7A6D62C5FC2C9001D90BE /* AppDelegate.swift */,
 				FA62D01F2CA84EE100080A62 /* GoogleService-Info.plist */,
-				FAD71A492CA6397C0006B285 /* loading_animation.json */,
+				FA2E04452CAE0DC100C8B506 /* loadingAnimation.json */,
 				FAC7A6D82C5FC2C9001D90BE /* SceneDelegate.swift */,
 				FAC7A6DF2C5FC2CB001D90BE /* Assets.xcassets */,
 				FAC7A6E12C5FC2CB001D90BE /* LaunchScreen.storyboard */,
@@ -531,6 +535,7 @@
 			isa = PBXGroup;
 			children = (
 				FAE831712C87E698000D6FC0 /* UIColor+Extension.swift */,
+				FA62D0232CAA18BE00080A62 /* UIViewController.swift */,
 				FAE831732C87EFFD000D6FC0 /* UITextField+Extension.swift */,
 			);
 			path = Utils;
@@ -591,7 +596,8 @@
 		FAE831A22C911ED0000D6FC0 /* Json */ = {
 			isa = PBXGroup;
 			children = (
-				FA8621CC2C9F8443007E3F7D /* Track.json */,
+				FA8621CC2C9F8443007E3F7D /* TrackComplete.json */,
+				FA62D0212CAA150000080A62 /* TrackIncomplete.json */,
 			);
 			path = Json;
 			sourceTree = "<group>";
@@ -656,11 +662,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA62D0222CAA150000080A62 /* TrackIncomplete.json in Resources */,
 				FAC7A6E02C5FC2CB001D90BE /* Assets.xcassets in Resources */,
-				FA8621CD2C9F8443007E3F7D /* Track.json in Resources */,
+				FA8621CD2C9F8443007E3F7D /* TrackComplete.json in Resources */,
 				FA62D0202CA84EE100080A62 /* GoogleService-Info.plist in Resources */,
 				FAC7A6E32C5FC2CB001D90BE /* Base in Resources */,
-				FAD71A4A2CA6397C0006B285 /* loading_animation.json in Resources */,
+				FA2E04462CAE0DC100C8B506 /* loadingAnimation.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -760,6 +767,7 @@
 				FA050B6B2C712274000BB48A /* TrackingDetailsView.swift in Sources */,
 				FA63F22A2C69982F0098967A /* NotificationScreen.swift in Sources */,
 				FAE831A02C911EB1000D6FC0 /* ServiceMock.swift in Sources */,
+				FA62D0242CAA18BE00080A62 /* UIViewController.swift in Sources */,
 				032A17F92C97B3F7001000E0 /* TrackingViewModel.swift in Sources */,
 				FAC7A6D92C5FC2C9001D90BE /* SceneDelegate.swift in Sources */,
 				FAE831772C87F612000D6FC0 /* SavedTrackingScreen.swift in Sources */,
