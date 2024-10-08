@@ -147,6 +147,8 @@ class ProfileScreen: UIView {
     lazy var emailTextField: UITextField = {
         let emailTextField = UITextField()
         let placeholderText =  "teste@teste.com.br"
+        let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.white]
+        emailTextField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
         emailTextField.translatesAutoresizingMaskIntoConstraints = false
         emailTextField.borderStyle = .roundedRect
         emailTextField.backgroundColor = .customGray
@@ -159,6 +161,8 @@ class ProfileScreen: UIView {
     lazy var passwordTextField: UITextField = {
         let passwordTextField = UITextField()
         let placeholderText =  "Senha"
+        let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.white]
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
         passwordTextField.borderStyle = .roundedRect
         passwordTextField.backgroundColor = .customGray
@@ -171,6 +175,8 @@ class ProfileScreen: UIView {
     lazy var phoneTextField: UITextField = {
         let phoneTextField = UITextField()
         let placeholderText =  "(00) 9 9999-9999"
+        let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.white]
+        phoneTextField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
         phoneTextField.translatesAutoresizingMaskIntoConstraints = false
         phoneTextField.borderStyle = .roundedRect
         phoneTextField.backgroundColor = .customGray
@@ -182,6 +188,8 @@ class ProfileScreen: UIView {
     lazy var callendarTextField: UITextField = {
         let callendarTextField = UITextField()
         let placeholderText =  "00/00/0000"
+        let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.white]
+        callendarTextField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
         callendarTextField.translatesAutoresizingMaskIntoConstraints = false
         callendarTextField.borderStyle = .roundedRect
         callendarTextField.backgroundColor = .customGray
