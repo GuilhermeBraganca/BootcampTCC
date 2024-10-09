@@ -9,37 +9,50 @@ import Foundation
 import UIKit
 
 protocol HomeControllerScreenProtocol: AnyObject {
-  func changeTrackingType(type: TrackingType)
+    func changeTrackingType(type: TrackingType)
+    
 }
 
 class HomeControllerScreen: UIView {
-
-  weak var delegate: HomeControllerScreenProtocol?
+    
+    weak var delegate: HomeControllerScreenProtocol?
     
     lazy var headerView: HeaderView = {
         let view = HeaderView(title: "Rastreamentos", image: UIImage(named: "worldImage"))
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    lazy var trackingLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Rastreamentos"
-        label.numberOfLines = 1
-        label.textColor = .white
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.boldSystemFont(ofSize: 30)
-        return label
-    }()
+    //    lazy var trackingLabel: UILabel = {
+    //        let label = UILabel()
+    //        label.text = "Rastreamentos"
+    //        label.numberOfLines = 1
+    //        label.textColor = .white
+    //        label.translatesAutoresizingMaskIntoConstraints = false
+    //        label.font = UIFont.boldSystemFont(ofSize: 30)
+    //        return label
+    //    }()
     
-    lazy var searchBarView: SearchBarView = {
-        let view = SearchBarView()
+    lazy var searchBarView: UISearchBar = {
+        let view = UISearchBar()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .customGray
-        view.layer.cornerRadius = 30
-        view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowOpacity = 0.1
-        view.layer.shadowOffset = CGSize(width: 0, height: 2)
-        view.layer.shadowRadius = 8
+        view.placeholder = "Pesquise pela descrição:"
+        
+        // Remove a imagem de fundo padrão para poder customizar o fundo
+        view.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
+        
+        // Define o fundo preto
+        view.backgroundColor = .black
+        
+        // Acessa o campo de texto diretamente como UISearchTextField
+        let textField = view.searchTextField
+        textField.backgroundColor = .black  // Fundo do campo de texto preto
+        textField.textColor = .white        // Texto em branco para contraste
+        textField.tintColor = .white        // Cor do cursor
+        textField.attributedPlaceholder = NSAttributedString(
+            string: "Pesquise pela descrição:",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray]  // Placeholder em cinza claro
+        )
+        
         return view
     }()
     
@@ -73,9 +86,9 @@ class HomeControllerScreen: UIView {
     
     @objc private func segmentChanged() {
         if segmentedControl.selectedSegmentIndex == 0 {
-          delegate?.changeTrackingType(type: .transporting)
+            delegate?.changeTrackingType(type: .transporting)
         } else {
-          delegate?.changeTrackingType(type: .completed)
+            delegate?.changeTrackingType(type: .completed)
         }
     }
     
@@ -85,6 +98,10 @@ class HomeControllerScreen: UIView {
         addElements()
         configConstraints()
         
+    }
+    
+    func configSearchBarProtocol(delegate: UISearchBarDelegate) {
+        searchBarView.delegate = delegate
     }
     
     required init?(coder: NSCoder) {
@@ -99,8 +116,8 @@ class HomeControllerScreen: UIView {
     }
     
     func configCollectionViewProtocols(delegate: UICollectionViewDelegate, dataSource: UICollectionViewDataSource) {
-      collectionView.delegate = delegate
-      collectionView.dataSource = dataSource
+        collectionView.delegate = delegate
+        collectionView.dataSource = dataSource
     }
     
     func configConstraints(){

@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string>AIzaSyDANQjeyLFeasIFlp7IlP5gf-yalJPJQSU</string>
+	<string>AIzaSyB1l-1K5km7d3VUOBcvrpDPVOT0MsJ41qc</string>
 	<key>GCM_SENDER_ID</key>
-	<string>233826818679</string>
+	<string>748818022223</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>bootcampIOS.JaChegou</string>
 	<key>PROJECT_ID</key>
-	<string>jachegou-d242c</string>
+	<string>tccjachegou</string>
 	<key>STORAGE_BUCKET</key>
-	<string>jachegou-d242c.appspot.com</string>
+	<string>tccjachegou.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:233826818679:ios:942e8f63c6998c2a1bc472</string>
+	<string>1:748818022223:ios:8bc0ecf544b05495328f3a</string>
 </dict>
 </plist>

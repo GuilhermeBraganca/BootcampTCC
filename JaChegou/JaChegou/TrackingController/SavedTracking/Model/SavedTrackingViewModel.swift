@@ -12,22 +12,22 @@ import UIKit
 public class SavedTrackingViewModel{
     
     
-    private var trackingData = TrackingDTO(code: "", description: "", trackingList: [])
+    private var trackingData = Track(image: "", description: "", trackingNumber: "", date: "", events: [])
                                                                                                                                     
     var numberOfRowsInSection: Int {
-        return trackingData.trackingList.count
+        return trackingData.events.count
     }
     func removeAll() {
         //trackingData = Track(image: "", description: "", trackingNumber: "", date: "", events: [])
     }
-    func loadTrackingData(tracking: TrackingDTO) {
+    func loadTrackingData(tracking: Track) {
         trackingData = tracking
     }
-    func loadCurrentTrack() -> TrackingDTO {
+    func loadCurrentTrack() -> Track {
         return trackingData
     }
-    func loadCurrentDetail(indexPath: IndexPath) -> TrackingInfoResponse {
-        return  trackingData.trackingList[indexPath.row]
+    func loadCurrentDetail(indexPath: IndexPath) -> Events {
+        return  trackingData.events[indexPath.row]
     }
     
 }

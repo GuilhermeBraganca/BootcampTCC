@@ -108,10 +108,10 @@ extension LoginViewController: LoginScreenProtocol {
             guard error == nil else {
                 self.showAlert(title: "Atenção! Dados de autenticação fornecida está incorreta ou expirou!", message: error?.localizedDescription ?? "")
                 return
-        }
+            }
             print("Show, login feito com sucesso!")
-        
-        // Após confirmação do e-mail e senha, direcionar usuário para MainTabBarControllerViewController
+            
+            // Após confirmação do e-mail e senha, direcionar usuário para MainTabBarControllerViewController
             self.navigationController?.pushViewController(MainTabBarControllerViewController(), animated: true)
         }
     }

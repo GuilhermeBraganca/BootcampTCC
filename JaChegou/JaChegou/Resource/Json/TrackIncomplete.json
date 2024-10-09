@@ -1,40 +1,5 @@
 [
     {
-        "data": "2024-07-02T08:22:12",
-        "descricao": "Objeto em transferência - por favor aguarde",
-        "unidade": "Unidade de Tratamento",
-        "cidade": "CAJAMAR",
-        "uf": "SP"
-    },
-    {
-        "data": "2024-07-01T00:50:49",
-        "descricao": "Objeto em transferência - por favor aguarde",
-        "unidade": "Unidade de Logística Integrada",
-        "cidade": "SAO PAULO",
-        "uf": "SP"
-    },
-    {
-        "data": "2024-07-01T00:50:48",
-        "descricao": "Saída do Centro Internacional",
-        "unidade": "Unidade de Logística Integrada",
-        "cidade": "SAO PAULO",
-        "uf": "SP"
-    },
-    {
-        "data": "2024-06-30T12:48:37",
-        "descricao": "Objeto recebido pelos Correios do Brasil",
-        "unidade": "Unidade de Logística Integrada",
-        "cidade": "SAO PAULO",
-        "uf": "SP"
-    },
-    {
-        "data": "2024-06-21T17:29:12",
-        "descricao": "Análise concluída - importação autorizada",
-        "unidade": "Unidade de Logística Integrada",
-        "cidade": "SAO PAULO",
-        "uf": "SP"
-    },
-    {
         "data": "2024-06-20T19:13:49",
         "descricao": "Objeto postado",
         "unidade": "País",

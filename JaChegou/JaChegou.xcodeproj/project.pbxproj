@@ -25,8 +25,12 @@
 		FA050B792C7413F9000BB48A /* TrackCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA050B782C7413F8000BB48A /* TrackCollectionViewCell.swift */; };
 		FA050B7B2C741E8F000BB48A /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA050B7A2C741E8F000BB48A /* HomeViewModel.swift */; };
 		FA2E04482CAE13EB00C8B506 /* loadingAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = FA2E04472CAE13EB00C8B506 /* loadingAnimation.json */; };
+		FA2E044A2CB2247600C8B506 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA2E04492CB2247600C8B506 /* GoogleService-Info.plist */; };
+		FA2E044C2CB2323F00C8B506 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2E044B2CB2323F00C8B506 /* Events.swift */; };
+		FA2E04522CB2341200C8B506 /* FirebaseFirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2E04512CB2341200C8B506 /* FirebaseFirestoreManager.swift */; };
+		FA2E04542CB2376D00C8B506 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2E04532CB2376D00C8B506 /* User.swift */; };
+		FA2E04582CB37E3400C8B506 /* TrackIncomplete2.json in Resources */ = {isa = PBXBuildFile; fileRef = FA2E04572CB37E3400C8B506 /* TrackIncomplete2.json */; };
 		FA62D0172CA845A100080A62 /* TrackingInfoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA62D0152CA845A100080A62 /* TrackingInfoResponse.swift */; };
-		FA62D0202CA84EE100080A62 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA62D01F2CA84EE100080A62 /* GoogleService-Info.plist */; };
 		FA62D0222CAA150000080A62 /* TrackIncomplete.json in Resources */ = {isa = PBXBuildFile; fileRef = FA62D0212CAA150000080A62 /* TrackIncomplete.json */; };
 		FA62D0242CAA18BE00080A62 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA62D0232CAA18BE00080A62 /* UIViewController.swift */; };
 		FA63F20B2C6814E00098967A /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63F20A2C6814E00098967A /* CreateAccountViewController.swift */; };
@@ -92,8 +96,12 @@
 		FA050B782C7413F8000BB48A /* TrackCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackCollectionViewCell.swift; sourceTree = "<group>"; };
 		FA050B7A2C741E8F000BB48A /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		FA2E04472CAE13EB00C8B506 /* loadingAnimation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = loadingAnimation.json; sourceTree = "<group>"; };
+		FA2E04492CB2247600C8B506 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FA2E044B2CB2323F00C8B506 /* Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
+		FA2E04512CB2341200C8B506 /* FirebaseFirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFirestoreManager.swift; sourceTree = "<group>"; };
+		FA2E04532CB2376D00C8B506 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		FA2E04572CB37E3400C8B506 /* TrackIncomplete2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TrackIncomplete2.json; sourceTree = "<group>"; };
 		FA62D0152CA845A100080A62 /* TrackingInfoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingInfoResponse.swift; sourceTree = "<group>"; };
-		FA62D01F2CA84EE100080A62 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FA62D0212CAA150000080A62 /* TrackIncomplete.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TrackIncomplete.json; sourceTree = "<group>"; };
 		FA62D0232CAA18BE00080A62 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		FA63F20A2C6814E00098967A /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
@@ -235,6 +243,8 @@
 		FA050B6F2C72D305000BB48A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FA2E04532CB2376D00C8B506 /* User.swift */,
+				FA2E044B2CB2323F00C8B506 /* Events.swift */,
 				FA050B702C72D32C000BB48A /* Track.swift */,
 			);
 			path = Model;
@@ -247,6 +257,30 @@
 				FAE8319C2C8E46E4000D6FC0 /* EmptyTrackingCollectionViewCell.swift */,
 			);
 			path = CollectionViewCell;
+			sourceTree = "<group>";
+		};
+		FA2E044F2CB233EE00C8B506 /* Firesbase */ = {
+			isa = PBXGroup;
+			children = (
+				FA2E04502CB233FF00C8B506 /* FirebaseFirestore */,
+			);
+			path = Firesbase;
+			sourceTree = "<group>";
+		};
+		FA2E04502CB233FF00C8B506 /* FirebaseFirestore */ = {
+			isa = PBXGroup;
+			children = (
+				FA2E04512CB2341200C8B506 /* FirebaseFirestoreManager.swift */,
+			);
+			path = FirebaseFirestore;
+			sourceTree = "<group>";
+		};
+		FA2E04592CB4BBBD00C8B506 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FAE8317F2C891EE4000D6FC0 /* SavedTrackingViewModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		FA62D0142CA6616900080A62 /* Recovered References */ = {
@@ -477,6 +511,7 @@
 		FAC7A6D52C5FC2C9001D90BE /* JaChegou */ = {
 			isa = PBXGroup;
 			children = (
+				FA2E044F2CB233EE00C8B506 /* Firesbase */,
 				FAD71A422CA638DF0006B285 /* Loading */,
 				FAE831A12C911EC4000D6FC0 /* Resource */,
 				FAE8319E2C911E86000D6FC0 /* Service */,
@@ -491,9 +526,9 @@
 				FA63F2092C6813040098967A /* CreateAccountController */,
 				FAC7A6EA2C5FC57B001D90BE /* LoginController */,
 				FAC7A6D62C5FC2C9001D90BE /* AppDelegate.swift */,
-				FA62D01F2CA84EE100080A62 /* GoogleService-Info.plist */,
 				FA2E04472CAE13EB00C8B506 /* loadingAnimation.json */,
 				FAC7A6D82C5FC2C9001D90BE /* SceneDelegate.swift */,
+				FA2E04492CB2247600C8B506 /* GoogleService-Info.plist */,
 				FAC7A6DF2C5FC2CB001D90BE /* Assets.xcassets */,
 				FAC7A6E12C5FC2CB001D90BE /* LaunchScreen.storyboard */,
 				FAC7A6E42C5FC2CB001D90BE /* Info.plist */,
@@ -544,10 +579,10 @@
 		FAE8317A2C891413000D6FC0 /* SavedTracking */ = {
 			isa = PBXGroup;
 			children = (
+				FA2E04592CB4BBBD00C8B506 /* Model */,
 				FAE8317C2C891729000D6FC0 /* Cell */,
 				FAE8317B2C891470000D6FC0 /* Screen */,
 				FAE831782C87F7EE000D6FC0 /* SavedTrackingViewController.swift */,
-				FAE8317F2C891EE4000D6FC0 /* SavedTrackingViewModel.swift */,
 			);
 			path = SavedTracking;
 			sourceTree = "<group>";
@@ -598,6 +633,7 @@
 			children = (
 				FA8621CC2C9F8443007E3F7D /* TrackComplete.json */,
 				FA62D0212CAA150000080A62 /* TrackIncomplete.json */,
+				FA2E04572CB37E3400C8B506 /* TrackIncomplete2.json */,
 			);
 			path = Json;
 			sourceTree = "<group>";
@@ -662,12 +698,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA2E04582CB37E3400C8B506 /* TrackIncomplete2.json in Resources */,
 				FA62D0222CAA150000080A62 /* TrackIncomplete.json in Resources */,
 				FAC7A6E02C5FC2CB001D90BE /* Assets.xcassets in Resources */,
 				FA8621CD2C9F8443007E3F7D /* TrackComplete.json in Resources */,
-				FA62D0202CA84EE100080A62 /* GoogleService-Info.plist in Resources */,
 				FAC7A6E32C5FC2CB001D90BE /* Base in Resources */,
 				FA2E04482CAE13EB00C8B506 /* loadingAnimation.json in Resources */,
+				FA2E044A2CB2247600C8B506 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -724,9 +761,11 @@
 				FAE831742C87EFFD000D6FC0 /* UITextField+Extension.swift in Sources */,
 				FA63F20E2C6815730098967A /* CreateAccountScreen.swift in Sources */,
 				FA8621BF2C9F7F07007E3F7D /* EmptyResponse.swift in Sources */,
+				FA2E044C2CB2323F00C8B506 /* Events.swift in Sources */,
 				FAE8319D2C8E46E4000D6FC0 /* EmptyTrackingCollectionViewCell.swift in Sources */,
 				FA63F2202C6996BD0098967A /* TrackingScreen.swift in Sources */,
 				034C3CE32C7415EA00E9EDA5 /* ProductTableViewCell.swift in Sources */,
+				FA2E04542CB2376D00C8B506 /* User.swift in Sources */,
 				FAE831792C87F7EE000D6FC0 /* SavedTrackingViewController.swift in Sources */,
 				FAC7A6DB2C5FC2C9001D90BE /* LoginViewController.swift in Sources */,
 				FA63F2252C6997AF0098967A /* ProfileScreen.swift in Sources */,
@@ -743,6 +782,7 @@
 				FA63F21B2C6995780098967A /* HomeControllerScreen.swift in Sources */,
 				FA050B792C7413F9000BB48A /* TrackCollectionViewCell.swift in Sources */,
 				FA63F2122C6991E60098967A /* MainTabBarControllerViewController.swift in Sources */,
+				FA2E04522CB2341200C8B506 /* FirebaseFirestoreManager.swift in Sources */,
 				FAC7A6ED2C600CE3001D90BE /* LoginScreen.swift in Sources */,
 				FA8621C52C9F7F37007E3F7D /* Parameters.swift in Sources */,
 				FA8621CB2C9F7FBB007E3F7D /* NetworkError.swift in Sources */,

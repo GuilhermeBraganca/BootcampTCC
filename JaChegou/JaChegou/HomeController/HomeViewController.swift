@@ -13,29 +13,68 @@ class HomeViewController: UIViewController {
     var screen: HomeControllerScreen?
     var viewModel: HomeViewModel = HomeViewModel()
     
+    
     override func viewWillAppear(_ animated: Bool) {
-        if let data = UserDefaults.standard.object(forKey: "ListTrackingDTO") as? Data {
-            if let track = try? JSONDecoder().decode([TrackingDTO].self, from: data) {
-                viewModel.allTrackList = track
-                updateCollectionView()
+        
+        
+        // Defina o ViewController como delegate do ViewModel
+        viewModel.delegate = self
+        
+        // Buscar os tracks do usuário no Firestore
+        FirestoreManager.shared.getTracksFromUser { [weak self] (result: Result<[Track], Error>) in
+            
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                switch result {
+                case .success(let tracks):
+                    // Notifique o ViewModel que os dados foram carregados
+                    self.viewModel.allTrackList = tracks
+                    self.viewModel.updateTrackFilter() // Atualiza o trackFilter no ViewModel
+                    
+                    // Atualize a CollectionView com os novos dados
+                    self.updateCollectionView()
+                    
+                case .failure(let error):
+                    print("Erro ao recuperar os dados: \(error.localizedDescription)")
+                }
             }
         }
+        
     }
     
     override func loadView() {
         screen = HomeControllerScreen()
         view = screen
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: UIView())
+        configProtocols()
+    }
+    func configProtocols() {
         screen?.delegate = self
         screen?.configCollectionViewProtocols(delegate: self, dataSource: self)
+        screen?.configSearchBarProtocol(delegate: self)
     }
     
     func updateCollectionView() {
         // Atualiza a UICollectionView com os novos dados
+        screen?.collectionView.reloadData()
+    }
+}
+extension HomeViewController: HomeViewModelDelegate {
+    func didLoadTracks(tracks: [Track]) {
+        self.viewModel.allTrackList = tracks
+        self.viewModel.updateTrackFilter()
+        self.updateCollectionView()
+    }
+    
+    
+}
+extension HomeViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        viewModel.filterTrack(text: searchText)
         screen?.collectionView.reloadData()
     }
 }
@@ -44,6 +83,13 @@ extension HomeViewController: HomeControllerScreenProtocol {
     func changeTrackingType(type: TrackingType) {
         viewModel.setNewTrackingType(newType: type)
         screen?.collectionView.reloadData()
+    }
+    func loading(start: Bool) {
+        if start {
+            LoadingLottie.shared.start(message: "Carregando...")
+        } else {
+            LoadingLottie.shared.stop()
+        }
     }
 }
 
@@ -86,7 +132,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
         } else {
             
             let savedTrackingVC = SavedTrackingViewController()
-            savedTrackingVC.track = viewModel.trackingList[indexPath.row]
+            savedTrackingVC.track = viewModel.loadCurrentDetail(indexPath: indexPath)
             let navigationController = UINavigationController(rootViewController: savedTrackingVC)
             present(navigationController, animated: false, completion: nil)
         }

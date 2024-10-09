@@ -28,13 +28,38 @@ class SavedTrackingTableViewCell: UITableViewCell {
         label.textColor = .white
         label.text = "Evento:"
         label.textAlignment = .left
+        label.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
+
+        return label
+    }()
+    lazy var cityLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.numberOfLines = 2
+        label.textColor = .white
+        label.text = "Cidade:"
+        label.textAlignment = .left
+        label.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
+
+        return label
+    }()
+    lazy var descriptionCityLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.numberOfLines = 2
+        label.textColor = .white
+        label.text = ""
+        label.textAlignment = .left
+        label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         return label
     }()
     lazy var dateLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.boldSystemFont(ofSize: 14)
-        label.text = "Data:"
+        label.text = "Data:    "
         label.textColor = .white
         label.textAlignment = .left
         return label
@@ -45,9 +70,10 @@ class SavedTrackingTableViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 12)
         label.lineBreakMode = .byWordWrapping
-        label.numberOfLines = 2
+        label.numberOfLines = 0
         label.textColor = .white
         label.textAlignment = .left
+        label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         return label
     }()
     
@@ -56,7 +82,7 @@ class SavedTrackingTableViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 12)
         label.textColor = .white
-        label.numberOfLines = 2
+        label.numberOfLines = 0
         label.textAlignment = .left
         return label
     }()
@@ -75,41 +101,56 @@ class SavedTrackingTableViewCell: UITableViewCell {
     
     func addElements() {
         contentView.addSubview(eventLabel)
-        contentView.addSubview(descriptionEventLabel)
         contentView.addSubview(dateLabel)
+        contentView.addSubview(cityLabel)
+        contentView.addSubview(descriptionEventLabel)
         contentView.addSubview(descriptionDateLabel)
+        contentView.addSubview(descriptionCityLabel)
         
     }
     
     func configConstraints() {
         NSLayoutConstraint.activate([
-            
-            eventLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            eventLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+                eventLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+                eventLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+                
+                descriptionEventLabel.centerYAnchor.constraint(equalTo: eventLabel.centerYAnchor),
+                descriptionEventLabel.leadingAnchor.constraint(equalTo: eventLabel.trailingAnchor, constant: 10),
+                descriptionEventLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+                
+                dateLabel.topAnchor.constraint(equalTo: eventLabel.bottomAnchor, constant: 10),
+                dateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
 
-            // Posiciona descriptionEventLabel na mesma linha, mas assegura que não sobreponha o eventLabel
-            descriptionEventLabel.centerYAnchor.constraint(equalTo: eventLabel.centerYAnchor), // Alinha verticalmente com eventLabel
-            descriptionEventLabel.leadingAnchor.constraint(equalTo: eventLabel.trailingAnchor, constant: 10),
-            descriptionEventLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-
-            // Posiciona o dateLabel abaixo do eventLabel
-            dateLabel.topAnchor.constraint(equalTo: eventLabel.bottomAnchor, constant: 10),
-            dateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            dateLabel.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -10),
-
-            // Posiciona descriptionDateLabel alinhado com dateLabel e respeita o contentView.bottomAnchor
-            descriptionDateLabel.topAnchor.constraint(equalTo: dateLabel.topAnchor),
-            descriptionDateLabel.leadingAnchor.constraint(equalTo: descriptionEventLabel.leadingAnchor),
-            descriptionDateLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            descriptionDateLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
-        ])
+                descriptionDateLabel.centerYAnchor.constraint(equalTo: dateLabel.centerYAnchor),
+                descriptionDateLabel.leadingAnchor.constraint(equalTo: dateLabel.trailingAnchor, constant: 10),
+                descriptionDateLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+                
+                cityLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 10),
+                cityLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+                
+                descriptionCityLabel.centerYAnchor.constraint(equalTo: cityLabel.centerYAnchor),
+                descriptionCityLabel.leadingAnchor.constraint(equalTo: cityLabel.trailingAnchor, constant: 10),
+                descriptionCityLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+                
+                // descriptionDateLabel limita o contentView.bottomAnchor
+                descriptionCityLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
+            ])
+        }
+    
+    func setupCell(events: Events) {
+        
+        descriptionEventLabel.text = events.descricao?.trimLeft() ?? ""
+        descriptionDateLabel.text = events.data?.trimLeft() ?? ""
+        descriptionCityLabel.text = events.cidade?.trimLeft() ?? ""
         
     }
-    
-    func setupCell(events: TrackingInfoResponse) {
-        
-        descriptionEventLabel.text = "\(events.descricao ?? "")"
-        descriptionDateLabel.text = "\(events.data ?? "")"
-        
+}
+
+extension String {
+    func trimLeft() -> String {
+        guard let range = rangeOfCharacter(from: .whitespacesAndNewlines.inverted) else {
+            return ""
+        }
+        return String(self[range.lowerBound...])
     }
 }

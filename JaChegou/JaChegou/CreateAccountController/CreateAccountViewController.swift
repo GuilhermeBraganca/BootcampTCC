@@ -10,7 +10,7 @@ import UIKit
 class CreateAccountViewController: UIViewController {
     
     var screen: CreateAccountScreen?
-    
+    var user: User = User(id: "", email: "", name: "", password: "", birthDate: "", track: [])
     override func loadView() {
         screen = CreateAccountScreen()
         view = screen
@@ -46,7 +46,21 @@ extension CreateAccountViewController: CreateAccountScreenProtocol {
         print(#function)
     }
     func tappedLoginButton() {
-        print(#function)
+        user.birthDate = screen?.birthDateTextField.text ?? ""
+        user.email = screen?.emailTextField.text ?? ""
+        user.password = screen?.passwordTextField.text ?? ""
+        user.name = screen?.nameTextField.text ?? ""
+        
+        FirestoreManager.shared.createUserWithEmailAndPassword(user: user) { result in
+          switch result {
+            case .success:
+              print ("criado com sucesso")
+            //FirestoreManager.shared.saveJsonDataOnFirebase()
+          case .failure(let error):
+            print(error.localizedDescription)
+          }
+        }
+        
     }
 }
 
