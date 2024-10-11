@@ -10,6 +10,7 @@ import UIKit
 class ProfileControllerViewController: UIViewController {
     
     var screen: ProfileScreen?
+    var viewModel: ProfileViewModel = ProfileViewModel()
     
     override func loadView() {
         screen = ProfileScreen()
@@ -23,8 +24,15 @@ class ProfileControllerViewController: UIViewController {
     
     func configProtocols() {
         screen?.delegate = self
+        screen?.emailTextField.delegate = self
+        screen?.passwordTextField.delegate = self
     }
-    
+}
+
+extension ProfileControllerViewController: ProfileScreenProtocol {
+    func tappedEditButton() {
+        print(#function)
+    }
     func tappedOutOfAccountButton() {
         print(#function)
     }
@@ -33,10 +41,8 @@ class ProfileControllerViewController: UIViewController {
         print(#function)
     }
 }
-
-extension ProfileControllerViewController: ProfileScreenProtocol {
-    
-    func tappedEditButton() {
+extension ProfileControllerViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return true
     }
-        
 }
