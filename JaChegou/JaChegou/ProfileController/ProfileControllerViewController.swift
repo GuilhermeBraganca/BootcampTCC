@@ -10,6 +10,7 @@ import UIKit
 class ProfileControllerViewController: UIViewController {
     
     var screen: ProfileScreen?
+    var viewModel: ProfileViewModel = ProfileViewModel()
     
     override func loadView() {
         screen = ProfileScreen()
