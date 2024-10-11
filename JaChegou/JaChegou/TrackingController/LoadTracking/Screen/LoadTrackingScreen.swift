@@ -7,15 +7,15 @@
 
 import UIKit
 
-protocol SavedTrackingScreenProtocol: AnyObject {
+protocol LoadTrackingScreenProtocol: AnyObject {
     func tappedDeleteButton()
     func tappedBackButton()
 }
 
-class SavedTrackingScreen: UIView {
+class LoadTrackingScreen: UIView {
     
     var track: Track?
-    weak var delegate: SavedTrackingScreenProtocol?
+    weak var delegate: LoadTrackingScreenProtocol?
     
     lazy var headerView: HeaderView = {
         let view = HeaderView(title: "", image: UIImage(named: "worldImage"))
@@ -36,7 +36,7 @@ class SavedTrackingScreen: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.boldSystemFont(ofSize: 18)
         label.text = "Sapatos"
-        label.numberOfLines = 2
+        label.numberOfLines = 0
         label.textColor = .white
         label.textAlignment = .left
         return label
@@ -56,10 +56,12 @@ class SavedTrackingScreen: UIView {
     lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(SavedTrackingTableViewCell.self, forCellReuseIdentifier: SavedTrackingTableViewCell.identifier)
+        tableView.register(LoadTrackingTableViewCell.self, forCellReuseIdentifier: LoadTrackingTableViewCell.identifier)
         tableView.backgroundColor = .customGray
         tableView.layer.cornerRadius = 8
-        tableView.separatorStyle = .none
+
+        tableView.separatorStyle = .singleLine
+        tableView.separatorColor = UIColor.lightGray
         return tableView
     }()
     
@@ -121,6 +123,7 @@ class SavedTrackingScreen: UIView {
     }
     
     func addElements() {
+        
         addSubview(headerView)
         addSubview(closeSavedTrackingButton)
         addSubview(productImageView)
@@ -139,8 +142,8 @@ class SavedTrackingScreen: UIView {
             headerView.trailingAnchor.constraint(equalTo: trailingAnchor),
             headerView.heightAnchor.constraint(equalToConstant: 150),
             
-            closeSavedTrackingButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 30),
-            closeSavedTrackingButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            closeSavedTrackingButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 0),
+            closeSavedTrackingButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
             closeSavedTrackingButton.heightAnchor.constraint(equalToConstant: 36),
             closeSavedTrackingButton.widthAnchor.constraint(equalToConstant: 36),
             
@@ -159,7 +162,7 @@ class SavedTrackingScreen: UIView {
             trackingNumberLabel.leadingAnchor.constraint(equalTo: descriptionLabel.leadingAnchor),
             trackingNumberLabel.trailingAnchor.constraint(equalTo: descriptionLabel.trailingAnchor),
             
-            tableView.topAnchor.constraint(equalTo: productImageView.bottomAnchor, constant: 20),
+            tableView.topAnchor.constraint(equalTo: trackingNumberLabel.bottomAnchor, constant: 20),
             tableView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: deleteTracking.topAnchor, constant: -10),

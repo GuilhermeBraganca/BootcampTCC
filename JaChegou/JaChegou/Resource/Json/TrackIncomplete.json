@@ -12,5 +12,26 @@
         "unidade": "Unidade de Logística Integrada",
         "cidade": "SAO PAULO",
         "uf": "SP"
+    },
+    {
+        "data": "2024-06-22T14:31:02",
+        "descricao": "Informações enviadas para análise da autoridade aduaneira/órgãos anuentes",
+        "unidade": "Unidade de Logística Integrada",
+        "cidade": "IPATINGA",
+        "uf": "MG"
+    },
+    {
+        "data": "2024-06-22T14:31:02",
+        "descricao": "Informações enviadas para análise da autoridade aduaneira/órgãos anuentes",
+        "unidade": "Unidade de Logística Integrada",
+        "cidade": "CEL. FABRICIANO",
+        "uf": "MG"
+    },
+    {
+        "data": "2024-06-22T14:31:02",
+        "descricao": "Informações enviadas para análise da autoridade aduaneira/órgãos anuentes",
+        "unidade": "Unidade de Logística Integrada",
+        "cidade": "TIMOTEO",
+        "uf": "MG"
     }
 ]

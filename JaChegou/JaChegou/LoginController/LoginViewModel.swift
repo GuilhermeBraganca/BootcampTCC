@@ -8,6 +8,7 @@
 // LoginViewModel centraliza a validação de e-mail e senha e interação com a LoginViewController
 
 import Foundation
+import UIKit
 
 class LoginViewModel {
     var isLoginButtonEnabled: ((Bool) -> Void)? // Habilitar ou desabilitar o botão login
@@ -17,8 +18,9 @@ class LoginViewModel {
 
     // Função para validar o e-mail e a senha
     func validateLogin(email: String?, password: String?) {
-        let isEmailValid = isValidEmail(email)      // Valida o e-mail
-        let isPasswordValid = isValidPassword(password) // Valida a senha
+
+        let isEmailValid = UITextView.isValidEmail(email ?? "")      // Valida o e-mail
+        let isPasswordValid = UITextView.isValidPassword(password ?? "") // Valida a senha
         
         // Verifica qual campo está incorreto e exibe mensagem de erro
         if !isEmailValid {
@@ -37,19 +39,7 @@ class LoginViewModel {
         isLoginButtonEnabled?(isValid) // Atualiza o estado do botão de login
     }
     
-    // Função privada para validar o formato do e-mail
-    private func isValidEmail(_ email: String?) -> Bool {
-        guard let email = email, !email.isEmpty else { return false }
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}"
-        let emailPred = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
-        return emailPred.evaluate(with: email)
-    }
     
-    // Função para validar a senha
-    private func isValidPassword(_ password: String?) -> Bool {
-        guard let password = password, !password.isEmpty else { return false } // Retorna falso se a senha for nula ou vazia
-        return password.count >= 6 // Verifica se a senha tem pelo menos 6 caracteres
-    }
 }
 
 

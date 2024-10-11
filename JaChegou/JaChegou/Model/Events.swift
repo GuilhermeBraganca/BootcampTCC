@@ -6,7 +6,7 @@
 //
 
 
-struct Events : Codable {
+struct Events : Codable, Equatable {
     var data: String?
     var descricao: String?
     var unidade: String?

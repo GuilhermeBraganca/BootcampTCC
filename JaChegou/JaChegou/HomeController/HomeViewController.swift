@@ -131,9 +131,9 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
             }
         } else {
             
-            let savedTrackingVC = SavedTrackingViewController()
-            savedTrackingVC.track = viewModel.loadCurrentDetail(indexPath: indexPath)
-            let navigationController = UINavigationController(rootViewController: savedTrackingVC)
+            let LoadTrackingVC = LoadTrackingViewController()
+            LoadTrackingVC.track = viewModel.loadCurrentDetail(indexPath: indexPath)
+            let navigationController = UINavigationController(rootViewController: LoadTrackingVC)
             present(navigationController, animated: false, completion: nil)
         }
         

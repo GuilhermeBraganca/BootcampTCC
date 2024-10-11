@@ -9,15 +9,15 @@ import UIKit
 
 import UIKit
 
-protocol SavedTrackingTableViewCellProtocol: AnyObject {
+protocol LoadTrackingTableViewCellProtocol: AnyObject {
     func tappedDeleteNotification(product: Product?)
 }
 
-class SavedTrackingTableViewCell: UITableViewCell {
+class LoadTrackingTableViewCell: UITableViewCell {
     
-    static var identifier = String(describing: SavedTrackingTableViewCell.self)
+    static var identifier = String(describing: LoadTrackingTableViewCell.self)
     //var track: Track?
-    weak var delegate: SavedTrackingTableViewCellProtocol?
+    weak var delegate: LoadTrackingTableViewCellProtocol?
     
     
     lazy var eventLabel: UILabel = {

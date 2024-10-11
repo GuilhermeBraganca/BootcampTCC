@@ -207,7 +207,44 @@ class FirestoreManager {
             }
         }
     }
-    
+    func updateTrackToUser(track: Track, completion: @escaping (Result<Void,Error>) -> Void) {
+        
+        getUserDocument { result in
+            switch result {
+            case .success(let document):
+                do {
+                    var userData = try document.data(as: User.self)
+                    
+                    // Verifica se o track já existe
+                    if let index = userData.track.firstIndex(where: { $0.trackingNumber == track.trackingNumber }) {
+                        // Atualiza os eventos do rastreio existente
+                        userData.track[index].events = track.events
+                        
+                        // Atualiza o documento no Firestore
+                        try document.reference.setData(from: userData)
+                        
+                        // Retorna sucesso
+                        completion(.success(()))
+                    } else {
+                        // Se o rastreio não existir, adiciona um novo
+                        userData.track.append(track)
+                        
+                        // Atualiza o documento no Firestore
+                        try document.reference.setData(from: userData)
+                        
+                        // Retorna sucesso
+                        completion(.success(()))
+                    }
+                } catch {
+                    // Lida com erro na tentativa de atualizar o Firestore
+                    completion(.failure(error))
+                }
+            case .failure(let error):
+                // Lida com erro ao obter o documento do usuário
+                completion(.failure(error))
+            }
+        }
+    }
     func getTracksFromUser(completion: @escaping (Result<[Track],Error>) -> Void) {
         getUserDocument { result in
             switch result {

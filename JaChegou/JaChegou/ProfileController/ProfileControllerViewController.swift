@@ -39,16 +39,4 @@ extension ProfileControllerViewController: ProfileScreenProtocol {
     func tappedEditButton() {
     }
         
-//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-//        if let text = textField.text as? NSString {
-//            let newText = text.replacingCharacters(in: range, with: string)
-//            textField.text = newText
-//            if UITextView.isValidEmail(screen?.emailTextField.text ?? "") && UITextView.isValidPassword(screen?.passwordTextField.text ?? "") {
-//                tappedEditButton(isEnable: true)
-//            } else {
-//                tappedEditButton(isEnable: true)
-//            }
-//        }
-//        return false
-//    }
 }

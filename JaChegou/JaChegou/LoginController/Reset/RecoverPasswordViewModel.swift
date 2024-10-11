@@ -7,13 +7,14 @@
 
 import Foundation
 import FirebaseAuth
+import UIKit
 
 class RecoverPasswordViewModel {
     
     var showAlert: ((String, String) -> Void)?
     
     func recoverPassword(for email: String?) {
-        guard let email = email, isValidEmail(email) else {
+        guard let email = email, UITextView.isValidEmail(email) else {
             showAlert?("Erro", "Por favor, insira um e-mail válido.")
             return
         }
@@ -27,12 +28,6 @@ class RecoverPasswordViewModel {
         }
     }
     
-    private func isValidEmail(_ email: String?) -> Bool {
-        guard let email = email, !email.isEmpty else { return false }
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}"
-        let emailPred = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
-        return emailPred.evaluate(with: email)
-    }
 }
 
 
