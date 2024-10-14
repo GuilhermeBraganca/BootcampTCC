@@ -7,12 +7,16 @@
 
 import UIKit
 
+protocol LoadTrackingViewControllerDelegate: AnyObject {
+    func didDeleteTracking()
+}
+
 class LoadTrackingViewController: UIViewController {
     
     var screen: LoadTrackingScreen?
     var viewModel: LoadTrackingViewModel = LoadTrackingViewModel()
     var track: Track?
-    
+    weak var delegate: LoadTrackingViewControllerDelegate?
     
     override func loadView() {
         screen = LoadTrackingScreen()
@@ -41,27 +45,54 @@ class LoadTrackingViewController: UIViewController {
         
     }
     func deleteTracking() {
+        let alertController = UIAlertController(
+            title: "Deletar rastreio",
+            message: "Tem certeza de que deseja deletar o rastreio?",
+            preferredStyle: .alert
+        )
+        
+        // Ação "OK" para confirmar a exclusão
+        let okAction = UIAlertAction(title: "OK", style: .destructive) { [weak self] _ in
+            self?.deleteTrackingConfirmed()  // Chama o método para confirmar a exclusão
+        }
+        
+        // Ação "Cancelar" para desistir da exclusão
+        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
+        
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
+    func deleteTrackingConfirmed() {
         guard let track = track else { return }
         
         FirestoreManager.shared.deleteTrackFromUser(track: track) { [weak self] result in
             switch result {
             case .success:
-                // Exibe uma mensagem de confirmação e retorna à tela anterior
-                let alert = UIAlertController(title: "Sucesso", message: "O rastreio foi deletado.", preferredStyle: .alert)
+                let alert = UIAlertController(
+                    title: "Sucesso",
+                    message: "O rastreio foi deletado.",
+                    preferredStyle: .alert
+                )
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-                    self?.navigationController?.popViewController(animated: true) // Volta à tela anterior
+                    self?.delegate?.didDeleteTracking()
+                    self?.dismiss(animated: true, completion: nil)
                 }))
                 self?.present(alert, animated: true, completion: nil)
                 
+                
             case .failure(let error):
-                // Exibe uma mensagem de erro
-                let alert = UIAlertController(title: "Erro", message: "Falha ao deletar o rastreio: \(error.localizedDescription)", preferredStyle: .alert)
+                let alert = UIAlertController(
+                    title: "Erro",
+                    message: "Falha ao deletar o rastreio: \(error.localizedDescription)",
+                    preferredStyle: .alert
+                )
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self?.present(alert, animated: true, completion: nil)
             }
         }
     }
-    
 }
 
 extension LoadTrackingViewController: UITableViewDelegate, UITableViewDataSource {
@@ -79,7 +110,6 @@ extension LoadTrackingViewController: UITableViewDelegate, UITableViewDataSource
 }
 extension LoadTrackingViewController: LoadTrackingScreenProtocol{
     func tappedDeleteButton() {
-        print("passou aqui")
         deleteTracking()
     }
     

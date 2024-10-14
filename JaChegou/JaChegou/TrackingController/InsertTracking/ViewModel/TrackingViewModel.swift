@@ -68,16 +68,6 @@ class TrackingViewModel {
             }
         }
     }
-    
-    //    func configEncodableTrackingDTO(track: [Events]) {
-    //        let defaults = UserDefaults.standard
-    //        if let data = try? JSONEncoder().encode(track) {
-    //            defaults.set(data, forKey: "ListTrackingDTO")
-    //            delegate?.success()
-    //        } else {
-    //            delegate?.failure(errorMessage: "Error Encode")
-    //        }
-    //    }
 }
 
 extension NSNotification.Name {

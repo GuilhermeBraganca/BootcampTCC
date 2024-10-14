@@ -15,12 +15,26 @@ class HomeViewController: UIViewController {
     
     
     override func viewWillAppear(_ animated: Bool) {
-        
-        
-        // Defina o ViewController como delegate do ViewModel
         viewModel.delegate = self
+        getAllTrackFromUser()
+    }
+    
+    override func loadView() {
+        screen = HomeControllerScreen()
+        view = screen
         
-        // Buscar os tracks do usuário no Firestore
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configProtocols()
+    }
+    func configProtocols() {
+        screen?.delegate = self
+        screen?.configCollectionViewProtocols(delegate: self, dataSource: self)
+        screen?.configSearchBarProtocol(delegate: self)
+    }
+    func getAllTrackFromUser(){
         FirestoreManager.shared.getTracksFromUser { [weak self] (result: Result<[Track], Error>) in
             
             DispatchQueue.main.async {
@@ -39,27 +53,9 @@ class HomeViewController: UIViewController {
                 }
             }
         }
-        
-    }
-    
-    override func loadView() {
-        screen = HomeControllerScreen()
-        view = screen
-        
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        configProtocols()
-    }
-    func configProtocols() {
-        screen?.delegate = self
-        screen?.configCollectionViewProtocols(delegate: self, dataSource: self)
-        screen?.configSearchBarProtocol(delegate: self)
     }
     
     func updateCollectionView() {
-        // Atualiza a UICollectionView com os novos dados
         screen?.collectionView.reloadData()
     }
 }
@@ -92,7 +88,14 @@ extension HomeViewController: HomeControllerScreenProtocol {
         }
     }
 }
-
+extension HomeViewController: LoadTrackingViewControllerDelegate{
+    func didDeleteTracking() {
+        //viewModel.loadAllTrackingData()
+        getAllTrackFromUser()
+        
+    }
+    
+}
 
 extension HomeViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate {
     
@@ -133,6 +136,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
             
             let LoadTrackingVC = LoadTrackingViewController()
             LoadTrackingVC.track = viewModel.loadCurrentDetail(indexPath: indexPath)
+            LoadTrackingVC.delegate = self
             let navigationController = UINavigationController(rootViewController: LoadTrackingVC)
             present(navigationController, animated: false, completion: nil)
         }

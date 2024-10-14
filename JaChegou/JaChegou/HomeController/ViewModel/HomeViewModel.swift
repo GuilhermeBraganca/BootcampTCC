@@ -68,4 +68,21 @@ class HomeViewModel {
         return trackingType == .transporting ? trackingList[indexPath.row] : completeTrackList[indexPath.row]
     }
     
+    func loadAllTrackingData() {
+        
+        FirestoreManager.shared.getTracksFromUser { [weak self] (result: Result<[Track], Error>) in
+            
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                switch result {
+                case .success(let tracks):
+                    // Notifique o ViewModel que os dados foram carregados
+                    self.allTrackList = tracks
+                    
+                case .failure(let error):
+                    print("Erro ao recuperar os dados: \(error.localizedDescription)")
+                }
+            }
+        }
+    }
 }

@@ -42,7 +42,6 @@ extension TrackingViewController: TrackingScreenProtocol {
         }else{
             viewModel.saveTrackingData(code: trackingCode, description: orderDescription)
         }
-        
     }
 }
 
@@ -57,9 +56,23 @@ extension TrackingViewController: TrackingViewModelProtocol {
     
     
     func success() {
-        self.showOKAlert(title: "Sucesso", message: "Cadastro realizado com sucesso.")
-        screen?.trackingCodeTextField.text = ""
-        screen?.orderDescriptionTextField.text = ""
+        let alertController = UIAlertController(title: "Sucesso", message: "Cadastro realizado com sucesso.", preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: .default) { [weak self] _ in
+            guard let self else { return }
+            
+            self.screen?.trackingCodeTextField.text = ""
+            self.screen?.orderDescriptionTextField.text = ""
+            
+            if let tabBarController = self.tabBarController {
+                UIView.setAnimationsEnabled(false)
+                tabBarController.selectedIndex = 0
+                UIView.setAnimationsEnabled(true)
+            }
+        }
+        
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
     }
     
     func failure(errorMessage: String) {

@@ -88,6 +88,22 @@ class LoginViewController: UIViewController {
         screen?.loginButton.isEnabled = isEnable
         screen?.loginButton.backgroundColor = isEnable ? .systemBlue : .lightGray
     }
+    func switchToMainTabBarController() {
+        guard let windowScene = view.window?.windowScene else { return }
+        let mainTabBarController = MainTabBarControllerViewController()
+        let navigationController = UINavigationController(rootViewController: mainTabBarController)
+        if let window = windowScene.windows.first {
+            // Troca o rootViewController para o MainTabBarControllerViewController
+            window.rootViewController = navigationController
+            
+            // Adiciona uma animação de transição para tornar a mudança suave
+            UIView.transition(with: window,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: nil,
+                              completion: nil)
+        }
+    }
 }
 
 extension LoginViewController: LoginScreenProtocol {
@@ -111,8 +127,8 @@ extension LoginViewController: LoginScreenProtocol {
             }
             print("Show, login feito com sucesso!")
             
-            // Após confirmação do e-mail e senha, direcionar usuário para MainTabBarControllerViewController
-            self.navigationController?.pushViewController(MainTabBarControllerViewController(), animated: true)
+            switchToMainTabBarController()
+            //self.navigationController?.pushViewController(MainTabBarControllerViewController(), animated: true)
         }
     }
     
