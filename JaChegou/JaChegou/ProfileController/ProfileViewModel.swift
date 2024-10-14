@@ -23,13 +23,6 @@ struct ProfileViewModel {
         return passwordPred.evaluate(with: password)
     }
     
-    // Validação de telefone
-    func isValidPhone(_ phone: String) -> Bool {
-        let phonePattern = "\\(\\d{2}\\) \\d{1} \\d{4}-\\d{4}"  // Exemplo: (00) 9 9999-9999
-        let phonePred = NSPredicate(format: "SELF MATCHES %@", phonePattern)
-        return phonePred.evaluate(with: phone)
-    }
-    
     // Validação de data de nascimento
     func isValidDateOfBirth(_ date: String) -> Bool {
         let datePattern = "\\d{2}/\\d{2}/\\d{4}"  // Exemplo: 00/00/0000
