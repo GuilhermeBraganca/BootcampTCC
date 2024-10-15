@@ -20,4 +20,10 @@ extension UITextView {
         return passwordPred.evaluate(with: password)
     }
     
+    static func isValidConfirmPassword(_ password: String) -> Bool {
+        let passwordPattern = ".{6,}"
+        let passwordPred = NSPredicate(format: "SELF MATCHES %@", passwordPattern)
+        return passwordPred.evaluate(with: password)
+    }
+    
 }

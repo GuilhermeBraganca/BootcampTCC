@@ -4,13 +4,14 @@
 //
 //  Created by MacBook on 10/08/24.
 //
-import UIKit
 
+import UIKit
 
 class CreateAccountViewController: UIViewController {
     
     var screen: CreateAccountScreen?
-    var user: User = User(id: "", email: "", name: "", password: "", birthDate: "", track: [])
+    var viewModel: CreateAccountViewModel = CreateAccountViewModel()
+    
     override func loadView() {
         screen = CreateAccountScreen()
         view = screen
@@ -25,6 +26,9 @@ class CreateAccountViewController: UIViewController {
         screen?.delegate = self
         screen?.emailTextField.delegate = self
         screen?.passwordTextField.delegate = self
+        screen?.nameTextField.delegate = self
+        screen?.birthDateTextField.delegate = self
+        screen?.confirmPasswordTextField.delegate = self
     }
     
     func isEnabledLoginButton(isEnable: Bool) {
@@ -43,24 +47,30 @@ extension CreateAccountViewController: CreateAccountScreenProtocol {
     }
     
     func tappedRegisterButton() {
-        print(#function)
+        let loginVC = LoginViewController()
+        navigationController?.pushViewController(loginVC, animated: true)
     }
+    
     func tappedLoginButton() {
-        user.birthDate = screen?.birthDateTextField.text ?? ""
-        user.email = screen?.emailTextField.text ?? ""
-        user.password = screen?.passwordTextField.text ?? ""
-        user.name = screen?.nameTextField.text ?? ""
+        viewModel.user.birthDate = screen?.birthDateTextField.text ?? ""
+        viewModel.user.email = screen?.emailTextField.text ?? ""
+        viewModel.user.password = screen?.passwordTextField.text ?? ""
+        viewModel.user.name = screen?.nameTextField.text ?? ""
         
-        FirestoreManager.shared.createUserWithEmailAndPassword(user: user) { result in
-          switch result {
+        viewModel.createUser { [weak self] result in
+            switch result {
             case .success:
-              print ("criado com sucesso")
-            //FirestoreManager.shared.saveJsonDataOnFirebase()
-          case .failure(let error):
-            print(error.localizedDescription)
-          }
+                self?.successAlert()
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
         }
-        
+    }
+    
+    func successAlert() {
+        let alert = UIAlertController(title: "PARABÉNS", message: "Conta criada com sucesso!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
@@ -69,16 +79,19 @@ extension CreateAccountViewController: UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         print(#function)
         textField.layer.borderColor = UIColor.blue.cgColor
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if let text = textField.text as? NSString {
+        if let text = textField.text as NSString? {
             let newText = text.replacingCharacters(in: range, with: string)
             textField.text = newText
-            if UITextView.isValidEmail(screen?.emailTextField.text ?? "") && UITextView.isValidPassword(screen?.passwordTextField.text ?? "") {
+            if UITextView.isValidEmail(screen?.emailTextField.text ?? "") &&
+               UITextView.isValidPassword(screen?.passwordTextField.text ?? "") &&
+               UITextView.isValidConfirmPassword(screen?.confirmPasswordTextField.text ?? "") {
                 isEnabledLoginButton(isEnable: true)
             } else {
                 isEnabledLoginButton(isEnable: false)
@@ -86,5 +99,9 @@ extension CreateAccountViewController: UITextFieldDelegate {
         }
         return false
     }
-    
 }
+
+
+
+
+

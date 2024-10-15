@@ -17,6 +17,8 @@
 		034C3CE32C7415EA00E9EDA5 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034C3CE22C7415EA00E9EDA5 /* ProductTableViewCell.swift */; };
 		039BBD9F2C8DEDDB00B74E27 /* RecoverPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039BBD9E2C8DEDDB00B74E27 /* RecoverPasswordViewController.swift */; };
 		039BBDA12C8DF14F00B74E27 /* RecoverPasswordScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039BBDA02C8DF14F00B74E27 /* RecoverPasswordScreen.swift */; };
+		03D905402CBE1EDC00366760 /* CreateAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D9053F2CBE1EC600366760 /* CreateAccountModel.swift */; };
+		03D905422CBE1F6D00366760 /* CreateAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D905412CBE1F4800366760 /* CreateAccountViewModel.swift */; };
 		4DC36FF9B8592F46A8526743 /* Pods_JaChegou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3857A1A11737408CE4583553 /* Pods_JaChegou.framework */; };
 		FA050B5A2C6B02FE000BB48A /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA050B592C6B02FE000BB48A /* HeaderView.swift */; };
 		FA050B5E2C6C35F4000BB48A /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA050B5D2C6C35F4000BB48A /* SearchView.swift */; };
@@ -86,6 +88,8 @@
 		034C3CE22C7415EA00E9EDA5 /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
 		039BBD9E2C8DEDDB00B74E27 /* RecoverPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverPasswordViewController.swift; sourceTree = "<group>"; };
 		039BBDA02C8DF14F00B74E27 /* RecoverPasswordScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverPasswordScreen.swift; sourceTree = "<group>"; };
+		03D9053F2CBE1EC600366760 /* CreateAccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountModel.swift; sourceTree = "<group>"; };
+		03D905412CBE1F4800366760 /* CreateAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewModel.swift; sourceTree = "<group>"; };
 		3857A1A11737408CE4583553 /* Pods_JaChegou.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JaChegou.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		752170E0C8F51BC9D93738F6 /* Pods-JaChegou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JaChegou.debug.xcconfig"; path = "Target Support Files/Pods-JaChegou/Pods-JaChegou.debug.xcconfig"; sourceTree = "<group>"; };
 		83574C897EBF37BB48AF874D /* Pods-JaChegou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JaChegou.release.xcconfig"; path = "Target Support Files/Pods-JaChegou/Pods-JaChegou.release.xcconfig"; sourceTree = "<group>"; };
@@ -213,6 +217,14 @@
 			path = Reset;
 			sourceTree = "<group>";
 		};
+		03D9053E2CBE1EBA00366760 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				03D9053F2CBE1EC600366760 /* CreateAccountModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		0F091FF760E10BB2F0E96410 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -306,8 +318,10 @@
 		FA63F2092C6813040098967A /* CreateAccountController */ = {
 			isa = PBXGroup;
 			children = (
+				03D9053E2CBE1EBA00366760 /* Model */,
 				FA63F20C2C6815400098967A /* Screen */,
 				FA63F20A2C6814E00098967A /* CreateAccountViewController.swift */,
+				03D905412CBE1F4800366760 /* CreateAccountViewModel.swift */,
 			);
 			path = CreateAccountController;
 			sourceTree = "<group>";
@@ -781,6 +795,7 @@
 				FAD71A472CA638FE0006B285 /* LoadingLottie.swift in Sources */,
 				FAD71A482CA638FE0006B285 /* LoadingShared.swift in Sources */,
 				032A17EF2C97AEF6001000E0 /* NotificationViewModel.swift in Sources */,
+				03D905422CBE1F6D00366760 /* CreateAccountViewModel.swift in Sources */,
 				FAE8317E2C891753000D6FC0 /* LoadTrackingTableViewCell.swift in Sources */,
 				FAE831722C87E698000D6FC0 /* UIColor+Extension.swift in Sources */,
 				032BD1C72C972A91000A0E9B /* RecoverPasswordViewModel.swift in Sources */,
@@ -795,6 +810,7 @@
 				FA8621C52C9F7F37007E3F7D /* Parameters.swift in Sources */,
 				FA8621CB2C9F7FBB007E3F7D /* NetworkError.swift in Sources */,
 				FA63F2192C6994AD0098967A /* HomeViewController.swift in Sources */,
+				03D905402CBE1EDC00366760 /* CreateAccountModel.swift in Sources */,
 				032A17F72C97B3B9001000E0 /* TrackingModel.swift in Sources */,
 				FA8621D12C9FBAA0007E3F7D /* TrackingService.swift in Sources */,
 				FA050B7B2C741E8F000BB48A /* HomeViewModel.swift in Sources */,
