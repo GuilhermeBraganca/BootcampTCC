@@ -66,36 +66,28 @@ public class LoadTrackingViewModel{
     }
     func handleTrackingUpdates(track: Track, newEvents: [Events]) {
         // Obter apenas os novos eventos
-        let newUniqueEvents = getNewEvents(currentEvents: track.events, newEvents: newEvents)
-        
-        if !newUniqueEvents.isEmpty {
-
+        if track.events != newEvents {
+            // Atualiza os eventos no Firestore
             var updatedTrack = track
-            updatedTrack.events = newUniqueEvents // Sobrescreve os eventos com apenas os novos
-            
-            // Atualiza o rastreamento no Firestore com todos os eventos
-            FirestoreManager.shared.updateTrackToUser(track: trackingData) { [weak self] result in
+            updatedTrack.events = newEvents
+            // Atualiza o rastreio no Firestore
+            FirestoreManager.shared.updateTrackToUser(track: updatedTrack) { [weak self] result in
                 guard let self = self else { return }
                 
                 switch result {
                 case .success:
-                    // Atualiza o trackingData no ViewModel
-                    trackingData.events.append(contentsOf: newUniqueEvents) // Adiciona os novos eventos ao conjunto completo
-                    
-                    // Postar o updatedTrack no NotificationCenter (apenas os novos eventos)
-                    NotificationCenter.default.post(name: .updateTrack, object: updatedTrack)
-                    
+                    trackingData = updatedTrack
                     // Notifica o sucesso com mensagem de atualização
                     self.delegate?.success(message: "Novos eventos adicionados com sucesso!")
-                    
                 case .failure(let error):
                     self.delegate?.failure(errorMessage: error.localizedDescription)
                 }
             }
         } else {
-            // Não há novos eventos
-            self.delegate?.success(message: "Nenhuma atualização no rastreamento.") // Notifica que não houve mudanças
+            print("Nenhuma atualização no rastreamento.")
+            self.delegate?.success(message: "Nenhuma atualização no rastreamento.")
         }
+        
     }
     
     func getNewEvents(currentEvents: [Events], newEvents: [Events]) -> [Events] {

@@ -89,98 +89,30 @@ class FirestoreManager {
         }
     }
     
-    //  func saveJsonDataOnFirebase() {
-    //    // Primeira coisa é verificar se já existe os dados no firebase
-    //    getTrackFromFirebase { result in
-    //      switch result {
-    //      case .success(let places):
-    //        print(places)
-    //        print("Já existe os dados no firebase")
-    //      case .failure(_):
-    //        self.fetchPropertiesListMock { result in
-    //          switch result {
-    //          case .success(let properties):
-    //            self.saveJsonDataOnFirebase(properties: properties)
-    //          case .failure(_):
-    //            print("Erro ao buscar os dados")
-    //          }
-    //        }
-    //      }
-    //    }
-    //  }
-    
-    //  func saveJsonDataOnFirebase(properties: [PropertyDataModel]) {
-    //    let placesData = properties.compactMap({ try? Firestore.Encoder().encode($0) })
-    //    firestore.collection("main").document("places").setData(["placesList": placesData]) { error in
-    //      if let error {
-    //        print("Error saving data: \(error)")
-    //      } else {
-    //        print("Data saved successfully!")
-    //      }
-    //    }
-    //  }
-    //
-    //  func getTrackFromFirebase(completion: @escaping (Result<[Track],Error>) -> Void) {
-    //
-    //      let documentRef = firestore.collection("main").document("places")
-    //
-    //    documentRef.getDocument { document, error in
-    //
-    //      if let error {
-    //        completion(.failure(error))
-    //      }
-    //
-    //      guard let document, document.exists,
-    //            let placesData = document.data()?["placesList"] as? [[String: Any]] else {
-    //        let error = NSError(domain: "Error, placesList não encontrado", code: 500)
-    //        completion(.failure(error))
-    //        return
-    //      }
-    //
-    //      let places = placesData.compactMap({ return try? JSONDecoder().decode(PropertyDataModel.self, from: JSONSerialization.data(withJSONObject: $0))})
-    //
-    //      if places.isEmpty {
-    //        let error = NSError(domain: "Error, placesList está vazio", code: 500)
-    //        completion(.failure(error))
-    //      } else {
-    //        completion(.success(places))
-    //      }
-    //    }
-    //  }
-    //
-    //  func fetchPropertiesListMock(completion: @escaping (Result<[PropertyDataModel],Error>) -> Void) {
-    //    LocalFileReader.loadJSON(fileName: "place", type: [PropertyDataModel].self) { result in
-    //      switch result {
-    //      case .success(let properties):
-    //        completion(.success(properties))
-    //      case .failure(let error):
-    //        completion(.failure(error))
-    //      }
-    //    }
-    //  }
-    //
-    //  // Verificar se o meu place especifico é favorito!
-    //  func isPropertyFavorite(id: Int, completion: @escaping (Bool) -> Void) {
-    //    getUserDocument { result in
-    //      switch result {
-    //      case .success(let document):
-    //        do {
-    //          let userData = try document.data(as: User.self)
-    //          let isFavorite = userData.favorite.contains(id)
-    //          print("É favorito o id \(id): \(isFavorite)")
-    //          completion(isFavorite)
-    //        } catch {
-    //          print("Deu error")
-    //          completion(false)
-    //        }
-    //      case .failure:
-    //        print("Deu error")
-    //        completion(false)
-    //      }
-    //    }
-    //  }
-    //
-    //  // Adicionar/Remover favorito do BD
+    func deleteUserAccount(completion: @escaping (Result<Void, Error>) -> Void) {
+        // Obter o usuário autenticado atual
+        guard let user = Auth.auth().currentUser else {
+            completion(.failure(NSError(domain: "No user is currently logged in", code: 0, userInfo: nil)))
+            return
+        }
+        
+        // Tenta excluir o usuário
+        user.delete { error in
+            if let error = error {
+                // Se houver erro, verificar se é necessário reautenticar
+                if let authError = error as NSError?, authError.code == AuthErrorCode.requiresRecentLogin.rawValue {
+                    // Aqui, você pode solicitar a reautenticação do usuário antes de excluir
+                    completion(.failure(NSError(domain: "Reauthentication required", code: 0, userInfo: nil)))
+                } else {
+                    // Retorna qualquer outro erro
+                    completion(.failure(error))
+                }
+            } else {
+                // Se tudo ocorreu bem, a conta foi excluída
+                completion(.success(()))
+            }
+        }
+    }
     func addTrackToUser(track: Track, completion: @escaping (Result<Void,Error>) -> Void) {
         
         getUserDocument { result in
@@ -205,25 +137,26 @@ class FirestoreManager {
             }
         }
     }
-    func updateTrackToUser(track: Track, completion: @escaping (Result<Void,Error>) -> Void) {
-        
+    
+    func updateTrackToUser(track: Track, completion: @escaping (Result<Void, Error>) -> Void) {
         getUserDocument { result in
             switch result {
             case .success(let document):
                 do {
                     var userData = try document.data(as: User.self)
                     if let index = userData.track.firstIndex(where: { $0.trackingNumber == track.trackingNumber }) {
+                        let newUniqueEvents = self.getNewEvents(currentEvents: userData.track[index].events, newEvents: track.events)
                         userData.track[index].events = track.events
-                        try document.reference.setData(from: userData)
-                        completion(.success(()))
+                        self.saveUserData(userData: userData, document: document, completion: completion)
                     } else {
                         userData.track.append(track)
-                        try document.reference.setData(from: userData)
-                        completion(.success(()))
+                        //userData.newEvents.append(contentsOf: track.events)
+                        self.saveUserData(userData: userData, document: document, completion: completion)
                     }
                 } catch {
                     completion(.failure(error))
                 }
+                
             case .failure(let error):
                 completion(.failure(error))
             }
@@ -245,6 +178,23 @@ class FirestoreManager {
             }
         }
     }
+    func getNewEvents(currentEvents: [Events], newEvents: [Events]) -> [Events] {
+        return newEvents.filter { newEvent in
+            !currentEvents.contains { existingEvent in
+                return existingEvent.descricao == newEvent.descricao && existingEvent.cidade == newEvent.cidade
+            }
+        }
+    }
+    
+    func saveUserData(userData: User, document: DocumentSnapshot, completion: @escaping (Result<Void, Error>) -> Void) {
+        do {
+            try document.reference.setData(from: userData)
+            completion(.success(()))
+        } catch {
+            completion(.failure(error))
+        }
+    }
+    
     func deleteTrackFromUser(track: Track, completion: @escaping (Result<Void, Error>) -> Void) {
         getUserDocument { result in
             switch result {

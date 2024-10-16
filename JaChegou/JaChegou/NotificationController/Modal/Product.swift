@@ -7,16 +7,16 @@
 
 import Foundation
 
-struct Product: Equatable {
-    var name: String
-    var codeProduct: String
-    var eventProduct: String
-    var image: String
-    
-    static func == (lhs: Product, rhs: Product) -> Bool {
-        return lhs.name == rhs.name &&
-        lhs.codeProduct == rhs.codeProduct &&
-        lhs.eventProduct == rhs.eventProduct &&
-        lhs.image == rhs.image
-    }
-}
+//struct Product: Equatable {
+//    var name: String
+//    var codeProduct: String
+//    var eventProduct: String
+//    var image: String
+//    
+//    static func == (lhs: Product, rhs: Product) -> Bool {
+//        return lhs.name == rhs.name &&
+//        lhs.codeProduct == rhs.codeProduct &&
+//        lhs.eventProduct == rhs.eventProduct &&
+//        lhs.image == rhs.image
+//    }
+//}

@@ -53,7 +53,7 @@ class ProfileScreen: UIView {
         return imageView
     }()
     
-    lazy var passwordLabel: UILabel = {
+    lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Senha"
@@ -62,35 +62,16 @@ class ProfileScreen: UIView {
         return label
     }()
     
-    lazy var passwordImageView: UIImageView = {
+    lazy var nameImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(systemName: "key.fill")
+        imageView.image = UIImage(systemName: "person.circle.fill")
         imageView.tintColor =  .customLightBlue
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
-    
-    lazy var phoneLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Telefone"
-        label.font = UIFont.boldSystemFont(ofSize: 15)
-        label.textColor = .white
-        return label
-    }()
-    
-    lazy var phoneImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(systemName: "phone.fill")
-        imageView.tintColor = .customLightBlue
-        imageView.contentMode = .scaleAspectFit
-        return imageView
-    }()
-    
-    lazy var callendarLabel: UILabel = {
+    lazy var birthDataLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Data de Nascimento"
@@ -99,7 +80,7 @@ class ProfileScreen: UIView {
         return label
     }()
     
-    lazy var callendarImageView: UIImageView = {
+    lazy var birthDataImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(systemName: "calendar.badge.plus")
@@ -161,9 +142,9 @@ class ProfileScreen: UIView {
         return emailTextField
     }()
     
-    lazy var passwordTextField: UITextField = {
+    lazy var nameTextField: UITextField = {
         let passwordTextField = UITextField()
-        let placeholderText =  "Senha"
+        let placeholderText =  "Nome"
         let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.white]
         passwordTextField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
@@ -175,20 +156,7 @@ class ProfileScreen: UIView {
         return passwordTextField
     }()
     
-    lazy var phoneTextField: UITextField = {
-        let phoneTextField = UITextField()
-        let placeholderText =  "(00) 9 9999-9999"
-        let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.white]
-        phoneTextField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
-        phoneTextField.translatesAutoresizingMaskIntoConstraints = false
-        phoneTextField.borderStyle = .roundedRect
-        phoneTextField.backgroundColor = .customGray
-        phoneTextField.textColor = .white
-        phoneTextField.layer.cornerRadius = 15
-        return phoneTextField
-    }()
-    
-    lazy var callendarTextField: UITextField = {
+    lazy var birthDataTextField: UITextField = {
         let callendarTextField = UITextField()
         let placeholderText =  "00/00/0000"
         let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.white]
@@ -229,19 +197,16 @@ class ProfileScreen: UIView {
         addSubview(personalInformationLabel)
         addSubview(emailImageView)
         addSubview(emailLabel)
-        addSubview(passwordImageView)
-        addSubview(passwordLabel)
-        addSubview(phoneImageView)
-        addSubview(phoneLabel)
-        addSubview(callendarImageView)
-        addSubview(callendarLabel)
-        addSubview(editButton)
+        addSubview(nameImageView)
+        addSubview(nameLabel)
+        addSubview(birthDataImageView)
+        addSubview(birthDataLabel)
+        //addSubview(editButton)
         addSubview(outOfAccountButton)
         addSubview(deleteAccountButton)
         addSubview(emailTextField)
-        addSubview(passwordTextField)
-        addSubview(phoneTextField)
-        addSubview(callendarTextField)
+        addSubview(nameTextField)
+        addSubview(birthDataTextField)
         
     }
     
@@ -265,32 +230,24 @@ class ProfileScreen: UIView {
             emailLabel.topAnchor.constraint(equalTo: emailImageView.topAnchor),
             emailLabel.leadingAnchor.constraint(equalTo: emailImageView.leadingAnchor, constant: 30),
             
-            passwordImageView.topAnchor.constraint(equalTo: emailImageView.bottomAnchor, constant: 30),
-            passwordImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            passwordImageView.heightAnchor.constraint(equalToConstant: 20),
-            passwordImageView.widthAnchor.constraint(equalToConstant: 20),
+            nameImageView.topAnchor.constraint(equalTo: emailImageView.bottomAnchor, constant: 30),
+            nameImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            nameImageView.heightAnchor.constraint(equalToConstant: 20),
+            nameImageView.widthAnchor.constraint(equalToConstant: 20),
             
-            passwordLabel.topAnchor.constraint(equalTo: passwordImageView.topAnchor),
-            passwordLabel.leadingAnchor.constraint(equalTo: passwordImageView.leadingAnchor, constant: 30),
+            nameLabel.topAnchor.constraint(equalTo: nameImageView.topAnchor),
+            nameLabel.leadingAnchor.constraint(equalTo: nameImageView.leadingAnchor, constant: 30),
             
-            phoneImageView.topAnchor.constraint(equalTo: passwordImageView.bottomAnchor, constant: 30),
-            phoneImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            phoneImageView.heightAnchor.constraint(equalToConstant: 20),
-            phoneImageView.widthAnchor.constraint(equalToConstant: 20),
+            birthDataImageView.topAnchor.constraint(equalTo: nameImageView.bottomAnchor, constant: 30),
+            birthDataImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            birthDataImageView.heightAnchor.constraint(equalToConstant: 20),
+            birthDataImageView.widthAnchor.constraint(equalToConstant: 20),
             
-            phoneLabel.topAnchor.constraint(equalTo: phoneImageView.topAnchor),
-            phoneLabel.leadingAnchor.constraint(equalTo: phoneImageView.leadingAnchor, constant: 30),
+            birthDataLabel.topAnchor.constraint(equalTo: birthDataImageView.topAnchor),
+            birthDataLabel.leadingAnchor.constraint(equalTo: birthDataImageView.leadingAnchor, constant: 30),
             
-            callendarImageView.topAnchor.constraint(equalTo: phoneImageView.bottomAnchor, constant: 30),
-            callendarImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            callendarImageView.heightAnchor.constraint(equalToConstant: 20),
-            callendarImageView.widthAnchor.constraint(equalToConstant: 20),
-            
-            callendarLabel.topAnchor.constraint(equalTo: callendarImageView.topAnchor),
-            callendarLabel.leadingAnchor.constraint(equalTo: callendarImageView.leadingAnchor, constant: 30),
-            
-            editButton.bottomAnchor.constraint(equalTo: outOfAccountButton.topAnchor, constant: -20),
-            editButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
+//            editButton.bottomAnchor.constraint(equalTo: outOfAccountButton.topAnchor, constant: -20),
+//            editButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
             
             outOfAccountButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -80),
             outOfAccountButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
@@ -303,29 +260,19 @@ class ProfileScreen: UIView {
             deleteAccountButton.heightAnchor.constraint(equalToConstant: 40),
             
             emailTextField.topAnchor.constraint(equalTo: personalInformationLabel.bottomAnchor, constant: 50),
-            emailTextField.leadingAnchor.constraint(equalTo: callendarLabel.trailingAnchor, constant: -20),
+            emailTextField.leadingAnchor.constraint(equalTo: birthDataLabel.trailingAnchor, constant: -20),
             emailTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             emailTextField.heightAnchor.constraint(equalToConstant: 30),
             
-            passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 15),
-            passwordTextField.leadingAnchor.constraint(equalTo: callendarLabel.trailingAnchor, constant: -20),
-            passwordTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            passwordTextField.heightAnchor.constraint(equalToConstant: 30),
+            nameTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 15),
+            nameTextField.leadingAnchor.constraint(equalTo: birthDataLabel.trailingAnchor, constant: -20),
+            nameTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            nameTextField.heightAnchor.constraint(equalToConstant: 30),
             
-            phoneTextField.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 15),
-            phoneTextField.leadingAnchor.constraint(equalTo: callendarLabel.trailingAnchor, constant: -20),
-            phoneTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            phoneTextField.heightAnchor.constraint(equalToConstant: 30),
-            
-            callendarTextField.topAnchor.constraint(equalTo: phoneTextField.bottomAnchor, constant: 20),
-            callendarTextField.leadingAnchor.constraint(equalTo: callendarLabel.trailingAnchor, constant: -20),
-            callendarTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            callendarTextField.heightAnchor.constraint(equalToConstant: 30),
+            birthDataTextField.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 20),
+            birthDataTextField.leadingAnchor.constraint(equalTo: birthDataLabel.trailingAnchor, constant: -20),
+            birthDataTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            birthDataTextField.heightAnchor.constraint(equalToConstant: 30),
         ])
     }
 }
-
-
-
-
-

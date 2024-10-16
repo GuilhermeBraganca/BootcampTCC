@@ -39,19 +39,38 @@ class CreateAccountViewController: UIViewController {
 
 extension CreateAccountViewController: CreateAccountScreenProtocol {
     func tappedEyePasswordButton() {
-        print(#function)
+        
     }
     
     func tappedEyeConfirmPasswordButton() {
-        print(#function)
+    
     }
     
     func tappedRegisterButton() {
-        let loginVC = LoginViewController()
-        navigationController?.pushViewController(loginVC, animated: true)
+        navigationController?.popToRootViewController(animated: true)
     }
     
     func tappedLoginButton() {
+        
+        guard let birthDate: String = screen?.birthDateTextField.text,
+              let email: String = screen?.emailTextField.text,
+              let password: String = screen?.passwordTextField.text,
+              let passwordCheck: String = screen?.confirmPasswordTextField.text,
+              let name: String = screen?.nameTextField.text,
+              !birthDate.isEmpty,
+              !email.isEmpty,
+              !password.isEmpty,
+              !passwordCheck.isEmpty,
+              !name.isEmpty
+        else {
+            self.showOKAlert(title: "Atenção!", message: "Por favor, preencha todos os campos")
+            return
+        }
+        if password != passwordCheck {
+            self.showOKAlert(title: "Atenção!", message: "As senhas não coincidem. Por favor, verifique e tente novamente.")
+            return
+        }
+        
         viewModel.user.birthDate = screen?.birthDateTextField.text ?? ""
         viewModel.user.email = screen?.emailTextField.text ?? ""
         viewModel.user.password = screen?.passwordTextField.text ?? ""
@@ -62,13 +81,18 @@ extension CreateAccountViewController: CreateAccountScreenProtocol {
             case .success:
                 self?.successAlert()
             case .failure(let error):
-                print(error.localizedDescription)
+                self?.errorAlert(error: error.localizedDescription)
             }
         }
     }
     
     func successAlert() {
         let alert = UIAlertController(title: "PARABÉNS", message: "Conta criada com sucesso!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    func errorAlert(error: String){
+        let alert = UIAlertController(title: "Houve um error", message: error, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
@@ -81,7 +105,6 @@ extension CreateAccountViewController: UITextFieldDelegate {
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        print(#function)
         textField.layer.borderColor = UIColor.blue.cgColor
     }
     

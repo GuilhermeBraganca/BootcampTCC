@@ -9,13 +9,13 @@ import Foundation
 import UIKit
 
 protocol ProductTableViewCellProtocol: AnyObject {
-    func tappedDeleteProduct(product: Product?)
+    func tappedDeleteProduct(track: Track?)
 }
 
 class ProductTableViewCell: UITableViewCell {
     
     static var identifier = String(describing: ProductTableViewCell.self)
-    var product: Product?
+    var track: Track?
     weak var delegate: ProductTableViewCellProtocol?
     
     
@@ -26,42 +26,102 @@ class ProductTableViewCell: UITableViewCell {
         imageView.layer.cornerRadius = 8
         return imageView
     }()
-    
-    lazy var productLabel: UILabel = {
+    lazy var trackingNumberLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.boldSystemFont(ofSize: 18)
+        label.font = UIFont.boldSystemFont(ofSize: 14)
         label.numberOfLines = 2
         label.textColor = .white
+        label.text = "Descrição:"
         label.textAlignment = .left
+        label.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
+        
         return label
     }()
-    
-    lazy var codeProductLabel: UILabel = {
+    lazy var eventLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.boldSystemFont(ofSize: 12)
-        label.textColor = .white
-        label.textAlignment = .left
-        return label
-    }()
-    
-    lazy var eventProductLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.boldSystemFont(ofSize: 12)
-        label.textColor = .white
+        label.font = UIFont.boldSystemFont(ofSize: 14)
         label.numberOfLines = 2
+        label.textColor = .white
+        label.text = "Evento:"
+        label.textAlignment = .left
+        label.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
+        
+        return label
+    }()
+    lazy var cityLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.numberOfLines = 2
+        label.textColor = .white
+        label.text = "Cidade:"
+        label.textAlignment = .left
+        label.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
+        
+        return label
+    }()
+    lazy var descriptionTrackingLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.numberOfLines = 2
+        label.textColor = .white
+        label.text = ""
+        label.textAlignment = .left
+        label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        return label
+    }()
+    lazy var descriptionCityLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.numberOfLines = 2
+        label.textColor = .white
+        label.text = ""
+        label.textAlignment = .left
+        label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        return label
+    }()
+    lazy var dateLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.text = "Data:    "
+        label.textColor = .white
         label.textAlignment = .left
         return label
     }()
     
+    lazy var descriptionEventLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 0
+        label.textColor = .white
+        label.textAlignment = .left
+        label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        return label
+    }()
+    
+    lazy var descriptionDateLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.textColor = .white
+        label.numberOfLines = 0
+        label.textAlignment = .left
+        return label
+    }()
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = .customGray
         selectionStyle = .none
         addElements()
         configConstraints()
+        
     }
     
     required init?(coder: NSCoder) {
@@ -69,43 +129,66 @@ class ProductTableViewCell: UITableViewCell {
     }
     
     func addElements() {
-        contentView.addSubview(productLabel)
         contentView.addSubview(productImageView)
-        contentView.addSubview(codeProductLabel)
-        contentView.addSubview(eventProductLabel)
+        contentView.addSubview(trackingNumberLabel)
+        contentView.addSubview(eventLabel)
+        contentView.addSubview(dateLabel)
+        contentView.addSubview(cityLabel)
+        contentView.addSubview(descriptionEventLabel)
+        contentView.addSubview(descriptionTrackingLabel)
+        contentView.addSubview(descriptionDateLabel)
+        contentView.addSubview(descriptionCityLabel)
+        
     }
     
     func configConstraints() {
         NSLayoutConstraint.activate([
             
-            productImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            productImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
             productImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             productImageView.heightAnchor.constraint(equalToConstant: 36),
             productImageView.widthAnchor.constraint(equalToConstant: 36),
             
-            productLabel.topAnchor.constraint(equalTo: productImageView.topAnchor, constant: -10),
-            productLabel.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor, constant: 20),
-            productLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            trackingNumberLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
+            trackingNumberLabel.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor, constant: 20),
             
-            codeProductLabel.topAnchor.constraint(equalTo: productLabel.bottomAnchor, constant: 1),
-            codeProductLabel.leadingAnchor.constraint(equalTo: productLabel.leadingAnchor),
-            codeProductLabel.trailingAnchor.constraint(equalTo: productLabel.trailingAnchor),
+            descriptionTrackingLabel.centerYAnchor.constraint(equalTo: trackingNumberLabel.centerYAnchor),
+            descriptionTrackingLabel.leadingAnchor.constraint(equalTo: trackingNumberLabel.trailingAnchor, constant: 5),
+            descriptionTrackingLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             
-            eventProductLabel.topAnchor.constraint(equalTo: codeProductLabel.bottomAnchor),
-            eventProductLabel.leadingAnchor.constraint(equalTo: codeProductLabel.leadingAnchor),
-            eventProductLabel.trailingAnchor.constraint(equalTo: codeProductLabel.trailingAnchor),
-            eventProductLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
+            eventLabel.topAnchor.constraint(equalTo: trackingNumberLabel.bottomAnchor, constant: 0),
+            eventLabel.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor, constant: 20),
             
+            descriptionEventLabel.centerYAnchor.constraint(equalTo: eventLabel.centerYAnchor),
+            descriptionEventLabel.leadingAnchor.constraint(equalTo: eventLabel.trailingAnchor, constant: 5),
+            descriptionEventLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            
+            dateLabel.topAnchor.constraint(equalTo: descriptionEventLabel.bottomAnchor, constant: 0),
+            dateLabel.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor, constant: 20),
+            
+            descriptionDateLabel.centerYAnchor.constraint(equalTo: dateLabel.centerYAnchor),
+            descriptionDateLabel.leadingAnchor.constraint(equalTo: dateLabel.trailingAnchor, constant: 5),
+            descriptionDateLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            
+            cityLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 0),
+            cityLabel.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor, constant: 20),
+            
+            descriptionCityLabel.centerYAnchor.constraint(equalTo: cityLabel.centerYAnchor),
+            descriptionCityLabel.leadingAnchor.constraint(equalTo: cityLabel.trailingAnchor, constant: 5),
+            descriptionCityLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            
+            descriptionCityLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
         ])
         
     }
     
-    func setupCell(product: Product) {
-        self.product = product
-        productLabel.text = "\(product.name)"
-        productImageView.image = UIImage(systemName: product.image)
-        codeProductLabel.text = "Código: \(product.codeProduct)"
-        eventProductLabel.text = "Evento: \(product.eventProduct)"
+    func setupCell(track: Track, event: Events) {
+        // Configura a célula com os dados do Track
         
+        descriptionTrackingLabel.text = track.description
+        descriptionEventLabel.text = event.descricao?.trimLeft() ?? ""
+        descriptionDateLabel.text = event.data?.trimLeft() ?? ""
+        descriptionCityLabel.text = event.cidade?.trimLeft() ?? ""
+        productImageView.image = UIImage(systemName: "truck.box.fill")
     }
 }

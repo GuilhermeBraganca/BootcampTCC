@@ -47,8 +47,7 @@ class NotificationScreen: UIView {
     
     init() {
         super.init(frame: .zero)
-        backgroundColor = .customGray
-        layer.cornerRadius = 8
+        backgroundColor = .black
         addElements()
         configConstraints()
     }
@@ -60,7 +59,7 @@ class NotificationScreen: UIView {
     func addElements() {
         addSubview(headerView)
         addSubview(tableView)
-        addSubview(deleteAllNotificationsButton)
+        //addSubview(deleteAllNotificationsButton)
         
     }
     
@@ -75,11 +74,11 @@ class NotificationScreen: UIView {
             tableView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 5),
             tableView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-            
-            deleteAllNotificationsButton.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 0),
-            deleteAllNotificationsButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            deleteAllNotificationsButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            deleteAllNotificationsButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -5),
+            tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -5),
+//            deleteAllNotificationsButton.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 0),
+//            deleteAllNotificationsButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+//            deleteAllNotificationsButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+//            deleteAllNotificationsButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -5),
             
         ])
     }

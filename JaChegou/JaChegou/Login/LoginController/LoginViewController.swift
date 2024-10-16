@@ -89,20 +89,23 @@ class LoginViewController: UIViewController {
         screen?.loginButton.backgroundColor = isEnable ? .systemBlue : .lightGray
     }
     func switchToMainTabBarController() {
-        guard let windowScene = view.window?.windowScene else { return }
-        let mainTabBarController = MainTabBarControllerViewController()
-        let navigationController = UINavigationController(rootViewController: mainTabBarController)
-        if let window = windowScene.windows.first {
-            // Troca o rootViewController para o MainTabBarControllerViewController
-            window.rootViewController = navigationController
-            
-            // Adiciona uma animação de transição para tornar a mudança suave
-            UIView.transition(with: window,
-                              duration: 0.5,
-                              options: .transitionCrossDissolve,
-                              animations: nil,
-                              completion: nil)
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let window = windowScene.windows.first else {
+            return
         }
+        
+        let mainTabBarController = MainTabBarControllerViewController()
+        window.rootViewController = mainTabBarController
+        window.makeKeyAndVisible()
+        
+        // Adiciona uma animação de transição suave
+        UIView.transition(with: window, duration: 0.5, options: .transitionCrossDissolve, animations: nil, completion: nil)
+        
+        
+        //            let vc = MainTabBarControllerViewController()
+        //            vc.modalTransitionStyle = .crossDissolve
+        //            vc.modalPresentationStyle = .fullScreen
+        //            present(vc, animated: true)
     }
 }
 

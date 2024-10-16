@@ -37,7 +37,7 @@ extension TrackingViewController: TrackingScreenProtocol {
             return
         }
         
-        if (trackingCode == "NM455753072BR"){
+        if (trackingCode == "NM455753072BR" ||  trackingCode == "NM455753073BR" ||  trackingCode == "NM455753074BR" ||  trackingCode == "NM455753075BR"){
             viewModel.saveMockTrackingData(code: trackingCode, description: orderDescription)
         }else{
             viewModel.saveTrackingData(code: trackingCode, description: orderDescription)

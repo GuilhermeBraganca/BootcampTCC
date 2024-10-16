@@ -19,15 +19,32 @@ class NotificationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getAllEvents()
+        screen?.tableView.reloadData()
+        configProtocols()
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        getAllEvents()
+        screen?.tableView.reloadData()
+    }
+    func configProtocols(){
         screen?.tableView.delegate = self
         screen?.tableView.dataSource = self
-        setupBindings()
-        viewModel.loadProducts()
     }
-    
-    private func setupBindings() {
-        viewModel.reloadTableView = { [weak self] in
-            self?.screen?.tableView.reloadData()
+    func getAllEvents(){
+        FirestoreManager.shared.getUserData{ [weak self] result in
+            switch result {
+            case .success(let userData):
+                let trackWithLastEvents = userData.track.compactMap { track -> NotificationViewModel.TrackWithLastEvent? in
+                    guard let lastEvent = track.events.first else { return nil }
+                    return NotificationViewModel.TrackWithLastEvent(track: track, lastEvent: lastEvent)
+                }
+                self?.viewModel.trackWithLastEvents = trackWithLastEvents
+                self?.screen?.tableView.reloadData()
+            case .failure(let error):
+                print("Erro ao carregar os dados de rastreamento: \(error.localizedDescription)")
+            }
         }
     }
 }
@@ -36,27 +53,20 @@ extension NotificationViewController: UITableViewDelegate, UITableViewDataSource
     
     //Apresenta quantidade de linhas (produtos) que vai ser exibido.
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfProducts
+        return viewModel.numberOfRowsInSection
     }
     
     //Método configura a célula com os dados do produto.
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ProductTableViewCell.identifier, for: indexPath) as? ProductTableViewCell
-        let product = viewModel.product(at: indexPath.row)
-        cell?.setupCell(product: product)
+        
+        // Obtém o track e o último evento
+        let trackWithLastEvent = viewModel.trackWithLastEvent(at: indexPath)
+        
+        // Configura a célula com o track e o último evento
+        cell?.setupCell(track: trackWithLastEvent.track, event: trackWithLastEvent.lastEvent)
+        
         return cell ?? UITableViewCell()
     }
     
-    //Método é chamado quando é selecionado a célula
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let product = viewModel.product(at: indexPath.row)
-        print(product.name)
-    }
-    
-    //Método para excluir célula (deslizando para excluir).
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            viewModel.deleteProduct(at: indexPath.row)
-        }
-    }
 }

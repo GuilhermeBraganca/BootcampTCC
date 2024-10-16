@@ -10,7 +10,7 @@ import UIKit
 import UIKit
 
 protocol LoadTrackingTableViewCellProtocol: AnyObject {
-    func tappedDeleteNotification(product: Product?)
+    func tappedDeleteNotification()
 }
 
 class LoadTrackingTableViewCell: UITableViewCell {
