@@ -56,7 +56,7 @@ class ProfileScreen: UIView {
     lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Senha"
+        label.text = "Nome"
         label.font = UIFont.boldSystemFont(ofSize: 15)
         label.textColor = .white
         return label

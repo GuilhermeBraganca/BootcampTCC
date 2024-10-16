@@ -36,7 +36,7 @@ public class LoadTrackingViewModel{
         delegate?.loading(start: true)
         
         // Verifica se o número de rastreamento é o mock
-        if track.trackingNumber == "NM455753072BR" {
+        if (track.trackingNumber == "NM455753072BR" ||  track.trackingNumber == "NM455753073BR" ||  track.trackingNumber == "NM455753074BR" ||  track.trackingNumber == "NM455753075BR") {
             // Carrega o mock se o número de rastreamento for igual ao mock desejado
             LocalFileReader.loadJSON(fileName: "TrackIncomplete", type: [Events].self) { [weak self] result in
                 guard let self = self else { return }
