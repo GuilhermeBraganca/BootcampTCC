@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseFirestoreInternal
 
 class ProfileControllerViewController: UIViewController {
     
@@ -75,7 +76,14 @@ extension ProfileControllerViewController: ProfileScreenProtocol {
     
     func tappedEditButton() {
         if validateFields() {
-            print("Campos validados com sucesso!")
+            FirestoreManager().getUserData(completion:  ) { result in
+                switch result {
+                case .success(let success):
+                    break
+                case .failure(let error):
+                    print(error)
+                }
+            }
         }
     }
     

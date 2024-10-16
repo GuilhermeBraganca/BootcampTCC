@@ -12,13 +12,13 @@ import FirebaseAuth
 class FirestoreManager {
     
     static let shared = FirestoreManager()
-    private let firestore = Firestore.firestore()
+    public let firestore = Firestore.firestore()
     
-    private var currentUserID: String? {
+    public var currentUserID: String? {
         Auth.auth().currentUser?.uid
     }
     
-    private init() { }
+    public init() { }
     
     func createUserWithEmailAndPassword(user : User, completion: @escaping (Result<Void, Error>) -> Void) {
         Auth.auth().createUser(withEmail: user.email, password: user.password) {
