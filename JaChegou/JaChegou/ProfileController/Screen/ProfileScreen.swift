@@ -74,7 +74,7 @@ class ProfileScreen: UIView {
     lazy var birthDataLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Data de Nascimento"
+        label.text = "Dt Nascimento"
         label.font = UIFont.boldSystemFont(ofSize: 13)
         label.textColor = .white
         return label
@@ -260,17 +260,17 @@ class ProfileScreen: UIView {
             deleteAccountButton.heightAnchor.constraint(equalToConstant: 40),
             
             emailTextField.topAnchor.constraint(equalTo: personalInformationLabel.bottomAnchor, constant: 50),
-            emailTextField.leadingAnchor.constraint(equalTo: birthDataLabel.trailingAnchor, constant: -20),
+            emailTextField.leadingAnchor.constraint(equalTo: birthDataLabel.trailingAnchor, constant: 10),
             emailTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             emailTextField.heightAnchor.constraint(equalToConstant: 30),
             
             nameTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 15),
-            nameTextField.leadingAnchor.constraint(equalTo: birthDataLabel.trailingAnchor, constant: -20),
+            nameTextField.leadingAnchor.constraint(equalTo: birthDataLabel.trailingAnchor, constant: 10),
             nameTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             nameTextField.heightAnchor.constraint(equalToConstant: 30),
             
             birthDataTextField.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 20),
-            birthDataTextField.leadingAnchor.constraint(equalTo: birthDataLabel.trailingAnchor, constant: -20),
+            birthDataTextField.leadingAnchor.constraint(equalTo: birthDataLabel.trailingAnchor, constant: 10),
             birthDataTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             birthDataTextField.heightAnchor.constraint(equalToConstant: 30),
         ])
