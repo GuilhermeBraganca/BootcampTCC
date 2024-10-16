@@ -24,8 +24,8 @@ class HomeViewModel {
     var allTrackList: [Track] = []
     var trackFilter: [Track] = []
     
+    
     func updateTrackFilter() {
-        // Atualiza o filtro com todos os itens após os dados serem carregados
         self.trackFilter = allTrackList
     }
     

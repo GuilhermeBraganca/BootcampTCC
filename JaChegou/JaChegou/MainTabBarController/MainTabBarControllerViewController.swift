@@ -10,7 +10,7 @@ class MainTabBarControllerViewController: UITabBarController {
         let homeController = createNavController(viewController: HomeViewController(), title: "", imageName: "house")
         let trackingController = createNavController(viewController: TrackingViewController(), title: "", imageName: "plus.square.fill")
         let profileController = createNavController(viewController: ProfileControllerViewController(), title: "", imageName: "person.circle.fill")
-        let notificationController = createNavController(viewController: NotificationControllerViewController(), title: "", imageName: "bell")
+        let notificationController = createNavController(viewController: NotificationViewController(), title: "", imageName: "bell")
         
         viewControllers = [homeController, trackingController, profileController, notificationController]
         customizeTabBarAppearance()

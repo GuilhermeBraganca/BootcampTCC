@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol LoadTrackingViewModelProtocol: AnyObject {
-    func success()
+    func success(message: String)
     func failure(errorMessage: String)
     func loading(start: Bool)
 }
@@ -22,9 +22,6 @@ public class LoadTrackingViewModel{
     
     var numberOfRowsInSection: Int {
         return trackingData.events.count
-    }
-    func removeAll() {
-        //trackingData = Track(image: "", description: "", trackingNumber: "", date: "", events: [])
     }
     func loadTrackingData(tracking: Track) {
         trackingData = tracking
@@ -54,7 +51,7 @@ public class LoadTrackingViewModel{
             }
         } else {
             // Caso contrário, chama o serviço real
-            TrackingService.fetchTrackingList(code: track.trackingNumber) { [weak self] result in
+            APITrackingClient.fetchTrackingList(code: track.trackingNumber) { [weak self] result in
                 guard let self = self else { return }
                 self.delegate?.loading(start: false)
                 
@@ -68,26 +65,50 @@ public class LoadTrackingViewModel{
         }
     }
     func handleTrackingUpdates(track: Track, newEvents: [Events]) {
-        if track.events != newEvents {
-            // Atualiza os eventos no Firestore
+        // Obter apenas os novos eventos
+        let newUniqueEvents = getNewEvents(currentEvents: track.events, newEvents: newEvents)
+        
+        if !newUniqueEvents.isEmpty {
+
             var updatedTrack = track
-            updatedTrack.events = newEvents
-            // Atualiza o rastreio no Firestore
-            FirestoreManager.shared.updateTrackToUser(track: updatedTrack) { [weak self] result in
+            updatedTrack.events = newUniqueEvents // Sobrescreve os eventos com apenas os novos
+            
+            // Atualiza o rastreamento no Firestore com todos os eventos
+            FirestoreManager.shared.updateTrackToUser(track: trackingData) { [weak self] result in
                 guard let self = self else { return }
                 
                 switch result {
                 case .success:
-                    print("Track atualizado com sucesso!")
-                    self.delegate?.success()  // Notifica o sucesso
+                    // Atualiza o trackingData no ViewModel
+                    trackingData.events.append(contentsOf: newUniqueEvents) // Adiciona os novos eventos ao conjunto completo
+                    
+                    // Postar o updatedTrack no NotificationCenter (apenas os novos eventos)
+                    NotificationCenter.default.post(name: .updateTrack, object: updatedTrack)
+                    
+                    // Notifica o sucesso com mensagem de atualização
+                    self.delegate?.success(message: "Novos eventos adicionados com sucesso!")
+                    
                 case .failure(let error):
                     self.delegate?.failure(errorMessage: error.localizedDescription)
                 }
             }
         } else {
-            // Não há atualizações
-            print("Nenhuma atualização no rastreamento.")
-            delegate?.success()  // Notifica que está atualizado, sem mudanças
+            // Não há novos eventos
+            self.delegate?.success(message: "Nenhuma atualização no rastreamento.") // Notifica que não houve mudanças
         }
     }
+    
+    func getNewEvents(currentEvents: [Events], newEvents: [Events]) -> [Events] {
+        // Filtra apenas os eventos que não estão presentes na lista atual de eventos
+        let newUniqueEvents = newEvents.filter { newEvent in
+            return !currentEvents.contains(where: {
+                $0.descricao == newEvent.descricao && $0.cidade == newEvent.cidade
+            })
+        }
+        return newUniqueEvents
+    }
+}
+
+extension NSNotification.Name {
+    static let updateTrack = Self("changeName")
 }

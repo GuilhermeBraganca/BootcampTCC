@@ -12,11 +12,14 @@ class HomeViewController: UIViewController {
     
     var screen: HomeControllerScreen?
     var viewModel: HomeViewModel = HomeViewModel()
-    
+    var activityIndicatorView: UIActivityIndicatorView?
     
     override func viewWillAppear(_ animated: Bool) {
-        viewModel.delegate = self
         getAllTrackFromUser()
+        screen?.collectionView.isHidden = true
+        if let activityIndicatorView = self.activityIndicatorView  {
+            activityIndicatorView.startAnimating()
+        }
     }
     
     override func loadView() {
@@ -27,9 +30,16 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        activityIndicatorView = UIActivityIndicatorView(style: .large)
+        activityIndicatorView?.center = view.center
+        activityIndicatorView?.hidesWhenStopped = true
+        screen?.collectionView.backgroundView = activityIndicatorView
+        activityIndicatorView?.startAnimating()
+        
         configProtocols()
     }
     func configProtocols() {
+        viewModel.delegate = self
         screen?.delegate = self
         screen?.configCollectionViewProtocols(delegate: self, dataSource: self)
         screen?.configSearchBarProtocol(delegate: self)
@@ -43,13 +53,19 @@ class HomeViewController: UIViewController {
                 case .success(let tracks):
                     // Notifique o ViewModel que os dados foram carregados
                     self.viewModel.allTrackList = tracks
-                    self.viewModel.updateTrackFilter() // Atualiza o trackFilter no ViewModel
+                    self.viewModel.updateTrackFilter()
                     
-                    // Atualize a CollectionView com os novos dados
+                    // Para a animação e mostra a collectionView
+                    self.activityIndicatorView?.stopAnimating()
+                    self.screen?.collectionView.isHidden = false
                     self.updateCollectionView()
                     
                 case .failure(let error):
                     print("Erro ao recuperar os dados: \(error.localizedDescription)")
+                    
+                    // Parar animação, mesmo em caso de erro
+                    self.activityIndicatorView?.stopAnimating()
+                    self.screen?.collectionView.isHidden = false
                 }
             }
         }

@@ -29,13 +29,17 @@ class LoadTrackingViewController: UIViewController {
             print("Track recebido: \(track)")
             checkForTrackingUpdates(track: track)
             setupScreen(track: track)
+            screen?.tableView.reloadData()
+            
         }
         configProtocols()
+        screen?.tableView.reloadData()
     }
     func checkForTrackingUpdates(track: Track) {
         viewModel.checkForUpdates(track: track)
     }
     func configProtocols(){
+        viewModel.delegate = self
         screen?.delegate = self
         screen?.configTableViewProtocols(delegate: self, dataSource: self)
     }
@@ -50,13 +54,9 @@ class LoadTrackingViewController: UIViewController {
             message: "Tem certeza de que deseja deletar o rastreio?",
             preferredStyle: .alert
         )
-        
-        // Ação "OK" para confirmar a exclusão
         let okAction = UIAlertAction(title: "OK", style: .destructive) { [weak self] _ in
             self?.deleteTrackingConfirmed()  // Chama o método para confirmar a exclusão
         }
-        
-        // Ação "Cancelar" para desistir da exclusão
         let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
         
         alertController.addAction(okAction)
@@ -119,13 +119,19 @@ extension LoadTrackingViewController: LoadTrackingScreenProtocol{
     
 }
 extension LoadTrackingViewController: LoadTrackingViewModelProtocol {
-    func success() {
-        // Atualiza a interface com os novos dados ou indica que está atualizado
-        self.updateCollectionView()
+    func success(message: String) {
+        screen?.tableView.reloadData()
+        let alertController = UIAlertController(
+            title: "Atualização de Rastreamento",
+            message: message,
+            preferredStyle: .alert
+        )
+        
+        alertController.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alertController, animated: true, completion: nil)
     }
     
     func failure(errorMessage: String) {
-        // Mostra uma mensagem de erro
         self.showErrorAlert(message: errorMessage)
     }
     

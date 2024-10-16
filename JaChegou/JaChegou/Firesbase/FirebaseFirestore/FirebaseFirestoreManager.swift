@@ -189,7 +189,6 @@ class FirestoreManager {
                 do {
                     var userData = try document.data(as: User.self)
                     if let index = userData.track.firstIndex(of: track) {
-                        // Retorna um erro customizado para indicar que o rastreio já foi adicionado
                         let error = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "O rastreio já foi adicionado anteriormente."])
                         completion(.failure(error))
                         return
@@ -197,7 +196,6 @@ class FirestoreManager {
                         userData.track.append(track)
                     }
                     try document.reference.setData(from: userData)
-                    
                     completion(.success(()))
                 } catch {
                     completion(.failure(error))
@@ -214,33 +212,19 @@ class FirestoreManager {
             case .success(let document):
                 do {
                     var userData = try document.data(as: User.self)
-                    
-                    // Verifica se o track já existe
                     if let index = userData.track.firstIndex(where: { $0.trackingNumber == track.trackingNumber }) {
-                        // Atualiza os eventos do rastreio existente
                         userData.track[index].events = track.events
-                        
-                        // Atualiza o documento no Firestore
                         try document.reference.setData(from: userData)
-                        
-                        // Retorna sucesso
                         completion(.success(()))
                     } else {
-                        // Se o rastreio não existir, adiciona um novo
                         userData.track.append(track)
-                        
-                        // Atualiza o documento no Firestore
                         try document.reference.setData(from: userData)
-                        
-                        // Retorna sucesso
                         completion(.success(()))
                     }
                 } catch {
-                    // Lida com erro na tentativa de atualizar o Firestore
                     completion(.failure(error))
                 }
             case .failure(let error):
-                // Lida com erro ao obter o documento do usuário
                 completion(.failure(error))
             }
         }
@@ -250,18 +234,13 @@ class FirestoreManager {
             switch result {
             case .success(let document):
                 do {
-                    // Tente decodificar o documento do usuário
                     let userData = try document.data(as: User.self)
-                    // Recuperar a lista de tracks do usuário
                     let userTracks = userData.track
-                    // Retorna a lista de tracks com sucesso
                     completion(.success(userTracks))
                 } catch {
-                    // Se ocorrer um erro ao decodificar os dados, o erro é retornado
                     completion(.failure(error))
                 }
             case .failure(let error):
-                // Se houver um erro ao recuperar o documento do Firestore
                 completion(.failure(error))
             }
         }
@@ -272,20 +251,12 @@ class FirestoreManager {
             case .success(let document):
                 do {
                     var userData = try document.data(as: User.self)
-                    
-                    // Remove o track com o mesmo trackingNumber
                     userData.track.removeAll { $0.trackingNumber == track.trackingNumber }
-                    
-                    // Salva a lista atualizada no Firestore
                     try document.reference.setData(from: userData)
-                    
-                    // Chama o completion com sucesso
                     completion(.success(()))
-                    
                 } catch {
                     completion(.failure(error))
                 }
-                
             case .failure(let error):
                 completion(.failure(error))
             }
