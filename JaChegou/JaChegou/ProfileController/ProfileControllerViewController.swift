@@ -21,8 +21,27 @@ class ProfileControllerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configProtocols()
+        getUserData()
     }
-    
+    func getUserData(){
+        FirestoreManager.shared.getUserData{ [weak self] (result: Result<User, Error>) in
+            
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                switch result {
+                case .success(let users):
+                    self.screen?.birthDataTextField.text = users.birthDate
+                    self.screen?.emailTextField.text = users.email
+                    self.screen?.passwordTextField.text = users.password
+                    
+                    
+                case .failure(let error):
+                    print("Erro ao recuperar os dados: \(error.localizedDescription)")
+                }
+            }
+        }
+    }
+                                            
     func configProtocols() {
         screen?.delegate = self
         screen?.emailTextField.delegate = self
