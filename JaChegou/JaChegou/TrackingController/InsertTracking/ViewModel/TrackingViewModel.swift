@@ -20,7 +20,7 @@ class TrackingViewModel {
     
     func saveTrackingData(code: String, description: String) {
         delegate?.loading(start: true)
-        TrackingService.fetchTrackingList(code: code) { [weak self] result in
+        APITrackingClient.fetchTrackingList(code: code) { [weak self] result in
             guard let self else { return }
             delegate?.loading(start: false)
             switch result {

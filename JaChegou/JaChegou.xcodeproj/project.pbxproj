@@ -288,7 +288,6 @@
 			children = (
 				FA63F21D2C69965D0098967A /* TrackingViewController.swift */,
 				FA63F21C2C6996340098967A /* Screen */,
-				FA8621CF2C9F8730007E3F7D /* Service */,
 				FA8621CE2C9F86B6007E3F7D /* ViewModel */,
 				032A17F52C97B39F001000E0 /* Model */,
 			);
@@ -360,10 +359,10 @@
 		FA63F2162C6994140098967A /* NotificationController */ = {
 			isa = PBXGroup;
 			children = (
+				FAFDD9032CBF5964001FB0A9 /* ViewModel */,
 				034C3CDD2C74155F00E9EDA5 /* Modal */,
 				034C3CDE2C74157800E9EDA5 /* List */,
 				FA63F2272C6998180098967A /* NotificationViewController.swift */,
-				032A17EE2C97AEF6001000E0 /* NotificationViewModel.swift */,
 			);
 			path = NotificationController;
 			sourceTree = "<group>";
@@ -403,6 +402,7 @@
 		FA8621B12C9F7D67007E3F7D /* APIClient */ = {
 			isa = PBXGroup;
 			children = (
+				FA8621D02C9FBAA0007E3F7D /* TrackingService.swift */,
 				FA8621B32C9F7DB4007E3F7D /* HTTPClient.swift */,
 				FA8621B42C9F7DB4007E3F7D /* APIClient.swift */,
 			);
@@ -479,14 +479,6 @@
 				032A17F82C97B3F7001000E0 /* TrackingViewModel.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		FA8621CF2C9F8730007E3F7D /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				FA8621D02C9FBAA0007E3F7D /* TrackingService.swift */,
-			);
-			path = Service;
 			sourceTree = "<group>";
 		};
 		FA8621D42C9FD076007E3F7D /* ViewModel */ = {
@@ -644,6 +636,14 @@
 				FA2E04572CB37E3400C8B506 /* TrackIncomplete2.json */,
 			);
 			path = Json;
+			sourceTree = "<group>";
+		};
+		FAFDD9032CBF5964001FB0A9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				032A17EE2C97AEF6001000E0 /* NotificationViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
