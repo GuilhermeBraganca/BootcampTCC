@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol LoadTrackingViewModelProtocol: AnyObject {
-    func success()
+    func success(message: String)
     func failure(errorMessage: String)
     func loading(start: Bool)
 }
@@ -69,25 +69,23 @@ public class LoadTrackingViewModel{
     }
     func handleTrackingUpdates(track: Track, newEvents: [Events]) {
         if track.events != newEvents {
-            // Atualiza os eventos no Firestore
             var updatedTrack = track
             updatedTrack.events = newEvents
-            // Atualiza o rastreio no Firestore
             FirestoreManager.shared.updateTrackToUser(track: updatedTrack) { [weak self] result in
                 guard let self = self else { return }
                 
                 switch result {
                 case .success:
-                    print("Track atualizado com sucesso!")
-                    self.delegate?.success()  // Notifica o sucesso
+                    
+                    trackingData = updatedTrack
+                    self.delegate?.success(message: "Track atualizado com sucesso!")  // Notifica o sucesso
+                    
                 case .failure(let error):
                     self.delegate?.failure(errorMessage: error.localizedDescription)
                 }
             }
         } else {
-            // Não há atualizações
-            print("Nenhuma atualização no rastreamento.")
-            delegate?.success()  // Notifica que está atualizado, sem mudanças
+            self.delegate?.success(message: "Nenhuma atualização no rastreamento.") // Notifica que está atualizado, sem mudanças
         }
     }
 }

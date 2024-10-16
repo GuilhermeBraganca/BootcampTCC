@@ -32,7 +32,7 @@ class NotificationViewController: UIViewController {
     }
 }
 
-extension NotificationControllerViewController: UITableViewDelegate, UITableViewDataSource {
+extension NotificationViewController: UITableViewDelegate, UITableViewDataSource {
     
     //Apresenta quantidade de linhas (produtos) que vai ser exibido.
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
