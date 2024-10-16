@@ -89,9 +89,7 @@ extension CreateAccountViewController: UITextFieldDelegate {
         if let text = textField.text as NSString? {
             let newText = text.replacingCharacters(in: range, with: string)
             textField.text = newText
-            if UITextView.isValidEmail(screen?.emailTextField.text ?? "") &&
-               UITextView.isValidPassword(screen?.passwordTextField.text ?? "") &&
-               UITextView.isValidConfirmPassword(screen?.confirmPasswordTextField.text ?? "") {
+            if UITextView.isValidEmail(screen?.emailTextField.text ?? "") && UITextView.isValidPassword(screen?.passwordTextField.text ?? "") && UITextView.isValidConfirmPassword(screen?.confirmPasswordTextField.text ?? "") {
                 isEnabledLoginButton(isEnable: true)
             } else {
                 isEnabledLoginButton(isEnable: false)
