@@ -14,14 +14,15 @@ class CreateAccountViewModel {
         FirestoreManager.shared.createUserWithEmailAndPassword(user: user) { result in
             switch result {
             case .success:
+                print("criado com sucesso")
                 completion(.success(()))
             case .failure(let error):
+                print(error.localizedDescription)
                 completion(.failure(error))
             }
         }
     }
 }
-
 
 
 
