@@ -111,8 +111,14 @@ extension LoginViewController: LoginScreenProtocol {
             }
             print("Show, login feito com sucesso!")
             
-            // Após confirmação do e-mail e senha, direcionar usuário para MainTabBarControllerViewController
-            self.navigationController?.pushViewController(MainTabBarControllerViewController(), animated: true)
+        //    Após confirmação do e-mail e senha, direcionar usuário para MainTabBarControllerViewController
+//            let vc = UINavigationController(rootViewController: MainTabBarControllerViewController())
+//            self.navigationController?.pushViewController(vc, animated: true)
+            
+            let vc = MainTabBarControllerViewController()
+            vc.modalTransitionStyle = .crossDissolve
+            vc.modalPresentationStyle = .fullScreen
+            present(vc, animated: true)
         }
     }
     
@@ -147,5 +153,3 @@ extension LoginViewController: UITextFieldDelegate {
         return false
     }
 }
-
-

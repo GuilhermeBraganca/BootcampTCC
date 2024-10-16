@@ -41,7 +41,7 @@ class ProfileControllerViewController: UIViewController {
             }
         }
     }
-                                            
+    
     func configProtocols() {
         screen?.delegate = self
         screen?.emailTextField.delegate = self
@@ -95,14 +95,6 @@ extension ProfileControllerViewController: ProfileScreenProtocol {
     
     func tappedEditButton() {
         if validateFields() {
-            FirestoreManager().getUserData(completion:  ) { result in
-                switch result {
-                case .success(let success):
-                    break
-                case .failure(let error):
-                    print(error)
-                }
-            }
         }
     }
     
@@ -114,6 +106,15 @@ extension ProfileControllerViewController: ProfileScreenProtocol {
         let alert = UIAlertController(title: "Sair da conta", message: "Tem certeza que deseja sair da sua conta?", preferredStyle: .alert)
         let logoutAction = UIAlertAction(title: "Sair", style: .destructive) { _ in
             print("Usuário saiu da conta.")
+            
+            //            // Para voltar para a tela RAIZ utilizamos o:
+            //            self.navigationController?.popToRootViewController(animated: true)
+            
+            let vc = LoginViewController()
+            vc.modalPresentationStyle = .fullScreen
+            vc.modalTransitionStyle = .flipHorizontal
+            self.present(vc, animated: true)
+            
         }
         let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
         alert.addAction(logoutAction)
