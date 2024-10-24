@@ -11,6 +11,7 @@ enum TrackingType {
     case completed
     case transporting
 }
+
 protocol HomeViewModelDelegate: AnyObject {
     func didLoadTracks(tracks: [Track])
 }
@@ -32,6 +33,7 @@ class HomeViewModel {
     func setNewTrackingType(newType: TrackingType) {
         trackingType = newType
     }
+
     func removeTrack(_ track: Track) {
             allTrackList.removeAll { $0.trackingNumber == track.trackingNumber }
             trackFilter.removeAll { $0.trackingNumber == track.trackingNumber }
@@ -44,6 +46,7 @@ class HomeViewModel {
             trackFilter = allTrackList.filter { $0.description.lowercased().contains(text.lowercased()) }
         }
     }
+
     var trackingList: [Track] {
         return trackFilter.filter { objc in
             return objc.events.allSatisfy { ($0.descricao?.uppercased() ?? "") != "Objeto entregue ao destinatário".uppercased() }
@@ -69,7 +72,7 @@ class HomeViewModel {
     }
     
     func loadAllTrackingData() {
-        
+
         FirestoreManager.shared.getTracksFromUser { [weak self] (result: Result<[Track], Error>) in
             
             DispatchQueue.main.async {
@@ -80,6 +83,7 @@ class HomeViewModel {
                     self.allTrackList = tracks
                     
                 case .failure(let error):
+#warning("cenario de error não faz nada")
                     print("Erro ao recuperar os dados: \(error.localizedDescription)")
                 }
             }

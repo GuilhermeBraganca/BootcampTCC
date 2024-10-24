@@ -16,6 +16,7 @@ protocol LoadTrackingTableViewCellProtocol: AnyObject {
 class LoadTrackingTableViewCell: UITableViewCell {
     
     static var identifier = String(describing: LoadTrackingTableViewCell.self)
+#warning("remover comentarios")
     //var track: Track?
     weak var delegate: LoadTrackingTableViewCellProtocol?
     
@@ -146,6 +147,7 @@ class LoadTrackingTableViewCell: UITableViewCell {
     }
 }
 
+#warning("criar arquivo")
 extension String {
     func trimLeft() -> String {
         guard let range = rangeOfCharacter(from: .whitespacesAndNewlines.inverted) else {

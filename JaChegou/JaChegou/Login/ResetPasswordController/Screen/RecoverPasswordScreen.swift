@@ -58,7 +58,8 @@ class RecoverPasswordScreen: UIView {
             return
         }
     }
-    
+#warning("criar classe de alert generica para parar de ficar replicando codigo")
+#warning("remover esse metodo daqui URGENTE!!! if let viewController = self.window?.rootViewController ISSO É GAMBIARRA!!!")
     func showAlert(title: String, message: String) {
         if let viewController = self.window?.rootViewController {
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)

@@ -38,6 +38,7 @@ class CreateAccountViewController: UIViewController {
 }
 
 extension CreateAccountViewController: CreateAccountScreenProtocol {
+#warning("metodos que não fazem nada...")
     func tappedEyePasswordButton() {
         
     }
@@ -70,13 +71,16 @@ extension CreateAccountViewController: CreateAccountScreenProtocol {
             self.showOKAlert(title: "Atenção!", message: "As senhas não coincidem. Por favor, verifique e tente novamente.")
             return
         }
-        
-        viewModel.user.birthDate = screen?.birthDateTextField.text ?? ""
-        viewModel.user.email = screen?.emailTextField.text ?? ""
-        viewModel.user.password = screen?.passwordTextField.text ?? ""
-        viewModel.user.name = screen?.nameTextField.text ?? ""
-        
-        viewModel.createUser { [weak self] result in
+
+#warning("porque não passou por parametro no metodo??")
+//        viewModel.user.birthDate = screen?.birthDateTextField.text ?? ""
+//        viewModel.user.email = screen?.emailTextField.text ?? ""
+//        viewModel.user.password = screen?.passwordTextField.text ?? ""
+//        viewModel.user.name = screen?.nameTextField.text ?? ""
+
+      let user = User(id: "", email: screen?.emailTextField.text ?? "", name: screen?.nameTextField.text ?? "", password: screen?.passwordTextField.text ?? "", birthDate: screen?.birthDateTextField.text ?? "", track: [])
+
+      viewModel.createUser(user: user) { [weak self] result in
             switch result {
             case .success:
                 self?.successAlert()
@@ -91,6 +95,7 @@ extension CreateAccountViewController: CreateAccountScreenProtocol {
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
+
     func errorAlert(error: String){
         let alert = UIAlertController(title: "Houve um error", message: error, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -112,7 +117,8 @@ extension CreateAccountViewController: UITextFieldDelegate {
         if let text = textField.text as NSString? {
             let newText = text.replacingCharacters(in: range, with: string)
             textField.text = newText
-            if UITextView.isValidEmail(screen?.emailTextField.text ?? "") && UITextView.isValidPassword(screen?.passwordTextField.text ?? "") && UITextView.isValidConfirmPassword(screen?.confirmPasswordTextField.text ?? "") {
+        #warning("não faz sentido isso ser uma extension de UI, isso deveria ser uma extension de string por exemplo, ou criar uma classe ValidationData por exemplo....responsavel por validar essas infos")
+          if UITextView.isValidEmail(screen?.emailTextField.text ?? "") && UITextView.isValidPassword(screen?.passwordTextField.text ?? "") && UITextView.isValidConfirmPassword(screen?.confirmPasswordTextField.text ?? "") {
                 isEnabledLoginButton(isEnable: true)
             } else {
                 isEnabledLoginButton(isEnable: false)

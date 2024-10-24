@@ -7,6 +7,7 @@
 
 import Foundation
 
+#warning("remover arquivo")
 //struct Product: Equatable {
 //    var name: String
 //    var codeProduct: String

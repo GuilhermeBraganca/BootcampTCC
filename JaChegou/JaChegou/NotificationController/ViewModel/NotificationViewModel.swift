@@ -8,12 +8,12 @@
 import Foundation
 
 class NotificationViewModel {
-    
+#warning("porque deixar dentro essa struct?")
     struct TrackWithLastEvent {
         let track: Track
         let lastEvent: Events
     }
-    
+#warning("deixar privada")
     var trackWithLastEvents: [TrackWithLastEvent] = []
     
     var numberOfRowsInSection: Int {
@@ -23,5 +23,4 @@ class NotificationViewModel {
     func trackWithLastEvent(at indexPath: IndexPath) -> TrackWithLastEvent {
         return trackWithLastEvents[indexPath.row]
     }
-    
 }

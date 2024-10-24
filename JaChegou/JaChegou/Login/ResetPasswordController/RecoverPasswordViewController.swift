@@ -19,6 +19,7 @@ class RecoverPasswordViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+#warning("comentarios por todo codigo...remover oque não tem necessidade")
         interactionRecoverViewModel() // Interação com a RecoverPasswordViewModel.
     }
     
@@ -33,7 +34,8 @@ class RecoverPasswordViewController: UIViewController {
     @objc func sendEmailButtonTapped() {
         viewModel.recoverPassword(for: screen?.recoverPasswordTextField.text)
     }
-    
+
+#warning("repetição de código")
     func showAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))

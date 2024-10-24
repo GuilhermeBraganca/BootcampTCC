@@ -9,8 +9,8 @@ import UIKit
 import FirebaseFirestoreInternal
 
 class ProfileViewController: UIViewController {
-    
     var screen: ProfileScreen?
+#warning("remover comentarios")
     //var viewModel: ProfileViewModel = ProfileViewModel()
     
     override func loadView() {
@@ -23,7 +23,9 @@ class ProfileViewController: UIViewController {
         configProtocols()
         getUserData()
     }
-    func getUserData(){
+
+    func getUserData() {
+#warning("view Model....")
         FirestoreManager.shared.getUserData{ [weak self] (result: Result<User, Error>) in
             
             DispatchQueue.main.async {
@@ -45,7 +47,8 @@ class ProfileViewController: UIViewController {
     func configProtocols() {
         screen?.delegate = self
     }
-    
+
+#warning("metodo com retorno sempre true...")
     func validateFields() -> Bool {
         //        guard let email = screen?.emailTextField.text, !email.isEmpty else {
         //            showAlert(message: "O campo de e-mail não pode estar vazio.")
@@ -79,7 +82,8 @@ class ProfileViewController: UIViewController {
         
         return true
     }
-    
+
+#warning("repetição")
     func showAlert(message: String) {
         let alert = UIAlertController(title: "Erro", message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
@@ -89,7 +93,7 @@ class ProfileViewController: UIViewController {
 }
 
 extension ProfileViewController: ProfileScreenProtocol {
-    
+#warning("remover metodo, pois ele não faz nada!!!!")
     func tappedEditButton() {
         if validateFields() {
         }
@@ -98,7 +102,7 @@ extension ProfileViewController: ProfileScreenProtocol {
     func tappedOutOfAccountButton() {
         showLogoutAlert()
     }
-    
+#warning("repeticao de codigo")
     func showLogoutAlert() {
         let alert = UIAlertController(title: "Sair da conta", message: "Tem certeza que deseja sair da sua conta?", preferredStyle: .alert)
         let logoutAction = UIAlertAction(title: "Sair", style: .destructive) { _ in
@@ -114,6 +118,7 @@ extension ProfileViewController: ProfileScreenProtocol {
     func tappedDeleteAccountButton() {
         showDeleteAccountAlert()
     }
+
     func logoutAndNavigateToLogin() {
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
            let window = windowScene.windows.first {
@@ -128,9 +133,11 @@ extension ProfileViewController: ProfileScreenProtocol {
             
         }
     }
+#warning("Classe de alert customizavel...")
     func showDeleteAccountAlert() {
         let alert = UIAlertController(title: "Atenção", message: "Tem certeza que deseja excluir esta conta?", preferredStyle: .alert)
         let deleteAction = UIAlertAction(title: "Excluir", style: .destructive) { _ in
+#warning("View Model...")
             FirestoreManager.shared.deleteUserAccount { [weak self] result in
                 DispatchQueue.main.async {
                     LoadingLottie.shared.stop()

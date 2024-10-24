@@ -39,7 +39,8 @@ class NotificationScreen: UIView {
         button.addTarget(self, action: #selector(tappedSaveButton), for: .touchUpInside)
         return button
     }()
-    
+
+#warning("botão sem ação")
     @objc func tappedSaveButton() {
         print(#function)
     }
@@ -55,14 +56,16 @@ class NotificationScreen: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
+#warning("remover comentarios")
     func addElements() {
         addSubview(headerView)
         addSubview(tableView)
         //addSubview(deleteAllNotificationsButton)
         
     }
-    
+
+#warning("remover comentarios")
     func configConstraints() {
         NSLayoutConstraint.activate([
             

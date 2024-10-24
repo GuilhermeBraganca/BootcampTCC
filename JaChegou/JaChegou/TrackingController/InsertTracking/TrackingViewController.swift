@@ -36,7 +36,7 @@ extension TrackingViewController: TrackingScreenProtocol {
             self.showOKAlert(title: "Atenção!", message: "Por favor, preencha todos os campos")
             return
         }
-        
+#warning("refatorar")
         if (trackingCode == "NM455753072BR" ||  trackingCode == "NM455753073BR" ||  trackingCode == "NM455753074BR" ||  trackingCode == "NM455753075BR"){
             viewModel.saveMockTrackingData(code: trackingCode, description: orderDescription)
         }else{
@@ -56,6 +56,7 @@ extension TrackingViewController: TrackingViewModelProtocol {
     
     
     func success() {
+#warning("repeticao")
         let alertController = UIAlertController(title: "Sucesso", message: "Cadastro realizado com sucesso.", preferredStyle: .alert)
         
         let okAction = UIAlertAction(title: "OK", style: .default) { [weak self] _ in

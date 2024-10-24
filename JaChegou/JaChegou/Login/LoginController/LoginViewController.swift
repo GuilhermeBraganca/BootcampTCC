@@ -2,6 +2,7 @@
 import UIKit
 import FirebaseAuth
 
+#warning("Verificar as classes Login por um todo!")
 class LoginViewController: UIViewController {
     
     var screen: LoginScreen?
@@ -39,12 +40,14 @@ class LoginViewController: UIViewController {
     
     // Função para interação da LoginViewController (View) com a interactionLoginViewModel.
     func interactionLoginViewModel() {
+#warning("criar guard let para remover opcionais")
         viewModel.isLoginButtonEnabled = { [weak self] isEnabled in
             //Habilita ou desabilita o botão de login
             self?.isEnabledLoginButton(isEnable: isEnabled)
         }
         //Configura a exibição do erro do campo e-mail
         viewModel.showEmailError = { [weak self] showError in
+        #warning("criar guard let para remover opcionais")
             if showError {
                 self?.screen?.emailTextField.layer.borderColor = UIColor.red.cgColor
                 self?.screen?.emailTextField.layer.borderWidth = 1.0
@@ -88,6 +91,7 @@ class LoginViewController: UIViewController {
         screen?.loginButton.isEnabled = isEnable
         screen?.loginButton.backgroundColor = isEnable ? .systemBlue : .lightGray
     }
+
     func switchToMainTabBarController() {
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
               let window = windowScene.windows.first else {
@@ -100,8 +104,8 @@ class LoginViewController: UIViewController {
         
         // Adiciona uma animação de transição suave
         UIView.transition(with: window, duration: 0.5, options: .transitionCrossDissolve, animations: nil, completion: nil)
-        
-        
+#warning("remover todos os comentarios")
+
         //            let vc = MainTabBarControllerViewController()
         //            vc.modalTransitionStyle = .crossDissolve
         //            vc.modalPresentationStyle = .fullScreen
@@ -112,6 +116,7 @@ class LoginViewController: UIViewController {
 extension LoginViewController: LoginScreenProtocol {
     
     func tappedLoginButton() {
+
         // Valida se os campos de e-mail e senha estão preenchidos
         guard let email: String = screen?.emailTextField.text,
               let password: String = screen?.passwordTextField.text,
@@ -120,6 +125,7 @@ extension LoginViewController: LoginScreenProtocol {
             showAlert(title: "Atenção!", message: "Por favor, preencha todos os campos")
             return
         }
+#warning("Request na ViewModel")
         //Login com o Firebase
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
             guard let self else { return }
@@ -128,9 +134,11 @@ extension LoginViewController: LoginScreenProtocol {
                 self.showAlert(title: "Atenção! Dados de autenticação fornecida está incorreta ou expirou!", message: error?.localizedDescription ?? "")
                 return
             }
+#warning("remover prints que não tem utilidade")
             print("Show, login feito com sucesso!")
             
             switchToMainTabBarController()
+          #warning("remover comentarios desnecessários")
             //self.navigationController?.pushViewController(MainTabBarControllerViewController(), animated: true)
         }
     }

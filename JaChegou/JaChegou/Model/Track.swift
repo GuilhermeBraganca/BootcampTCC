@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct Track: Codable, Equatable {
     var image: String
     var description: String

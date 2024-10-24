@@ -145,6 +145,7 @@ class FirestoreManager {
                 do {
                     var userData = try document.data(as: User.self)
                     if let index = userData.track.firstIndex(where: { $0.trackingNumber == track.trackingNumber }) {
+                      #warning("Nem está sendo utilizado essa variavel")
                         let newUniqueEvents = self.getNewEvents(currentEvents: userData.track[index].events, newEvents: track.events)
                         userData.track[index].events = track.events
                         self.saveUserData(userData: userData, document: document, completion: completion)

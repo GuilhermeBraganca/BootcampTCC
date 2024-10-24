@@ -9,7 +9,7 @@
 
 import Foundation
 import UIKit
-
+#warning("alinhar sobre toda essa classe")
 class LoginViewModel {
     var isLoginButtonEnabled: ((Bool) -> Void)? // Habilitar ou desabilitar o botão login
     var showEmailError: ((Bool) -> Void)? //Mostrar ou ocultar a mensagem de erro de e-mail

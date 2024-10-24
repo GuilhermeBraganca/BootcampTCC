@@ -8,19 +8,15 @@
 import UIKit
 
 protocol ProfileScreenProtocol: AnyObject {
-    
     func tappedOutOfAccountButton()
     func tappedDeleteAccountButton()
     func tappedEditButton()
-    
 }
 
 class ProfileScreen: UIView {
-    
     weak var delegate: ProfileScreenProtocol?
     
     lazy var headerView: HeaderView = {
-        
         let view = HeaderView(title: "Perfil", image: UIImage(named: "worldImage"))
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -201,6 +197,7 @@ class ProfileScreen: UIView {
         addSubview(nameLabel)
         addSubview(birthDataImageView)
         addSubview(birthDataLabel)
+#warning("remover comentarios")
         //addSubview(editButton)
         addSubview(outOfAccountButton)
         addSubview(deleteAccountButton)
@@ -209,7 +206,8 @@ class ProfileScreen: UIView {
         addSubview(birthDataTextField)
         
     }
-    
+
+#warning("remover comentarios")
     func configConstraints() {
         NSLayoutConstraint.activate([
             

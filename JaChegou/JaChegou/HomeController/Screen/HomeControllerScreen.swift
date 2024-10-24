@@ -10,7 +10,6 @@ import UIKit
 
 protocol HomeControllerScreenProtocol: AnyObject {
     func changeTrackingType(type: TrackingType)
-    
 }
 
 class HomeControllerScreen: UIView {
@@ -22,6 +21,8 @@ class HomeControllerScreen: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+
+#warning("remover comentarios")
     //    lazy var trackingLabel: UILabel = {
     //        let label = UILabel()
     //        label.text = "Rastreamentos"
@@ -142,9 +143,7 @@ class HomeControllerScreen: UIView {
             collectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -20),
             collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
         ])
-        
     }
-    
 }
 
 

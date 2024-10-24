@@ -32,6 +32,7 @@ class NotificationViewController: UIViewController {
         screen?.tableView.delegate = self
         screen?.tableView.dataSource = self
     }
+#warning("view model...")
     func getAllEvents(){
         FirestoreManager.shared.getUserData{ [weak self] result in
             switch result {
@@ -43,6 +44,7 @@ class NotificationViewController: UIViewController {
                 self?.viewModel.trackWithLastEvents = trackWithLastEvents
                 self?.screen?.tableView.reloadData()
             case .failure(let error):
+#warning("error que não faz nadaaaa")
                 print("Erro ao carregar os dados de rastreamento: \(error.localizedDescription)")
             }
         }

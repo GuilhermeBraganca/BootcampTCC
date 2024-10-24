@@ -34,7 +34,7 @@ public class LoadTrackingViewModel{
     }
     func checkForUpdates(track: Track) {
         delegate?.loading(start: true)
-        
+#warning("refatorar...")
         // Verifica se o número de rastreamento é o mock
         if (track.trackingNumber == "NM455753072BR" ||  track.trackingNumber == "NM455753073BR" ||  track.trackingNumber == "NM455753074BR" ||  track.trackingNumber == "NM455753075BR") {
             // Carrega o mock se o número de rastreamento for igual ao mock desejado
@@ -100,7 +100,7 @@ public class LoadTrackingViewModel{
         return newUniqueEvents
     }
 }
-
+#warning("criar arquivo responsavel por isso")
 extension NSNotification.Name {
     static let updateTrack = Self("changeName")
 }
