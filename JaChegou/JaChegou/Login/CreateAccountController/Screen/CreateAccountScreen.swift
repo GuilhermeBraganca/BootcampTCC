@@ -25,13 +25,12 @@ class CreateAccountScreen: UIView {
       return view
     }()
     
+    
     lazy var createAccountLabel: UILabel = {
         let label = UILabel()
         
         label.text = "Para aproveitar todos os recursos, crie uma conta."
         label.numberOfLines = 2
-#warning("remover comentarios")
-        //label.lineBreakMode = .byWordWrapping
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.boldSystemFont(ofSize: 20)
@@ -77,7 +76,6 @@ class CreateAccountScreen: UIView {
         tf.layer.cornerRadius = 20
         return tf
     }()
-
     lazy var passwordTextField: UITextField = {
         let tf = UITextField()
         let placeholderText =  "Senha*"
@@ -116,7 +114,6 @@ class CreateAccountScreen: UIView {
         tf.keyboardType = .emailAddress
         return tf
     }()
-
     lazy var eyeConfirmPasswordImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -143,6 +140,7 @@ class CreateAccountScreen: UIView {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Se já possui uma conta, faça login.", for: .normal)
+        
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         button.setTitleColor(.systemBlue, for: .normal)
         button.addTarget(self, action: #selector(tappedRegisterButton), for: .touchUpInside)
@@ -156,7 +154,6 @@ class CreateAccountScreen: UIView {
     @objc func tappedRegisterButton() {
         delegate?.tappedRegisterButton()
     }
-
     @objc func tappedEyePasswordButton() {
         passwordTextField.isSecureTextEntry.toggle()
         let image = passwordTextField.isSecureTextEntry ? UIImage(systemName: "eye") : UIImage(systemName: "eye.slash")
@@ -197,8 +194,6 @@ class CreateAccountScreen: UIView {
     
     func addElements() {
         addSubview(headerView)
-#warning("remover comentarios")
-        //addSubview(createAccountLabel)
         addSubview(nameTextField)
         addSubview(emailTextField)
         addSubview(birthDateTextField)
@@ -209,7 +204,6 @@ class CreateAccountScreen: UIView {
         addSubview(loginButton)
         addSubview(registerButton)
     }
-#warning("remover comentarios")
     func configConstraints() {
         NSLayoutConstraint.activate([
             
@@ -218,12 +212,7 @@ class CreateAccountScreen: UIView {
             headerView.leadingAnchor.constraint(equalTo: leadingAnchor),
             headerView.trailingAnchor.constraint(equalTo: trailingAnchor),
             headerView.heightAnchor.constraint(equalToConstant: 200),
-
-//            createAccountLabel.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 20),
-//            createAccountLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-//            createAccountLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            
-            
+                     
             nameTextField.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 30),
             nameTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             nameTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
@@ -270,5 +259,5 @@ class CreateAccountScreen: UIView {
             registerButton.heightAnchor.constraint(equalToConstant: 40),
         ])
     }
+    
 }
-
