@@ -12,24 +12,19 @@ import UIKit
 class RecoverPasswordViewModel {
     
     var showAlert: ((String, String) -> Void)?
-
-#warning("criar guard let para remover opcionais")
+    
     func recoverPassword(for email: String?) {
         guard let email = email, UITextView.isValidEmail(email) else {
             showAlert?("Erro", "Por favor, insira um e-mail válido.")
             return
         }
-#warning("weak self...")
-        Auth.auth().sendPasswordReset(withEmail: email) { error in
+        
+        Auth.auth().sendPasswordReset(withEmail: email) { [weak self] error in
             if let error = error {
-                self.showAlert?("Erro", error.localizedDescription)
+                self?.showAlert?("Erro", error.localizedDescription)
             } else {
-                self.showAlert?("Sucesso", "E-mail de recuperação enviado para \(email).")
+                self?.showAlert?("Sucesso", "E-mail de recuperação enviado para \(email).")
             }
         }
     }
-    
 }
-
-
-
