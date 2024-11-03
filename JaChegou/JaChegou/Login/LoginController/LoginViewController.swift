@@ -111,7 +111,7 @@ extension LoginViewController: LoginScreenProtocol {
               let password = screen?.passwordTextField.text,
               !email.isEmpty,
               !password.isEmpty else {
-            showAlert(title: "Atenção!", message: "Por favor, preencha todos os campos")
+            showAlert(title: "Atenção! Dados de autenticação fornecida está incorreta ou expirou!", message: "Por favor, preencha todos os campos")
             return
         }
         
