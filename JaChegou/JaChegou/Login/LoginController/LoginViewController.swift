@@ -2,7 +2,6 @@
 import UIKit
 import FirebaseAuth
 
-#warning("Verificar as classes Login por um todo!")
 class LoginViewController: UIViewController {
     
     var screen: LoginScreen?
@@ -17,7 +16,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         setupNavigationBar()
         configProtocols()
-        interactionLoginViewModel() //interação com a LoginViewModel.
+        interactionLoginViewModel()
     }
     
     func showAlert(title: String, message: String) {
@@ -26,7 +25,7 @@ class LoginViewController: UIViewController {
         alertController.addAction(okButton)
         present(alertController, animated: true)
     }
-    //Configura a barra de navegação - botão voltar no superior da tela.
+
     func setupNavigationBar() {
         navigationItem.backButtonTitle = ""
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
@@ -38,55 +37,56 @@ class LoginViewController: UIViewController {
         screen?.passwordTextField.delegate = self
     }
     
-    // Função para interação da LoginViewController (View) com a interactionLoginViewModel.
     func interactionLoginViewModel() {
-#warning("criar guard let para remover opcionais")
+        guard let screen = screen else { return }
+        
         viewModel.isLoginButtonEnabled = { [weak self] isEnabled in
-            //Habilita ou desabilita o botão de login
             self?.isEnabledLoginButton(isEnable: isEnabled)
         }
-        //Configura a exibição do erro do campo e-mail
+        
         viewModel.showEmailError = { [weak self] showError in
-        #warning("criar guard let para remover opcionais")
+            guard let screen = self?.screen else { return }
             if showError {
-                self?.screen?.emailTextField.layer.borderColor = UIColor.red.cgColor
-                self?.screen?.emailTextField.layer.borderWidth = 1.0
-                self?.screen?.emailErrorLabel.isHidden = false
-                let placeholderText = "E-mail*"
+                screen.emailTextField.layer.borderColor = UIColor.red.cgColor
+                screen.emailTextField.layer.borderWidth = 1.0
+                screen.emailErrorLabel.isHidden = false
                 let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.red]
-                self?.screen?.emailTextField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
+                screen.emailTextField.attributedPlaceholder = NSAttributedString(string: "E-mail*", attributes: attributes)
             } else {
-                //Utilizado para limpar o erro do campo e-mail
-                self?.screen?.emailTextField.layer.borderColor = UIColor.clear.cgColor
-                self?.screen?.emailTextField.layer.borderWidth = 0
-                self?.screen?.emailErrorLabel.isHidden = true
-                let placeholderText = "E-mail*"
+                screen.emailTextField.layer.borderColor = UIColor.clear.cgColor
+                screen.emailTextField.layer.borderWidth = 0
+                screen.emailErrorLabel.isHidden = true
                 let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.white]
-                self?.screen?.emailTextField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
+                screen.emailTextField.attributedPlaceholder = NSAttributedString(string: "E-mail*", attributes: attributes)
             }
         }
-        //Configura a exibição do erro do campo senha
+        
         viewModel.showPasswordError = { [weak self] showError in
+            guard let screen = self?.screen else { return }
             if showError {
-                self?.screen?.passwordTextField.layer.borderColor = UIColor.red.cgColor
-                self?.screen?.passwordTextField.layer.borderWidth = 1.0
-                self?.screen?.passwordErrorLabel.isHidden = false
-                let placeholderText = "Senha*"
+                screen.passwordTextField.layer.borderColor = UIColor.red.cgColor
+                screen.passwordTextField.layer.borderWidth = 1.0
+                screen.passwordErrorLabel.isHidden = false
                 let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.red]
-                self?.screen?.passwordTextField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
+                screen.passwordTextField.attributedPlaceholder = NSAttributedString(string: "Senha*", attributes: attributes)
             } else {
-                //Utilizado para limpar o erro do campo senha
-                self?.screen?.passwordTextField.layer.borderColor = UIColor.clear.cgColor
-                self?.screen?.passwordTextField.layer.borderWidth = 0
-                self?.screen?.passwordErrorLabel.isHidden = true
-                let placeholderText = "Senha*"
+                screen.passwordTextField.layer.borderColor = UIColor.clear.cgColor
+                screen.passwordTextField.layer.borderWidth = 0
+                screen.passwordErrorLabel.isHidden = true
                 let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.white]
-                self?.screen?.passwordTextField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
+                screen.passwordTextField.attributedPlaceholder = NSAttributedString(string: "Senha*", attributes: attributes)
             }
+        }
+        
+        viewModel.showLoginError = { [weak self] errorMessage in
+            self?.showAlert(title: "Atenção!", message: errorMessage)
+        }
+        
+        viewModel.didLoginSuccess = { [weak self] in
+            self?.switchToMainTabBarController()
         }
     }
     
-    // Habilita ou desabilita o botão de login
     func isEnabledLoginButton(isEnable: Bool) {
         screen?.loginButton.isEnabled = isEnable
         screen?.loginButton.backgroundColor = isEnable ? .systemBlue : .lightGray
@@ -94,53 +94,28 @@ class LoginViewController: UIViewController {
 
     func switchToMainTabBarController() {
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-              let window = windowScene.windows.first else {
-            return
-        }
+              let window = windowScene.windows.first else { return }
         
         let mainTabBarController = MainTabBarControllerViewController()
         window.rootViewController = mainTabBarController
         window.makeKeyAndVisible()
         
-        // Adiciona uma animação de transição suave
         UIView.transition(with: window, duration: 0.5, options: .transitionCrossDissolve, animations: nil, completion: nil)
-#warning("remover todos os comentarios")
-
-        //            let vc = MainTabBarControllerViewController()
-        //            vc.modalTransitionStyle = .crossDissolve
-        //            vc.modalPresentationStyle = .fullScreen
-        //            present(vc, animated: true)
     }
 }
 
 extension LoginViewController: LoginScreenProtocol {
     
     func tappedLoginButton() {
-
-        // Valida se os campos de e-mail e senha estão preenchidos
-        guard let email: String = screen?.emailTextField.text,
-              let password: String = screen?.passwordTextField.text,
+        guard let email = screen?.emailTextField.text,
+              let password = screen?.passwordTextField.text,
               !email.isEmpty,
               !password.isEmpty else {
             showAlert(title: "Atenção!", message: "Por favor, preencha todos os campos")
             return
         }
-#warning("Request na ViewModel")
-        //Login com o Firebase
-        Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
-            guard let self else { return }
-            
-            guard error == nil else {
-                self.showAlert(title: "Atenção! Dados de autenticação fornecida está incorreta ou expirou!", message: error?.localizedDescription ?? "")
-                return
-            }
-#warning("remover prints que não tem utilidade")
-            print("Show, login feito com sucesso!")
-            
-            switchToMainTabBarController()
-          #warning("remover comentarios desnecessários")
-            //self.navigationController?.pushViewController(MainTabBarControllerViewController(), animated: true)
-        }
+        
+        viewModel.performLogin(email: email, password: password)
     }
     
     func tappedRegisterButton() {
@@ -168,11 +143,8 @@ extension LoginViewController: UITextFieldDelegate {
             let newText = text.replacingCharacters(in: range, with: string)
             textField.text = newText
             
-            // Atualiza o ViewModel com os novos valores dos campos
             viewModel.validateLogin(email: screen?.emailTextField.text, password: screen?.passwordTextField.text)
         }
         return false
     }
 }
-
-

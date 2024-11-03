@@ -5,44 +5,42 @@
 //  Created by Fabio Cristiano Lopes on 15/09/24.
 //
 //
-// LoginViewModel centraliza a validação de e-mail e senha e interação com a LoginViewController
 
 import Foundation
-import UIKit
-#warning("alinhar sobre toda essa classe")
+import FirebaseAuth
+
 class LoginViewModel {
-    var isLoginButtonEnabled: ((Bool) -> Void)? // Habilitar ou desabilitar o botão login
-    var showEmailError: ((Bool) -> Void)? //Mostrar ou ocultar a mensagem de erro de e-mail
-    var showPasswordError: ((Bool) -> Void)? //Mostrar ou ocultar a mensagem de erro de senha
+    var isLoginButtonEnabled: ((Bool) -> Void)?
+    var showEmailError: ((Bool) -> Void)?
+    var showPasswordError: ((Bool) -> Void)?
+    var showLoginError: ((String) -> Void)?
+    var didLoginSuccess: (() -> Void)?
 
-
-    // Função para validar o e-mail e a senha
     func validateLogin(email: String?, password: String?) {
-
-        let isEmailValid = UITextView.isValidEmail(email ?? "")      // Valida o e-mail
-        let isPasswordValid = UITextView.isValidPassword(password ?? "") // Valida a senha
+        let isEmailValid = UITextView.isValidEmail(email ?? "")
+        let isPasswordValid = UITextView.isValidPassword(password ?? "")
         
-        // Verifica qual campo está incorreto e exibe mensagem de erro
         if !isEmailValid {
-            showEmailError?(true)  // Exibe erro de e-mail
-            showPasswordError?(false) // Esconde erro de senha
+            showEmailError?(true)
+            showPasswordError?(false)
         } else if !isPasswordValid {
-            showEmailError?(false) // Esconde erro de e-mail
-            showPasswordError?(true) // Exibe erro de senha
+            showEmailError?(false)
+            showPasswordError?(true)
         } else {
-            showEmailError?(false) // Esconde erro de e-mail
-            showPasswordError?(false) // Esconde erro de senha
+            showEmailError?(false)
+            showPasswordError?(false)
         }
         
-        // Somente habilita o botão de login se ambos os campos forem válidos
-        let isValid = isEmailValid && isPasswordValid
-        isLoginButtonEnabled?(isValid) // Atualiza o estado do botão de login
+        isLoginButtonEnabled?(isEmailValid && isPasswordValid)
     }
     
-    
+    func performLogin(email: String, password: String) {
+        Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
+            if let error = error {
+                self?.showLoginError?(error.localizedDescription)
+            } else {
+                self?.didLoginSuccess?()
+            }
+        }
+    }
 }
-
-
-
-
-
