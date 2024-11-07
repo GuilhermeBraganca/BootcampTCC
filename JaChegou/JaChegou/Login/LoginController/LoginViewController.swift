@@ -1,8 +1,7 @@
-
 import UIKit
 import FirebaseAuth
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, LoginViewModelDelegate {
     
     var screen: LoginScreen?
     var viewModel = LoginViewModel()
@@ -16,7 +15,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         setupNavigationBar()
         configProtocols()
-        interactionLoginViewModel()
+        viewModel.delegate = self
     }
     
     func showAlert(title: String, message: String) {
@@ -37,56 +36,52 @@ class LoginViewController: UIViewController {
         screen?.passwordTextField.delegate = self
     }
     
-    func interactionLoginViewModel() {
+    func setLoginButtonEnabled(_ isEnabled: Bool) {
+        isEnabledLoginButton(isEnable: isEnabled)
+    }
+
+    func displayEmailError(_ hasError: Bool) {
         guard let screen = screen else { return }
-        
-        viewModel.isLoginButtonEnabled = { [weak self] isEnabled in
-            self?.isEnabledLoginButton(isEnable: isEnabled)
-        }
-        
-        viewModel.showEmailError = { [weak self] showError in
-            guard let screen = self?.screen else { return }
-            if showError {
-                screen.emailTextField.layer.borderColor = UIColor.red.cgColor
-                screen.emailTextField.layer.borderWidth = 1.0
-                screen.emailErrorLabel.isHidden = false
-                let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.red]
-                screen.emailTextField.attributedPlaceholder = NSAttributedString(string: "E-mail*", attributes: attributes)
-            } else {
-                screen.emailTextField.layer.borderColor = UIColor.clear.cgColor
-                screen.emailTextField.layer.borderWidth = 0
-                screen.emailErrorLabel.isHidden = true
-                let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.white]
-                screen.emailTextField.attributedPlaceholder = NSAttributedString(string: "E-mail*", attributes: attributes)
-            }
-        }
-        
-        viewModel.showPasswordError = { [weak self] showError in
-            guard let screen = self?.screen else { return }
-            if showError {
-                screen.passwordTextField.layer.borderColor = UIColor.red.cgColor
-                screen.passwordTextField.layer.borderWidth = 1.0
-                screen.passwordErrorLabel.isHidden = false
-                let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.red]
-                screen.passwordTextField.attributedPlaceholder = NSAttributedString(string: "Senha*", attributes: attributes)
-            } else {
-                screen.passwordTextField.layer.borderColor = UIColor.clear.cgColor
-                screen.passwordTextField.layer.borderWidth = 0
-                screen.passwordErrorLabel.isHidden = true
-                let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.white]
-                screen.passwordTextField.attributedPlaceholder = NSAttributedString(string: "Senha*", attributes: attributes)
-            }
-        }
-        
-        viewModel.showLoginError = { [weak self] errorMessage in
-            self?.showAlert(title: "Atenção!", message: errorMessage)
-        }
-        
-        viewModel.didLoginSuccess = { [weak self] in
-            self?.switchToMainTabBarController()
+        if hasError {
+            screen.emailTextField.layer.borderColor = UIColor.red.cgColor
+            screen.emailTextField.layer.borderWidth = 1.0
+            screen.emailErrorLabel.isHidden = false
+            let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.red]
+            screen.emailTextField.attributedPlaceholder = NSAttributedString(string: "E-mail*", attributes: attributes)
+        } else {
+            screen.emailTextField.layer.borderColor = UIColor.clear.cgColor
+            screen.emailTextField.layer.borderWidth = 0
+            screen.emailErrorLabel.isHidden = true
+            let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.white]
+            screen.emailTextField.attributedPlaceholder = NSAttributedString(string: "E-mail*", attributes: attributes)
         }
     }
-    
+
+    func displayPasswordError(_ hasError: Bool) {
+        guard let screen = screen else { return }
+        if hasError {
+            screen.passwordTextField.layer.borderColor = UIColor.red.cgColor
+            screen.passwordTextField.layer.borderWidth = 1.0
+            screen.passwordErrorLabel.isHidden = false
+            let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.red]
+            screen.passwordTextField.attributedPlaceholder = NSAttributedString(string: "Senha*", attributes: attributes)
+        } else {
+            screen.passwordTextField.layer.borderColor = UIColor.clear.cgColor
+            screen.passwordTextField.layer.borderWidth = 0
+            screen.passwordErrorLabel.isHidden = true
+            let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.white]
+            screen.passwordTextField.attributedPlaceholder = NSAttributedString(string: "Senha*", attributes: attributes)
+        }
+    }
+
+    func displayLoginError(_ message: String) {
+        showAlert(title: "Atenção!", message: message)
+    }
+
+    func loginSucceeded() {
+        switchToMainTabBarController()
+    }
+
     func isEnabledLoginButton(isEnable: Bool) {
         screen?.loginButton.isEnabled = isEnable
         screen?.loginButton.backgroundColor = isEnable ? .systemBlue : .lightGray
@@ -111,7 +106,7 @@ extension LoginViewController: LoginScreenProtocol {
               let password = screen?.passwordTextField.text,
               !email.isEmpty,
               !password.isEmpty else {
-            showAlert(title: "Atenção! Dados de autenticação fornecida está incorreta ou expirou!", message: "Por favor, preencha todos os campos")
+            showAlert(title: "Atenção!", message: "Por favor, preencha todos os campos")
             return
         }
         

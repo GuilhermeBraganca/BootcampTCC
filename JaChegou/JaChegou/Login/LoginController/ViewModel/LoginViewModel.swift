@@ -9,37 +9,42 @@
 import Foundation
 import FirebaseAuth
 
+protocol LoginViewModelDelegate: AnyObject {
+    func setLoginButtonEnabled(_ isEnabled: Bool)
+    func displayEmailError(_ hasError: Bool)
+    func displayPasswordError(_ hasError: Bool)
+    func displayLoginError(_ message: String)
+    func loginSucceeded()
+}
+
 class LoginViewModel {
-    var isLoginButtonEnabled: ((Bool) -> Void)?
-    var showEmailError: ((Bool) -> Void)?
-    var showPasswordError: ((Bool) -> Void)?
-    var showLoginError: ((String) -> Void)?
-    var didLoginSuccess: (() -> Void)?
+    
+    weak var delegate: LoginViewModelDelegate?
 
     func validateLogin(email: String?, password: String?) {
         let isEmailValid = UITextView.isValidEmail(email ?? "")
         let isPasswordValid = UITextView.isValidPassword(password ?? "")
         
         if !isEmailValid {
-            showEmailError?(true)
-            showPasswordError?(false)
+            delegate?.displayEmailError(true)
+            delegate?.displayPasswordError(false)
         } else if !isPasswordValid {
-            showEmailError?(false)
-            showPasswordError?(true)
+            delegate?.displayEmailError(false)
+            delegate?.displayPasswordError(true)
         } else {
-            showEmailError?(false)
-            showPasswordError?(false)
+            delegate?.displayEmailError(false)
+            delegate?.displayPasswordError(false)
         }
         
-        isLoginButtonEnabled?(isEmailValid && isPasswordValid)
+        delegate?.setLoginButtonEnabled(isEmailValid && isPasswordValid)
     }
     
     func performLogin(email: String, password: String) {
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
             if let error = error {
-                self?.showLoginError?(error.localizedDescription)
+                self?.delegate?.displayLoginError(error.localizedDescription)
             } else {
-                self?.didLoginSuccess?()
+                self?.delegate?.loginSucceeded()
             }
         }
     }
