@@ -3,8 +3,8 @@ import FirebaseAuth
 
 class LoginViewController: UIViewController, LoginViewModelDelegate {
     
-    var screen: LoginScreen?
-    var viewModel = LoginViewModel()
+    private var screen: LoginScreen?
+    private var viewModel = LoginViewModel()
     
     override func loadView() {
         screen = LoginScreen()

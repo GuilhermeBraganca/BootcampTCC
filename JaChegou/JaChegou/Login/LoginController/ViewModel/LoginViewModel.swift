@@ -20,7 +20,7 @@ protocol LoginViewModelDelegate: AnyObject {
 class LoginViewModel {
     
     weak var delegate: LoginViewModelDelegate?
-
+    
     func validateLogin(email: String?, password: String?) {
         let isEmailValid = UITextView.isValidEmail(email ?? "")
         let isPasswordValid = UITextView.isValidPassword(password ?? "")
@@ -41,10 +41,11 @@ class LoginViewModel {
     
     func performLogin(email: String, password: String) {
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
-            if let error = error {
-                self?.delegate?.displayLoginError(error.localizedDescription)
+            guard let self else { return }
+            if let error {
+                self.delegate?.displayLoginError(error.localizedDescription)
             } else {
-                self?.delegate?.loginSucceeded()
+                self.delegate?.loginSucceeded()
             }
         }
     }

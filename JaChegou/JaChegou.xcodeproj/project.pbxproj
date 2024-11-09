@@ -19,6 +19,7 @@
 		039BBD9F2C8DEDDB00B74E27 /* RecoverPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039BBD9E2C8DEDDB00B74E27 /* RecoverPasswordViewController.swift */; };
 		039BBDA12C8DF14F00B74E27 /* RecoverPasswordScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039BBDA02C8DF14F00B74E27 /* RecoverPasswordScreen.swift */; };
 		03D905422CBE1F6D00366760 /* CreateAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D905412CBE1F4800366760 /* CreateAccountViewModel.swift */; };
+		03DBB4672CDEE46900859199 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DBB4662CDEE46500859199 /* Alert.swift */; };
 		4DC36FF9B8592F46A8526743 /* Pods_JaChegou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3857A1A11737408CE4583553 /* Pods_JaChegou.framework */; };
 		FA050B5A2C6B02FE000BB48A /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA050B592C6B02FE000BB48A /* HeaderView.swift */; };
 		FA050B5E2C6C35F4000BB48A /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA050B5D2C6C35F4000BB48A /* SearchView.swift */; };
@@ -89,6 +90,7 @@
 		039BBD9E2C8DEDDB00B74E27 /* RecoverPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverPasswordViewController.swift; sourceTree = "<group>"; };
 		039BBDA02C8DF14F00B74E27 /* RecoverPasswordScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverPasswordScreen.swift; sourceTree = "<group>"; };
 		03D905412CBE1F4800366760 /* CreateAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewModel.swift; sourceTree = "<group>"; };
+		03DBB4662CDEE46500859199 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		3857A1A11737408CE4583553 /* Pods_JaChegou.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JaChegou.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		752170E0C8F51BC9D93738F6 /* Pods-JaChegou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JaChegou.debug.xcconfig"; path = "Target Support Files/Pods-JaChegou/Pods-JaChegou.debug.xcconfig"; sourceTree = "<group>"; };
 		83574C897EBF37BB48AF874D /* Pods-JaChegou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JaChegou.release.xcconfig"; path = "Target Support Files/Pods-JaChegou/Pods-JaChegou.release.xcconfig"; sourceTree = "<group>"; };
@@ -558,6 +560,7 @@
 		FAE831702C87E680000D6FC0 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				03DBB4662CDEE46500859199 /* Alert.swift */,
 				FAE831712C87E698000D6FC0 /* UIColor+Extension.swift */,
 				FA62D0232CAA18BE00080A62 /* UIViewController.swift */,
 				FAE831732C87EFFD000D6FC0 /* UITextField+Extension.swift */,
@@ -814,6 +817,7 @@
 				FA8621BF2C9F7F07007E3F7D /* EmptyResponse.swift in Sources */,
 				FA2E044C2CB2323F00C8B506 /* Events.swift in Sources */,
 				FAE8319D2C8E46E4000D6FC0 /* EmptyTrackingCollectionViewCell.swift in Sources */,
+				03DBB4672CDEE46900859199 /* Alert.swift in Sources */,
 				FA63F2202C6996BD0098967A /* TrackingScreen.swift in Sources */,
 				034C3CE32C7415EA00E9EDA5 /* ProductTableViewCell.swift in Sources */,
 				FA2E04542CB2376D00C8B506 /* User.swift in Sources */,
