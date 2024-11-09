@@ -10,7 +10,6 @@ import UIKit
 protocol ProfileScreenProtocol: AnyObject {
     func tappedOutOfAccountButton()
     func tappedDeleteAccountButton()
-    func tappedEditButton()
 }
 
 class ProfileScreen: UIView {
@@ -112,18 +111,6 @@ class ProfileScreen: UIView {
         return button
     }()
     
-    lazy var editButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(systemName:"pencil"), for: .normal)
-        button.setTitle("Editar", for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-        button.imageView?.tintColor = .customLightBlue
-        button.setTitleColor(.customLightBlue, for: .normal)
-        button.addTarget(self, action: #selector(tappedEditButton), for: .touchUpInside)
-        return button
-    }()
-    
     lazy var emailTextField: UITextField = {
         let emailTextField = UITextField()
         let placeholderText =  "teste@teste.com.br"
@@ -173,10 +160,6 @@ class ProfileScreen: UIView {
         delegate?.tappedDeleteAccountButton()
     }
     
-    @objc func tappedEditButton() {
-        delegate?.tappedEditButton()
-    }
-    
     init() {
         super.init(frame: .zero)
         backgroundColor = .black
@@ -197,8 +180,6 @@ class ProfileScreen: UIView {
         addSubview(nameLabel)
         addSubview(birthDataImageView)
         addSubview(birthDataLabel)
-#warning("remover comentarios")
-        //addSubview(editButton)
         addSubview(outOfAccountButton)
         addSubview(deleteAccountButton)
         addSubview(emailTextField)
@@ -206,8 +187,7 @@ class ProfileScreen: UIView {
         addSubview(birthDataTextField)
         
     }
-
-#warning("remover comentarios")
+    
     func configConstraints() {
         NSLayoutConstraint.activate([
             
@@ -243,9 +223,6 @@ class ProfileScreen: UIView {
             
             birthDataLabel.topAnchor.constraint(equalTo: birthDataImageView.topAnchor),
             birthDataLabel.leadingAnchor.constraint(equalTo: birthDataImageView.leadingAnchor, constant: 30),
-            
-//            editButton.bottomAnchor.constraint(equalTo: outOfAccountButton.topAnchor, constant: -20),
-//            editButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
             
             outOfAccountButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -80),
             outOfAccountButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
