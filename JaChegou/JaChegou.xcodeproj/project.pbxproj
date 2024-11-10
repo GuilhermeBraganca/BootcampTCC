@@ -31,6 +31,7 @@
 		FA2E04522CB2341200C8B506 /* FirebaseFirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2E04512CB2341200C8B506 /* FirebaseFirestoreManager.swift */; };
 		FA2E04542CB2376D00C8B506 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2E04532CB2376D00C8B506 /* User.swift */; };
 		FA2E04582CB37E3400C8B506 /* TrackIncomplete2.json in Resources */ = {isa = PBXBuildFile; fileRef = FA2E04572CB37E3400C8B506 /* TrackIncomplete2.json */; };
+		FA41C75E2CDD825E005E936D /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA41C75D2CDD8254005E936D /* String+Extension.swift */; };
 		FA62D0222CAA150000080A62 /* TrackIncomplete.json in Resources */ = {isa = PBXBuildFile; fileRef = FA62D0212CAA150000080A62 /* TrackIncomplete.json */; };
 		FA62D0242CAA18BE00080A62 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA62D0232CAA18BE00080A62 /* UIViewController.swift */; };
 		FA63F20B2C6814E00098967A /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63F20A2C6814E00098967A /* CreateAccountViewController.swift */; };
@@ -102,6 +103,7 @@
 		FA2E04512CB2341200C8B506 /* FirebaseFirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFirestoreManager.swift; sourceTree = "<group>"; };
 		FA2E04532CB2376D00C8B506 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FA2E04572CB37E3400C8B506 /* TrackIncomplete2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TrackIncomplete2.json; sourceTree = "<group>"; };
+		FA41C75D2CDD8254005E936D /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		FA62D0212CAA150000080A62 /* TrackIncomplete.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TrackIncomplete.json; sourceTree = "<group>"; };
 		FA62D0232CAA18BE00080A62 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		FA63F20A2C6814E00098967A /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
@@ -556,6 +558,7 @@
 		FAE831702C87E680000D6FC0 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				FA41C75D2CDD8254005E936D /* String+Extension.swift */,
 				FAE831712C87E698000D6FC0 /* UIColor+Extension.swift */,
 				FA62D0232CAA18BE00080A62 /* UIViewController.swift */,
 				FAE831732C87EFFD000D6FC0 /* UITextField+Extension.swift */,
@@ -826,6 +829,7 @@
 				FAE831722C87E698000D6FC0 /* UIColor+Extension.swift in Sources */,
 				032BD1C72C972A91000A0E9B /* RecoverPasswordViewModel.swift in Sources */,
 				FA63F2232C69979D0098967A /* ProfileViewController.swift in Sources */,
+				FA41C75E2CDD825E005E936D /* String+Extension.swift in Sources */,
 				FA8621C22C9F7F1A007E3F7D /* RequestBuilder.swift in Sources */,
 				FA050B5E2C6C35F4000BB48A /* SearchView.swift in Sources */,
 				FA63F21B2C6995780098967A /* HomeControllerScreen.swift in Sources */,

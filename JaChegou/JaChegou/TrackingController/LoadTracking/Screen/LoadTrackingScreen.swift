@@ -17,13 +17,13 @@ class LoadTrackingScreen: UIView {
     var track: Track?
     weak var delegate: LoadTrackingScreenProtocol?
     
-    lazy var headerView: HeaderView = {
+    private lazy var headerView: HeaderView = {
         let view = HeaderView(title: "", image: UIImage(named: "worldImage"))
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    lazy var productImageView: UIImageView = {
+    private lazy var productImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.backgroundColor = .customLightGray
@@ -31,7 +31,7 @@ class LoadTrackingScreen: UIView {
         return imageView
     }()
     
-    lazy var descriptionLabel: UILabel = {
+    private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.boldSystemFont(ofSize: 18)
@@ -42,7 +42,7 @@ class LoadTrackingScreen: UIView {
         return label
     }()
     
-    lazy var trackingNumberLabel: UILabel = {
+    private lazy var trackingNumberLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.boldSystemFont(ofSize: 12)
@@ -52,20 +52,19 @@ class LoadTrackingScreen: UIView {
         return label
     }()
     
-    
     lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(LoadTrackingTableViewCell.self, forCellReuseIdentifier: LoadTrackingTableViewCell.identifier)
         tableView.backgroundColor = .customGray
         tableView.layer.cornerRadius = 8
-
+        
         tableView.separatorStyle = .singleLine
         tableView.separatorColor = UIColor.lightGray
         return tableView
     }()
     
-    lazy var deleteTracking: UIButton = {
+    private lazy var deleteTracking: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Excluir Rastreio", for: .normal)
@@ -78,7 +77,7 @@ class LoadTrackingScreen: UIView {
         return button
     }()
     
-    lazy var closeSavedTrackingButton: UIButton = {
+    private lazy var closeSavedTrackingButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(systemName: "arrow.backward"), for: .normal)
@@ -92,11 +91,14 @@ class LoadTrackingScreen: UIView {
         return button
     }()
     
-    @objc func tappedDeleteButton() {
+    @objc
+    private func tappedDeleteButton() {
         print(#function)
         delegate?.tappedDeleteButton()
     }
-    @objc func tappedBackButton() {
+    
+    @objc
+    private func tappedBackButton() {
         print(#function)
         delegate?.tappedBackButton()
     }
@@ -107,12 +109,14 @@ class LoadTrackingScreen: UIView {
         addElements()
         configConstraints()
     }
+    
     func setupSavedTrackingLabels(track: Track){
         self.track = track
         productImageView.image = UIImage(systemName: "truck.box.fill")
         descriptionLabel.text = track.description
         trackingNumberLabel.text = track.trackingNumber
     }
+    
     func configTableViewProtocols(delegate: UITableViewDelegate, dataSource: UITableViewDataSource) {
         tableView.delegate = delegate
         tableView.dataSource = dataSource
@@ -122,8 +126,7 @@ class LoadTrackingScreen: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func addElements() {
-        
+    private func addElements() {
         addSubview(headerView)
         addSubview(closeSavedTrackingButton)
         addSubview(productImageView)
@@ -131,11 +134,9 @@ class LoadTrackingScreen: UIView {
         addSubview(trackingNumberLabel)
         addSubview(tableView)
         addSubview(deleteTracking)
-        
-        
     }
     
-    func configConstraints() {
+    private func configConstraints() {
         NSLayoutConstraint.activate([
             headerView.topAnchor.constraint(equalTo: topAnchor),
             headerView.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -147,13 +148,11 @@ class LoadTrackingScreen: UIView {
             closeSavedTrackingButton.heightAnchor.constraint(equalToConstant: 36),
             closeSavedTrackingButton.widthAnchor.constraint(equalToConstant: 36),
             
-            
             productImageView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 10),
             productImageView.leadingAnchor.constraint(equalTo:safeAreaLayoutGuide.leadingAnchor, constant: 10),
             productImageView.heightAnchor.constraint(equalToConstant: 36),
             productImageView.widthAnchor.constraint(equalToConstant: 36),
             
-            //descriptionLabel.centerYAnchor.constraint(equalTo: productImageView.centerYAnchor),
             descriptionLabel.topAnchor.constraint(equalTo: productImageView.topAnchor),
             descriptionLabel.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor, constant: 10),
             descriptionLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -20),
@@ -167,7 +166,6 @@ class LoadTrackingScreen: UIView {
             tableView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: deleteTracking.topAnchor, constant: -10),
             
-
             deleteTracking.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 10),
             deleteTracking.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             deleteTracking.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),

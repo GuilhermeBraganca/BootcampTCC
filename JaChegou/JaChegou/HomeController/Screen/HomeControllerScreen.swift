@@ -21,37 +21,21 @@ class HomeControllerScreen: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-
-#warning("remover comentarios")
-    //    lazy var trackingLabel: UILabel = {
-    //        let label = UILabel()
-    //        label.text = "Rastreamentos"
-    //        label.numberOfLines = 1
-    //        label.textColor = .white
-    //        label.translatesAutoresizingMaskIntoConstraints = false
-    //        label.font = UIFont.boldSystemFont(ofSize: 30)
-    //        return label
-    //    }()
+    
     
     lazy var searchBarView: UISearchBar = {
         let view = UISearchBar()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.placeholder = "Pesquise pela descrição:"
-        
-        // Remove a imagem de fundo padrão para poder customizar o fundo
         view.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
-        
-        // Define o fundo preto
         view.backgroundColor = .black
-        
-        // Acessa o campo de texto diretamente como UISearchTextField
         let textField = view.searchTextField
-        textField.backgroundColor = .black  // Fundo do campo de texto preto
-        textField.textColor = .white        // Texto em branco para contraste
-        textField.tintColor = .white        // Cor do cursor
+        textField.backgroundColor = .black
+        textField.textColor = .white
+        textField.tintColor = .white
         textField.attributedPlaceholder = NSAttributedString(
             string: "Pesquise pela descrição:",
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray]  // Placeholder em cinza claro
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
         )
         
         return view

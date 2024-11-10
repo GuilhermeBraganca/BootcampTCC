@@ -26,73 +26,73 @@ class LoadTrackingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if let track = track {
-            print("Track recebido: \(track)")
             checkForTrackingUpdates(track: track)
             setupScreen(track: track)
-            screen?.tableView.reloadData()
-            
         }
         configProtocols()
         screen?.tableView.reloadData()
     }
+    
     func checkForTrackingUpdates(track: Track) {
         viewModel.checkForUpdates(track: track)
     }
+    
     func configProtocols(){
         viewModel.delegate = self
         screen?.delegate = self
         screen?.configTableViewProtocols(delegate: self, dataSource: self)
     }
+    
     func setupScreen(track: Track){
         viewModel.loadTrackingData(tracking: track)
         screen?.setupSavedTrackingLabels(track: track)
-        
     }
+    
     func deleteTracking() {
+        guard let track = track else { return }
         let alertController = UIAlertController(
             title: "Deletar rastreio",
             message: "Tem certeza de que deseja deletar o rastreio?",
             preferredStyle: .alert
         )
         let okAction = UIAlertAction(title: "OK", style: .destructive) { [weak self] _ in
-            self?.deleteTrackingConfirmed()  // Chama o método para confirmar a exclusão
+            guard let self else { return }
+            viewModel.deleteTrackingConfirmed(track: track)
         }
         let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
-        
         alertController.addAction(okAction)
         alertController.addAction(cancelAction)
-        
         present(alertController, animated: true, completion: nil)
     }
-    func deleteTrackingConfirmed() {
-        guard let track = track else { return }
-        
-        FirestoreManager.shared.deleteTrackFromUser(track: track) { [weak self] result in
-            switch result {
-            case .success:
-                let alert = UIAlertController(
-                    title: "Sucesso",
-                    message: "O rastreio foi deletado.",
-                    preferredStyle: .alert
-                )
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-                    self?.delegate?.didDeleteTracking()
-                    self?.dismiss(animated: true, completion: nil)
-                }))
-                self?.present(alert, animated: true, completion: nil)
-                
-                
-            case .failure(let error):
-                let alert = UIAlertController(
-                    title: "Erro",
-                    message: "Falha ao deletar o rastreio: \(error.localizedDescription)",
-                    preferredStyle: .alert
-                )
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self?.present(alert, animated: true, completion: nil)
-            }
-        }
-    }
+    
+//    func deleteTrackingConfirmed() {
+//        guard let track = track else { return }
+//        FirestoreManager.shared.deleteTrackFromUser(track: track) { [weak self] result in
+//            switch result {
+//            case .success:
+//                let alert = UIAlertController(
+//                    title: "Sucesso",
+//                    message: "O rastreio foi deletado.",
+//                    preferredStyle: .alert
+//                )
+//                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+//                    self?.delegate?.didDeleteTracking()
+//                    self?.dismiss(animated: true, completion: nil)
+//                }))
+//                self?.present(alert, animated: true, completion: nil)
+//                
+//                
+//            case .failure(let error):
+//                let alert = UIAlertController(
+//                    title: "Erro",
+//                    message: "Falha ao deletar o rastreio: \(error.localizedDescription)",
+//                    preferredStyle: .alert
+//                )
+//                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+//                self?.present(alert, animated: true, completion: nil)
+//            }
+//        }
+//    }
 }
 
 extension LoadTrackingViewController: UITableViewDelegate, UITableViewDataSource {
@@ -119,6 +119,10 @@ extension LoadTrackingViewController: LoadTrackingScreenProtocol{
     
 }
 extension LoadTrackingViewController: LoadTrackingViewModelProtocol {
+    func showAlert(title: String, message: String) {
+        #warning ("precisa implementar dps que mergiar com a branch do fabio")
+    }
+    
     func success(message: String) {
         screen?.tableView.reloadData()
         let alertController = UIAlertController(

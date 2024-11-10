@@ -14,17 +14,16 @@ enum TrackingType {
 
 protocol HomeViewModelDelegate: AnyObject {
     func didLoadTracks(tracks: [Track])
+    func successGetTracksFromUser()
+    func failureGetTracksFromUser()
 }
 
 class HomeViewModel {
     
     weak var delegate: HomeViewModelDelegate?
-    
     private(set) var trackingType: TrackingType = .transporting
-    
-    var allTrackList: [Track] = []
-    var trackFilter: [Track] = []
-    
+    private var allTrackList: [Track] = []
+    private var trackFilter: [Track] = []
     
     func updateTrackFilter() {
         self.trackFilter = allTrackList
@@ -33,12 +32,12 @@ class HomeViewModel {
     func setNewTrackingType(newType: TrackingType) {
         trackingType = newType
     }
-
+    
     func removeTrack(_ track: Track) {
-            allTrackList.removeAll { $0.trackingNumber == track.trackingNumber }
-            trackFilter.removeAll { $0.trackingNumber == track.trackingNumber }
-        }
-
+        allTrackList.removeAll { $0.trackingNumber == track.trackingNumber }
+        trackFilter.removeAll { $0.trackingNumber == track.trackingNumber }
+    }
+    
     func filterTrack(text: String){
         if text.isEmpty {
             trackFilter = allTrackList
@@ -46,7 +45,7 @@ class HomeViewModel {
             trackFilter = allTrackList.filter { $0.description.lowercased().contains(text.lowercased()) }
         }
     }
-
+    
     var trackingList: [Track] {
         return trackFilter.filter { objc in
             return objc.events.allSatisfy { ($0.descricao?.uppercased() ?? "") != "Objeto entregue ao destinatário".uppercased() }
@@ -72,19 +71,34 @@ class HomeViewModel {
     }
     
     func loadAllTrackingData() {
-
+        
         FirestoreManager.shared.getTracksFromUser { [weak self] (result: Result<[Track], Error>) in
             
             DispatchQueue.main.async {
                 guard let self = self else { return }
                 switch result {
                 case .success(let tracks):
-                    // Notifique o ViewModel que os dados foram carregados
                     self.allTrackList = tracks
-                    
                 case .failure(let error):
 #warning("cenario de error não faz nada")
                     print("Erro ao recuperar os dados: \(error.localizedDescription)")
+                }
+            }
+        }
+    }
+    func getAllTrackFromUser(){
+        FirestoreManager.shared.getTracksFromUser { [weak self] (result: Result<[Track], Error>) in
+            
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                switch result {
+                case .success(let tracks):
+                    self.allTrackList = tracks
+                    self.updateTrackFilter()
+                    self.delegate?.successGetTracksFromUser()
+                case .failure(let error):
+                    print("Erro ao recuperar os dados: \(error.localizedDescription)")
+                    self.delegate?.failureGetTracksFromUser()
                 }
             }
         }
