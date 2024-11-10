@@ -18,7 +18,7 @@ class RecoverPasswordViewModel {
     var delegate: RecoveryPasswordDelegate?
     
     func recoverPassword(for email: String?) {
-        guard let email = email, UITextView.isValidEmail(email) else {
+        guard let email = email, ValidationData.isValidEmail(email) else {
             delegate?.showAlert(title: "Erro", message: "Por favor, insira um e-mail válido.")
             return
         }

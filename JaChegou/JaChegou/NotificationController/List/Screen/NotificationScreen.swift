@@ -27,25 +27,6 @@ class NotificationScreen: UIView {
         return tableView
     }()
     
-    lazy var deleteAllNotificationsButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Excluir todas notificações", for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .systemBlue
-        button.clipsToBounds = true
-        button.layer.cornerRadius = 8
-        button.addTarget(self, action: #selector(tappedSaveButton), for: .touchUpInside)
-        return button
-    }()
-
-#warning("botão sem ação")
-    @objc func tappedSaveButton() {
-        print(#function)
-    }
-    
-    
     init() {
         super.init(frame: .zero)
         backgroundColor = .black
@@ -57,15 +38,11 @@ class NotificationScreen: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-#warning("remover comentarios")
     func addElements() {
         addSubview(headerView)
         addSubview(tableView)
-        //addSubview(deleteAllNotificationsButton)
-        
     }
 
-#warning("remover comentarios")
     func configConstraints() {
         NSLayoutConstraint.activate([
             
@@ -78,11 +55,6 @@ class NotificationScreen: UIView {
             tableView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -5),
-//            deleteAllNotificationsButton.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 0),
-//            deleteAllNotificationsButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-//            deleteAllNotificationsButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-//            deleteAllNotificationsButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -5),
-            
         ])
     }
     

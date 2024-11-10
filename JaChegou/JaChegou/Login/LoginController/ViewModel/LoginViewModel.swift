@@ -22,8 +22,8 @@ class LoginViewModel {
     weak var delegate: LoginViewModelDelegate?
     
     func validateLogin(email: String?, password: String?) {
-        let isEmailValid = UITextView.isValidEmail(email ?? "")
-        let isPasswordValid = UITextView.isValidPassword(password ?? "")
+        let isEmailValid = ValidationData.isValidEmail(email ?? "")
+        let isPasswordValid = ValidationData.isValidPassword(password ?? "")
         
         if !isEmailValid {
             delegate?.displayEmailError(true)

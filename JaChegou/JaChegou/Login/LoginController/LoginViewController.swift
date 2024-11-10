@@ -19,10 +19,7 @@ class LoginViewController: UIViewController, LoginViewModelDelegate {
     }
     
     func showAlert(title: String, message: String) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okButton = UIAlertAction(title: "OK", style: .default)
-        alertController.addAction(okButton)
-        present(alertController, animated: true)
+        Alert.showAlert(title: title, message: message, viewController: self)
     }
 
     func setupNavigationBar() {

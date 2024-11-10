@@ -33,7 +33,7 @@ extension TrackingViewController: TrackingScreenProtocol {
               let trackingCode: String = screen?.trackingCodeTextField.text,
               !orderDescription.isEmpty,
               !trackingCode.isEmpty else {
-            self.showOKAlert(title: "Atenção!", message: "Por favor, preencha todos os campos")
+            Alert.showAlert(title: "Atenção!", message: "Por favor, preencha todos os campos", viewController: self)
             return
         }
         viewModel.saveTrackingData(code: trackingCode, description: orderDescription)
@@ -52,8 +52,6 @@ extension TrackingViewController: TrackingViewModelProtocol {
     
     
     func success() {
-#warning("repeticao")
-        let alertController = UIAlertController(title: "Sucesso", message: "Cadastro realizado com sucesso.", preferredStyle: .alert)
         
         let okAction = UIAlertAction(title: "OK", style: .default) { [weak self] _ in
             guard let self else { return }
@@ -67,13 +65,11 @@ extension TrackingViewController: TrackingViewModelProtocol {
                 UIView.setAnimationsEnabled(true)
             }
         }
-        
-        alertController.addAction(okAction)
-        present(alertController, animated: true, completion: nil)
+        Alert.showAlert(title: "Sucesso", message: "Cadastro realizado com sucesso.", viewController: self, actions: [okAction])
     }
     
     func failure(errorMessage: String) {
-        self.showOKAlert(title: "Erro", message: errorMessage)
+        Alert.showAlert(title: "Erro", message: errorMessage, viewController: self)
     }
 }
 

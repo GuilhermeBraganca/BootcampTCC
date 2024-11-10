@@ -16,6 +16,7 @@ protocol HomeViewModelDelegate: AnyObject {
     func didLoadTracks(tracks: [Track])
     func successGetTracksFromUser()
     func failureGetTracksFromUser()
+    func showAlert(title: String, message: String)
 }
 
 class HomeViewModel {
@@ -71,17 +72,14 @@ class HomeViewModel {
     }
     
     func loadAllTrackingData() {
-        
         FirestoreManager.shared.getTracksFromUser { [weak self] (result: Result<[Track], Error>) in
-            
             DispatchQueue.main.async {
                 guard let self = self else { return }
                 switch result {
                 case .success(let tracks):
                     self.allTrackList = tracks
                 case .failure(let error):
-#warning("cenario de error não faz nada")
-                    print("Erro ao recuperar os dados: \(error.localizedDescription)")
+                    self.delegate?.showAlert(title: "Erro", message: "Erro ao recuperar os dados: \(error.localizedDescription)")
                 }
             }
         }

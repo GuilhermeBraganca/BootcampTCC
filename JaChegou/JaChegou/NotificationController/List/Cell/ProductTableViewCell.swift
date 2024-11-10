@@ -183,8 +183,7 @@ class ProductTableViewCell: UITableViewCell {
     }
     
     func setupCell(track: Track, event: Events) {
-        // Configura a célula com os dados do Track
-        
+ 
         descriptionTrackingLabel.text = track.description
         descriptionEventLabel.text = event.descricao?.trimLeft() ?? ""
         descriptionDateLabel.text = event.data?.trimLeft() ?? ""

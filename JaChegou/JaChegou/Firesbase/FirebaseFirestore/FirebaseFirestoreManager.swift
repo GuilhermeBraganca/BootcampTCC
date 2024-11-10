@@ -111,7 +111,7 @@ class FirestoreManager {
             case .success(let document):
                 do {
                     var userData = try document.data(as: User.self)
-                    if let index = userData.track.firstIndex(of: track) {
+                    if let _ = userData.track.firstIndex(of: track) {
                         let error = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "O rastreio já foi adicionado anteriormente."])
                         completion(.failure(error))
                         return

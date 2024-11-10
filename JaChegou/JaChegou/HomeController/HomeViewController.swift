@@ -49,6 +49,10 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: HomeViewModelDelegate {
     
+    func showAlert(title: String, message: String) {
+        Alert.showAlert(title: title, message: message, viewController: self)
+    }
+    
     func successGetTracksFromUser() {
         self.activityIndicatorView?.stopAnimating()
         self.screen?.collectionView.isHidden = false

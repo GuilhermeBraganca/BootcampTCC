@@ -68,12 +68,14 @@ extension CreateAccountViewController: CreateAccountScreenProtocol {
               !password.isEmpty,
               !passwordCheck.isEmpty,
               !name.isEmpty else {
-            self.showOKAlert(title: "Atenção!", message: "Por favor, preencha todos os campos")
+            Alert.showAlert(title: "Atenção!", message: "Por favor, preencha todos os campos", viewController: self)
             return
         }
         
         if !ValidationData.isValidConfirmPassword(password, passwordCheck) {
-            self.showOKAlert(title: "Atenção!", message: "As senhas não coincidem. Por favor, verifique e tente novamente.")
+            Alert.showAlert(title: "Atenção!",
+                            message: "As senhas não coincidem. Por favor, verifique e tente novamente.",
+                            viewController: self)
             return
         }
         
@@ -93,14 +95,13 @@ extension CreateAccountViewController: CreateAccountScreenProtocol {
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
-
+    
     func errorAlert(error: String){
         let alert = UIAlertController(title: "Houve um erro", message: error, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
 }
-
 
 extension CreateAccountViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
