@@ -13,11 +13,14 @@
 		032BD1C02C972104000A0E9B /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032BD1BF2C972104000A0E9B /* LoginViewModel.swift */; };
 		032BD1C52C97295D000A0E9B /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032BD1C42C97295D000A0E9B /* LoginModel.swift */; };
 		032BD1C72C972A91000A0E9B /* RecoverPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032BD1C62C972A91000A0E9B /* RecoverPasswordViewModel.swift */; };
+		03491CB92CD7226A004B268D /* ValidationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03491CB82CD72264004B268D /* ValidationData.swift */; };
 		034C3CE12C7415B400E9EDA5 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034C3CE02C7415B400E9EDA5 /* Product.swift */; };
 		034C3CE32C7415EA00E9EDA5 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034C3CE22C7415EA00E9EDA5 /* ProductTableViewCell.swift */; };
 		039BBD9F2C8DEDDB00B74E27 /* RecoverPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039BBD9E2C8DEDDB00B74E27 /* RecoverPasswordViewController.swift */; };
 		039BBDA12C8DF14F00B74E27 /* RecoverPasswordScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039BBDA02C8DF14F00B74E27 /* RecoverPasswordScreen.swift */; };
 		03D905422CBE1F6D00366760 /* CreateAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D905412CBE1F4800366760 /* CreateAccountViewModel.swift */; };
+		03E1E1302CDFC02900CA98D2 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E1E12F2CDFC02800CA98D2 /* ProfileViewModel.swift */; };
+		03DBB4672CDEE46900859199 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DBB4662CDEE46500859199 /* Alert.swift */; };
 		4DC36FF9B8592F46A8526743 /* Pods_JaChegou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3857A1A11737408CE4583553 /* Pods_JaChegou.framework */; };
 		FA050B5A2C6B02FE000BB48A /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA050B592C6B02FE000BB48A /* HeaderView.swift */; };
 		FA050B5E2C6C35F4000BB48A /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA050B5D2C6C35F4000BB48A /* SearchView.swift */; };
@@ -83,11 +86,14 @@
 		032BD1BF2C972104000A0E9B /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		032BD1C42C97295D000A0E9B /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		032BD1C62C972A91000A0E9B /* RecoverPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverPasswordViewModel.swift; sourceTree = "<group>"; };
+		03491CB82CD72264004B268D /* ValidationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationData.swift; sourceTree = "<group>"; };
 		034C3CE02C7415B400E9EDA5 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		034C3CE22C7415EA00E9EDA5 /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
 		039BBD9E2C8DEDDB00B74E27 /* RecoverPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverPasswordViewController.swift; sourceTree = "<group>"; };
 		039BBDA02C8DF14F00B74E27 /* RecoverPasswordScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverPasswordScreen.swift; sourceTree = "<group>"; };
 		03D905412CBE1F4800366760 /* CreateAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewModel.swift; sourceTree = "<group>"; };
+		03E1E12F2CDFC02800CA98D2 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		03DBB4662CDEE46500859199 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		3857A1A11737408CE4583553 /* Pods_JaChegou.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JaChegou.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		752170E0C8F51BC9D93738F6 /* Pods-JaChegou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JaChegou.debug.xcconfig"; path = "Target Support Files/Pods-JaChegou/Pods-JaChegou.debug.xcconfig"; sourceTree = "<group>"; };
 		83574C897EBF37BB48AF874D /* Pods-JaChegou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JaChegou.release.xcconfig"; path = "Target Support Files/Pods-JaChegou/Pods-JaChegou.release.xcconfig"; sourceTree = "<group>"; };
@@ -202,6 +208,14 @@
 				034C3CE22C7415EA00E9EDA5 /* ProductTableViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		03E1E12E2CDFC02000CA98D2 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				03E1E12F2CDFC02800CA98D2 /* ProfileViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		0F091FF760E10BB2F0E96410 /* Pods */ = {
@@ -342,6 +356,7 @@
 		FA63F2152C6993C10098967A /* ProfileController */ = {
 			isa = PBXGroup;
 			children = (
+				03E1E12E2CDFC02000CA98D2 /* ViewModel */,
 				FA63F2212C69973D0098967A /* Screen */,
 				FA63F2222C69979D0098967A /* ProfileViewController.swift */,
 			);
@@ -559,9 +574,11 @@
 			isa = PBXGroup;
 			children = (
 				FA41C75D2CDD8254005E936D /* String+Extension.swift */,
+				03DBB4662CDEE46500859199 /* Alert.swift */,
 				FAE831712C87E698000D6FC0 /* UIColor+Extension.swift */,
 				FA62D0232CAA18BE00080A62 /* UIViewController.swift */,
 				FAE831732C87EFFD000D6FC0 /* UITextField+Extension.swift */,
+				03491CB82CD72264004B268D /* ValidationData.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -814,6 +831,7 @@
 				FA8621BF2C9F7F07007E3F7D /* EmptyResponse.swift in Sources */,
 				FA2E044C2CB2323F00C8B506 /* Events.swift in Sources */,
 				FAE8319D2C8E46E4000D6FC0 /* EmptyTrackingCollectionViewCell.swift in Sources */,
+				03DBB4672CDEE46900859199 /* Alert.swift in Sources */,
 				FA63F2202C6996BD0098967A /* TrackingScreen.swift in Sources */,
 				034C3CE32C7415EA00E9EDA5 /* ProductTableViewCell.swift in Sources */,
 				FA2E04542CB2376D00C8B506 /* User.swift in Sources */,
@@ -839,6 +857,8 @@
 				FAC7A6ED2C600CE3001D90BE /* LoginScreen.swift in Sources */,
 				FA8621C52C9F7F37007E3F7D /* Parameters.swift in Sources */,
 				FA8621CB2C9F7FBB007E3F7D /* NetworkError.swift in Sources */,
+				03E1E1302CDFC02900CA98D2 /* ProfileViewModel.swift in Sources */,
+				03491CB92CD7226A004B268D /* ValidationData.swift in Sources */,
 				FA63F2192C6994AD0098967A /* HomeViewController.swift in Sources */,
 				032A17F72C97B3B9001000E0 /* TrackingModel.swift in Sources */,
 				FA8621D12C9FBAA0007E3F7D /* TrackingService.swift in Sources */,

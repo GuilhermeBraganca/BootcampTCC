@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import FirebaseAuth
 
 class RecoverPasswordScreen: UIView {
     
@@ -29,7 +28,7 @@ class RecoverPasswordScreen: UIView {
     
     lazy var recoverPasswordTextField: UITextField = {
         let tf = UITextField()
-        let placeholderText =  "E-mail"
+        let placeholderText = "E-mail"
         let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.white]
         tf.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
         tf.translatesAutoresizingMaskIntoConstraints = false
@@ -48,25 +47,8 @@ class RecoverPasswordScreen: UIView {
         button.backgroundColor = .systemBlue
         button.layer.cornerRadius = 20
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(tappedSendEmailButton), for: .touchUpInside)
         return button
     }()
-    
-    @objc func tappedSendEmailButton() {
-        guard let email = recoverPasswordTextField.text, !email.isEmpty else {
-            showAlert(title: "Erro", message: "Por favor, insira um e-mail válido.")
-            return
-        }
-    }
-#warning("criar classe de alert generica para parar de ficar replicando codigo")
-#warning("remover esse metodo daqui URGENTE!!! if let viewController = self.window?.rootViewController ISSO É GAMBIARRA!!!")
-    func showAlert(title: String, message: String) {
-        if let viewController = self.window?.rootViewController {
-            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            viewController.present(alert, animated: true, completion: nil)
-        }
-    }
     
     init() {
         super.init(frame: .zero)
