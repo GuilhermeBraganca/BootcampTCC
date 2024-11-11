@@ -14,6 +14,7 @@ class RecoverPasswordViewController: UIViewController {
     
     override func loadView() {
         screen = RecoverPasswordScreen()
+        viewModel.delegate = self
         view = screen
     }
     
