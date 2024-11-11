@@ -96,6 +96,7 @@ extension HomeViewController: HomeControllerScreenProtocol {
 extension HomeViewController: LoadTrackingViewControllerDelegate{
     func didDeleteTracking() {
         viewModel.getAllTrackFromUser()
+        screen?.collectionView.reloadData()
     }
 }
 

@@ -84,9 +84,14 @@ extension LoadTrackingViewController: LoadTrackingScreenProtocol{
 }
 extension LoadTrackingViewController: LoadTrackingViewModelProtocol {
     func showAlertDeleteTrackingSuccess(title: String, message: String) {
-        Alert.showAlert(title: title, message: message, viewController: self)
-        self.dismiss(animated: true, completion: nil)
+        let okAction = UIAlertAction(title: "OK", style: .default) { [weak self] _ in
+            guard let self else { return }
+            self.delegate?.didDeleteTracking()
+            self.dismiss(animated: true, completion: nil)
+        }
+        Alert.showAlert(title: title, message: message, viewController: self, actions: [okAction])
     }
+    
     
     func showAlertDeleteTrackingFailure(title: String, message: String) {
         Alert.showAlert(title: title, message: message, viewController: self)
