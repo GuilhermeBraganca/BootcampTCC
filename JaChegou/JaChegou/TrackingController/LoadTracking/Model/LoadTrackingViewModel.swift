@@ -12,7 +12,8 @@ protocol LoadTrackingViewModelProtocol: AnyObject {
     func success(message: String)
     func failure(errorMessage: String)
     func loading(start: Bool)
-    func showAlert(title: String, message: String)
+    func showAlertDeleteTrackingSuccess(title: String, message: String)
+    func showAlertDeleteTrackingFailure(title: String, message: String)
 }
 
 public class LoadTrackingViewModel{
@@ -85,9 +86,9 @@ public class LoadTrackingViewModel{
             guard let self else {return}
             switch result {
             case .success:
-                self.delegate?.showAlert(title: "Sucesso", message: "O rastreio foi deletado.")
+                self.delegate?.showAlertDeleteTrackingSuccess(title: "Sucesso", message: "O rastreio foi deletado.")
             case .failure(let error):
-                self.delegate?.showAlert(title: "Erro", message: "Falha ao deletar o rastreio: \(error.localizedDescription)")
+                self.delegate?.showAlertDeleteTrackingFailure(title: "Erro", message: "Falha ao deletar o rastreio: \(error.localizedDescription)")
             }
         }
     }

@@ -65,13 +65,11 @@ extension LoadTrackingViewController: UITableViewDelegate, UITableViewDataSource
 extension LoadTrackingViewController: LoadTrackingScreenProtocol{
     func tappedDeleteButton() {
         guard let track = track else { return }
-        
         let okAction = UIAlertAction(title: "OK", style: .destructive) { [weak self] _ in
             guard let self else { return }
             viewModel.deleteTrackingConfirmed(track: track)
         }
         let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
-        
         Alert.showAlert(title: "Deletar rastreio",
                         message: "Tem certeza de que deseja deletar o rastreio?",
                         viewController: self,
@@ -85,20 +83,18 @@ extension LoadTrackingViewController: LoadTrackingScreenProtocol{
     
 }
 extension LoadTrackingViewController: LoadTrackingViewModelProtocol {
-    func showAlert(title: String, message: String) {
-        Alert.showAlert(title: "Sucesso", message: "O rastreio foi deletado.", viewController: self)
+    func showAlertDeleteTrackingSuccess(title: String, message: String) {
+        Alert.showAlert(title: title, message: message, viewController: self)
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func showAlertDeleteTrackingFailure(title: String, message: String) {
+        Alert.showAlert(title: title, message: message, viewController: self)
     }
     
     func success(message: String) {
         screen?.tableView.reloadData()
-        let alertController = UIAlertController(
-            title: "Atualização de Rastreamento",
-            message: message,
-            preferredStyle: .alert
-        )
-        
-        alertController.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alertController, animated: true, completion: nil)
+        Alert.showAlert(title: "Atualização de Rastreamento", message: message, viewController: self)
     }
     
     func failure(errorMessage: String) {

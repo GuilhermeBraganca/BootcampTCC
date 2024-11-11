@@ -20,15 +20,18 @@ class HomeViewController: UIViewController {
             activityIndicatorView.startAnimating()
         }
     }
+    
     override func loadView() {
         screen = HomeControllerScreen()
         view = screen
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configActivity()
         configProtocols()
     }
+    
     func configActivity(){
         activityIndicatorView = UIActivityIndicatorView(style: .large)
         activityIndicatorView?.center = view.center
@@ -36,12 +39,14 @@ class HomeViewController: UIViewController {
         screen?.collectionView.backgroundView = activityIndicatorView
         activityIndicatorView?.startAnimating()
     }
+    
     func configProtocols() {
         viewModel.delegate = self
         screen?.delegate = self
         screen?.configCollectionViewProtocols(delegate: self, dataSource: self)
         screen?.configSearchBarProtocol(delegate: self)
     }
+    
     func updateCollectionView() {
         screen?.collectionView.reloadData()
     }
