@@ -58,7 +58,6 @@ class TrackingViewModel {
             guard let self = self else { return }
             switch result {
             case .success:
-                print("Track adicionado com sucesso!")
                 self.delegate?.success()
             case .failure(let error):
                 self.delegate?.failure(errorMessage: error.localizedDescription)

@@ -93,13 +93,11 @@ class LoadTrackingScreen: UIView {
     
     @objc
     private func tappedDeleteButton() {
-        print(#function)
         delegate?.tappedDeleteButton()
     }
     
     @objc
     private func tappedBackButton() {
-        print(#function)
         delegate?.tappedBackButton()
     }
     

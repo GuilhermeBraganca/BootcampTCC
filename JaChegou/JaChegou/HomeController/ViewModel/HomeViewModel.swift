@@ -94,7 +94,6 @@ class HomeViewModel {
                     self.updateTrackFilter()
                     self.delegate?.successGetTracksFromUser()
                 case .failure(let error):
-                    print("Erro ao recuperar os dados: \(error.localizedDescription)")
                     self.delegate?.failureGetTracksFromUser()
                 }
             }
