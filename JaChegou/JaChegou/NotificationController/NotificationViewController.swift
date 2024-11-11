@@ -33,25 +33,7 @@ class NotificationViewController: UIViewController {
         screen?.tableView.delegate = self
         screen?.tableView.dataSource = self
     }
-
-//    func getAllEvents(){
-//        
-//        
-//        FirestoreManager.shared.getUserData{ [weak self] result in
-//            switch result {
-//            case .success(let userData):
-//                let trackWithLastEvents = userData.track.compactMap { track -> NotificationViewModel.TrackWithLastEvent? in
-//                    guard let lastEvent = track.events.first else { return nil }
-//                    return NotificationViewModel.TrackWithLastEvent(track: track, lastEvent: lastEvent)
-//                }
-//                self?.viewModel.trackWithLastEvents = trackWithLastEvents
-//                self?.screen?.tableView.reloadData()
-//            case .failure(let error):
-//#warning("error que não faz nadaaaa")
-//                print("Erro ao carregar os dados de rastreamento: \(error.localizedDescription)")
-//            }
-//        }
-//    }
+    
 }
 extension NotificationViewController: NotificationViewModelDelegate {
     func showAlert(title: String, message: String) {
