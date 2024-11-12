@@ -7,17 +7,35 @@
 
 import Foundation
 
-protocol ProfileViewModelProtocol {
-    func fetchUserData(completion: @escaping (Result<User, Error>) -> Void)
-    func deleteUserAccount(completion: @escaping (Result<Void, Error>) -> Void)
+protocol ProfileViewModelDelegate: AnyObject {
+    func didFetchUserData(_ user: User)
+    func didFailFetchingUserData(with error: Error)
+    func didDeleteUserAccount()
+    func didFailDeletingUserAccount(with error: Error)
 }
 
-class ProfileViewModel: ProfileViewModelProtocol {
-    func fetchUserData(completion: @escaping (Result<User, Error>) -> Void) {
-        FirestoreManager.shared.getUserData(completion: completion)
+class ProfileViewModel {
+    weak var delegate: ProfileViewModelDelegate?
+    
+    func fetchUserData() {
+        FirestoreManager.shared.getUserData { [weak self] result in
+            switch result {
+            case .success(let user):
+                self?.delegate?.didFetchUserData(user)
+            case .failure(let error):
+                self?.delegate?.didFailFetchingUserData(with: error)
+            }
+        }
     }
     
-    func deleteUserAccount(completion: @escaping (Result<Void, Error>) -> Void) {
-        FirestoreManager.shared.deleteUserAccount(completion: completion)
+    func deleteUserAccount() {
+        FirestoreManager.shared.deleteUserAccount { [weak self] result in
+            switch result {
+            case .success:
+                self?.delegate?.didDeleteUserAccount()
+            case .failure(let error):
+                self?.delegate?.didFailDeletingUserAccount(with: error)
+            }
+        }
     }
 }
