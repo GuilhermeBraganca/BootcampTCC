@@ -9,26 +9,27 @@ import Foundation
 import FirebaseAuth
 import UIKit
 
+protocol RecoveryPasswordDelegate {
+    func showAlert (title: String, message: String)
+}
+
 class RecoverPasswordViewModel {
     
-    var showAlert: ((String, String) -> Void)?
+    var delegate: RecoveryPasswordDelegate?
     
     func recoverPassword(for email: String?) {
-        guard let email = email, UITextView.isValidEmail(email) else {
-            showAlert?("Erro", "Por favor, insira um e-mail válido.")
+        guard let email = email, ValidationData.isValidEmail(email) else {
+            delegate?.showAlert(title: "Erro", message: "Por favor, insira um e-mail válido.")
             return
         }
         
-        Auth.auth().sendPasswordReset(withEmail: email) { error in
+        Auth.auth().sendPasswordReset(withEmail: email) { [weak self] error in
+            guard let self else { return }
             if let error = error {
-                self.showAlert?("Erro", error.localizedDescription)
+                self.delegate?.showAlert (title: "Erro", message: error.localizedDescription)
             } else {
-                self.showAlert?("Sucesso", "E-mail de recuperação enviado para \(email).")
+                self.delegate?.showAlert (title: "Sucesso", message: "E-mail de recuperação enviado para \(email).")
             }
         }
     }
-    
 }
-
-
-

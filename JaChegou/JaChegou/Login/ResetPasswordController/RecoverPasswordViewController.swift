@@ -14,18 +14,16 @@ class RecoverPasswordViewController: UIViewController {
     
     override func loadView() {
         screen = RecoverPasswordScreen()
+        viewModel.delegate = self
         view = screen
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        interactionRecoverViewModel() // Interação com a RecoverPasswordViewModel.
+        interactionRecoverViewModel()
     }
     
     func interactionRecoverViewModel() {
-        viewModel.showAlert = { [weak self] title, message in
-            self?.showAlert(title: title, message: message)
-        }
         
         screen?.sendEmailButton.addTarget(self, action: #selector(sendEmailButtonTapped), for: .touchUpInside)
     }
@@ -33,11 +31,11 @@ class RecoverPasswordViewController: UIViewController {
     @objc func sendEmailButtonTapped() {
         viewModel.recoverPassword(for: screen?.recoverPasswordTextField.text)
     }
-    
-    func showAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        present(alert, animated: true, completion: nil)
-    }
 }
 
+extension RecoverPasswordViewController: RecoveryPasswordDelegate {
+    func showAlert(title: String , message: String ) {
+        Alert.showAlert( title: title , message: message, viewController: self)
+    }
+}
+ 

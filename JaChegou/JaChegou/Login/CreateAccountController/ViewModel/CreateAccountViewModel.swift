@@ -8,25 +8,14 @@
 import Foundation
 
 class CreateAccountViewModel {
-    var user: User = User(id: "", email: "", name: "", password: "", birthDate: "", track: [])
-
-    func createUser(completion: @escaping (Result<Void, Error>) -> Void) {
+    func createUser(user: User, completion: @escaping (Result<Void, Error>) -> Void) {
         FirestoreManager.shared.createUserWithEmailAndPassword(user: user) { result in
             switch result {
             case .success:
-                print("criado com sucesso")
                 completion(.success(()))
             case .failure(let error):
-                print(error.localizedDescription)
                 completion(.failure(error))
             }
         }
     }
 }
-
-
-
-
-
-
-

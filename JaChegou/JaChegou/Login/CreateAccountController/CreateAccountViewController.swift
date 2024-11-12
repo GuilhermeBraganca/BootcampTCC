@@ -38,12 +38,19 @@ class CreateAccountViewController: UIViewController {
 }
 
 extension CreateAccountViewController: CreateAccountScreenProtocol {
+    
     func tappedEyePasswordButton() {
-        
+        guard let isSecureEntry = screen?.passwordTextField.isSecureTextEntry else { return }
+        screen?.passwordTextField.isSecureTextEntry = !isSecureEntry
+        let imageName = isSecureEntry ? "eye.slash" : "eye"
+        screen?.eyePasswordImageView.image = UIImage(systemName: imageName)
     }
     
     func tappedEyeConfirmPasswordButton() {
-    
+        guard let isSecureEntry = screen?.confirmPasswordTextField.isSecureTextEntry else { return }
+        screen?.confirmPasswordTextField.isSecureTextEntry = !isSecureEntry
+        let imageName = isSecureEntry ? "eye.slash" : "eye"
+        screen?.eyeConfirmPasswordImageView.image = UIImage(systemName: imageName)
     }
     
     func tappedRegisterButton() {
@@ -51,32 +58,29 @@ extension CreateAccountViewController: CreateAccountScreenProtocol {
     }
     
     func tappedLoginButton() {
-        
-        guard let birthDate: String = screen?.birthDateTextField.text,
-              let email: String = screen?.emailTextField.text,
-              let password: String = screen?.passwordTextField.text,
-              let passwordCheck: String = screen?.confirmPasswordTextField.text,
-              let name: String = screen?.nameTextField.text,
+        guard let birthDate = screen?.birthDateTextField.text,
+              let email = screen?.emailTextField.text,
+              let password = screen?.passwordTextField.text,
+              let passwordCheck = screen?.confirmPasswordTextField.text,
+              let name = screen?.nameTextField.text,
               !birthDate.isEmpty,
               !email.isEmpty,
               !password.isEmpty,
               !passwordCheck.isEmpty,
-              !name.isEmpty
-        else {
-            self.showOKAlert(title: "Atenção!", message: "Por favor, preencha todos os campos")
-            return
-        }
-        if password != passwordCheck {
-            self.showOKAlert(title: "Atenção!", message: "As senhas não coincidem. Por favor, verifique e tente novamente.")
+              !name.isEmpty else {
+            Alert.showAlert(title: "Atenção!", message: "Por favor, preencha todos os campos", viewController: self)
             return
         }
         
-        viewModel.user.birthDate = screen?.birthDateTextField.text ?? ""
-        viewModel.user.email = screen?.emailTextField.text ?? ""
-        viewModel.user.password = screen?.passwordTextField.text ?? ""
-        viewModel.user.name = screen?.nameTextField.text ?? ""
+        if !ValidationData.isValidConfirmPassword(password, passwordCheck) {
+            Alert.showAlert(title: "Atenção!",
+                            message: "As senhas não coincidem. Por favor, verifique e tente novamente.",
+                            viewController: self)
+            return
+        }
         
-        viewModel.createUser { [weak self] result in
+        let user = User(id: "", email: email, name: name, password: password, birthDate: birthDate, track: [])
+        viewModel.createUser(user: user) { [weak self] result in
             switch result {
             case .success:
                 self?.successAlert()
@@ -91,8 +95,9 @@ extension CreateAccountViewController: CreateAccountScreenProtocol {
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
+    
     func errorAlert(error: String){
-        let alert = UIAlertController(title: "Houve um error", message: error, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Houve um erro", message: error, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
@@ -112,17 +117,12 @@ extension CreateAccountViewController: UITextFieldDelegate {
         if let text = textField.text as NSString? {
             let newText = text.replacingCharacters(in: range, with: string)
             textField.text = newText
-            if UITextView.isValidEmail(screen?.emailTextField.text ?? "") && UITextView.isValidPassword(screen?.passwordTextField.text ?? "") && UITextView.isValidConfirmPassword(screen?.confirmPasswordTextField.text ?? "") {
-                isEnabledLoginButton(isEnable: true)
-            } else {
-                isEnabledLoginButton(isEnable: false)
-            }
+            let isEmailValid = ValidationData.isValidEmail(screen?.emailTextField.text ?? "")
+            let isPasswordValid = ValidationData.isValidPassword(screen?.passwordTextField.text ?? "")
+            let isConfirmPasswordValid = ValidationData.isValidConfirmPassword(screen?.passwordTextField.text ?? "", screen?.confirmPasswordTextField.text ?? "")
+            isEnabledLoginButton(isEnable: isEmailValid && isPasswordValid && isConfirmPasswordValid)
         }
         return false
     }
 }
-
-
-
-
 

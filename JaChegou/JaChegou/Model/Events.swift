@@ -5,6 +5,7 @@
 //  Created by MacBook on 05/10/24.
 //
 
+import Foundation
 
 struct Events : Codable, Equatable {
     var data: String?

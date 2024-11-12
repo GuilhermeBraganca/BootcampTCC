@@ -20,18 +20,16 @@ class CreateAccountScreen: UIView {
     weak var delegate: CreateAccountScreenProtocol?
     
     lazy var headerView: HeaderView = {
-      let view = HeaderView(title: "Para aproveitar todos os recursos, crie uma conta.", image: UIImage(named: "worldImage"))
-      view.translatesAutoresizingMaskIntoConstraints = false
-      return view
+        let view = HeaderView(title: "Para aproveitar todos os recursos, crie uma conta.", image: UIImage(named: "worldImage"))
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
     
     lazy var createAccountLabel: UILabel = {
         let label = UILabel()
-        
         label.text = "Para aproveitar todos os recursos, crie uma conta."
         label.numberOfLines = 2
-        //label.lineBreakMode = .byWordWrapping
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.boldSystemFont(ofSize: 20)
@@ -77,6 +75,7 @@ class CreateAccountScreen: UIView {
         tf.layer.cornerRadius = 20
         return tf
     }()
+    
     lazy var passwordTextField: UITextField = {
         let tf = UITextField()
         let placeholderText =  "Senha*"
@@ -115,6 +114,7 @@ class CreateAccountScreen: UIView {
         tf.keyboardType = .emailAddress
         return tf
     }()
+    
     lazy var eyeConfirmPasswordImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -195,7 +195,6 @@ class CreateAccountScreen: UIView {
     
     func addElements() {
         addSubview(headerView)
-        //addSubview(createAccountLabel)
         addSubview(nameTextField)
         addSubview(emailTextField)
         addSubview(birthDateTextField)
@@ -214,11 +213,6 @@ class CreateAccountScreen: UIView {
             headerView.leadingAnchor.constraint(equalTo: leadingAnchor),
             headerView.trailingAnchor.constraint(equalTo: trailingAnchor),
             headerView.heightAnchor.constraint(equalToConstant: 200),
-            
-//            createAccountLabel.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 20),
-//            createAccountLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-//            createAccountLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            
             
             nameTextField.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 30),
             nameTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
@@ -268,4 +262,3 @@ class CreateAccountScreen: UIView {
     }
     
 }
-

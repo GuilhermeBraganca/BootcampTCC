@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct Track: Codable, Equatable {
     var image: String
     var description: String
@@ -15,8 +14,6 @@ struct Track: Codable, Equatable {
     var date: String
     var events = [Events]()
 
-    
-    // Implementação de Equatable para comparar apenas o campo trackingNumber
     static func == (lhs: Track, rhs: Track) -> Bool {
         return lhs.trackingNumber == rhs.trackingNumber
     }

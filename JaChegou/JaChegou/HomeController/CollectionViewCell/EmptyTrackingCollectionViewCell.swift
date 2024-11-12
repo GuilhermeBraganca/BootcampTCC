@@ -42,24 +42,22 @@ class EmptyTrackingCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-
-func addElements() {
-    contentView.addSubview(backGroundView)
-    backGroundView.addSubview(descriptionLabel)
-}
-
-func configConstraints() {
-    NSLayoutConstraint.activate([
-        backGroundView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-        backGroundView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
-        backGroundView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
-        backGroundView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
-        
-        descriptionLabel.topAnchor.constraint(equalTo: backGroundView.topAnchor, constant: 40),
-        descriptionLabel.leadingAnchor.constraint(equalTo: backGroundView.leadingAnchor, constant: 20),
-        descriptionLabel.trailingAnchor.constraint(equalTo: backGroundView.trailingAnchor, constant: -20),
-        descriptionLabel.bottomAnchor.constraint(equalTo: backGroundView.bottomAnchor, constant: -40)
-    ])
-}
-
+    func addElements() {
+        contentView.addSubview(backGroundView)
+        backGroundView.addSubview(descriptionLabel)
+    }
+    
+    func configConstraints() {
+        NSLayoutConstraint.activate([
+            backGroundView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            backGroundView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
+            backGroundView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
+            backGroundView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
+            
+            descriptionLabel.topAnchor.constraint(equalTo: backGroundView.topAnchor, constant: 40),
+            descriptionLabel.leadingAnchor.constraint(equalTo: backGroundView.leadingAnchor, constant: 20),
+            descriptionLabel.trailingAnchor.constraint(equalTo: backGroundView.trailingAnchor, constant: -20),
+            descriptionLabel.bottomAnchor.constraint(equalTo: backGroundView.bottomAnchor, constant: -40)
+        ])
+    }
 }

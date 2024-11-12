@@ -8,7 +8,6 @@
 import FirebaseFirestore
 import FirebaseAuth
 
-
 class FirestoreManager {
     
     static let shared = FirestoreManager()
@@ -20,11 +19,9 @@ class FirestoreManager {
     
     private init() { }
     
-    func createUserWithEmailAndPassword(user : User, completion: @escaping (Result<Void, Error>) -> Void) {
-        Auth.auth().createUser(withEmail: user.email, password: user.password) {
-            result,
-            error in
-            if let error {
+    func createUserWithEmailAndPassword(user: User, completion: @escaping (Result<Void, Error>) -> Void) {
+        Auth.auth().createUser(withEmail: user.email, password: user.password) { result, error in
+            if let error = error {
                 completion(.failure(error))
             }
             
@@ -38,9 +35,9 @@ class FirestoreManager {
             
             let user = User(id: userID,
                             email: user.email,
-                            name:  user.name,
+                            name: user.name,
                             password: "",
-                            birthDate: user.birthDate ,
+                            birthDate: user.birthDate,
                             track: [])
             
             do {
@@ -62,8 +59,8 @@ class FirestoreManager {
                 } catch {
                     completion(.failure(error))
                 }
-            case .failure(_):
-                print("Deu ruim emm!")
+            case .failure(let error):
+                completion(.failure(error))
             }
         }
     }
@@ -78,9 +75,9 @@ class FirestoreManager {
         let userDocument = self.firestore.collection("main").document("user").collection(currentUserID).document("userData")
         
         userDocument.getDocument { document, error in
-            if let error {
+            if let error = error {
                 completion(.failure(error))
-            } else if let document, document.exists {
+            } else if let document = document, document.exists {
                 completion(.success(document))
             } else {
                 let error = NSError(domain: "Error, userData não encontrado", code: 500)
@@ -90,37 +87,31 @@ class FirestoreManager {
     }
     
     func deleteUserAccount(completion: @escaping (Result<Void, Error>) -> Void) {
-        // Obter o usuário autenticado atual
         guard let user = Auth.auth().currentUser else {
             completion(.failure(NSError(domain: "No user is currently logged in", code: 0, userInfo: nil)))
             return
         }
         
-        // Tenta excluir o usuário
         user.delete { error in
             if let error = error {
-                // Se houver erro, verificar se é necessário reautenticar
                 if let authError = error as NSError?, authError.code == AuthErrorCode.requiresRecentLogin.rawValue {
-                    // Aqui, você pode solicitar a reautenticação do usuário antes de excluir
                     completion(.failure(NSError(domain: "Reauthentication required", code: 0, userInfo: nil)))
                 } else {
-                    // Retorna qualquer outro erro
                     completion(.failure(error))
                 }
             } else {
-                // Se tudo ocorreu bem, a conta foi excluída
                 completion(.success(()))
             }
         }
     }
-    func addTrackToUser(track: Track, completion: @escaping (Result<Void,Error>) -> Void) {
-        
+    
+    func addTrackToUser(track: Track, completion: @escaping (Result<Void, Error>) -> Void) {
         getUserDocument { result in
             switch result {
             case .success(let document):
                 do {
                     var userData = try document.data(as: User.self)
-                    if let index = userData.track.firstIndex(of: track) {
+                    if let _ = userData.track.firstIndex(of: track) {
                         let error = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "O rastreio já foi adicionado anteriormente."])
                         completion(.failure(error))
                         return
@@ -145,24 +136,22 @@ class FirestoreManager {
                 do {
                     var userData = try document.data(as: User.self)
                     if let index = userData.track.firstIndex(where: { $0.trackingNumber == track.trackingNumber }) {
-                        let newUniqueEvents = self.getNewEvents(currentEvents: userData.track[index].events, newEvents: track.events)
                         userData.track[index].events = track.events
                         self.saveUserData(userData: userData, document: document, completion: completion)
                     } else {
                         userData.track.append(track)
-                        //userData.newEvents.append(contentsOf: track.events)
                         self.saveUserData(userData: userData, document: document, completion: completion)
                     }
                 } catch {
                     completion(.failure(error))
                 }
-                
             case .failure(let error):
                 completion(.failure(error))
             }
         }
     }
-    func getTracksFromUser(completion: @escaping (Result<[Track],Error>) -> Void) {
+    
+    func getTracksFromUser(completion: @escaping (Result<[Track], Error>) -> Void) {
         getUserDocument { result in
             switch result {
             case .success(let document):
@@ -178,6 +167,7 @@ class FirestoreManager {
             }
         }
     }
+    
     func getNewEvents(currentEvents: [Events], newEvents: [Events]) -> [Events] {
         return newEvents.filter { newEvent in
             !currentEvents.contains { existingEvent in
