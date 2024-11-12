@@ -1,16 +1,8 @@
-//
-//  ProfileControllerViewController.swift
-//  JaChegou
-//
-//  Created by MacBook on 11/08/24.
-//
-
 import UIKit
-import FirebaseFirestoreInternal
 
 class ProfileViewController: UIViewController {
     var screen: ProfileScreen?
-    var viewModel: ProfileViewModel = ProfileViewModel()
+    var viewModel = ProfileViewModel()
     
     override func loadView() {
         screen = ProfileScreen()
@@ -19,46 +11,9 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configProtocols()
         viewModel.delegate = self
-        getUserData()
-    }
-    
-    func getUserData() {
-        viewModel.fetchUserData()
-    }
-    
-    func configProtocols() {
         screen?.delegate = self
-    }
-    
-    func showAlert(message: String) {
-        let alert = UIAlertController(title: "Erro", message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(okAction)
-        self.present(alert, animated: true, completion: nil)
-    }
-}
-
-extension ProfileViewController: ProfileScreenProtocol {
-    func tappedOutOfAccountButton() {
-        showLogoutAlert()
-    }
-    
-    func showLogoutAlert() {
-        let alert = UIAlertController(title: "Sair da conta", message: "Tem certeza que deseja sair da sua conta?", preferredStyle: .alert)
-        let logoutAction = UIAlertAction(title: "Sair", style: .destructive) { _ in
-            print("Usuário saiu da conta.")
-            self.logoutAndNavigateToLogin()
-        }
-        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
-        alert.addAction(logoutAction)
-        alert.addAction(cancelAction)
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    func tappedDeleteAccountButton() {
-        showDeleteAccountAlert()
+        viewModel.fetchUserData()
     }
     
     func logoutAndNavigateToLogin() {
@@ -66,57 +21,47 @@ extension ProfileViewController: ProfileScreenProtocol {
            let window = windowScene.windows.first {
             let loginViewController = LoginViewController()
             let navigationController = UINavigationController(rootViewController: loginViewController)
-            
             window.rootViewController = navigationController
             window.makeKeyAndVisible()
-            
-            UIView.transition(with: window, duration: 0.5, options: .transitionCrossDissolve, animations: nil, completion: nil)
+            UIView.transition(with: window, duration: 0.5, options: .transitionCrossDissolve, animations: nil)
         }
-    }
-    
-    func showDeleteAccountAlert() {
-        let alert = UIAlertController(title: "Atenção", message: "Tem certeza que deseja excluir esta conta?", preferredStyle: .alert)
-        let deleteAction = UIAlertAction(title: "Excluir", style: .destructive) { [weak self] _ in
-            self?.viewModel.deleteUserAccount()
-        }
-        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
-        alert.addAction(deleteAction)
-        alert.addAction(cancelAction)
-        self.present(alert, animated: true, completion: nil)
     }
 }
 
 extension ProfileViewController: ProfileViewModelDelegate {
-    func didFetchUserData(_ user: User) {
-        DispatchQueue.main.async { [weak self] in
-            self?.screen?.birthDataTextField.text = user.birthDate
-            self?.screen?.emailTextField.text = user.email
-            self?.screen?.nameTextField.text = user.name
-        }
+    func successfetchUserData(user: User) {
+        screen?.nameTextField.text = user.name
+        screen?.birthDataTextField.text = user.birthDate
+        screen?.emailTextField.text = user.email
     }
     
-    func didFailFetchingUserData(with error: Error) {
-        DispatchQueue.main.async { [weak self] in
-            self?.showAlert(message: "Erro ao recuperar os dados: \(error.localizedDescription)")
-        }
+    func failureFetchingUserData(errorMessage: String) {
+        Alert.showAlert(title: "Erro", message: errorMessage, viewController: self)
     }
     
-    func didDeleteUserAccount() {
-        DispatchQueue.main.async { [weak self] in
-            self?.logoutAndNavigateToLogin()
-        }
+    func successDeleteUserAccount() {
+        logoutAndNavigateToLogin()
     }
     
-    func didFailDeletingUserAccount(with error: Error) {
-        DispatchQueue.main.async { [weak self] in
-            self?.showAlert(message: "Erro ao excluir a conta: \(error.localizedDescription)")
-        }
+    func failureDeletingUserAccount(errorMessage: String) {
+        Alert.showAlert(title: "Erro", message: errorMessage, viewController: self)
     }
 }
 
-extension ProfileViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
+extension ProfileViewController: ProfileScreenProtocol {
+    func tappedOutOfAccountButton() {
+        let logoutAction = UIAlertAction(title: "Sair", style: .destructive) { [weak self] _ in
+            self?.logoutAndNavigateToLogin()
+        }
+        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel)
+        Alert.showAlert(title: "Sair da conta", message: "Tem certeza que deseja sair da sua conta?", viewController: self, actions: [logoutAction, cancelAction])
+    }
+    
+    func tappedDeleteAccountButton() {
+        let deleteAction = UIAlertAction(title: "Excluir", style: .destructive) { [weak self] _ in
+            self?.viewModel.deleteUserAccount()
+        }
+        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel)
+        Alert.showAlert(title: "Atenção", message: "Tem certeza que deseja excluir esta conta?", viewController: self, actions: [deleteAction, cancelAction])
     }
 }

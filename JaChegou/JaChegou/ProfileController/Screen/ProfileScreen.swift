@@ -20,7 +20,6 @@ class ProfileScreen: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
     lazy var personalInformationLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -29,7 +28,6 @@ class ProfileScreen: UIView {
         label.textColor = .white
         return label
     }()
-    
     lazy var emailLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -38,7 +36,6 @@ class ProfileScreen: UIView {
         label.textColor = .white
         return label
     }()
-    
     lazy var emailImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -47,7 +44,6 @@ class ProfileScreen: UIView {
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
-    
     lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -56,7 +52,6 @@ class ProfileScreen: UIView {
         label.textColor = .white
         return label
     }()
-    
     lazy var nameImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -65,7 +60,6 @@ class ProfileScreen: UIView {
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
-    
     lazy var birthDataLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -74,7 +68,6 @@ class ProfileScreen: UIView {
         label.textColor = .white
         return label
     }()
-    
     lazy var birthDataImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -83,7 +76,6 @@ class ProfileScreen: UIView {
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
-    
     lazy var outOfAccountButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -97,7 +89,6 @@ class ProfileScreen: UIView {
         button.layer.cornerRadius = 8
         return button
     }()
-    
     lazy var deleteAccountButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -110,7 +101,6 @@ class ProfileScreen: UIView {
         button.layer.cornerRadius = 8
         return button
     }()
-    
     lazy var emailTextField: UITextField = {
         let emailTextField = UITextField()
         let placeholderText =  "teste@teste.com.br"
@@ -124,7 +114,6 @@ class ProfileScreen: UIView {
         emailTextField.keyboardType = .emailAddress
         return emailTextField
     }()
-    
     lazy var nameTextField: UITextField = {
         let passwordTextField = UITextField()
         let placeholderText =  "Nome"
@@ -138,7 +127,6 @@ class ProfileScreen: UIView {
         passwordTextField.keyboardType = .emailAddress
         return passwordTextField
     }()
-    
     lazy var birthDataTextField: UITextField = {
         let callendarTextField = UITextField()
         let placeholderText =  "00/00/0000"
@@ -151,7 +139,6 @@ class ProfileScreen: UIView {
         callendarTextField.layer.cornerRadius = 15
         return callendarTextField
     }()
-    
     @objc func tappedOutOfAccountButton() {
         delegate?.tappedOutOfAccountButton()
     }
@@ -185,7 +172,6 @@ class ProfileScreen: UIView {
         addSubview(emailTextField)
         addSubview(nameTextField)
         addSubview(birthDataTextField)
-        
     }
     
     func configConstraints() {

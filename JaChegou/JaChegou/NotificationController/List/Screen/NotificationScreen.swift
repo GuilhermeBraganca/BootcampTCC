@@ -15,8 +15,6 @@ class NotificationScreen: UIView {
         view.contentMode = .scaleAspectFill
         return view
     }()
-    
-    
     lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -26,7 +24,6 @@ class NotificationScreen: UIView {
         tableView.separatorStyle = .none
         return tableView
     }()
-    
     init() {
         super.init(frame: .zero)
         backgroundColor = .black

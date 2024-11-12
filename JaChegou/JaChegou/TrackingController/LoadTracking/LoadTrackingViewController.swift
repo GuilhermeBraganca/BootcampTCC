@@ -62,6 +62,7 @@ extension LoadTrackingViewController: UITableViewDelegate, UITableViewDataSource
     }
     
 }
+
 extension LoadTrackingViewController: LoadTrackingScreenProtocol{
     func tappedDeleteButton() {
         guard let track = track else { return }
@@ -80,8 +81,8 @@ extension LoadTrackingViewController: LoadTrackingScreenProtocol{
     func tappedBackButton() {
         self.dismiss(animated: true, completion: nil)
     }
-    
 }
+
 extension LoadTrackingViewController: LoadTrackingViewModelProtocol {
     func showAlertDeleteTrackingSuccess(title: String, message: String) {
         let okAction = UIAlertAction(title: "OK", style: .default) { [weak self] _ in
@@ -123,6 +124,4 @@ extension LoadTrackingViewController: LoadTrackingViewModelProtocol {
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
-    
-    
 }

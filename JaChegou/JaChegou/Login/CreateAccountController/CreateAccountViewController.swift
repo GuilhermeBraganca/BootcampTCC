@@ -120,7 +120,6 @@ extension CreateAccountViewController: UITextFieldDelegate {
             let isEmailValid = ValidationData.isValidEmail(screen?.emailTextField.text ?? "")
             let isPasswordValid = ValidationData.isValidPassword(screen?.passwordTextField.text ?? "")
             let isConfirmPasswordValid = ValidationData.isValidConfirmPassword(screen?.passwordTextField.text ?? "", screen?.confirmPasswordTextField.text ?? "")
-            
             isEnabledLoginButton(isEnable: isEmailValid && isPasswordValid && isConfirmPasswordValid)
         }
         return false

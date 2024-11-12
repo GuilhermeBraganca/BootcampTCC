@@ -63,10 +63,12 @@ extension HomeViewController: HomeViewModelDelegate {
         self.screen?.collectionView.isHidden = false
         self.updateCollectionView()
     }
+    
     func failureGetTracksFromUser() {
         self.activityIndicatorView?.stopAnimating()
         self.screen?.collectionView.isHidden = false
     }
+    
     func didLoadTracks(tracks: [Track]) {
         self.updateCollectionView()
     }

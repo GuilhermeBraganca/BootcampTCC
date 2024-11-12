@@ -20,15 +20,14 @@ class CreateAccountScreen: UIView {
     weak var delegate: CreateAccountScreenProtocol?
     
     lazy var headerView: HeaderView = {
-      let view = HeaderView(title: "Para aproveitar todos os recursos, crie uma conta.", image: UIImage(named: "worldImage"))
-      view.translatesAutoresizingMaskIntoConstraints = false
-      return view
+        let view = HeaderView(title: "Para aproveitar todos os recursos, crie uma conta.", image: UIImage(named: "worldImage"))
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
     
     lazy var createAccountLabel: UILabel = {
         let label = UILabel()
-        
         label.text = "Para aproveitar todos os recursos, crie uma conta."
         label.numberOfLines = 2
         label.textColor = .white
@@ -76,6 +75,7 @@ class CreateAccountScreen: UIView {
         tf.layer.cornerRadius = 20
         return tf
     }()
+    
     lazy var passwordTextField: UITextField = {
         let tf = UITextField()
         let placeholderText =  "Senha*"
@@ -114,6 +114,7 @@ class CreateAccountScreen: UIView {
         tf.keyboardType = .emailAddress
         return tf
     }()
+    
     lazy var eyeConfirmPasswordImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -212,7 +213,7 @@ class CreateAccountScreen: UIView {
             headerView.leadingAnchor.constraint(equalTo: leadingAnchor),
             headerView.trailingAnchor.constraint(equalTo: trailingAnchor),
             headerView.heightAnchor.constraint(equalToConstant: 200),
-                     
+            
             nameTextField.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 30),
             nameTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             nameTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),

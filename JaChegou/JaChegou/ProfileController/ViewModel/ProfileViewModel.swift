@@ -8,34 +8,39 @@
 import Foundation
 
 protocol ProfileViewModelDelegate: AnyObject {
-    func didFetchUserData(_ user: User)
-    func didFailFetchingUserData(with error: Error)
-    func didDeleteUserAccount()
-    func didFailDeletingUserAccount(with error: Error)
+    func successfetchUserData(user: User)
+    func failureFetchingUserData(errorMessage: String)
+    func successDeleteUserAccount()
+    func failureDeletingUserAccount(errorMessage: String)
 }
 
 class ProfileViewModel {
-    weak var delegate: ProfileViewModelDelegate?
     
+    weak var delegate: ProfileViewModelDelegate?
     func fetchUserData() {
         FirestoreManager.shared.getUserData { [weak self] result in
-            switch result {
-            case .success(let user):
-                self?.delegate?.didFetchUserData(user)
-            case .failure(let error):
-                self?.delegate?.didFailFetchingUserData(with: error)
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let user):
+                    self?.delegate?.successfetchUserData(user: user)
+                case .failure(let error):
+                    self?.delegate?.failureFetchingUserData(errorMessage: "Erro ao recuperar os dados: \(error.localizedDescription)")
+                }
             }
         }
     }
     
     func deleteUserAccount() {
         FirestoreManager.shared.deleteUserAccount { [weak self] result in
-            switch result {
-            case .success:
-                self?.delegate?.didDeleteUserAccount()
-            case .failure(let error):
-                self?.delegate?.didFailDeletingUserAccount(with: error)
+            DispatchQueue.main.async {
+                switch result {
+                case .success:
+                    self?.delegate?.successDeleteUserAccount()
+                case .failure(let error):
+                    self?.delegate?.failureDeletingUserAccount(errorMessage: "Erro ao excluir a conta: \(error.localizedDescription)")
+                }
             }
         }
     }
+    
 }

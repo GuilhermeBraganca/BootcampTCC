@@ -38,10 +38,10 @@ extension TrackingViewController: TrackingScreenProtocol {
         }
         viewModel.saveTrackingData(code: trackingCode, description: orderDescription)
     }
-    
 }
 
 extension TrackingViewController: TrackingViewModelProtocol {
+    
     func loading(start: Bool) {
         if start {
             LoadingLottie.shared.start(message: "Carregando...")
@@ -50,9 +50,7 @@ extension TrackingViewController: TrackingViewModelProtocol {
         }
     }
     
-    
     func success() {
-        
         let okAction = UIAlertAction(title: "OK", style: .default) { [weak self] _ in
             guard let self else { return }
             

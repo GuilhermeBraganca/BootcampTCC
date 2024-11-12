@@ -133,7 +133,6 @@ class LoadTrackingTableViewCell: UITableViewCell {
     }
     
     func setupCell(events: Events) {
-        
         descriptionEventLabel.text = events.descricao?.trimLeft() ?? ""
         descriptionDateLabel.text = events.data?.trimLeft() ?? ""
         descriptionCityLabel.text = events.cidade?.trimLeft() ?? ""

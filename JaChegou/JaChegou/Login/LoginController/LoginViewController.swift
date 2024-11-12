@@ -21,7 +21,7 @@ class LoginViewController: UIViewController, LoginViewModelDelegate {
     func showAlert(title: String, message: String) {
         Alert.showAlert(title: title, message: message, viewController: self)
     }
-
+    
     func setupNavigationBar() {
         navigationItem.backButtonTitle = ""
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
@@ -36,7 +36,7 @@ class LoginViewController: UIViewController, LoginViewModelDelegate {
     func setLoginButtonEnabled(_ isEnabled: Bool) {
         isEnabledLoginButton(isEnable: isEnabled)
     }
-
+    
     func displayEmailError(_ hasError: Bool) {
         guard let screen = screen else { return }
         if hasError {
@@ -53,7 +53,7 @@ class LoginViewController: UIViewController, LoginViewModelDelegate {
             screen.emailTextField.attributedPlaceholder = NSAttributedString(string: "E-mail*", attributes: attributes)
         }
     }
-
+    
     func displayPasswordError(_ hasError: Bool) {
         guard let screen = screen else { return }
         if hasError {
@@ -70,20 +70,20 @@ class LoginViewController: UIViewController, LoginViewModelDelegate {
             screen.passwordTextField.attributedPlaceholder = NSAttributedString(string: "Senha*", attributes: attributes)
         }
     }
-
+    
     func displayLoginError(_ message: String) {
         showAlert(title: "Atenção!", message: message)
     }
-
+    
     func loginSucceeded() {
         switchToMainTabBarController()
     }
-
+    
     func isEnabledLoginButton(isEnable: Bool) {
         screen?.loginButton.isEnabled = isEnable
         screen?.loginButton.backgroundColor = isEnable ? .systemBlue : .lightGray
     }
-
+    
     func switchToMainTabBarController() {
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
               let window = windowScene.windows.first else { return }
@@ -134,7 +134,6 @@ extension LoginViewController: UITextFieldDelegate {
         if let text = textField.text as NSString? {
             let newText = text.replacingCharacters(in: range, with: string)
             textField.text = newText
-            
             viewModel.validateLogin(email: screen?.emailTextField.text, password: screen?.passwordTextField.text)
         }
         return false

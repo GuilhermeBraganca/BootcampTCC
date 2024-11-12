@@ -8,7 +8,6 @@
 import Foundation
 
 class CreateAccountViewModel {
-    
     func createUser(user: User, completion: @escaping (Result<Void, Error>) -> Void) {
         FirestoreManager.shared.createUserWithEmailAndPassword(user: user) { result in
             switch result {

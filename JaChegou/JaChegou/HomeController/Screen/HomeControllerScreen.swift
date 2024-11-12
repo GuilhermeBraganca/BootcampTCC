@@ -22,7 +22,6 @@ class HomeControllerScreen: UIView {
         return view
     }()
     
-    
     lazy var searchBarView: UISearchBar = {
         let view = UISearchBar()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -37,7 +36,6 @@ class HomeControllerScreen: UIView {
             string: "Pesquise pela descrição:",
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
         )
-        
         return view
     }()
     
@@ -47,7 +45,6 @@ class HomeControllerScreen: UIView {
         control.backgroundColor = .black
         control.layer.cornerRadius = 15
         control.layer.masksToBounds = true
-        
         control.selectedSegmentTintColor = .white
         control.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .normal)
         control.setTitleTextAttributes([.foregroundColor: UIColor.systemBlue], for: .selected)
@@ -82,7 +79,6 @@ class HomeControllerScreen: UIView {
         backgroundColor = .black
         addElements()
         configConstraints()
-        
     }
     
     func configSearchBarProtocol(delegate: UISearchBarDelegate) {

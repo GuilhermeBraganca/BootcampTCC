@@ -84,6 +84,7 @@ class HomeViewModel {
             }
         }
     }
+    
     func getAllTrackFromUser(){
         FirestoreManager.shared.getTracksFromUser { [weak self] (result: Result<[Track], Error>) in
             DispatchQueue.main.async {
@@ -93,7 +94,7 @@ class HomeViewModel {
                     self.allTrackList = tracks
                     self.updateTrackFilter()
                     self.delegate?.successGetTracksFromUser()
-                case .failure(let error):
+                case .failure(_):
                     self.delegate?.failureGetTracksFromUser()
                 }
             }
