@@ -13,8 +13,8 @@ protocol LoadTrackingTableViewCellProtocol: AnyObject {
 
 class LoadTrackingTableViewCell: UITableViewCell {
     
-    static var identifier = String(describing: LoadTrackingTableViewCell.self)
     weak var delegate: LoadTrackingTableViewCellProtocol?
+    static var identifier = String(describing: LoadTrackingTableViewCell.self)
     
     private lazy var eventLabel: UILabel = {
         let label = UILabel()
@@ -136,7 +136,6 @@ class LoadTrackingTableViewCell: UITableViewCell {
         descriptionEventLabel.text = events.descricao?.trimLeft() ?? ""
         descriptionDateLabel.text = events.data?.trimLeft() ?? ""
         descriptionCityLabel.text = events.cidade?.trimLeft() ?? ""
-        
     }
 }
 

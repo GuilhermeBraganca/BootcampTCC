@@ -71,14 +71,12 @@ extension CreateAccountViewController: CreateAccountScreenProtocol {
             Alert.showAlert(title: "Atenção!", message: "Por favor, preencha todos os campos", viewController: self)
             return
         }
-        
         if !ValidationData.isValidConfirmPassword(password, passwordCheck) {
             Alert.showAlert(title: "Atenção!",
                             message: "As senhas não coincidem. Por favor, verifique e tente novamente.",
                             viewController: self)
             return
         }
-        
         let user = User(id: "", email: email, name: name, password: password, birthDate: birthDate, track: [])
         viewModel.createUser(user: user) { [weak self] result in
             switch result {
@@ -104,6 +102,7 @@ extension CreateAccountViewController: CreateAccountScreenProtocol {
 }
 
 extension CreateAccountViewController: UITextFieldDelegate {
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

@@ -155,9 +155,9 @@ class LoginScreen: UIView {
         addSubview(loginButton)
         addSubview(registerButton)
     }
+    
     func configConstraints() {
         NSLayoutConstraint.activate([
-            
             headerView.topAnchor.constraint(equalTo: topAnchor),
             headerView.leadingAnchor.constraint(equalTo: leadingAnchor),
             headerView.trailingAnchor.constraint(equalTo: trailingAnchor),

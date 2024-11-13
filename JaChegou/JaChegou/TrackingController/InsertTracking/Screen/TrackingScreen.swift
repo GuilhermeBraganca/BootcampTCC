@@ -8,13 +8,13 @@
 import UIKit
 
 protocol TrackingScreenProtocol: AnyObject {
-   func tapped()
+    func tapped()
 }
 
 class TrackingScreen: UIView {
-
-  weak var delegate: TrackingScreenProtocol?
-
+    
+    weak var delegate: TrackingScreenProtocol?
+    
     lazy var headerView: HeaderView = {
         let view = HeaderView(title: "Cadastre Código Correios", image: UIImage(named: "worldImage"))
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -73,7 +73,7 @@ class TrackingScreen: UIView {
     }()
     
     @objc private func saveButtonTapped() {
-      delegate?.tapped()
+        delegate?.tapped()
     }
     
     init() {

@@ -45,10 +45,10 @@ class TrackCollectionViewCell: UICollectionViewCell {
         setupBorder()
     }
     private func setupBorder() {
-        contentView.layer.borderColor = UIColor.lightGray.cgColor // Cor da borda
-        contentView.layer.borderWidth = 2.0 // Espessura da borda
-        contentView.layer.cornerRadius = 10.0 // Raio dos cantos (opcional)
-        contentView.layer.masksToBounds = true // Garante que o conteúdo fique dentro da borda
+        contentView.layer.borderColor = UIColor.lightGray.cgColor
+        contentView.layer.borderWidth = 2.0
+        contentView.layer.cornerRadius = 10.0
+        contentView.layer.masksToBounds = true
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -73,7 +73,6 @@ class TrackCollectionViewCell: UICollectionViewCell {
             dateLabel.topAnchor.constraint(equalTo: descLabel.bottomAnchor),
             dateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
             dateLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
-            
         ])
     }
     func setupCell(item: Track) {
@@ -81,6 +80,5 @@ class TrackCollectionViewCell: UICollectionViewCell {
         dateLabel.text = item.description
         itemImageView.image = UIImage(named: "TrackImage")
     }
-    
 }
 

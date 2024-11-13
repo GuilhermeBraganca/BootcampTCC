@@ -53,7 +53,6 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController: HomeViewModelDelegate {
-    
     func showAlert(title: String, message: String) {
         Alert.showAlert(title: title, message: message, viewController: self)
     }
@@ -80,8 +79,8 @@ extension HomeViewController: UISearchBarDelegate {
         screen?.collectionView.reloadData()
     }
 }
+
 extension HomeViewController: HomeControllerScreenProtocol {
-    
     func changeTrackingType(type: TrackingType) {
         viewModel.setNewTrackingType(newType: type)
         screen?.collectionView.reloadData()
@@ -95,6 +94,7 @@ extension HomeViewController: HomeControllerScreenProtocol {
         }
     }
 }
+
 extension HomeViewController: LoadTrackingViewControllerDelegate{
     func didDeleteTracking() {
         viewModel.getAllTrackFromUser()
@@ -103,7 +103,6 @@ extension HomeViewController: LoadTrackingViewControllerDelegate{
 }
 
 extension HomeViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate {
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.numberOfRowsInSection
     }

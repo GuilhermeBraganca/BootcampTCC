@@ -8,6 +8,7 @@
 import UIKit
 
 class Alert {
+    
     static func showAlert (title: String, message: String, viewController: UIViewController, actions: [UIAlertAction] = [] ) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         if actions.count > 0 {

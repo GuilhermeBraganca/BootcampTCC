@@ -14,10 +14,9 @@ protocol ProductTableViewCellProtocol: AnyObject {
 
 class ProductTableViewCell: UITableViewCell {
     
+    weak var delegate: ProductTableViewCellProtocol?
     static var identifier = String(describing: ProductTableViewCell.self)
     var track: Track?
-    weak var delegate: ProductTableViewCellProtocol?
-    
     
     lazy var productImageView: UIImageView = {
         let imageView = UIImageView()

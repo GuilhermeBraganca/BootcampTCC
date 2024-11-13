@@ -1,7 +1,7 @@
 import UIKit
 import FirebaseAuth
 
-class LoginViewController: UIViewController, LoginViewModelDelegate {
+class LoginViewController: UIViewController {
     
     private var screen: LoginScreen?
     private var viewModel = LoginViewModel()
@@ -32,6 +32,23 @@ class LoginViewController: UIViewController, LoginViewModelDelegate {
         screen?.emailTextField.delegate = self
         screen?.passwordTextField.delegate = self
     }
+    
+    func isEnabledLoginButton(isEnable: Bool) {
+        screen?.loginButton.isEnabled = isEnable
+        screen?.loginButton.backgroundColor = isEnable ? .systemBlue : .lightGray
+    }
+    
+    func switchToMainTabBarController() {
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let window = windowScene.windows.first else { return }
+        let mainTabBarController = MainTabBarControllerViewController()
+        window.rootViewController = mainTabBarController
+        window.makeKeyAndVisible()
+        UIView.transition(with: window, duration: 0.5, options: .transitionCrossDissolve, animations: nil, completion: nil)
+    }
+}
+
+extension LoginViewController: LoginViewModelProtocol{
     
     func setLoginButtonEnabled(_ isEnabled: Bool) {
         isEnabledLoginButton(isEnable: isEnabled)
@@ -78,26 +95,9 @@ class LoginViewController: UIViewController, LoginViewModelDelegate {
     func loginSucceeded() {
         switchToMainTabBarController()
     }
-    
-    func isEnabledLoginButton(isEnable: Bool) {
-        screen?.loginButton.isEnabled = isEnable
-        screen?.loginButton.backgroundColor = isEnable ? .systemBlue : .lightGray
-    }
-    
-    func switchToMainTabBarController() {
-        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-              let window = windowScene.windows.first else { return }
-        
-        let mainTabBarController = MainTabBarControllerViewController()
-        window.rootViewController = mainTabBarController
-        window.makeKeyAndVisible()
-        
-        UIView.transition(with: window, duration: 0.5, options: .transitionCrossDissolve, animations: nil, completion: nil)
-    }
 }
 
 extension LoginViewController: LoginScreenProtocol {
-    
     func tappedLoginButton() {
         guard let email = screen?.emailTextField.text,
               let password = screen?.passwordTextField.text,
@@ -106,7 +106,6 @@ extension LoginViewController: LoginScreenProtocol {
             showAlert(title: "Atenção!", message: "Por favor, preencha todos os campos")
             return
         }
-        
         viewModel.performLogin(email: email, password: password)
     }
     

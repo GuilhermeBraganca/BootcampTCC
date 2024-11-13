@@ -240,20 +240,12 @@
 			path = CollectionViewCell;
 			sourceTree = "<group>";
 		};
-		FA2E044F2CB233EE00C8B506 /* Firesbase */ = {
+		FA2E044F2CB233EE00C8B506 /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
-				FA2E04502CB233FF00C8B506 /* FirebaseFirestore */,
+				FA6145E82CE436F5006CEFC8 /* FirebaseFirestore */,
 			);
-			path = Firesbase;
-			sourceTree = "<group>";
-		};
-		FA2E04502CB233FF00C8B506 /* FirebaseFirestore */ = {
-			isa = PBXGroup;
-			children = (
-				FA2E04512CB2341200C8B506 /* FirebaseFirestoreManager.swift */,
-			);
-			path = FirebaseFirestore;
+			path = Firebase;
 			sourceTree = "<group>";
 		};
 		FA2E04592CB4BBBD00C8B506 /* Model */ = {
@@ -272,6 +264,14 @@
 				FA8621CE2C9F86B6007E3F7D /* ViewModel */,
 			);
 			path = InsertTracking;
+			sourceTree = "<group>";
+		};
+		FA6145E82CE436F5006CEFC8 /* FirebaseFirestore */ = {
+			isa = PBXGroup;
+			children = (
+				FA2E04512CB2341200C8B506 /* FirebaseFirestoreManager.swift */,
+			);
+			path = FirebaseFirestore;
 			sourceTree = "<group>";
 		};
 		FA62D0142CA6616900080A62 /* Recovered References */ = {
@@ -492,7 +492,7 @@
 		FAC7A6D52C5FC2C9001D90BE /* JaChegou */ = {
 			isa = PBXGroup;
 			children = (
-				FA2E044F2CB233EE00C8B506 /* Firesbase */,
+				FA2E044F2CB233EE00C8B506 /* Firebase */,
 				FAD71A422CA638DF0006B285 /* Loading */,
 				FAE831A12C911EC4000D6FC0 /* Resource */,
 				FAE8319E2C911E86000D6FC0 /* Service */,

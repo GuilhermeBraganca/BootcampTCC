@@ -19,7 +19,6 @@ protocol LoadTrackingViewModelProtocol: AnyObject {
 public class LoadTrackingViewModel{
     
     weak var delegate: LoadTrackingViewModelProtocol?
-    
     private var trackingData = Track(image: "", description: "", trackingNumber: "", date: "", events: [])
     
     var numberOfRowsInSection: Int {

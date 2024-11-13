@@ -8,7 +8,7 @@
 import Foundation
 
 protocol ProfileViewModelDelegate: AnyObject {
-    func successfetchUserData(user: User)
+    func successFetchUserData(user: User)
     func failureFetchingUserData(errorMessage: String)
     func successDeleteUserAccount()
     func failureDeletingUserAccount(errorMessage: String)
@@ -17,12 +17,13 @@ protocol ProfileViewModelDelegate: AnyObject {
 class ProfileViewModel {
     
     weak var delegate: ProfileViewModelDelegate?
+    
     func fetchUserData() {
         FirestoreManager.shared.getUserData { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let user):
-                    self?.delegate?.successfetchUserData(user: user)
+                    self?.delegate?.successFetchUserData(user: user)
                 case .failure(let error):
                     self?.delegate?.failureFetchingUserData(errorMessage: "Erro ao recuperar os dados: \(error.localizedDescription)")
                 }
@@ -42,5 +43,4 @@ class ProfileViewModel {
             }
         }
     }
-    
 }

@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol RecoverPasswordScreenProtocol: AnyObject {
+    func tappedSendEmailButton()
+}
+
 class RecoverPasswordScreen: UIView {
+    
+    weak var delegate: RecoverPasswordScreenProtocol?
     
     lazy var headerView: HeaderView = {
         let view = HeaderView(title: "Recuperar Senha", image: UIImage(named: "worldImage"))
@@ -47,8 +53,13 @@ class RecoverPasswordScreen: UIView {
         button.backgroundColor = .systemBlue
         button.layer.cornerRadius = 20
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(sendEmailButtonTapped), for: .touchUpInside)
         return button
     }()
+    
+    @objc func sendEmailButtonTapped() {
+        delegate?.tappedSendEmailButton()
+    }
     
     init() {
         super.init(frame: .zero)

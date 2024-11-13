@@ -20,8 +20,9 @@ protocol HomeViewModelDelegate: AnyObject {
 }
 
 class HomeViewModel {
-    
+
     weak var delegate: HomeViewModelDelegate?
+    
     private(set) var trackingType: TrackingType = .transporting
     private var allTrackList: [Track] = []
     private var trackFilter: [Track] = []

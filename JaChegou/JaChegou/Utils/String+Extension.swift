@@ -6,6 +6,7 @@
 //
 
 extension String {
+    
     func trimLeft() -> String {
         guard let range = rangeOfCharacter(from: .whitespacesAndNewlines.inverted) else {
             return ""

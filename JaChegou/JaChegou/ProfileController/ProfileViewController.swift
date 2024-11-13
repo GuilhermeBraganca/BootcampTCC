@@ -1,6 +1,7 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
+    
     var screen: ProfileScreen?
     var viewModel = ProfileViewModel()
     
@@ -29,7 +30,7 @@ class ProfileViewController: UIViewController {
 }
 
 extension ProfileViewController: ProfileViewModelDelegate {
-    func successfetchUserData(user: User) {
+    func successFetchUserData(user: User) {
         screen?.nameTextField.text = user.name
         screen?.birthDataTextField.text = user.birthDate
         screen?.emailTextField.text = user.email

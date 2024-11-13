@@ -12,6 +12,3 @@ struct LoginModel {
     var password: String
 }
 
-struct RecoverPasswordModel {
-    var email: String
-}

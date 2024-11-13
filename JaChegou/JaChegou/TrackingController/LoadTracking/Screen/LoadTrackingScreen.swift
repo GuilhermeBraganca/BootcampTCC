@@ -14,8 +14,8 @@ protocol LoadTrackingScreenProtocol: AnyObject {
 
 class LoadTrackingScreen: UIView {
     
-    var track: Track?
     weak var delegate: LoadTrackingScreenProtocol?
+    var track: Track?
     
     private lazy var headerView: HeaderView = {
         let view = HeaderView(title: "", image: UIImage(named: "worldImage"))

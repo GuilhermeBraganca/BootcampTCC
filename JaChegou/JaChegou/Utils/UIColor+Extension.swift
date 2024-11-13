@@ -2,6 +2,7 @@ import UIKit
 
 // Extensão para UIColor para suportar cores em hexadecimal
 extension UIColor {
+    
     @nonobjc class var customGray: UIColor {
         return UIColor(red: 39/255, green: 42/255, blue: 46/255, alpha: 1.0)
     }

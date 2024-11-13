@@ -15,6 +15,7 @@ class NotificationScreen: UIView {
         view.contentMode = .scaleAspectFill
         return view
     }()
+    
     lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -24,6 +25,7 @@ class NotificationScreen: UIView {
         tableView.separatorStyle = .none
         return tableView
     }()
+    
     init() {
         super.init(frame: .zero)
         backgroundColor = .black
@@ -42,7 +44,6 @@ class NotificationScreen: UIView {
 
     func configConstraints() {
         NSLayoutConstraint.activate([
-            
             headerView.topAnchor.constraint(equalTo: topAnchor),
             headerView.leadingAnchor.constraint(equalTo: leadingAnchor),
             headerView.trailingAnchor.constraint(equalTo: trailingAnchor),

@@ -13,10 +13,11 @@ protocol LoadTrackingViewControllerDelegate: AnyObject {
 
 class LoadTrackingViewController: UIViewController {
     
+    weak var delegate: LoadTrackingViewControllerDelegate?
+    
     var screen: LoadTrackingScreen?
     var viewModel: LoadTrackingViewModel = LoadTrackingViewModel()
     var track: Track?
-    weak var delegate: LoadTrackingViewControllerDelegate?
     
     override func loadView() {
         screen = LoadTrackingScreen()
@@ -60,7 +61,6 @@ extension LoadTrackingViewController: UITableViewDelegate, UITableViewDataSource
         cell?.setupCell(events: viewModel.loadCurrentDetail(indexPath: indexPath))
         return cell ?? UITableViewCell()
     }
-    
 }
 
 extension LoadTrackingViewController: LoadTrackingScreenProtocol{
@@ -92,7 +92,6 @@ extension LoadTrackingViewController: LoadTrackingViewModelProtocol {
         }
         Alert.showAlert(title: title, message: message, viewController: self, actions: [okAction])
     }
-    
     
     func showAlertDeleteTrackingFailure(title: String, message: String) {
         Alert.showAlert(title: title, message: message, viewController: self)

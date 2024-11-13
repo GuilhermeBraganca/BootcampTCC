@@ -24,8 +24,7 @@ class CreateAccountScreen: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
-    
+
     lazy var createAccountLabel: UILabel = {
         let label = UILabel()
         label.text = "Para aproveitar todos os recursos, crie uma conta."
@@ -155,6 +154,7 @@ class CreateAccountScreen: UIView {
     @objc func tappedRegisterButton() {
         delegate?.tappedRegisterButton()
     }
+    
     @objc func tappedEyePasswordButton() {
         passwordTextField.isSecureTextEntry.toggle()
         let image = passwordTextField.isSecureTextEntry ? UIImage(systemName: "eye") : UIImage(systemName: "eye.slash")
@@ -181,7 +181,6 @@ class CreateAccountScreen: UIView {
         tapEyePassword.numberOfTapsRequired = 1
         eyePasswordImageView.isUserInteractionEnabled = true
         eyePasswordImageView.addGestureRecognizer(tapEyePassword)
-        
         let tapEyeConfirmPassword: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tappedEyeConfirmPasswordButton))
         tapEyeConfirmPassword.cancelsTouchesInView = false
         tapEyeConfirmPassword.numberOfTapsRequired = 1
@@ -205,10 +204,9 @@ class CreateAccountScreen: UIView {
         addSubview(loginButton)
         addSubview(registerButton)
     }
+    
     func configConstraints() {
         NSLayoutConstraint.activate([
-            
-            
             headerView.topAnchor.constraint(equalTo: topAnchor),
             headerView.leadingAnchor.constraint(equalTo: leadingAnchor),
             headerView.trailingAnchor.constraint(equalTo: trailingAnchor),
@@ -260,5 +258,4 @@ class CreateAccountScreen: UIView {
             registerButton.heightAnchor.constraint(equalToConstant: 40),
         ])
     }
-    
 }

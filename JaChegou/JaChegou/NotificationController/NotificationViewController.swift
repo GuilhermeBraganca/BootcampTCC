@@ -23,10 +23,12 @@ class NotificationViewController: UIViewController {
         screen?.tableView.reloadData()
         configProtocols()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         viewModel.getAllEvents()
         screen?.tableView.reloadData()
     }
+    
     func configProtocols(){
         screen?.tableView.delegate = self
         screen?.tableView.dataSource = self
@@ -40,7 +42,6 @@ extension NotificationViewController: NotificationViewModelDelegate {
 }
 
 extension NotificationViewController: UITableViewDelegate, UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfRowsInSection
     }
