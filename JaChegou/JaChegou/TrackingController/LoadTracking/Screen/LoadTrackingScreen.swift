@@ -7,14 +7,14 @@
 
 import UIKit
 
-protocol LoadTrackingScreenProtocol: AnyObject {
+protocol LoadTrackingScreenDelegate: AnyObject {
     func tappedDeleteButton()
     func tappedBackButton()
 }
 
 class LoadTrackingScreen: UIView {
     
-    weak var delegate: LoadTrackingScreenProtocol?
+    weak var delegate: LoadTrackingScreenDelegate?
     var track: Track?
     
     private lazy var headerView: HeaderView = {
@@ -108,7 +108,7 @@ class LoadTrackingScreen: UIView {
         configConstraints()
     }
     
-    func setupSavedTrackingLabels(track: Track){
+    func setupSavedTrackingLabels(track: Track) {
         self.track = track
         productImageView.image = UIImage(systemName: "truck.box.fill")
         descriptionLabel.text = track.description

@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-protocol CreateAccountScreenProtocol: AnyObject {
+protocol CreateAccountScreenDelegate: AnyObject {
     func tappedLoginButton()
     func tappedRegisterButton()
     func tappedEyePasswordButton()
@@ -17,7 +17,7 @@ protocol CreateAccountScreenProtocol: AnyObject {
 
 class CreateAccountScreen: UIView {
     
-    weak var delegate: CreateAccountScreenProtocol?
+    weak var delegate: CreateAccountScreenDelegate?
     
     lazy var headerView: HeaderView = {
         let view = HeaderView(title: "Para aproveitar todos os recursos, crie uma conta.", image: UIImage(named: "worldImage"))
@@ -140,7 +140,6 @@ class CreateAccountScreen: UIView {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Se já possui uma conta, faça login.", for: .normal)
-        
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         button.setTitleColor(.systemBlue, for: .normal)
         button.addTarget(self, action: #selector(tappedRegisterButton), for: .touchUpInside)
@@ -231,7 +230,6 @@ class CreateAccountScreen: UIView {
             passwordTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             passwordTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             passwordTextField.heightAnchor.constraint(equalToConstant: 40),
-            
             
             eyePasswordImageView.centerYAnchor.constraint(equalTo: passwordTextField.centerYAnchor),
             eyePasswordImageView.trailingAnchor.constraint(equalTo: passwordTextField.trailingAnchor, constant: -12),

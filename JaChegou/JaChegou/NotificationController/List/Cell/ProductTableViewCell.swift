@@ -8,13 +8,13 @@
 import Foundation
 import UIKit
 
-protocol ProductTableViewCellProtocol: AnyObject {
+protocol ProductTableViewCellDelegate: AnyObject {
     func tappedDeleteProduct(track: Track?)
 }
 
 class ProductTableViewCell: UITableViewCell {
     
-    weak var delegate: ProductTableViewCellProtocol?
+    weak var delegate: ProductTableViewCellDelegate?
     static var identifier = String(describing: ProductTableViewCell.self)
     var track: Track?
     
@@ -25,6 +25,7 @@ class ProductTableViewCell: UITableViewCell {
         imageView.layer.cornerRadius = 8
         return imageView
     }()
+    
     lazy var trackingNumberLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -34,9 +35,9 @@ class ProductTableViewCell: UITableViewCell {
         label.text = "Descrição:"
         label.textAlignment = .left
         label.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
-        
         return label
     }()
+    
     lazy var eventLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -46,9 +47,9 @@ class ProductTableViewCell: UITableViewCell {
         label.text = "Evento:"
         label.textAlignment = .left
         label.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
-        
         return label
     }()
+    
     lazy var cityLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -58,9 +59,9 @@ class ProductTableViewCell: UITableViewCell {
         label.text = "Cidade:"
         label.textAlignment = .left
         label.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
-        
         return label
     }()
+    
     lazy var descriptionTrackingLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -72,6 +73,7 @@ class ProductTableViewCell: UITableViewCell {
         label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         return label
     }()
+    
     lazy var descriptionCityLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -83,6 +85,7 @@ class ProductTableViewCell: UITableViewCell {
         label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         return label
     }()
+    
     lazy var dateLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false

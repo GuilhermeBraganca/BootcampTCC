@@ -38,13 +38,13 @@ class LoadTrackingViewController: UIViewController {
         viewModel.checkForUpdates(track: track)
     }
     
-    func configProtocols(){
+    func configProtocols() {
         viewModel.delegate = self
         screen?.delegate = self
         screen?.configTableViewProtocols(delegate: self, dataSource: self)
     }
     
-    func setupScreen(track: Track){
+    func setupScreen(track: Track) {
         viewModel.loadTrackingData(tracking: track)
         screen?.setupSavedTrackingLabels(track: track)
     }
@@ -63,7 +63,7 @@ extension LoadTrackingViewController: UITableViewDelegate, UITableViewDataSource
     }
 }
 
-extension LoadTrackingViewController: LoadTrackingScreenProtocol{
+extension LoadTrackingViewController: LoadTrackingScreenDelegate {
     func tappedDeleteButton() {
         guard let track = track else { return }
         let okAction = UIAlertAction(title: "OK", style: .destructive) { [weak self] _ in
@@ -83,7 +83,7 @@ extension LoadTrackingViewController: LoadTrackingScreenProtocol{
     }
 }
 
-extension LoadTrackingViewController: LoadTrackingViewModelProtocol {
+extension LoadTrackingViewController: LoadTrackingViewModelDelegate {
     func showAlertDeleteTrackingSuccess(title: String, message: String) {
         let okAction = UIAlertAction(title: "OK", style: .default) { [weak self] _ in
             guard let self else { return }

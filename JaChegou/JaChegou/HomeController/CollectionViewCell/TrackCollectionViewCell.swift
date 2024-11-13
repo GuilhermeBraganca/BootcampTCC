@@ -28,6 +28,7 @@ class TrackCollectionViewCell: UICollectionViewCell {
         label.textAlignment = .center
         return label
     }()
+    
     lazy var dateLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -44,12 +45,14 @@ class TrackCollectionViewCell: UICollectionViewCell {
         configConstraints()
         setupBorder()
     }
+    
     private func setupBorder() {
         contentView.layer.borderColor = UIColor.lightGray.cgColor
         contentView.layer.borderWidth = 2.0
         contentView.layer.cornerRadius = 10.0
         contentView.layer.masksToBounds = true
     }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -75,6 +78,7 @@ class TrackCollectionViewCell: UICollectionViewCell {
             dateLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
         ])
     }
+    
     func setupCell(item: Track) {
         descLabel.text = item.trackingNumber
         dateLabel.text = item.description

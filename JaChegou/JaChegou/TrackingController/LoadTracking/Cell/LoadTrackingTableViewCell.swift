@@ -7,13 +7,13 @@
 
 import UIKit
 
-protocol LoadTrackingTableViewCellProtocol: AnyObject {
+protocol LoadTrackingTableViewCellDelegate: AnyObject {
     func tappedDeleteNotification()
 }
 
 class LoadTrackingTableViewCell: UITableViewCell {
     
-    weak var delegate: LoadTrackingTableViewCellProtocol?
+    weak var delegate: LoadTrackingTableViewCellDelegate?
     static var identifier = String(describing: LoadTrackingTableViewCell.self)
     
     private lazy var eventLabel: UILabel = {

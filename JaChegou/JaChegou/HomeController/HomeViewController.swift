@@ -32,7 +32,7 @@ class HomeViewController: UIViewController {
         configProtocols()
     }
     
-    func configActivity(){
+    func configActivity() {
         activityIndicatorView = UIActivityIndicatorView(style: .large)
         activityIndicatorView?.center = view.center
         activityIndicatorView?.hidesWhenStopped = true
@@ -80,7 +80,7 @@ extension HomeViewController: UISearchBarDelegate {
     }
 }
 
-extension HomeViewController: HomeControllerScreenProtocol {
+extension HomeViewController: HomeControllerScreenDelegate {
     func changeTrackingType(type: TrackingType) {
         viewModel.setNewTrackingType(newType: type)
         screen?.collectionView.reloadData()
@@ -95,7 +95,7 @@ extension HomeViewController: HomeControllerScreenProtocol {
     }
 }
 
-extension HomeViewController: LoadTrackingViewControllerDelegate{
+extension HomeViewController: LoadTrackingViewControllerDelegate {
     func didDeleteTracking() {
         viewModel.getAllTrackFromUser()
         screen?.collectionView.reloadData()

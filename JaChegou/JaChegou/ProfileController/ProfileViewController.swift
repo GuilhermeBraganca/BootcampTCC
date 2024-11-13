@@ -49,7 +49,7 @@ extension ProfileViewController: ProfileViewModelDelegate {
     }
 }
 
-extension ProfileViewController: ProfileScreenProtocol {
+extension ProfileViewController: ProfileScreenDelegate {
     func tappedOutOfAccountButton() {
         let logoutAction = UIAlertAction(title: "Sair", style: .destructive) { [weak self] _ in
             self?.logoutAndNavigateToLogin()

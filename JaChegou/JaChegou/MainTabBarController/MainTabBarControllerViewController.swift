@@ -32,7 +32,7 @@ class MainTabBarControllerViewController: UITabBarController {
     }
 }
 
-extension MainTabBarControllerViewController : UITabBarControllerDelegate, UINavigationControllerDelegate{
+extension MainTabBarControllerViewController : UITabBarControllerDelegate, UINavigationControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         UIView.setAnimationsEnabled(false)
         return true

@@ -28,12 +28,12 @@ class RecoverPasswordViewController: UIViewController {
     }
 }
 
-extension RecoverPasswordViewController: RecoverPasswordScreenProtocol{
+extension RecoverPasswordViewController: RecoverPasswordScreenDelegate {
     func tappedSendEmailButton() {
         viewModel.recoverPassword(for: screen?.recoverPasswordTextField.text)
     }
 }
-extension RecoverPasswordViewController: RecoveryPasswordProtocol {
+extension RecoverPasswordViewController: RecoveryPasswordDelegate {
     func showAlert(title: String , message: String ) {
         Alert.showAlert( title: title , message: message, viewController: self)
     }

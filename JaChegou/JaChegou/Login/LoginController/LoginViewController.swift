@@ -48,7 +48,7 @@ class LoginViewController: UIViewController {
     }
 }
 
-extension LoginViewController: LoginViewModelProtocol{
+extension LoginViewController: LoginViewModelDelegate {
     
     func setLoginButtonEnabled(_ isEnabled: Bool) {
         isEnabledLoginButton(isEnable: isEnabled)
@@ -97,7 +97,7 @@ extension LoginViewController: LoginViewModelProtocol{
     }
 }
 
-extension LoginViewController: LoginScreenProtocol {
+extension LoginViewController: LoginScreenDelegate {
     func tappedLoginButton() {
         guard let email = screen?.emailTextField.text,
               let password = screen?.passwordTextField.text,

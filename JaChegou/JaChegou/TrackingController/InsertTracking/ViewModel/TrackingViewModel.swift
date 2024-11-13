@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-protocol TrackingViewModelProtocol: AnyObject {
+protocol TrackingViewModelDelegate: AnyObject {
     func success()
     func failure(errorMessage: String)
     func loading(start: Bool)
@@ -16,7 +16,7 @@ protocol TrackingViewModelProtocol: AnyObject {
 
 class TrackingViewModel {
     
-    weak var delegate: TrackingViewModelProtocol?
+    weak var delegate: TrackingViewModelDelegate?
     
     func saveTrackingData(code: String, description: String) {
         delegate?.loading(start: true)

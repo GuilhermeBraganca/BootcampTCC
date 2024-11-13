@@ -8,13 +8,13 @@
 import Foundation
 import UIKit
 
-protocol HomeControllerScreenProtocol: AnyObject {
+protocol HomeControllerScreenDelegate: AnyObject {
     func changeTrackingType(type: TrackingType)
 }
 
 class HomeControllerScreen: UIView {
     
-    weak var delegate: HomeControllerScreenProtocol?
+    weak var delegate: HomeControllerScreenDelegate?
     
     lazy var headerView: HeaderView = {
         let view = HeaderView(title: "Rastreamentos", image: UIImage(named: "worldImage"))
@@ -101,7 +101,7 @@ class HomeControllerScreen: UIView {
         collectionView.dataSource = dataSource
     }
     
-    func configConstraints(){
+    func configConstraints() {
         NSLayoutConstraint.activate([
             headerView.topAnchor.constraint(equalTo: topAnchor),
             headerView.leadingAnchor.constraint(equalTo: leadingAnchor),

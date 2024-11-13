@@ -37,7 +37,7 @@ class CreateAccountViewController: UIViewController {
     }
 }
 
-extension CreateAccountViewController: CreateAccountScreenProtocol {
+extension CreateAccountViewController: CreateAccountScreenDelegate {
     
     func tappedEyePasswordButton() {
         guard let isSecureEntry = screen?.passwordTextField.isSecureTextEntry else { return }
@@ -94,7 +94,7 @@ extension CreateAccountViewController: CreateAccountScreenProtocol {
         self.present(alert, animated: true, completion: nil)
     }
     
-    func errorAlert(error: String){
+    func errorAlert(error: String) {
         let alert = UIAlertController(title: "Houve um erro", message: error, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)

@@ -1,6 +1,6 @@
 import UIKit
 
-protocol LoginScreenProtocol: AnyObject {
+protocol LoginScreenDelegate: AnyObject {
     func tappedLoginButton()
     func tappedRegisterButton()
     func tappedRecoverPasswordButton()
@@ -8,7 +8,7 @@ protocol LoginScreenProtocol: AnyObject {
 
 class LoginScreen: UIView {
     
-    weak var delegate: LoginScreenProtocol?
+    weak var delegate: LoginScreenDelegate?
         
     lazy var headerView: HeaderView = {
         let view = HeaderView(title: "Para aproveitar todos os recursos, faça login.", image: UIImage(named: "worldImage"))
