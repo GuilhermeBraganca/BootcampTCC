@@ -26,7 +26,7 @@ class TrackingViewController: UIViewController {
     }
 }
 
-extension TrackingViewController: TrackingScreenDelegate {
+extension TrackingViewController: TrackingScreenProtocol {
     func tapped() {
         guard let orderDescription: String = screen?.orderDescriptionTextField.text,
               let trackingCode: String = screen?.trackingCodeTextField.text,
@@ -39,7 +39,7 @@ extension TrackingViewController: TrackingScreenDelegate {
     }
 }
 
-extension TrackingViewController: TrackingViewModelDelegate {
+extension TrackingViewController: TrackingViewModelProtocol {
     func loading(start: Bool) {
         if start {
             LoadingLottie.shared.start(message: "Carregando...")

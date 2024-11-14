@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol ProfileViewModelDelegate: AnyObject {
+protocol ProfileViewModelProtocol: AnyObject {
     func successFetchUserData(user: User)
     func failureFetchingUserData(errorMessage: String)
     func successDeleteUserAccount()
@@ -16,7 +16,7 @@ protocol ProfileViewModelDelegate: AnyObject {
 
 class ProfileViewModel {
     
-    weak var delegate: ProfileViewModelDelegate?
+    weak var delegate: ProfileViewModelProtocol?
     
     func fetchUserData() {
         FirestoreManager.shared.getUserData { [weak self] result in

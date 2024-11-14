@@ -7,14 +7,14 @@
 
 import UIKit
 
-protocol LoadTrackingScreenDelegate: AnyObject {
+protocol LoadTrackingScreenProtocol: AnyObject {
     func tappedDeleteButton()
     func tappedBackButton()
 }
 
 class LoadTrackingScreen: UIView {
     
-    weak var delegate: LoadTrackingScreenDelegate?
+    weak var delegate: LoadTrackingScreenProtocol?
     var track: Track?
     
     private lazy var headerView: HeaderView = {

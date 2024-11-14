@@ -35,7 +35,7 @@ class NotificationViewController: UIViewController {
     }
     
 }
-extension NotificationViewController: NotificationViewModelDelegate {
+extension NotificationViewController: NotificationViewModelProtocol {
     func showAlert(title: String, message: String) {
         Alert.showAlert(title: title, message: message, viewController: self)
     }

@@ -7,13 +7,13 @@
 
 import UIKit
 
-protocol RecoverPasswordScreenDelegate: AnyObject {
+protocol RecoverPasswordScreenProtocol: AnyObject {
     func tappedSendEmailButton()
 }
 
 class RecoverPasswordScreen: UIView {
     
-    weak var delegate: RecoverPasswordScreenDelegate?
+    weak var delegate: RecoverPasswordScreenProtocol?
     
     lazy var headerView: HeaderView = {
         let view = HeaderView(title: "Recuperar Senha", image: UIImage(named: "worldImage"))

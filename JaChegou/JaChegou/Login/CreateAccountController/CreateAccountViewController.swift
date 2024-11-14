@@ -37,7 +37,7 @@ class CreateAccountViewController: UIViewController {
     }
 }
 
-extension CreateAccountViewController: CreateAccountScreenDelegate {
+extension CreateAccountViewController: CreateAccountScreenProtocol {
     
     func tappedEyePasswordButton() {
         guard let isSecureEntry = screen?.passwordTextField.isSecureTextEntry else { return }

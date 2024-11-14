@@ -7,14 +7,14 @@
 
 import UIKit
 
-protocol ProfileScreenDelegate: AnyObject {
+protocol ProfileScreenProtocol: AnyObject {
     func tappedOutOfAccountButton()
     func tappedDeleteAccountButton()
 }
 
 class ProfileScreen: UIView {
     
-    weak var delegate: ProfileScreenDelegate?
+    weak var delegate: ProfileScreenProtocol?
     
     lazy var headerView: HeaderView = {
         let view = HeaderView(title: "Perfil", image: UIImage(named: "worldImage"))

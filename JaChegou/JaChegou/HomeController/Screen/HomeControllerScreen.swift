@@ -8,13 +8,13 @@
 import Foundation
 import UIKit
 
-protocol HomeControllerScreenDelegate: AnyObject {
+protocol HomeControllerScreenProtocol: AnyObject {
     func changeTrackingType(type: TrackingType)
 }
 
 class HomeControllerScreen: UIView {
     
-    weak var delegate: HomeControllerScreenDelegate?
+    weak var delegate: HomeControllerScreenProtocol?
     
     lazy var headerView: HeaderView = {
         let view = HeaderView(title: "Rastreamentos", image: UIImage(named: "worldImage"))

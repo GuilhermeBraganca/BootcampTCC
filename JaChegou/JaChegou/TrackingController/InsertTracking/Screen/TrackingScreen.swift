@@ -7,13 +7,13 @@
 
 import UIKit
 
-protocol TrackingScreenDelegate: AnyObject {
+protocol TrackingScreenProtocol: AnyObject {
     func tapped()
 }
 
 class TrackingScreen: UIView {
     
-    weak var delegate: TrackingScreenDelegate?
+    weak var delegate: TrackingScreenProtocol?
     
     lazy var headerView: HeaderView = {
         let view = HeaderView(title: "Cadastre Código Correios", image: UIImage(named: "worldImage"))

@@ -7,13 +7,13 @@
 
 import UIKit
 
-protocol LoadTrackingViewControllerDelegate: AnyObject {
+protocol LoadTrackingViewControllerProtocol: AnyObject {
     func didDeleteTracking()
 }
 
 class LoadTrackingViewController: UIViewController {
     
-    weak var delegate: LoadTrackingViewControllerDelegate?
+    weak var delegate: LoadTrackingViewControllerProtocol?
     
     var screen: LoadTrackingScreen?
     var viewModel: LoadTrackingViewModel = LoadTrackingViewModel()
@@ -63,7 +63,7 @@ extension LoadTrackingViewController: UITableViewDelegate, UITableViewDataSource
     }
 }
 
-extension LoadTrackingViewController: LoadTrackingScreenDelegate {
+extension LoadTrackingViewController: LoadTrackingScreenProtocol {
     func tappedDeleteButton() {
         guard let track = track else { return }
         let okAction = UIAlertAction(title: "OK", style: .destructive) { [weak self] _ in
@@ -83,7 +83,7 @@ extension LoadTrackingViewController: LoadTrackingScreenDelegate {
     }
 }
 
-extension LoadTrackingViewController: LoadTrackingViewModelDelegate {
+extension LoadTrackingViewController: LoadTrackingViewModelProtocol {
     func showAlertDeleteTrackingSuccess(title: String, message: String) {
         let okAction = UIAlertAction(title: "OK", style: .default) { [weak self] _ in
             guard let self else { return }

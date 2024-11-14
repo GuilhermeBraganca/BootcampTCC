@@ -9,13 +9,13 @@ import Foundation
 import FirebaseAuth
 import UIKit
 
-protocol RecoveryPasswordDelegate: AnyObject {
+protocol RecoveryPasswordProtocol: AnyObject {
     func showAlert(title: String, message: String)
 }
 
 class RecoverPasswordViewModel {
     
-    var delegate: RecoveryPasswordDelegate?
+    var delegate: RecoveryPasswordProtocol?
     
     func recoverPassword(for email: String?) {
         guard let email = email, ValidationData.isValidEmail(email) else {

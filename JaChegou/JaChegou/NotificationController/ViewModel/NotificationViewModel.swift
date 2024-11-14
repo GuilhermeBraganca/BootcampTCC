@@ -7,13 +7,13 @@
 
 import Foundation
 
-protocol NotificationViewModelDelegate: AnyObject {
+protocol NotificationViewModelProtocol: AnyObject {
     func showAlert(title: String, message: String)
 }
 
 class NotificationViewModel {
 
-    weak var delegate: NotificationViewModelDelegate?
+    weak var delegate: NotificationViewModelProtocol?
     private var trackWithLastEvents: [Notification] = []
     
     var numberOfRowsInSection: Int {

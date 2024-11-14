@@ -8,13 +8,13 @@
 import Foundation
 import UIKit
 
-protocol ProductTableViewCellDelegate: AnyObject {
+protocol ProductTableViewCellProtocol: AnyObject {
     func tappedDeleteProduct(track: Track?)
 }
 
 class ProductTableViewCell: UITableViewCell {
     
-    weak var delegate: ProductTableViewCellDelegate?
+    weak var delegate: ProductTableViewCellProtocol?
     static var identifier = String(describing: ProductTableViewCell.self)
     var track: Track?
     
@@ -185,7 +185,6 @@ class ProductTableViewCell: UITableViewCell {
     }
     
     func setupCell(track: Track, event: Events) {
- 
         descriptionTrackingLabel.text = track.description
         descriptionEventLabel.text = event.descricao?.trimLeft() ?? ""
         descriptionDateLabel.text = event.data?.trimLeft() ?? ""

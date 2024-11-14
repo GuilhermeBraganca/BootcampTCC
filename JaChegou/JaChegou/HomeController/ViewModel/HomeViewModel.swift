@@ -12,7 +12,7 @@ enum TrackingType {
     case transporting
 }
 
-protocol HomeViewModelDelegate: AnyObject {
+protocol HomeViewModelProtocol: AnyObject {
     func didLoadTracks(tracks: [Track])
     func successGetTracksFromUser()
     func failureGetTracksFromUser()
@@ -21,7 +21,7 @@ protocol HomeViewModelDelegate: AnyObject {
 
 class HomeViewModel {
 
-    weak var delegate: HomeViewModelDelegate?
+    weak var delegate: HomeViewModelProtocol?
     
     private(set) var trackingType: TrackingType = .transporting
     private var allTrackList: [Track] = []

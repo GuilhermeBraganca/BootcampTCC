@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-protocol CreateAccountScreenDelegate: AnyObject {
+protocol CreateAccountScreenProtocol: AnyObject {
     func tappedLoginButton()
     func tappedRegisterButton()
     func tappedEyePasswordButton()
@@ -17,7 +17,7 @@ protocol CreateAccountScreenDelegate: AnyObject {
 
 class CreateAccountScreen: UIView {
     
-    weak var delegate: CreateAccountScreenDelegate?
+    weak var delegate: CreateAccountScreenProtocol?
     
     lazy var headerView: HeaderView = {
         let view = HeaderView(title: "Para aproveitar todos os recursos, crie uma conta.", image: UIImage(named: "worldImage"))

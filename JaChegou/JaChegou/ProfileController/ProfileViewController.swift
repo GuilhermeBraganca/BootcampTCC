@@ -29,7 +29,7 @@ class ProfileViewController: UIViewController {
     }
 }
 
-extension ProfileViewController: ProfileViewModelDelegate {
+extension ProfileViewController: ProfileViewModelProtocol {
     func successFetchUserData(user: User) {
         screen?.nameTextField.text = user.name
         screen?.birthDataTextField.text = user.birthDate
@@ -49,7 +49,7 @@ extension ProfileViewController: ProfileViewModelDelegate {
     }
 }
 
-extension ProfileViewController: ProfileScreenDelegate {
+extension ProfileViewController: ProfileScreenProtocol {
     func tappedOutOfAccountButton() {
         let logoutAction = UIAlertAction(title: "Sair", style: .destructive) { [weak self] _ in
             self?.logoutAndNavigateToLogin()

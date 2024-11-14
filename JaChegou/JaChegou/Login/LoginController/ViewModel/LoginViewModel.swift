@@ -9,7 +9,7 @@
 import Foundation
 import FirebaseAuth
 
-protocol LoginViewModelDelegate: AnyObject {
+protocol LoginViewModelProtocol: AnyObject {
     func setLoginButtonEnabled(_ isEnabled: Bool)
     func displayEmailError(_ hasError: Bool)
     func displayPasswordError(_ hasError: Bool)
@@ -19,7 +19,7 @@ protocol LoginViewModelDelegate: AnyObject {
 
 class LoginViewModel {
     
-    weak var delegate: LoginViewModelDelegate?
+    weak var delegate: LoginViewModelProtocol?
     
     func validateLogin(email: String?, password: String?) {
         let isEmailValid = ValidationData.isValidEmail(email ?? "")

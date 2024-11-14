@@ -8,7 +8,7 @@
 import Foundation
 
 
-protocol LoadTrackingViewModelDelegate: AnyObject {
+protocol LoadTrackingViewModelProtocol: AnyObject {
     func success(message: String)
     func failure(errorMessage: String)
     func loading(start: Bool)
@@ -18,7 +18,7 @@ protocol LoadTrackingViewModelDelegate: AnyObject {
 
 public class LoadTrackingViewModel {
     
-    weak var delegate: LoadTrackingViewModelDelegate?
+    weak var delegate: LoadTrackingViewModelProtocol?
     private var trackingData = Track(image: "", description: "", trackingNumber: "", date: "", events: [])
     
     var numberOfRowsInSection: Int {
